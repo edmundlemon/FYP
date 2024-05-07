@@ -64,7 +64,9 @@
   
 
 <script setup>
+
 import axios from 'axios';
+import store from '../store';
 import { ref } from 'vue';
 import {useRouter} from 'vue-router';
 
@@ -78,18 +80,13 @@ async function login(){
 		password: password.value
 	}).then(response => {
 		console.log(response.data);
+		store.dispatch('login', response.data);
 	}).catch(error => {
 		console.log(error);
 	});
 	router.push('/lecturers');
 }
 
-// export default {
-// 	name: 'Login',
-// 	methods:{
-// 		login
-// 	}
-// }
 </script>
 
 <style>
