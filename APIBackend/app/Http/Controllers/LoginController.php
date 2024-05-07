@@ -93,9 +93,13 @@ class LoginController extends Controller
     }
 
     public function logout(Request $request){
-        auth()->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect()->route('login');
+        // auth()->logout();
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
+        // return redirect()->route('login');
+        $request->user()->tokens()->delete();
+        return response()->json([
+            'message' => 'Logged out'
+        ], 200);
     }
 }

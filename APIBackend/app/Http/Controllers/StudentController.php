@@ -36,7 +36,7 @@ class StudentController extends Controller
             // It would also return the path to the file
             $formFields['photo'] = $request->file('photo')->store('photos', 'public');
             $imgName = basename($formFields['photo']);
-            $linkToImg = asset('storage/photos/'.$imgName);
+            $linkToImg = asset('photos/'.$imgName);
             $formFields['photo'] = $linkToImg;
         }
         // dd($formFields);

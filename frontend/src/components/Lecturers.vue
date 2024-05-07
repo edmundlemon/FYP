@@ -21,49 +21,33 @@
 	</div>	
 </template>
 
-<script>
+<script setup>
 import axios from 'axios';
-export default {
-	name: 'Lecturers',
-	data(){
-		return{
-			lecturers: [],
-		}
-	},
-	created(){
-		this.getLecturers();
-		// this.toFetchLec();
-	},
-	methods:{
-		// * Fetching data using fetch JavaScript
-		// async toFetchLec(){
-		// 	fetch('http://127.0.0.1:8000/api/lecturers')
-		// 	.then(response => {
-		// 		console.log('Response:', response);
-		// 		return response.json();
-		// 	})
-		// 	.then(data => {
-		// 		this.lecturers = data.lecturer;
-		// 		console.log('Data 1:', data)
-		// 	})
-		// 	.catch(error => console.log(error))
-		// },
+import { ref, onMounted } from 'vue';
+import store from '../store';
 
-		// * Fetching data using axios
-		async getLecturers(){
-			const response = await axios.get('http://localhost:8000/api/lecturers').then(response => {
-				this.lecturers = response.data.lecturer;
-				console.log(response.data.lecturer);
-			}).catch(error => {
-				console.log(error);
-			});
-		},
+const lecturers = ref([]);
+const token = store.state.token;
 
-	},
-	mounted(){
-		console.log('mounted')
-	}
+// Set the default Authorization header for all Axios requests
+axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+async function getLecturers(){
+	console.log('User authenticated: ', store.state.isAuthenticated);
+	console.log('User profile: ', store.state.user.data);
+	console.log ('Getting lecturers: ', token);
+	const response = await axios.get('http://localhost:8000/api/lecturers').then(response => {
+		lecturers.value = response.data.lecturer;
+		console.log(lecturers.value);
+	}).catch(error => {
+		console.log(error);
+	});
 }
+
+onMounted(() => {
+		getLecturers();
+})
+
 </script>
 
 <style>
