@@ -73,7 +73,6 @@ import {useRouter} from 'vue-router';
 const router = useRouter();
 const id = ref('id');
 const password = ref('password');
-// const store = useStore();
 
 async function login(){
 	await axios.post('http://localhost:8000/api/login', {
