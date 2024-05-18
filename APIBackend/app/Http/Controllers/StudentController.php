@@ -11,10 +11,21 @@ class StudentController extends Controller
     //
     public function index()
     {
+        return response()->json(
+            [
+                'students' => Student::all(),
+                'code' => 200
+            ]
+        );
+    }
 
-        return view('testpages.view-students', [
-            'students' => Student::all()
-        ]);
+    public function view(Student $student){
+        return response()->json(
+            [
+                'student' => Student::find($student->id),
+                'code' => 200
+            ]
+        );
     }
 
     public function store(Request $request)

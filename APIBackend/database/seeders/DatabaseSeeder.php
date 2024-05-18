@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
             // 'id' => 2,
             'lecturer_id' => 'MU1234',
             'student_id' =>"1122",
-            'date' => Carbon::today()->addDays(3),
+            'date' => Carbon::today(),
             'start_time' => Carbon::now()->addMinutes(25)->format('H:i'),
             // ...
 

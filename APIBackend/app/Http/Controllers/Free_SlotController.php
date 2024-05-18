@@ -11,16 +11,22 @@ class Free_SlotController extends Controller
     //
     public function upcomingTime(Lecturer $lecturer)
     {
-        return view('testpages.upcoming-free', [
-            'upcomings' => $lecturer->upcoming()->get()
-        ]);
+        return response()->json(
+            [
+                'upcomings' => $lecturer->upcoming()->get(),
+                'code' => 200
+            ]
+        );
     }
 
     public function index()
     {
-        return view('testpages.free-slots', [
-            'freeslots' => Free_slot::all()
-        ]);
+        return response()->json(
+            [
+                'freeslots' => Free_slot::all(),
+                'code' => 200
+            ]
+        );
     }
 
     public function store(Request $request)
@@ -33,6 +39,12 @@ class Free_SlotController extends Controller
         $formFields['lecturer_id'] = auth()->user()->id;
 
         Free_slot::create($formFields);
+        return response()->json(
+            [
+                'message' => 'Free slot created successfully',
+                'code' => 201
+            ]
+        );
         return redirect()->route('free_slot.index');
     }
 
@@ -48,6 +60,12 @@ class Free_SlotController extends Controller
         ]);
 
         $free_slot->update($formFields);
+        return response()->json(
+            [
+                'message' => 'Free slot updated successfully',
+                'code' => 200
+            ]
+        );
         return redirect()->route('free_slot.index');
     }
 
@@ -57,6 +75,12 @@ class Free_SlotController extends Controller
             abort(403, 'Unauthorized Action!');
         }
         $free_slot->delete();
+        return response()->json(
+            [
+                'message' => 'Free slot deleted successfully',
+                'code' => 200
+            ]
+        );
         return redirect()->route('free_slot.index');
     }
 
