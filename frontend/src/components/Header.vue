@@ -46,7 +46,7 @@
 					<a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Settings</a>
 				  </MenuItem>
 				  <MenuItem v-slot="{ active }">
-					<a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign out</a>
+					<a @click="logout" href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign out</a>
 				  </MenuItem>
 				</MenuItems>
 			  </transition>
@@ -66,11 +66,29 @@
   <script setup>
   import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
   import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
-  
+  import store from '../store/'
+  import axios from 'axios'
+  import { useRouter } from 'vue-router'
+
+  const router = useRouter();
+  const token = store.state.user.token;
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
   const navigation = [
 	{ name: 'Dashboard', href: '/dashboard', current: true },
 	{ name: 'Team', href: '#', current: false },
 	{ name: 'Projects', href: '#', current: false },
 	{ name: 'Calendar', href: '#', current: false },
   ]
+  
+  async function logout(){
+	  console.log('Logging out');
+	   store.commit('logout');
+	  axios.post('http://localhost:8000/api/logout').then(response => {
+		  console.log(response.data);
+	  }).catch(error => {
+		  console.log(error);
+	  });
+	  router.push('/login');
+  }
+
   </script>
