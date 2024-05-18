@@ -75,20 +75,25 @@ const id = ref('id');
 const password = ref('password');
 
 async function login(){
+
+	// store.dispatch('login', {id: id.value, password: password.value});
+
 	await axios.post('http://localhost:8000/api/login', {
 		id: id.value,
 		password: password.value
 	}).then(response => {
 		console.log(response.data);
 		store.dispatch('login', response.data);
+		if(store.state.user.role == 'student')
+			{router.push('/students');}
+		else if(store.state.user.role == 'lecturer')
+			{router.push('/lecturers');}
+		else if(store.state.user.role == 'admin')
+			{router.push('/admin');}
 	}).catch(error => {
 		console.log(error);
+		return
 	});
-
-	if(store.state.user.data.role === 'student' && store.state.isAuthenticated)
-		router.push('/students');
-	else if(store.state.user.data.role === 'lecturer' && store.state.isAuthenticated)
-		router.push('/lecturers');
 }
 
 </script>
