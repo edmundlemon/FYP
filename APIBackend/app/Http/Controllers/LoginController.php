@@ -97,7 +97,9 @@ class LoginController extends Controller
         // $request->session()->invalidate();
         // $request->session()->regenerateToken();
         // return redirect()->route('login');
-        $request->user()->tokens()->delete();
+        $user = Auth::guard('sanctum')->user();
+        Log::channel('api_post_log')->error('User Logged Out: ', ['user' => $user]);
+        $user->tokens()->delete();
         return response()->json([
             'message' => 'Logged out'
         ], 200);

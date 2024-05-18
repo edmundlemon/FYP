@@ -1,0 +1,75 @@
+[2024-05-09 02:33:51] production.ERROR: Request {"id":"id","password":"password"} 
+[2024-05-09 02:34:20] production.ERROR: Request {"id":"1122","password":"password"} 
+[2024-05-09 02:34:20] production.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-05-09 02:51:32] production.ERROR: Request {"id":"id","password":"password"} 
+[2024-05-09 02:51:39] production.ERROR: Request {"id":"id","password":"password"} 
+[2024-05-09 02:51:48] production.ERROR: Request {"id":"id","password":"password"} 
+[2024-05-09 16:59:35] production.ERROR: Request {"id":"1122","password":"password"} 
+[2024-05-09 16:59:35] production.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-05-09 16:59:35] production.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-09T08:56:40.000000Z","updated_at":"2024-05-09T08:56:40.000000Z"}}} 
+[2024-05-09 16:59:37] production.ERROR: AuthLecturer Middleware {"lecturer":false,"sanctum":true} 
+[2024-05-09 17:38:31] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 17:38:31] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 17:38:32] production.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-09 17:39:13] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 17:39:14] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 17:39:14] production.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-09 17:41:08] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 17:41:08] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 17:41:09] production.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-09 17:45:23] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-09 17:46:59] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 17:46:59] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 17:47:00] production.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-09 17:48:08] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 17:48:09] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 17:48:10] production.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-09 17:48:49] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-09 17:51:16] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 17:51:16] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 17:51:17] production.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-09 17:51:20] production.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-09T09:30:54.000000Z","updated_at":"2024-05-09T09:30:54.000000Z"}}} 
+[2024-05-09 17:52:05] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 17:52:05] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 17:52:06] production.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-09 17:52:16] production.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-09T09:30:54.000000Z","updated_at":"2024-05-09T09:30:54.000000Z"}}} 
+[2024-05-09 17:56:28] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 17:56:28] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 17:56:29] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 17:56:29] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 17:56:30] production.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-09 17:56:34] production.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-09T09:30:54.000000Z","updated_at":"2024-05-09T09:30:54.000000Z"}}} 
+[2024-05-09 18:00:59] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-09 18:15:44] production.ERROR: Request {"id":"1122","password":"password"} 
+[2024-05-09 18:15:44] production.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-05-09 18:15:44] production.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-09T09:30:54.000000Z","updated_at":"2024-05-09T09:30:54.000000Z"}}} 
+[2024-05-09 18:15:51] production.ERROR: Request {"id":"1122","password":"password"} 
+[2024-05-09 18:15:51] production.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-05-09 18:15:52] production.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-09T09:30:54.000000Z","updated_at":"2024-05-09T09:30:54.000000Z"}}} 
+[2024-05-09 18:15:52] production.ERROR: Request {"id":"1122","password":"password"} 
+[2024-05-09 18:15:52] production.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-05-09 18:15:52] production.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-09T09:30:54.000000Z","updated_at":"2024-05-09T09:30:54.000000Z"}}} 
+[2024-05-09 18:17:54] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-09 18:19:29] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 18:19:29] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 18:19:40] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 18:19:40] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 18:19:40] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 18:19:41] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 18:19:41] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-09 18:19:41] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-09 18:19:48] production.ERROR: Request {"id":"1122","password":"password"} 
+[2024-05-09 18:19:48] production.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-05-09 18:19:49] production.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-09T09:30:54.000000Z","updated_at":"2024-05-09T09:30:54.000000Z"}}} 
+[2024-05-09 18:19:54] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-09 18:20:01] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-18 16:22:40] production.ERROR: Request {"id":"1122","password":"password"} 
+[2024-05-18 16:22:41] production.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-05-18 16:22:41] production.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-09T09:30:54.000000Z","updated_at":"2024-05-09T09:30:54.000000Z"}}} 
+[2024-05-18 16:22:55] production.ERROR: Request {"id":"MU","password":"password"} 
+[2024-05-18 16:23:17] production.ERROR: Request {"id":"MU12345","password":"password"} 
+[2024-05-18 16:23:22] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 16:23:22] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 16:23:23] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 16:23:23] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 16:23:30] production.ERROR: User Logged Out:  {"user":null} 

@@ -84,7 +84,11 @@ async function login(){
 	}).catch(error => {
 		console.log(error);
 	});
-	router.push('/lecturers');
+
+	if(store.state.user.data.role === 'student' && store.state.isAuthenticated)
+		router.push('/students');
+	else if(store.state.user.data.role === 'lecturer' && store.state.isAuthenticated)
+		router.push('/lecturers');
 }
 
 </script>

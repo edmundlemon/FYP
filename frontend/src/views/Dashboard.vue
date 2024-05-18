@@ -18,6 +18,7 @@
 import { ref, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import store from '../store'
+import axios from 'axios'
 
 
 const user = store.state.user.data
