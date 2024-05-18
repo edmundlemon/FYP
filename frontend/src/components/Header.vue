@@ -73,22 +73,16 @@
   const router = useRouter();
   const token = store.state.user.token;
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-  const navigation = [
-	{ name: 'Dashboard', href: '/dashboard', current: true },
-	{ name: 'Team', href: '#', current: false },
-	{ name: 'Projects', href: '#', current: false },
-	{ name: 'Calendar', href: '#', current: false },
-  ]
+//   const navigation = [
+// 	{ name: 'Dashboard', href: '/dashboard', current: true },
+// 	{ name: 'Team', href: '#', current: false },
+// 	{ name: 'Projects', href: '#', current: false },
+// 	{ name: 'Calendar', href: '#', current: false },
+//   ]
   
   async function logout(){
-	  console.log('Logging out');
-	   store.commit('logout');
-	  axios.post('http://localhost:8000/api/logout').then(response => {
-		  console.log(response.data);
-	  }).catch(error => {
-		  console.log(error);
-	  });
-	  router.push('/login');
+	console.log('Logging out');
+	store.commit('logout');
   }
 
   </script>

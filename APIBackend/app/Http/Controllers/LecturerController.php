@@ -24,9 +24,12 @@ class LecturerController extends Controller
     }
 
     public function view(Lecturer $lecturer){
-        return view('testpages.view-lecturer', [
-            'lecturer' => Lecturer::find($lecturer->id)
-        ]);
+        return response()->json(
+            [
+                'lecturer' => Lecturer::find($lecturer->id),
+                'code' => 200
+            ]
+        );
     }
 
     public function create(){

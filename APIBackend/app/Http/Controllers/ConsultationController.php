@@ -36,10 +36,10 @@ class ConsultationController extends Controller
         $user = Lecturer::find(auth()->user()->id);
         $consultation_slots = $user->consultation_slots()->with('student')->orderBy('date')->orderBy('start_time')->get();
 
-        return view('testpages.lecturer-consultation-index',
-            // compact('consultation_slots')
+        return response()->json(
             [
-                'consultation_slots' => $consultation_slots
+                'consultation_slots' => $consultation_slots,
+                'code' => 200
             ]
         );
     }
@@ -87,11 +87,23 @@ class ConsultationController extends Controller
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
         if(auth()->id() !== $consultation_slot->lecturer_id){
-            abort(403, 'Unauthorized Action!');
+            return response()->json(
+                [
+                    'message' => 'Unauthorized Action!',
+                    'code' => 403
+                ]
+            );
+            // abort(403, 'Unauthorized Action!');
         }
         $formFields['status'] = 'Lecturer Rescheduled';
         AutomatedReschedule::dispatch($consultation_slot->lecturer->name, $consultation_slot, $formFields)->onConnection('sync');
         $consultation_slot->update($formFields);
+        return response()->json(
+            [
+                'message' => 'Slot Rescheduled',
+                'code' => 200
+            ]
+        );
         return redirect()->route('free_slots.index');
     }
 
@@ -111,17 +123,35 @@ class ConsultationController extends Controller
         AutomatedApproved::dispatch($consultation_slot)->onConnection('sync');
         $consultation_slot->status = 'Approved';
         $consultation_slot->save();
+        return response()->json(
+            [
+                'message' => 'Slot Approved',
+                'code' => 200
+            ]
+        );
         return redirect()->route('free_slots.index');
     }
 
     public function lecturerDestroy(Consultation_slot $consultation_slot)
     {
         if(auth()->id() !== $consultation_slot->lecturer_id){
+            return response()->json(
+                [
+                    'message' => 'Unauthorized Action!',
+                    'code' => 403
+                ]
+            );
             abort(403, 'Unauthorized Action!');
         }
         AutomatedRejected::dispatch($consultation_slot)->onConnection('sync');
         $consultation_slot->status = 'Rejected';
         $consultation_slot->save();
+        return response()->json(
+            [
+                'message' => 'Slot Rejected',
+                'code' => 200
+            ]
+        );
         return redirect()->route('free_slots.index');
     }
 

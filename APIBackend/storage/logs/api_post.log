@@ -73,3 +73,56 @@
 [2024-05-18 16:23:23] production.ERROR: Request {"id":"MU1234","password":"password"} 
 [2024-05-18 16:23:23] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
 [2024-05-18 16:23:30] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-18 16:51:28] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-18 16:51:33] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 16:51:34] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 16:52:11] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 16:52:11] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 16:52:49] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-18 16:55:37] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 16:55:37] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 16:55:47] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-18 16:56:12] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 16:56:12] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 16:56:25] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-18 16:57:42] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 16:57:43] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 16:57:44] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 16:57:44] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 16:57:48] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-18 17:02:34] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 17:02:34] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 17:02:59] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-18 17:03:02] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 17:03:03] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 17:07:40] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-18 17:08:34] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-18 17:08:41] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 17:08:41] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 17:08:48] production.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-18T08:24:02.000000Z","updated_at":"2024-05-18T08:24:02.000000Z"}}} 
+[2024-05-18 17:11:10] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 17:11:10] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 17:12:09] production.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-18T08:24:02.000000Z","updated_at":"2024-05-18T08:24:02.000000Z"}}} 
+[2024-05-18 17:12:10] production.ERROR: User Logged Out:  {"user":null} 
+[2024-05-18 17:12:19] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 17:12:20] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 17:15:06] production.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-18T08:24:02.000000Z","updated_at":"2024-05-18T08:24:02.000000Z"}}} 
+[2024-05-18 17:15:11] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 17:15:11] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 17:15:16] production.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-18T08:24:02.000000Z","updated_at":"2024-05-18T08:24:02.000000Z"}}} 
+[2024-05-18 17:18:11] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 17:18:11] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 17:18:11] production.ERROR: Request {"message":"Success!","token":"13|ZZl3wEvYhIETsTTidRk8cTpd93mB13tOoub4mjDj485f5bd9","user":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-18T08:24:02.000000Z","updated_at":"2024-05-18T08:24:02.000000Z"},"role":"lecturer"} 
+[2024-05-18 17:19:06] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 17:19:06] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 17:20:05] production.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-18T08:24:02.000000Z","updated_at":"2024-05-18T08:24:02.000000Z"}}} 
+[2024-05-18 17:20:08] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 17:20:08] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 17:20:09] production.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-18 17:20:20] production.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-18T08:24:02.000000Z","updated_at":"2024-05-18T08:24:02.000000Z"}}} 
+[2024-05-18 17:22:12] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 17:22:12] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 17:23:09] production.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-18T08:24:02.000000Z","updated_at":"2024-05-18T08:24:02.000000Z"}}} 
+[2024-05-18 17:23:12] production.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-18 17:23:12] production.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-18 17:24:21] production.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-18T08:24:02.000000Z","updated_at":"2024-05-18T08:24:02.000000Z"}}} 
