@@ -22,6 +22,7 @@
 </template>
 
 <script setup>
+
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import store from '../store';
@@ -47,6 +48,7 @@ async function getLecturers(){
 onMounted(() => {
 		getLecturers();
 })
+
 
 </script>
 

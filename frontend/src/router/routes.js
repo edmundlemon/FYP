@@ -5,6 +5,7 @@ import Dashboard from '../views/Dashboard.vue';
 import NotFound from '../views/NotFound.vue';
 import Lecturers from '../components/Lecturers.vue';
 import RegisterLecturer from '../components/RegisterLecturer.vue';
+import Students from '../components/Students.vue';
 
 const routes = [
 	{
@@ -45,6 +46,12 @@ const routes = [
 		name: 'register-lecturer',
 		component: RegisterLecturer,
 	},
+	{
+		path: '/students',
+		name: 'students',
+		component: Students,
+	}
+	
 ];
 
 const router = createRouter({
