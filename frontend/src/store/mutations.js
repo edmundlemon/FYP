@@ -11,6 +11,10 @@ export function setToken(state, token){
 	console.log("Token is : ", state.token);
 }
 
+export function setRole(state, role){
+	state.role = role;
+}
+
 export function logout(state){
 	console.log(state.token);
 	axios.defaults.headers.common['Authorization'] = `Bearer ${state.token}`;

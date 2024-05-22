@@ -12,4 +12,5 @@ export function login({commit}, data){
 	console.log("This is from actions.js : ", data);
 	commit('setUser', data.user);
 	commit('setToken', data.token);
+	commit('setRole', data.role);
 }

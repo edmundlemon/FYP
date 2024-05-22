@@ -8,6 +8,7 @@ const store = createStore({
 		isAuthenticated: null,
 		user:{},
 		token: null,
+		role: null,
 	},
 	getters:{},
 	mutations,
