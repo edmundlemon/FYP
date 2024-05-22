@@ -6,6 +6,7 @@ use App\Http\Middleware\AuthStudent;
 use App\Http\Middleware\AuthLecturer;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LecturerController;
@@ -60,6 +61,9 @@ Route::group(['middleware' => AuthLecturer::class], function () {
 Route::group(['middleware' => AuthAdmin::class], function () {
     Route::post('/register/student', [StudentController::class, 'store']);
     Route::post('/register/lecturer', [LecturerController::class, 'store']);
+    Route::post('/register/admin', [AdminController::class, 'store']);
+    Route::delete('/delete/admin/{admin}', [AdminController::class, 'destroy']);
+
 });
 
 // Middleware to only allow students

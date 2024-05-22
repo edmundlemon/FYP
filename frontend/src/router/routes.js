@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import store from '../store';
 import Login from '../views/Login.vue';
+import Logout from '../components/Logout.vue';
 import Dashboard from '../views/Dashboard.vue';
 import NotFound from '../views/NotFound.vue';
 import Lecturers from '../components/Lecturers.vue';
@@ -32,6 +33,14 @@ const routes = [
 		},
 	},
 	{
+		path: '/logout',
+		name: 'logout',
+		component: Logout,
+		meta: { 
+			requiresAuth: true 
+		},
+	},
+	{
 		path: '/:pathMatch(.*)*',
 		name: 'notfound',
 		component: NotFound,
@@ -40,6 +49,9 @@ const routes = [
 		path: '/lecturers',
 		name: 'lecturers',
 		component: Lecturers,
+		meta: { 
+			requiresAuth: true 
+		},
 	},
 	{
 		path: '/register-lecturer',

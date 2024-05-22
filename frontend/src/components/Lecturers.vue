@@ -46,6 +46,7 @@ async function getLecturers(){
 }
 
 onMounted(() => {
+		console.log(store.state.role);
 		getLecturers();
 })
 

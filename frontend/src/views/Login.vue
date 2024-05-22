@@ -84,11 +84,13 @@ async function login(){
 	}).then(response => {
 		console.log(response.data);
 		store.dispatch('login', response.data);
-		if(store.state.user.role == 'student')
+		console.log(response.data.user);
+		console.log(response.data.role);
+		if(response.data.role == 'student')
 			{router.push('/students');}
-		else if(store.state.user.role == 'lecturer')
+		else if(response.data.role == 'lecturer')
 			{router.push('/lecturers');}
-		else if(store.state.user.role == 'admin')
+		else if(response.data.role == 'admin')
 			{router.push('/admin');}
 	}).catch(error => {
 		console.log(error);
