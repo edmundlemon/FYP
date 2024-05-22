@@ -303,3 +303,4 @@
 [2024-05-22 22:43:11] local.ERROR: Request {"id":"MU1234","password":"password"} 
 [2024-05-22 22:43:11] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
 [2024-05-22 22:43:12] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-22 22:46:53] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
