@@ -8,7 +8,7 @@ const store = createStore({
 		isAuthenticated: null,
 		user:{},
 		token: null,
-		role: null,
+		role: [],
 	},
 	getters:{},
 	mutations,

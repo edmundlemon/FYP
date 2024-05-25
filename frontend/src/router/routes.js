@@ -8,21 +8,43 @@ import Lecturers from '../components/Lecturers.vue';
 import RegisterLecturer from '../components/RegisterLecturer.vue';
 import Students from '../components/Students.vue';
 
+import adminRoutes from "./adminRoutes";
+import lecturerRoutes from "./lecturerRoutes";
+import studentRoutes from "./studentRoutes";
+
+const authRoutes = [
+	{
+		path: '/dashboard',
+		name: 'dashboard',
+		component: Dashboard,
+		meta: {
+			requiresAuth: true
+		}
+	},
+	{
+		path: '/logout',
+		name: 'logout',
+		component: Logout,
+		meta: {
+			requiresAuth: true
+		},
+		beforeEnter: async (to, from, next) => {
+			store.commit('logout');
+			next('/login'); // Redirect to login page after logout
+		}
+	},
+];
+
+
 const routes = [
+	// Common and root directory routes.
 	{
 		path: '/',
-		name: 'app',
-		component: () => import('../App.vue'),
-		meta: { 
-			requiresAuth: true 
+		name: 'root',
+		// component: () => import('../App.vue'),
+		redirect: (to) =>{
+			return store.state.isAuthenticated ? '/dashboard' : '/login';
 		},
-		children: [
-			{
-				path: 'dashboard',
-				name: 'dashboard',
-				component: Dashboard,
-			},
-		],
 	},
 	{
 		path: '/login',
@@ -32,37 +54,19 @@ const routes = [
 			requiresGuest: true 
 		},
 	},
-	{
-		path: '/logout',
-		name: 'logout',
-		component: Logout,
-		meta: { 
-			requiresAuth: true 
-		},
-	},
+
+	// The route that displays the 404 Error page.
 	{
 		path: '/:pathMatch(.*)*',
 		name: 'notfound',
 		component: NotFound,
 	},
-	{
-		path: '/lecturers',
-		name: 'lecturers',
-		component: Lecturers,
-		meta: { 
-			requiresAuth: true 
-		},
-	},
-	{
-		path: '/register-lecturer',
-		name: 'register-lecturer',
-		component: RegisterLecturer,
-	},
-	{
-		path: '/students',
-		name: 'students',
-		component: Students,
-	}
+
+	// Other routes, that are protected
+	... authRoutes,
+	... adminRoutes,
+	... lecturerRoutes,
+	... studentRoutes,
 	
 ];
 
@@ -76,13 +80,20 @@ router.beforeEach((to, from, next) => {
 	const authRequired = !publicPages.includes(to.path);
 	const loggedIn = store.state.isAuthenticated;
 
+	const requiredRole = to.meta.role || [];
+	const userRole = store.state.role || [];
+	console.log(requiredRole);
+	console.log(userRole);
+	console.log(requiredRole.includes(userRole));
 	if (to.meta.requiresAuth && !loggedIn) {
 		return next('/login');
 	}
 	else if (to.meta.requiresGuest && loggedIn) {
 		return next('/dashboard');
 	}
-
+	if (to.meta.role && !requiredRole.includes(userRole)) {
+		return next('/dashboard');
+	}
 
 	next();
 });

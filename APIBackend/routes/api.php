@@ -13,6 +13,7 @@ use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\Free_SlotController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\api\v1\CommentController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -27,7 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 // Route::middleware('auth:sanctum')->get('/lecturers', [LecturerController::class, 'index'])->name('lecturer.index');
-Route::post('/register/lecturer', [LecturerController::class, 'store']);
+// Route::post('/register/lecturer', [LecturerController::class, 'store']);
 // Route::get('/register/lecturer', [LecturerController::class, 'store']);
 
 Route::middleware('guest:sanctum')->post('/login', [LoginController::class, 'authenticate']);
@@ -48,7 +49,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 // Middleware to only allow lecturers
 Route::group(['middleware' => AuthLecturer::class], function () {
     Route::get('/lecturer/schedule', [ConsultationController::class, 'lecturerIndex']);
-    Route::get('/lecturers', [LecturerController::class, 'index']);
     Route::post('/free-slots', [Free_SlotController::class, 'store']);
     Route::delete('/free-slots/delete/{free_slot}',[Free_SlotController::class, 'destroy']);
     Route::put('/free-slots/edit/{free_slot}', [Free_SlotController::class, 'update']);
@@ -74,3 +74,4 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
     Route::put('student/reschedule/{consultation_slot}', [ConsultationController::class, 'studentUpdates']);
 });
+
