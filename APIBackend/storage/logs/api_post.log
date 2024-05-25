@@ -303,3 +303,104 @@
 [2024-05-22 22:43:11] local.ERROR: Request {"id":"MU1234","password":"password"} 
 [2024-05-22 22:43:11] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
 [2024-05-22 22:43:12] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-22 22:46:53] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-23 18:24:14] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-18T16:15:35.000000Z","updated_at":"2024-05-18T16:15:35.000000Z"}}} 
+[2024-05-23 18:29:54] local.ERROR: Request {"id":"1122","password":"password"} 
+[2024-05-23 18:29:54] local.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-05-23 18:29:54] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:25.000000Z","updated_at":"2024-05-23T10:27:25.000000Z"}}} 
+[2024-05-23 18:30:36] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:25.000000Z","updated_at":"2024-05-23T10:27:25.000000Z"}}} 
+[2024-05-23 18:30:40] local.ERROR: User Logged Out:  {"user":null} 
+[2024-05-23 18:31:07] local.ERROR: User Logged Out:  {"user":null} 
+[2024-05-23 18:31:11] local.ERROR: User Logged Out:  {"user":null} 
+[2024-05-23 18:32:26] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-23 18:32:26] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-23 18:32:27] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-23 18:32:40] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-23 18:32:49] local.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-05-23 18:32:49] local.ERROR: Admin Auth:  {"auth":true} 
+[2024-05-23 18:32:50] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-23 18:33:25] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-23 18:33:29] local.ERROR: Request {"id":"1122","password":"password"} 
+[2024-05-23 18:33:29] local.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-05-23 18:33:29] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:25.000000Z","updated_at":"2024-05-23T10:27:25.000000Z"}}} 
+[2024-05-23 18:33:35] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:25.000000Z","updated_at":"2024-05-23T10:27:25.000000Z"}}} 
+[2024-05-23 18:35:18] local.ERROR: User Logged Out:  {"user":null} 
+[2024-05-23 18:35:21] local.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-05-23 18:35:22] local.ERROR: Admin Auth:  {"auth":true} 
+[2024-05-23 18:35:22] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-23 18:36:15] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-23 18:36:20] local.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-05-23 18:36:20] local.ERROR: Admin Auth:  {"auth":true} 
+[2024-05-23 18:36:20] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-23 18:38:33] local.ERROR: AuthLecturer Middleware {"lecturer":false,"sanctum":true} 
+[2024-05-23 18:38:38] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-23 18:38:43] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-23 18:38:43] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-23 18:38:44] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-23 18:38:55] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-23 18:39:43] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-05-23 18:39:43] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-05-23 18:39:43] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:39:43.000000Z"}}} 
+[2024-05-23 18:39:43] testing.ERROR: Token {"token":"8|HAg0vLRiXlhZx6eIxI3UVlP3naeW1CaRXIHt0oPh6a7bc34a"} 
+[2024-05-23 18:39:43] testing.ERROR: Response {"response":{"Illuminate\\Testing\\TestResponse":{"baseRequest":{"attributes":[],"request":[],"query":[],"server":[],"files":[],"cookies":[],"headers":[]},"baseResponse":{"headers":[],"original":{"message":"Admin created successfully","user":{"id":"0","name":"admin","email":"admin2@gmail.com","updated_at":"2024-05-23T10:39:43.000000Z","created_at":"2024-05-23T10:39:43.000000Z"}},"exception":null},"exceptions":[]}}} 
+[2024-05-23 18:39:43] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-05-23 18:39:44] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-05-23 18:39:44] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:39:43.000000Z"}}} 
+[2024-05-25 18:23:16] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-25 18:23:16] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-25 18:23:17] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 18:23:31] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-25 18:23:37] local.ERROR: Request {"id":"1122","password":"password"} 
+[2024-05-25 18:23:37] local.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-05-25 18:23:37] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:25.000000Z","updated_at":"2024-05-23T10:27:25.000000Z"}}} 
+[2024-05-25 18:24:37] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:25.000000Z","updated_at":"2024-05-23T10:27:25.000000Z"}}} 
+[2024-05-25 18:33:22] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-25 18:33:23] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-25 18:33:23] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 18:35:03] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-25 18:35:23] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-25 18:35:23] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-25 18:35:24] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 18:36:24] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-25 18:36:52] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-25 18:36:53] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-25 18:36:54] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 18:48:34] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-25 18:48:38] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-25 18:48:38] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-25 18:48:39] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 18:52:34] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-25 18:52:40] local.ERROR: Request {"id":"1122","password":"password"} 
+[2024-05-25 18:52:40] local.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-05-25 18:52:40] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:25.000000Z","updated_at":"2024-05-23T10:27:25.000000Z"}}} 
+[2024-05-25 21:48:39] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:25.000000Z","updated_at":"2024-05-23T10:27:25.000000Z"}}} 
+[2024-05-25 21:49:05] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-25 21:49:06] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-25 21:49:07] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 22:12:40] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-25 22:12:59] local.ERROR: User Logged Out:  {"user":null} 
+[2024-05-25 22:13:28] local.ERROR: User Logged Out:  {"user":null} 
+[2024-05-25 22:20:39] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-25 22:20:39] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-05-25 22:20:40] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 22:33:06] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 22:39:41] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 23:03:05] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 23:07:13] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 23:08:29] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 23:09:35] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 23:09:36] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 23:11:00] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 23:12:03] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-05-25 23:12:50] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-23T10:27:26.000000Z"}}} 
+[2024-05-25 23:12:53] local.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-05-25 23:12:54] local.ERROR: Admin Auth:  {"auth":true} 
+[2024-05-25 23:12:54] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-05-23T10:27:26.000000Z","updated_at":"2024-05-25T15:12:54.000000Z"}}} 
+[2024-05-25 23:13:33] local.ERROR: AuthLecturer Middleware {"lecturer":false,"sanctum":true} 
+[2024-05-25 23:13:42] local.ERROR: AuthLecturer Middleware {"lecturer":false,"sanctum":true} 
+[2024-05-25 23:15:31] local.ERROR: AuthLecturer Middleware {"lecturer":false,"sanctum":true} 
+[2024-05-25 23:15:35] local.ERROR: AuthLecturer Middleware {"lecturer":false,"sanctum":true} 
+[2024-05-25 23:18:13] local.ERROR: AuthLecturer Middleware {"lecturer":false,"sanctum":true} 
+[2024-05-25 23:18:16] local.ERROR: AuthLecturer Middleware {"lecturer":false,"sanctum":true} 
+[2024-05-25 23:18:18] local.ERROR: AuthLecturer Middleware {"lecturer":false,"sanctum":true} 
+[2024-05-25 23:22:08] local.ERROR: AuthLecturer Middleware {"lecturer":false,"sanctum":true} 
