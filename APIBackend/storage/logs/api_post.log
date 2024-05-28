@@ -417,3 +417,5 @@
 [2024-05-28 01:29:39] local.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
 [2024-05-28 01:29:39] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
 [2024-05-28 01:29:45] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-05-29 00:01:04] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-05-29 00:01:05] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
