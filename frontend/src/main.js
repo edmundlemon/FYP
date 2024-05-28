@@ -8,4 +8,7 @@ import axios from 'axios'
 // const token = store.state.token
 // axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
-createApp(App).use(store).use(router).mount('#app')
+const app = createApp(App);
+app.use(store);
+app.use(router);
+app.mount('#app')

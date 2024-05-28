@@ -8,4 +8,13 @@ export default [
 			role: ['student']
 		}
 	},
+	{
+		path: '/student/schedule',
+		name: 'student-schedule',
+		component: () => import('../components/UpcomingSlot.vue'),
+		// meta: {
+		// 	requiresAuth: true,
+		// 	role: ['student']
+		// }
+	}
 ];
