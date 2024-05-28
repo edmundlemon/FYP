@@ -132,6 +132,7 @@ import axios from "axios";
 import store from "../store";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import axiosInstance from "../axiosConfig/customAxios";
 
 const router = useRouter();
 const id = ref("id");
@@ -139,28 +140,48 @@ const password = ref("password");
 
 async function login() {
   // store.dispatch('login', {id: id.value, password: password.value});
-  await axios
-    .post("http://localhost:8000/api/login", {
+  // await axios
+  //   .post("http://localhost:8000/api/login", {
+  //     id: id.value,
+  //     password: password.value,
+  //   })
+  //   .then((response) => {
+  //     console.log(response.data);
+  //     store.dispatch("login", response.data);
+  //     console.log(response.data.user);
+  //     console.log(response.data.role);
+  //     if (response.data.role == "student") {
+  //       router.push("/students");
+  //     } else if (response.data.role == "lecturer") {
+  //       router.push("/lecturers");
+  //     } else if (response.data.role == "admin") {
+  //       router.push("/admin");
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     return;
+  //   });
+  try {
+    const response = await axiosInstance.post("/login", {
       id: id.value,
       password: password.value,
-    })
-    .then((response) => {
-      console.log(response.data);
-      store.dispatch("login", response.data);
-      console.log(response.data.user);
-      console.log(response.data.role);
-      if (response.data.role == "student") {
-        router.push("/students");
-      } else if (response.data.role == "lecturer") {
-        router.push("/lecturers");
-      } else if (response.data.role == "admin") {
-        router.push("/admin");
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-      return;
     });
+    console.log(response.data);
+    store.dispatch("login", response.data);
+    console.log(response.data.user);
+    console.log(response.data.role);
+    if (response.data.role == "student") {
+      router.push("/students");
+    } else if (response.data.role == "lecturer") {
+      router.push("/lecturers");
+    } else if (response.data.role == "admin") {
+      router.push("/admin");
+    }
+  } catch (error) {
+    console.log(error);
+    return;
+  }
 }
 </script>
 

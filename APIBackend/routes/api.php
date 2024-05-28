@@ -69,6 +69,7 @@ Route::group(['middleware' => AuthAdmin::class], function () {
 // Middleware to only allow students
 Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/student/schedule', [ConsultationController::class, 'studentIndex']);
+    Route::get('/student/approved', [ConsultationController::class, 'studentApproved']);
     Route::post('/book/{lecturer}', [LecturerController::class, 'store']);
     Route::put('/students/{student}', [StudentController::class, 'update']);
     Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
