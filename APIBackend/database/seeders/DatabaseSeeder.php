@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
             // ...
 
             'end_time' => Carbon::now()->addMinutes(90)->format('H:i'),
-            'status' => 'accepted'
+            'status' => 'Approved'
         ]);
         Consultation_slot::create([
             // 'id' => 2,

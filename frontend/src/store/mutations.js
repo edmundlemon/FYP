@@ -25,10 +25,13 @@ export function logout(state){
 	).catch(
 		(error) => {
 			console.log("Logout error: ", error);
+			router.push('/login');
+			// return Promise.reject(error);
 		}
 	);
 	state.user.data = {};
 	state.isAuthenticated = false;
-	state.token = '';
+	state.token = null;
+	console.log("Token is : ", state.token);
 	router.push('/login');
 }

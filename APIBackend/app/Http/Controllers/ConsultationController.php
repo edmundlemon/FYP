@@ -13,6 +13,7 @@ use App\Jobs\AutomatedRejected;
 use App\Jobs\AutomatedReschedule;
 use App\Models\Consultation_slot;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class ConsultationController extends Controller
@@ -20,20 +21,34 @@ class ConsultationController extends Controller
     //
     public function studentIndex()
     {
-        $user = Student::find(auth()->user()->id);
+        $user = Student::find(auth()->guard('sanctum')->user()->id);
+        Log::channel('api_post_log')->error('User', ['user' => $user]);
         $consultation_slots = $user->consultation_slots()->with('lecturer')->orderBy('date')->orderBy('start_time')->get();
+        
 
-        return view('testpages.consultation-index',
-            // compact('consultation_slots')
+        return response()->json(
             [
-                'consultation_slots' => $consultation_slots
+                'consultation_slots' => $consultation_slots,
+                'code' => 200
             ]
         );
-    
     }
+
+    public function studentApproved()
+    {
+        $user = Student::find(auth()->guard('sanctum')->user()->id);
+        $consultation_slots = $user->consultation_slots()->with('lecturer')->where('status', 'Approved')->where('date', '>=', today())->orderBy('date')->orderBy('start_time')->get();
+        return response()->json(
+            [
+                'consultation_slots' => $consultation_slots,
+                'code' => 200
+            ]
+        );
+    }
+
     public function lecturerIndex()
     {
-        $user = Lecturer::find(auth()->user()->id);
+        $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
         $consultation_slots = $user->consultation_slots()->with('student')->orderBy('date')->orderBy('start_time')->get();
 
         return response()->json(
@@ -54,7 +69,7 @@ class ConsultationController extends Controller
         ]);
 
         $formFields['lecturer_id'] = $lecturer->id;
-        $formFields['student_id'] = auth()->user()->id;
+        $formFields['student_id'] = auth()->guard('sanctum')->user()->id;
         $formFields['status'] = 'requested';
 
         Consultation_slot::create($formFields);
@@ -69,7 +84,7 @@ class ConsultationController extends Controller
             'end_time' => 'required|time_format:H:i|after:start_time',
         ]);
 
-        if(auth()->id() !== $consultation_slot->student_id){
+        if(auth()->guard('sanctum')->id() !== $consultation_slot->student_id){
             abort(403, 'Unauthorized Action!');
         }
 
@@ -86,7 +101,7 @@ class ConsultationController extends Controller
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
-        if(auth()->id() !== $consultation_slot->lecturer_id){
+        if(auth()->guard('sanctum')->id() !== $consultation_slot->lecturer_id){
             return response()->json(
                 [
                     'message' => 'Unauthorized Action!',
@@ -110,7 +125,7 @@ class ConsultationController extends Controller
     public function approve(Consultation_slot $consultation_slot)
     {
         // dd($consultation_slot);
-        if(auth()->id() !== $consultation_slot->lecturer_id){
+        if(auth()->guard('sanctum')->id() !== $consultation_slot->lecturer_id){
             abort(403, 'Unauthorized Action!');
         }
         $collision = $consultation_slot->collision($consultation_slot);
@@ -134,7 +149,7 @@ class ConsultationController extends Controller
 
     public function lecturerDestroy(Consultation_slot $consultation_slot)
     {
-        if(auth()->id() !== $consultation_slot->lecturer_id){
+        if(auth()->guard('sanctum')->id() !== $consultation_slot->lecturer_id){
             return response()->json(
                 [
                     'message' => 'Unauthorized Action!',
