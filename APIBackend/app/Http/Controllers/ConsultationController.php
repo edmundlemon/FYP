@@ -46,6 +46,41 @@ class ConsultationController extends Controller
         );
     }
 
+    public function pending(){
+        if(auth()->guard('sanctum')->user()->hasRole('student')){
+            $user = Student::find(auth()->guard('sanctum')->user()->id);
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->where('status', 'Pending')->orderBy('date')->orderBy('start_time')->get();
+        }
+        else{
+            $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
+            $consultation_slots = $user->consultation_slots()->with('student')->where('status', 'Pending')->orderBy('date')->orderBy('start_time')->get();
+        }
+        return response()->json(
+            [
+                'consultation_slots' => $consultation_slots,
+                'code' => 200
+            ]
+        );
+    }
+
+    public function cancelled(){
+        if(auth()->guard('sanctum')->user()->hasRole('student')){
+            $user = Student::find(auth()->guard('sanctum')->user()->id);
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->where('status', 'Cancelled')->orderBy('date')->orderBy('start_time')->get();
+        }
+        else{
+            $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
+            $consultation_slots = $user->consultation_slots()->with('student')->where('status', 'Cancelled')->orderBy('date')->orderBy('start_time')->get();
+        }
+
+        return response()->json(
+            [
+                'consultation_slots' => $consultation_slots,
+                'code' => 200
+            ]
+        );
+    }
+
     public function lecturerIndex()
     {
         $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
@@ -70,7 +105,7 @@ class ConsultationController extends Controller
 
         $formFields['lecturer_id'] = $lecturer->id;
         $formFields['student_id'] = auth()->guard('sanctum')->user()->id;
-        $formFields['status'] = 'requested';
+        $formFields['status'] = 'Pending';
 
         Consultation_slot::create($formFields);
         return redirect()->route('dashboard');
@@ -108,7 +143,6 @@ class ConsultationController extends Controller
                     'code' => 403
                 ]
             );
-            // abort(403, 'Unauthorized Action!');
         }
         $formFields['status'] = 'Lecturer Rescheduled';
         AutomatedReschedule::dispatch($consultation_slot->lecturer->name, $consultation_slot, $formFields)->onConnection('sync');

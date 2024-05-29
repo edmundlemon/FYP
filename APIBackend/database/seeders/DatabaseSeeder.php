@@ -73,8 +73,6 @@ class DatabaseSeeder extends Seeder
             'student_id' =>"1122",
             'date' => Carbon::today()->addDays(2),
             'start_time' => Carbon::now()->addMinutes(30)->format('H:i'),
-            // ...
-
             'end_time' => Carbon::now()->addMinutes(90)->format('H:i'),
             'status' => 'Approved'
         ]);
@@ -84,10 +82,17 @@ class DatabaseSeeder extends Seeder
             'student_id' =>"1122",
             'date' => Carbon::today(),
             'start_time' => Carbon::now()->addMinutes(25)->format('H:i'),
-            // ...
-
             'end_time' => Carbon::now()->addMinutes(75)->format('H:i'),
-            'status' => 'booked'
+            'status' => 'Pending'
+        ]);
+        Consultation_slot::create([
+            // 'id' => 2,
+            'lecturer_id' => 'MU1234',
+            'student_id' =>"1122",
+            'date' => Carbon::today()->addDay(),
+            'start_time' => Carbon::now()->addMinutes(25)->format('H:i'),
+            'end_time' => Carbon::now()->addMinutes(75)->format('H:i'),
+            'status' => 'Pending'
         ]);
         Free_slot::create([
             'id' => 1,

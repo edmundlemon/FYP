@@ -15,7 +15,7 @@
 			<div class="flex flex-row space-x-3">
 				<approved-slot class="bg-white p-4 shadow rounded flex-1"/>
 				<UpcomingSlot class="bg-white p-4 shadow rounded flex-1"/>
-				<UpcomingSlot class="bg-white p-4 shadow rounded flex-1"/>
+				<pending-slot class="bg-white p-4 shadow rounded flex-1"/>
 			</div>
 		</div>
 	</div>
@@ -28,6 +28,7 @@ import store from '../store'
 import axios from 'axios'
 import UpcomingSlot from '../components/UpcomingSlot.vue'
 import approvedSlot from '../components/ApprovedSlot.vue'
+import pendingSlot from '../components/PendingSlot.vue'
 
 
 const user = store.state.user.data
