@@ -17,7 +17,7 @@ import { onMounted, ref, onBeforeMount } from 'vue'
 import TimeDisplay from './TimeDisplay.vue'
 import axios from 'axios';
 import store from '../store'
-import axiosGet from '../axiosConfig/customAxios'
+import axiosInstance from '../axiosConfig/customAxios'
 // import store from '../../../APIBackend/resources/js/store';
 const slots = ref([]);
 const token = store.state.token
@@ -27,13 +27,13 @@ onMounted(async () => {
 	console.log('Token => ', token);
   console.log('Role => ', store.state.role);
   if (store.state.role === 'student') {
-      axiosGet('/student/schedule').then(response => {
+      axiosInstance('/student/schedule').then(response => {
       slots.value = response.data.consultation_slots;
     }).catch(error => {
       console.log(error);
     });
   } else {
-      axiosGet('/lecturer/schedule').then(response => {
+      axiosInstance('/lecturer/schedule').then(response => {
       slots.value = response.data.consultation_slots;
     }).catch(error => {
       console.log(error);

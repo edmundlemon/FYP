@@ -33,7 +33,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import axios from '../axiosConfig/customAxios';
+import axiosInstance from '../axiosConfig/customAxios';
 
 const query = ref('');
 const results = ref(null);
@@ -43,7 +43,7 @@ const search = () => {
 		results.value = null;
 		return;
 	}
-	axios.get('/search', { params: { search: query.value } })
+	axiosInstance.get('/search', { params: { search: query.value } })
 		.then(response => {
 			results.value = response.data;
 		})

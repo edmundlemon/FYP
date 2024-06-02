@@ -7,6 +7,7 @@ import NotFound from '../views/NotFound.vue';
 import Lecturers from '../components/Lecturers.vue';
 import RegisterLecturer from '../components/RegisterLecturer.vue';
 import Students from '../components/Students.vue';
+import LecturerDetails from '../components/LecturerDetails.vue';
 
 import adminRoutes from "./adminRoutes";
 import lecturerRoutes from "./lecturerRoutes";
@@ -33,6 +34,15 @@ const authRoutes = [
 			next('/login'); // Redirect to login page after logout
 		}
 	},
+	{
+		path: '/lecturer/:id',
+		name: 'LecturerDetails',
+		component: LecturerDetails,
+		props: true, // Allows passing route params as props to the component
+		// meta: {
+		// 	requireAuth: true
+		// }
+	}
 ];
 
 

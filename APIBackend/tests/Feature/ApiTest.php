@@ -49,4 +49,13 @@ class ApiTest extends TestCase
             'message' => 'Admin deleted successfully',
         ]);
     }
+
+    public function test_rating_retrieving(): void
+    {
+        $response = $this->getJson('/api/rating/MU1234');
+        $response->assertStatus(200)->assertJson([
+            'code' => 200,
+            'rating' => 4
+        ]);
+    }
 }

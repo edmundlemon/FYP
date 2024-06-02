@@ -67,6 +67,13 @@ class DatabaseSeeder extends Seeder
             'rating' => '5',
             'comment' => 'Great'
         ]);
+        Review::create([
+            'id' => 2,
+            'lecturer_id' => 'MU1234',
+            'student_id' =>"1122",
+            'rating' => '3',
+            'comment' => 'Great'
+        ]);
         Consultation_slot::create([
             // 'id' => 1,
             'lecturer_id' => 'MU1234',

@@ -1148,3 +1148,132 @@
 [2024-06-01 18:00:13] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-06-01T09:36:55.000000Z","updated_at":"2024-06-01T09:36:55.000000Z"}}} 
 [2024-06-01 18:00:13] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-06-01T09:36:55.000000Z","updated_at":"2024-06-01T09:36:55.000000Z"}}} 
 [2024-06-01 18:00:14] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-06-01T09:36:55.000000Z","updated_at":"2024-06-01T09:36:55.000000Z"}}} 
+[2024-06-02 17:02:49] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-06-01T09:36:55.000000Z","updated_at":"2024-06-01T09:36:55.000000Z"}}} 
+[2024-06-02 17:02:49] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-06-01T09:36:55.000000Z","updated_at":"2024-06-01T09:36:55.000000Z"}}} 
+[2024-06-02 17:02:50] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-06-01T09:36:55.000000Z","updated_at":"2024-06-01T09:36:55.000000Z"}}} 
+[2024-06-02 17:02:50] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-06-01T09:36:55.000000Z","updated_at":"2024-06-01T09:36:55.000000Z"}}} 
+[2024-06-02 17:02:51] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-06-01T09:36:55.000000Z","updated_at":"2024-06-01T09:36:55.000000Z"}}} 
+[2024-06-02 17:16:24] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-06-01T09:36:55.000000Z","updated_at":"2024-06-01T09:36:55.000000Z"}}} 
+[2024-06-02 17:16:27] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-06-02 17:16:28] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-06-02 17:27:27] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:27:27] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:27:28] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:27:28] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:27:55] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:27:56] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:27:56] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:27:57] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:41:36] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:41:36] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:41:36] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:41:37] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:41:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:41:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:41:44] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:41:45] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:42:46] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:42:46] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:42:47] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:42:48] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:44:23] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:44:23] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:44:23] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:44:24] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:44:54] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:44:54] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:44:54] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 17:44:55] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-02 18:05:22] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-06-01T09:36:55.000000Z","updated_at":"2024-06-01T09:36:55.000000Z"}}} 
+[2024-06-02 18:05:26] local.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 18:05:26] local.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 18:05:26] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-01T09:36:56.000000Z","updated_at":"2024-06-01T09:36:56.000000Z"}}} 
+[2024-06-02 20:17:50] local.ERROR: User Logged Out:  {"user":null} 
+[2024-06-02 20:17:50] local.ERROR: User Logged Out:  {"user":null} 
+[2024-06-02 20:17:51] local.ERROR: User Logged Out:  {"user":null} 
+[2024-06-02 20:17:51] local.ERROR: User Logged Out:  {"user":null} 
+[2024-06-02 20:17:52] local.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 20:17:52] local.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 20:17:53] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T12:17:39.000000Z","updated_at":"2024-06-02T12:17:39.000000Z"}}} 
+[2024-06-02 20:24:11] local.ERROR: Image Name {"asset":"http://localhost:8000/storage/photos/tokhJah8KExJH21Xn9p19HAtypvuv3S1gxhfnKzP.jpg"} 
+[2024-06-02 20:27:36] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T12:17:39.000000Z","updated_at":"2024-06-02T12:17:39.000000Z"}}} 
+[2024-06-02 20:28:04] local.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 20:28:04] local.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 20:28:04] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T12:27:55.000000Z","updated_at":"2024-06-02T12:27:55.000000Z"}}} 
+[2024-06-02 20:29:22] local.ERROR: Image Name {"asset":"http://localhost:8000/storage/photos/6YTSQxAk6igtZ1LiQUYsvYwOkyZeanOWvqU7ZzWe.jpg"} 
+[2024-06-02 20:30:00] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T12:27:55.000000Z","updated_at":"2024-06-02T12:27:55.000000Z"}}} 
+[2024-06-02 20:30:28] local.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 20:30:29] local.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 20:30:29] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T12:27:55.000000Z","updated_at":"2024-06-02T12:27:55.000000Z"}}} 
+[2024-06-02 20:30:54] local.ERROR: Image Name {"asset":"http://localhost:8000/storage/photos/e9N3abuO7yV4SB1tgAlouiaiEotHYaAnS8ehxJaf.jpg"} 
+[2024-06-02 20:31:37] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T12:27:55.000000Z","updated_at":"2024-06-02T12:27:55.000000Z"}}} 
+[2024-06-02 20:32:08] local.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 20:32:08] local.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 20:32:09] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T12:27:55.000000Z","updated_at":"2024-06-02T12:27:55.000000Z"}}} 
+[2024-06-02 20:35:01] local.ERROR: User Logged Out:  {"user":null} 
+[2024-06-02 20:38:40] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-06-02 20:38:41] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-06-02 20:38:56] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-06-02T12:32:47.000000Z","updated_at":"2024-06-02T12:32:47.000000Z"}}} 
+[2024-06-02 20:39:01] local.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 20:39:02] local.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 20:39:02] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T12:32:48.000000Z","updated_at":"2024-06-02T12:32:48.000000Z"}}} 
+[2024-06-02 20:39:37] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T12:32:48.000000Z","updated_at":"2024-06-02T12:32:48.000000Z"}}} 
+[2024-06-02 20:44:19] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-06-02 20:44:20] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-06-02 20:58:02] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-06-02T12:32:47.000000Z","updated_at":"2024-06-02T12:32:47.000000Z"}}} 
+[2024-06-02 21:03:20] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:03:21] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:03:21] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T12:58:19.000000Z","updated_at":"2024-06-02T13:03:21.000000Z"}}} 
+[2024-06-02 21:03:21] testing.ERROR: Token {"token":"1|e5udMbmSx2HNvwPAISPHAzGGMGO5F9KtDdscKvTv364b4ea7"} 
+[2024-06-02 21:03:21] testing.ERROR: Response {"response":{"Illuminate\\Testing\\TestResponse":{"baseRequest":{"attributes":[],"request":[],"query":[],"server":[],"files":[],"cookies":[],"headers":[]},"baseResponse":{"headers":[],"original":{"message":"Admin created successfully","user":{"id":"0","name":"admin","email":"admin2@gmail.com","updated_at":"2024-06-02T13:03:21.000000Z","created_at":"2024-06-02T13:03:21.000000Z"}},"exception":null},"exceptions":[]}}} 
+[2024-06-02 21:03:21] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:03:21] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:03:21] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T12:58:19.000000Z","updated_at":"2024-06-02T13:03:21.000000Z"}}} 
+[2024-06-02 21:04:01] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:04:01] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:04:01] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 
+[2024-06-02 21:04:01] testing.ERROR: Token {"token":"1|3wSyAzmyPdVexD2GZrHEQ2P5TrphKTjhJcx1fWIqa7d8a27e"} 
+[2024-06-02 21:04:01] testing.ERROR: Response {"response":{"Illuminate\\Testing\\TestResponse":{"baseRequest":{"attributes":[],"request":[],"query":[],"server":[],"files":[],"cookies":[],"headers":[]},"baseResponse":{"headers":[],"original":{"message":"Admin created successfully","user":{"id":"0","name":"admin","email":"admin2@gmail.com","updated_at":"2024-06-02T13:04:01.000000Z","created_at":"2024-06-02T13:04:01.000000Z"}},"exception":null},"exceptions":[]}}} 
+[2024-06-02 21:04:02] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:04:02] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:04:02] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 
+[2024-06-02 21:04:40] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:04:40] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:04:40] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 
+[2024-06-02 21:04:40] testing.ERROR: Token {"token":"3|o5nkVCYV1BhuEvoD10XdeigrGO2N3A2H9KRfhqc31550625c"} 
+[2024-06-02 21:04:40] testing.ERROR: Response {"response":{"Illuminate\\Testing\\TestResponse":{"baseRequest":{"attributes":[],"request":[],"query":[],"server":[],"files":[],"cookies":[],"headers":[]},"baseResponse":{"headers":[],"original":{"message":"Admin created successfully","user":{"id":"0","name":"admin","email":"admin2@gmail.com","updated_at":"2024-06-02T13:04:40.000000Z","created_at":"2024-06-02T13:04:40.000000Z"}},"exception":null},"exceptions":[]}}} 
+[2024-06-02 21:04:40] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:04:40] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:04:40] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 
+[2024-06-02 21:05:56] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:05:56] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:05:56] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 
+[2024-06-02 21:05:56] testing.ERROR: Token {"token":"5|Gn1EiDXWg1BwquijgqsDPzy1rbo51ZaSNN3MRIBV55becdf4"} 
+[2024-06-02 21:05:56] testing.ERROR: Response {"response":{"Illuminate\\Testing\\TestResponse":{"baseRequest":{"attributes":[],"request":[],"query":[],"server":[],"files":[],"cookies":[],"headers":[]},"baseResponse":{"headers":[],"original":{"message":"Admin created successfully","user":{"id":"0","name":"admin","email":"admin2@gmail.com","updated_at":"2024-06-02T13:05:56.000000Z","created_at":"2024-06-02T13:05:56.000000Z"}},"exception":null},"exceptions":[]}}} 
+[2024-06-02 21:05:56] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:05:56] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:05:56] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 
+[2024-06-02 21:09:17] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:09:17] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:09:17] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 
+[2024-06-02 21:09:18] testing.ERROR: Token {"token":"7|Sx9PcAuHpglvIxcIZPhZvnUZULapoMAqy7yiYJ5X968d24e8"} 
+[2024-06-02 21:09:18] testing.ERROR: Response {"response":{"Illuminate\\Testing\\TestResponse":{"baseRequest":{"attributes":[],"request":[],"query":[],"server":[],"files":[],"cookies":[],"headers":[]},"baseResponse":{"headers":[],"original":{"message":"Admin created successfully","user":{"id":"0","name":"admin","email":"admin2@gmail.com","updated_at":"2024-06-02T13:09:18.000000Z","created_at":"2024-06-02T13:09:18.000000Z"}},"exception":null},"exceptions":[]}}} 
+[2024-06-02 21:09:18] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:09:18] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:09:18] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 
+[2024-06-02 21:09:33] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:09:33] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:09:33] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 
+[2024-06-02 21:09:33] testing.ERROR: Token {"token":"9|XEDmHPfJNGOrChPyaiXxrIA0PHsR6bTjgM93Jcrl1f1b7682"} 
+[2024-06-02 21:09:33] testing.ERROR: Response {"response":{"Illuminate\\Testing\\TestResponse":{"baseRequest":{"attributes":[],"request":[],"query":[],"server":[],"files":[],"cookies":[],"headers":[]},"baseResponse":{"headers":[],"original":{"message":"Admin created successfully","user":{"id":"0","name":"admin","email":"admin2@gmail.com","updated_at":"2024-06-02T13:09:33.000000Z","created_at":"2024-06-02T13:09:33.000000Z"}},"exception":null},"exceptions":[]}}} 
+[2024-06-02 21:09:33] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:09:33] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:09:33] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 
+[2024-06-02 21:10:34] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:10:34] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:10:34] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 
+[2024-06-02 21:10:35] testing.ERROR: Token {"token":"11|RYsThMfOzOtuy9wz8IuCXn6AoM3zFMTfLIZxELRnd1c0c225"} 
+[2024-06-02 21:10:35] testing.ERROR: Response {"response":{"Illuminate\\Testing\\TestResponse":{"baseRequest":{"attributes":[],"request":[],"query":[],"server":[],"files":[],"cookies":[],"headers":[]},"baseResponse":{"headers":[],"original":{"message":"Admin created successfully","user":{"id":"0","name":"admin","email":"admin2@gmail.com","updated_at":"2024-06-02T13:10:35.000000Z","created_at":"2024-06-02T13:10:35.000000Z"}},"exception":null},"exceptions":[]}}} 
+[2024-06-02 21:10:35] testing.ERROR: Request {"id":"AD1234","password":"password"} 
+[2024-06-02 21:10:35] testing.ERROR: Admin Auth:  {"auth":true} 
+[2024-06-02 21:10:35] testing.ERROR: User Authenticated:  {"user":{"App\\Models\\Admin":{"id":"AD1234","email":"ad1234@gmail.com","name":"Admin","created_at":"2024-06-02T13:03:54.000000Z","updated_at":"2024-06-02T13:04:01.000000Z"}}} 

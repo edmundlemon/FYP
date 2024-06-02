@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LecturerController;
@@ -32,6 +33,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::post('/register/lecturer', [LecturerController::class, 'store']);
 // Route::get('/register/lecturer', [LecturerController::class, 'store']);
 
+Route::get('/rating/{lecturer}', [ReviewController::class, 'index']);
+
 Route::middleware('guest:sanctum')->post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -40,9 +43,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     // Route::post('/comments', [CommentController::class, 'store']);
     
     Route::get('/lecturers', [LecturerController::class, 'index']);
-    Route::get('/lecturers/{lecturer}', [LecturerController::class, 'view']);
+    Route::get('/lecturer/{lecturer}', [LecturerController::class, 'view']);
     Route::get('/students', [StudentController::class, 'index']);
-    Route::get('/students/{student}', [StudentController::class, 'view']);
+    Route::get('/student/{student}', [StudentController::class, 'view']);
     Route::get('/free-slots', [Free_SlotController::class, 'index']);
     Route::get('/upcoming/{lecturer}', [Free_SlotController::class, 'upcomingTime']);
     Route::get('/search', [SearchController::class, 'search']);
