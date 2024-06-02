@@ -3,17 +3,18 @@
 use Illuminate\Http\Request;
 use App\Http\Middleware\AuthAdmin;
 use App\Http\Middleware\AuthStudent;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\AuthLecturer;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\Free_SlotController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\api\v1\CommentController;
-use Illuminate\Support\Facades\Auth;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -44,6 +45,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/students/{student}', [StudentController::class, 'view']);
     Route::get('/free-slots', [Free_SlotController::class, 'index']);
     Route::get('/upcoming/{lecturer}', [Free_SlotController::class, 'upcomingTime']);
+    Route::get('/search', [SearchController::class, 'search']);
 });
 
 // Middleware to only allow lecturers
@@ -53,8 +55,9 @@ Route::group(['middleware' => AuthLecturer::class], function () {
     Route::delete('/free-slots/delete/{free_slot}',[Free_SlotController::class, 'destroy']);
     Route::put('/free-slots/edit/{free_slot}', [Free_SlotController::class, 'update']);
     Route::put('/approve/{consultation_slot}', [ConsultationController::class, 'approve']);
-    Route::put('lecturer/reschedule/{consultation_slot}', [ConsultationController::class, 'lecturerUpdates']);
-    Route::delete('lecturer/reject/{consultation_slot}', [ConsultationController::class, 'lecturerDestroy']);
+    Route::put('/lecturer/reschedule/{consultation_slot}', [ConsultationController::class, 'lecturerUpdates']);
+    Route::delete('/lecturer/reject/{consultation_slot}', [ConsultationController::class, 'lecturerDestroy']);
+    Route::get('/lecturer/past', [ConsultationController::class, 'history']);
 });
 
 // Middleware to only allow admins
@@ -74,6 +77,7 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::post('/book/{lecturer}', [LecturerController::class, 'store']);
     Route::put('/students/{student}', [StudentController::class, 'update']);
     Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
-    Route::put('student/reschedule/{consultation_slot}', [ConsultationController::class, 'studentUpdates']);
+    Route::put('/student/reschedule/{consultation_slot}', [ConsultationController::class, 'studentUpdates']);
+    Route::get('/student/past', [ConsultationController::class, 'history']);
 });
 

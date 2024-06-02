@@ -3,6 +3,7 @@
 /public/build
 /public/hot
 /public/storage/logs
+/storage/logs
 /storage/*.key
 .env.backup
 .env.production

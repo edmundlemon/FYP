@@ -23,7 +23,7 @@ class ConsultationController extends Controller
     {
         $user = Student::find(auth()->guard('sanctum')->user()->id);
         Log::channel('api_post_log')->error('User', ['user' => $user]);
-        $consultation_slots = $user->consultation_slots()->with('lecturer')->orderBy('date')->orderBy('start_time')->get();
+        $consultation_slots = $user->consultation_slots()->where('date', '>=', today())->with('lecturer')->orderBy('date')->orderBy('start_time')->get();
         
 
         return response()->json(
@@ -38,6 +38,24 @@ class ConsultationController extends Controller
     {
         $user = Student::find(auth()->guard('sanctum')->user()->id);
         $consultation_slots = $user->consultation_slots()->with('lecturer')->where('status', 'Approved')->where('date', '>=', today())->orderBy('date')->orderBy('start_time')->get();
+        return response()->json(
+            [
+                'consultation_slots' => $consultation_slots,
+                'code' => 200
+            ]
+        );
+    }
+
+    public function history(){
+        if(auth()->guard('sanctum')->user()->hasRole('student')){
+            $user = Student::find(auth()->guard('sanctum')->user()->id);
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->where('date', '<', today())->orderBy('date')->orderBy('start_time')->get();
+        }
+        else{
+            $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
+            $consultation_slots = $user->consultation_slots()->with('student')->where('date', '<', today())->orderBy('date')->orderBy('start_time')->get();
+        }
+        
         return response()->json(
             [
                 'consultation_slots' => $consultation_slots,
