@@ -13,7 +13,7 @@
         Booked by <span class="ml-1 font-bold">{{ slot.student.name }}</span>
       </h3>
       <h3 class="flex justify-end mt-7" v-else-if="role === 'student'">
-        Booked by <span>{{ slot.lecturer.name }}</span>
+        Consulted by <span class="ml-1 font-bold">{{ slot.lecturer.name }}</span>
       </h3>
     </div>
   </div>
