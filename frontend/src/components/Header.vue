@@ -29,6 +29,7 @@
               >{{ item.name }}</a>
           </li>
         </ul>
+        <SearchBar v-if="store.state.token" />
       </div>
       <!-- notification & profile drop down menu -->
       <div
@@ -192,6 +193,7 @@ import store from "../store/";
 import axios from "axios";
 import { useRouter } from "vue-router";
 import { data } from "autoprefixer";
+import SearchBar from "../components/SearchBar.vue";
 
 const router = useRouter();
 const token = store.state.user.token;
