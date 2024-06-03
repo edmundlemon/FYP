@@ -1,7 +1,7 @@
 <template>
     <div>
         <button
-          class="buttonstyle shadow-2xl w-fit-content mt-4 bg-gray-900 rounded-full px-5 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-white hover:text-black transition-all duration-300 ease-in-out min-w-max"
+          class="buttonstyle shadow-2xl w-fit-content bg-gray-900 rounded-full px-5 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-white hover:text-black transition-all duration-300 ease-in-out min-w-max"
           type="button"
         >
         

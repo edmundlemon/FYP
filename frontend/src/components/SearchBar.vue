@@ -1,31 +1,35 @@
 <template>
   <!-- <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100"> -->
-  <div class="w-full max-w-md p-4 rounded-lg shadow-md">
-	<div class="flex flex-row items-center justify-center" style="border: 1px red solid">
-      <div>
+  <div class="w-full flex flex-col">
+    <div class="flex flex-row items-center p-2">
+      <div class="flex items-center justify-center">
         <input
           v-model="query"
           @keyup.enter="search"
           placeholder="Search for students or lecturers..."
-          class="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 flex-4"
+          class="w-full px-4 py-2 h-9 w-96 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 flex-4"
         />
       </div>
       <button
+        class="w-fit p-1 py-2 px-2 font-semibold text-white bg-blue-500 rounded-r-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
         @click="search"
-        class="w-full px-4 py-2 mx-4 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-1"
       >
-        Search
+        <img src="../assets/search.png" alt="search" class="h-5" />
       </button>
     </div>
 
-    <div v-if="results" class="mt-6">
+    <!-- Search results -->
+    <div
+      v-if="results"
+      class="p-3 pt-2 absolute right-50 z-10 mt-16 w-1/4 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+    >
       <div v-if="results.students.length">
         <h3 class="mb-2 text-xl font-semibold">Students</h3>
         <ul class="mb-4 space-y-2">
           <li
             v-for="student in results.students"
             :key="student.id"
-            class="p-2 bg-gray-200 rounded"
+            class="p-2 y-bg-gra200 rounded"
           >
             {{ student.name }} ({{ student.email }})
           </li>
@@ -40,9 +44,9 @@
             :key="lecturer.id"
             class="p-2 bg-gray-200 rounded"
           >
-            <a href="/lecturer/{{ lecturer.id }}" class="block">{{
-              lecturer.name
-            }}</a>
+            <a href="/lecturer/{{ lecturer.id }}" class="block">
+              {{ lecturer.name }}
+            </a>
           </li>
         </ul>
       </div>

@@ -15,7 +15,6 @@
         </a>
 
         <ul class="flex flex-row justify-center items-center ml-10 pr-5 gap-5"
-          style="border: 1px red solid;"
         >
           <li v-for="(item, index) in navigation" :key="index" @click="activeClass(index)" >
             <a
@@ -56,7 +55,7 @@
             <ul
               v-if="isDropdownOpen"
               class="absolute right-0 z-10 mt-6 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-              style="width: 40vh"
+              style="width: 40vh;"
             >
               <li class="block px-4 py-2 text-sm text-gray-700">
                 Notification will show here!
