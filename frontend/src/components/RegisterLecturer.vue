@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axiosInstance from '../axiosConfig/customAxios';
 
 export default {
 	name: 'RegisterLecturer',
@@ -69,11 +69,9 @@ export default {
 	methods:{
 		async saveLecturer(){
 			this.errors = {};
-			// console.log(this.lecturer);
 			// * Create a form data object
 			if (this.errors.length !=0){
 				let formData = new FormData();
-				// document.querySelector('form')
 				formData.append('name', this.lecturer.name);
 				formData.append('email', this.lecturer.email);
 				formData.append('id', this.lecturer.id);
@@ -83,8 +81,8 @@ export default {
 				formData.append('office', this.lecturer.office);
 				formData.append('photo', this.$refs.photo.files[0]);
 				// console.log(formData.getAll());
-				let url = 'http://localhost:8000/api/register/lecturer';
-				await axios.post(url, formData, {
+				let url = 'register/lecturer';
+				await axiosInstance.post(url, formData, {
 					headers: {
 						'Content-Type': 'multipart/form-data'
 					}

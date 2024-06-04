@@ -2,10 +2,9 @@
   <navbar class="nav-wrapper">
     <div
       class="navbar-container bg-gray-800 h-28 flex items-center justify-between px-4 sm:px-6 lg:px-8"
-      style="filter: drop-shadow(0px 3px 3px black);"
+      style="filter: drop-shadow(0px 3px 3px black)"
     >
       <div class="ml-10 left-navbar flex flex-row">
-        
         <a
           href="#"
           class="text-white text-lg font-bold flex flex-row justify-center items-center"
@@ -14,9 +13,12 @@
           3LINGGUN
         </a>
 
-        <ul class="flex flex-row justify-center items-center ml-10 pr-5 gap-5"
-        >
-          <li v-for="(item, index) in navigation" :key="index" @click="activeClass(index)" >
+        <ul class="flex flex-row justify-center items-center ml-10 pr-5 gap-5">
+          <li
+            v-for="(item, index) in navigation"
+            :key="index"
+            @click="activeClass(index)"
+          >
             <a
               :href="item.href"
               :class="[
@@ -25,7 +27,8 @@
                   : 'text-gray-300 hover:text-white',
                 'ml-4 text-lg',
               ]"
-              >{{ item.name }}</a>
+              >{{ item.name }}</a
+            >
           </li>
         </ul>
         <SearchBar v-if="store.state.token" />
@@ -55,7 +58,7 @@
             <ul
               v-if="isDropdownOpen"
               class="absolute right-0 z-10 mt-6 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-              style="width: 40vh;"
+              style="width: 40vh"
             >
               <li class="block px-4 py-2 text-sm text-gray-700">
                 Notification will show here!
@@ -152,9 +155,9 @@ export default {
         this.isDropdownOpen = false;
       }
     },
-    activeClass(index){
+    activeClass(index) {
       this.navigation.forEach((item, i) => {
-        if(i === index){
+        if (i === index) {
           item.current = true;
         } else {
           item.current = false;

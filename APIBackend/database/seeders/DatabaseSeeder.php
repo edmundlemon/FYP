@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'program' => 'CS'
         ]);
         Student::create([
-            'id' => "ST1234",
+            'id' => "1234",
             'name' => 'Johnny G',
             'email' => '1234@gmail.com',
             'password' => bcrypt('password'),
@@ -65,6 +65,13 @@ class DatabaseSeeder extends Seeder
             'lecturer_id' => 'MU1234',
             'student_id' =>"1122",
             'rating' => '5',
+            'comment' => 'Great'
+        ]);
+        Review::create([
+            'id' => 2,
+            'lecturer_id' => 'MU1234',
+            'student_id' =>"1122",
+            'rating' => '3',
             'comment' => 'Great'
         ]);
         Consultation_slot::create([
