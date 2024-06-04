@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Lecturer Profile</h1>
+    <h1>Student Profile</h1>
     <!-- Add your content here -->
   </div>
 </template>
@@ -16,9 +16,8 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 </script>
 
 <script>
-
 export default {
-  name: "LecturerProfile",
+  name: "StudentProfile",
   props: ["user"],
   created() {
     let userId = this.$route.params.user;
