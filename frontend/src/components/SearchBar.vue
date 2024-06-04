@@ -39,7 +39,9 @@
               :key="student.id"
               class="p-2 bg-gray-200 rounded"
             >
-              {{ student.name }} ({{ student.email }})
+              <a :href="'/student/' + student.id" class="block">
+                {{ student.name + " (" + student.faculty + ")" }}
+              </a>
             </li>
           </ul>
         </div>
@@ -52,8 +54,8 @@
               :key="lecturer.id"
               class="p-2 bg-gray-200 rounded"
             >
-              <a href="/lecturer/{{ lecturer.id }}" class="block">
-                {{ lecturer.name }}
+              <a :href="'/lecturer/' + lecturer.id" class="block">
+                {{ lecturer.name + " (" + lecturer.faculty + ")" }}
               </a>
             </li>
           </ul>

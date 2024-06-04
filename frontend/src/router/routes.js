@@ -1,101 +1,104 @@
 import { createRouter, createWebHistory } from "vue-router";
-import store from '../store';
-import Login from '../views/Login.vue';
-import Logout from '../components/Logout.vue';
-import Dashboard from '../views/Dashboard.vue';
-import NotFound from '../views/NotFound.vue';
-import Lecturers from '../components/Lecturers.vue';
-import RegisterLecturer from '../components/RegisterLecturer.vue';
-import Students from '../components/Students.vue';
-
+import store from "../store";
+import Login from "../views/Login.vue";
+import Logout from "../components/Logout.vue";
+import Dashboard from "../views/Dashboard.vue";
+import NotFound from "../views/NotFound.vue";
+import Lecturers from "../components/Lecturers.vue";
+import RegisterLecturer from "../components/RegisterLecturer.vue";
+import Students from "../components/Students.vue";
+import LecturerProfile from "../components/LecturerProfile.vue";
 import adminRoutes from "./adminRoutes";
 import lecturerRoutes from "./lecturerRoutes";
 import studentRoutes from "./studentRoutes";
 
 const authRoutes = [
-	{
-		path: '/dashboard',
-		name: 'dashboard',
-		component: Dashboard,
-		meta: {
-			requiresAuth: true
-		}
-	},
-	{
-		path: '/logout',
-		name: 'logout',
-		component: Logout,
-		meta: {
-			requiresAuth: true
-		},
-		beforeEnter: async (to, from, next) => {
-			store.commit('logout');
-			next('/login'); // Redirect to login page after logout
-		}
-	},
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: Dashboard,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/logout",
+    name: "logout",
+    component: Logout,
+    meta: {
+      requiresAuth: true,
+    },
+    beforeEnter: async (to, from, next) => {
+      store.commit("logout");
+      next("/login"); // Redirect to login page after logout
+    },
+  },
 ];
 
-
 const routes = [
-	// Common and root directory routes.
-	{
-		path: '/',
-		name: 'root',
-		// component: () => import('../App.vue'),
-		redirect: (to) =>{
-			return store.state.isAuthenticated ? '/dashboard' : '/login';
-		},
-	},
-	{
-		path: '/login',
-		name: 'login',
-		component: Login,
-		meta: { 
-			requiresGuest: true 
-		},
-	},
+  // Common and root directory routes.
+  {
+    path: "/",
+    name: "root",
+    // component: () => import('../App.vue'),
+    redirect: (to) => {
+      return store.state.isAuthenticated ? "/dashboard" : "/login";
+    },
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
+    meta: {
+      requiresGuest: true,
+    },
+  },
+  {
+    path: "/lecturer/:user",
+    name: "lecturer",
+    component: LecturerProfile,
+    props: true,
+  },
 
-	// The route that displays the 404 Error page.
-	{
-		path: '/:pathMatch(.*)*',
-		name: 'notfound',
-		component: NotFound,
-	},
+  // The route that displays the 404 Error page.
+  {
+    path: "/:pathMatch(.*)*",
+    name: "notfound",
+    component: NotFound,
+  },
 
-	// Other routes, that are protected
-	... authRoutes,
-	... adminRoutes,
-	... lecturerRoutes,
-	... studentRoutes,
-	
+  // Other routes, that are protected
+  ...authRoutes,
+  ...adminRoutes,
+  ...lecturerRoutes,
+  ...studentRoutes,
 ];
 
 const router = createRouter({
-	history: createWebHistory(),
-	routes
-})
+  history: createWebHistory(),
+  routes,
+});
 
 router.beforeEach((to, from, next) => {
-	const publicPages = ['/login'];
-	const authRequired = !publicPages.includes(to.path);
-	const loggedIn = store.state.isAuthenticated;
+  const publicPages = ["/login"];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = store.state.isAuthenticated;
 
-	const requiredRole = to.meta.role || [];
-	const userRole = store.state.role || [];
-	console.log(requiredRole);
-	console.log(userRole);
-	console.log(requiredRole.includes(userRole));
-	if (to.meta.requiresAuth && !loggedIn) {
-		return next('/login');
-	}
-	else if (to.meta.requiresGuest && loggedIn) {
-		return next('/dashboard');
-	}
-	if (to.meta.role && !requiredRole.includes(userRole)) {
-		return next('/dashboard');
-	}
+  const requiredRole = to.meta.role || [];
+  const userRole = store.state.role || [];
+  console.log(requiredRole);
+  console.log(userRole);
+  console.log(requiredRole.includes(userRole));
+  if (to.meta.requiresAuth && !loggedIn) {
+    return next("/login");
+  } else if (to.meta.requiresGuest && loggedIn) {
+    return next("/dashboard");
+  }
+  if (to.meta.role && !requiredRole.includes(userRole)) {
+    return next("/dashboard");
+  }
 
-	next();
+  next();
 });
 
 export default router;
