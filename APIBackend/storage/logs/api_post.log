@@ -2198,3 +2198,561 @@
 [2024-06-03 21:18:26] local.ERROR: request {"search":"jan"} 
 [2024-06-03 21:18:31] local.ERROR: jan  
 [2024-06-03 21:18:31] local.ERROR: request {"search":"jan"} 
+[2024-06-03 21:22:31] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-03 21:22:34] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-06-03 21:22:34] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-06-03 21:22:37] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:22:38] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:22:38] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:22:39] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:25:47] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-06-03 21:25:47] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-06-03 21:25:50] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:25:50] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:25:50] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:25:51] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:26:59] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:26:59] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:26:59] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:26:59] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:02] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:04] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:04] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:04] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:04] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:57] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:57] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:58] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:28:58] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:29:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:29:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:29:02] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:29:02] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 21:47:15] local.ERROR: jan  
+[2024-06-03 21:47:15] local.ERROR: request {"search":"jan"} 
+[2024-06-03 21:47:16] local.ERROR: john  
+[2024-06-03 21:47:16] local.ERROR: request {"search":"john"} 
+[2024-06-03 21:47:38] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:45.000000Z","updated_at":"2024-05-27T04:37:45.000000Z"}}} 
+[2024-06-03 22:59:50] local.ERROR: User Logged Out:  {"user":null} 
+[2024-06-03 22:59:53] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-06-03 22:59:54] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-06-03 22:59:56] local.ERROR: j  
+[2024-06-03 22:59:56] local.ERROR: request {"search":"j"} 
+[2024-06-03 23:00:20] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:00:20] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:00:21] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:00:21] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:00:25] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:45.000000Z","updated_at":"2024-05-27T04:37:45.000000Z"}}} 
+[2024-06-03 23:00:28] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-06-03 23:00:28] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-06-03 23:00:31] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:00:31] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:00:32] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:00:32] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:00:50] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:00:50] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:00:50] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:00:50] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:01:32] local.ERROR: j  
+[2024-06-03 23:01:32] local.ERROR: request {"search":"j"} 
+[2024-06-03 23:02:47] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:02:47] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:02:47] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:02:47] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:02:48] local.ERROR: h  
+[2024-06-03 23:02:48] local.ERROR: request {"search":"h"} 
+[2024-06-03 23:03:05] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:03:05] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:03:05] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:03:06] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:03:07] local.ERROR: j  
+[2024-06-03 23:03:07] local.ERROR: request {"search":"j"} 
+[2024-06-03 23:03:22] local.ERROR: j  
+[2024-06-03 23:03:22] local.ERROR: request {"search":"j"} 
+[2024-06-03 23:08:10] local.ERROR: a  
+[2024-06-03 23:08:10] local.ERROR: request {"search":"a"} 
+[2024-06-03 23:08:32] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:08:32] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:08:32] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:08:33] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:08:33] local.ERROR: a  
+[2024-06-03 23:08:33] local.ERROR: request {"search":"a"} 
+[2024-06-03 23:08:38] local.ERROR: a  
+[2024-06-03 23:08:38] local.ERROR: request {"search":"a"} 
+[2024-06-03 23:08:42] local.ERROR: hj  
+[2024-06-03 23:08:42] local.ERROR: request {"search":"hj"} 
+[2024-06-03 23:08:46] local.ERROR: j  
+[2024-06-03 23:08:46] local.ERROR: request {"search":"j"} 
+[2024-06-03 23:08:53] local.ERROR: j  
+[2024-06-03 23:08:53] local.ERROR: request {"search":"j"} 
+[2024-06-03 23:08:55] local.ERROR: as  
+[2024-06-03 23:08:55] local.ERROR: request {"search":"as"} 
+[2024-06-03 23:54:56] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-06-03 23:54:56] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-06-03 23:55:00] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:55:00] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:55:00] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:55:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:55:21] local.ERROR: j  
+[2024-06-03 23:55:21] local.ERROR: request {"search":"j"} 
+[2024-06-03 23:57:14] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:14] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:14] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:14] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:15] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:15] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:16] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:16] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:22] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:23] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:23] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:23] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:24] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:24] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:25] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:26] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:26] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:26] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:26] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:27] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:27] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:28] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:45] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:45] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:46] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:46] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:49] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:49] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:49] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:50] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:57] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:57] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:58] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:57:58] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:08] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:08] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:08] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:09] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:24] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:24] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:25] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:25] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:27] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:28] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:28] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:29] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:29] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:30] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:30] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:31] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:31] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:33] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:33] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:34] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:34] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:38] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:39] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:39] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:39] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:44] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:44] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:44] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:51] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:51] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:51] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:51] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:56] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:58:56] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:00] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:00] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:00] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:03] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:03] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:03] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:03] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:06] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:06] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:06] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:06] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:12] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:12] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:12] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:13] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:41] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:41] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:42] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:42] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:44] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:44] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-03 23:59:44] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:15] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:16] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:19] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:20] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:20] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:20] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:30] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:30] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:30] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:31] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:32] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:32] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:32] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:32] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:44] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:00:44] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:01:34] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:01:34] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:01:34] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:01:35] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:01:38] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:45.000000Z","updated_at":"2024-05-27T04:37:45.000000Z"}}} 
+[2024-06-04 00:01:41] local.ERROR: Request {"id":"1122","password":"password"} 
+[2024-06-04 00:01:41] local.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-06-04 00:01:41] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:01:43] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:01:43] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:01:43] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:01:44] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:01:44] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:01:48] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:01:57] local.ERROR: Request {"id":"1122","password":"password"} 
+[2024-06-04 00:01:57] local.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-06-04 00:01:57] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:02:01] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:02:01] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:02:01] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:02:02] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:02:02] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:02:24] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:02:24] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:02:24] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:02:24] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:02:24] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:03:50] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:03:50] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:03:50] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:03:50] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:03:50] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:03:55] local.ERROR:   
+[2024-06-04 00:03:55] local.ERROR: request {"search":null} 
+[2024-06-04 00:06:47] local.ERROR: j  
+[2024-06-04 00:06:47] local.ERROR: request {"search":"j"} 
+[2024-06-04 00:06:56] local.ERROR:   
+[2024-06-04 00:06:56] local.ERROR: request {"search":null} 
+[2024-06-04 00:08:50] local.ERROR: User Logged Out:  {"user":null} 
+[2024-06-04 00:08:52] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-06-04 00:08:53] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-06-04 00:13:33] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:13:33] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:13:33] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:13:34] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:13:58] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:13:58] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:13:59] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:13:59] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:14:12] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:14:12] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:14:12] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:14:13] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:14:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:14:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:14:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:14:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:14:56] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Lecturer":{"id":"MU1234","name":"Jane Doe","email":"mu1234@gmail.com","faculty":"FCI","office":null,"photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:45.000000Z","updated_at":"2024-05-27T04:37:45.000000Z"}}} 
+[2024-06-04 00:14:58] local.ERROR: Request {"id":"MU1234","password":"password"} 
+[2024-06-04 00:14:59] local.ERROR: User Authenticated:  {"id":"MU1234","password":"password"} 
+[2024-06-04 00:15:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:02] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:02] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:25] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:25] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:25] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:26] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:38] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:39] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:39] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:39] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:15:49] local.ERROR: a  
+[2024-06-04 00:15:49] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:16:58] local.ERROR: asd  
+[2024-06-04 00:16:58] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:17:15] local.ERROR:   
+[2024-06-04 00:17:15] local.ERROR: request {"search":null} 
+[2024-06-04 00:17:30] local.ERROR:   
+[2024-06-04 00:17:30] local.ERROR: request {"search":null} 
+[2024-06-04 00:23:18] local.ERROR: a  
+[2024-06-04 00:23:18] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:23:20] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:23:21] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:23:21] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:23:21] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:32:31] local.ERROR: a  
+[2024-06-04 00:32:31] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:33:47] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:33:48] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:33:48] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:33:48] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:33:49] local.ERROR: a  
+[2024-06-04 00:33:49] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:34:20] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:34:21] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:34:21] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:34:21] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:34:24] local.ERROR: a  
+[2024-06-04 00:34:24] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:34:57] local.ERROR: asd  
+[2024-06-04 00:34:57] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:35:26] local.ERROR: a  
+[2024-06-04 00:35:26] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:35:46] local.ERROR: asd  
+[2024-06-04 00:35:46] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:36:53] local.ERROR: a  
+[2024-06-04 00:36:53] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:38:30] local.ERROR: a  
+[2024-06-04 00:38:30] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:40:05] local.ERROR: a  
+[2024-06-04 00:40:05] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:42:24] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:42:24] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:42:24] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:42:25] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:42:26] local.ERROR: a  
+[2024-06-04 00:42:26] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:42:51] local.ERROR: asd  
+[2024-06-04 00:42:51] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:43:00] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:43:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:43:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:43:01] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:43:03] local.ERROR: ads  
+[2024-06-04 00:43:03] local.ERROR: request {"search":"ads"} 
+[2024-06-04 00:44:54] local.ERROR: a  
+[2024-06-04 00:44:54] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:44:58] local.ERROR: asdasd  
+[2024-06-04 00:44:58] local.ERROR: request {"search":"asdasd"} 
+[2024-06-04 00:45:34] local.ERROR: asdasd  
+[2024-06-04 00:45:34] local.ERROR: request {"search":"asdasd"} 
+[2024-06-04 00:45:36] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:45:36] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:45:37] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:45:37] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:45:38] local.ERROR: asd  
+[2024-06-04 00:45:38] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:46:42] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:46:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:46:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:46:43] local.ERROR: AuthLecturer Middleware {"lecturer":true,"sanctum":true} 
+[2024-06-04 00:46:43] local.ERROR: asd  
+[2024-06-04 00:46:43] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:47:09] local.ERROR: a  
+[2024-06-04 00:47:09] local.ERROR: request {"search":"a"} 
+[2024-06-04 00:47:13] local.ERROR: j  
+[2024-06-04 00:47:13] local.ERROR: request {"search":"j"} 
+[2024-06-04 00:48:04] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:48:04] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:48:04] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:48:04] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:48:04] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:48:09] local.ERROR: re  
+[2024-06-04 00:48:09] local.ERROR: request {"search":"re"} 
+[2024-06-04 00:48:36] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:48:36] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:48:36] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:48:36] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:48:36] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:48:37] local.ERROR: asd  
+[2024-06-04 00:48:37] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:49:11] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:49:11] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:49:11] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:49:11] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:49:11] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:49:12] local.ERROR: asd  
+[2024-06-04 00:49:12] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:53:18] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:53:18] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:53:19] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:53:19] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:53:19] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:53:22] local.ERROR: asd  
+[2024-06-04 00:53:22] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:54:09] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:54:09] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:54:09] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:54:09] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:54:10] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:54:10] local.ERROR: asd  
+[2024-06-04 00:54:10] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:56:32] local.ERROR: asdasd  
+[2024-06-04 00:56:32] local.ERROR: request {"search":"asdasd"} 
+[2024-06-04 00:56:44] local.ERROR: asdasd  
+[2024-06-04 00:56:44] local.ERROR: request {"search":"asdasd"} 
+[2024-06-04 00:57:01] local.ERROR: jane  
+[2024-06-04 00:57:01] local.ERROR: request {"search":"jane"} 
+[2024-06-04 00:58:18] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:58:18] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:58:18] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:58:18] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:58:18] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:58:19] local.ERROR: asd  
+[2024-06-04 00:58:19] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:58:23] local.ERROR: asd  
+[2024-06-04 00:58:23] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:58:41] local.ERROR: asd  
+[2024-06-04 00:58:41] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:58:42] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:58:42] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:58:42] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:58:43] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:58:43] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:58:44] local.ERROR: asd  
+[2024-06-04 00:58:44] local.ERROR: request {"search":"asd"} 
+[2024-06-04 00:59:05] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:59:05] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:59:05] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:59:05] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:59:06] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:59:07] local.ERROR: 123  
+[2024-06-04 00:59:07] local.ERROR: request {"search":"123"} 
+[2024-06-04 00:59:40] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:59:40] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:59:40] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:59:40] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 00:59:40] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:00:12] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:00:12] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:00:12] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:00:12] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:00:12] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:00:28] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:00:28] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:00:28] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:00:28] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:00:29] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:01:08] local.ERROR: asd  
+[2024-06-04 01:01:08] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:01:16] local.ERROR: jane  
+[2024-06-04 01:01:16] local.ERROR: request {"search":"jane"} 
+[2024-06-04 01:02:46] local.ERROR: jane  
+[2024-06-04 01:02:46] local.ERROR: request {"search":"jane"} 
+[2024-06-04 01:02:52] local.ERROR: jane  
+[2024-06-04 01:02:52] local.ERROR: request {"search":"jane"} 
+[2024-06-04 01:03:14] local.ERROR: jane  
+[2024-06-04 01:03:14] local.ERROR: request {"search":"jane"} 
+[2024-06-04 01:03:31] local.ERROR: jane  
+[2024-06-04 01:03:31] local.ERROR: request {"search":"jane"} 
+[2024-06-04 01:04:04] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:04:04] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:04:04] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:04:04] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:04:04] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:04:05] local.ERROR: asd  
+[2024-06-04 01:04:05] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:04:11] local.ERROR: asd  
+[2024-06-04 01:04:11] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:04:17] local.ERROR: asd  
+[2024-06-04 01:04:17] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:04:23] local.ERROR: asd  
+[2024-06-04 01:04:23] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:04:25] local.ERROR: a  
+[2024-06-04 01:04:25] local.ERROR: request {"search":"a"} 
+[2024-06-04 01:05:32] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:05:32] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:05:32] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:05:32] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:05:32] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:05:33] local.ERROR: asd  
+[2024-06-04 01:05:33] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:07:26] local.ERROR: asd  
+[2024-06-04 01:07:26] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:07:38] local.ERROR: a  
+[2024-06-04 01:07:38] local.ERROR: request {"search":"a"} 
+[2024-06-04 01:08:52] local.ERROR: j  
+[2024-06-04 01:08:52] local.ERROR: request {"search":"j"} 
+[2024-06-04 01:10:30] local.ERROR: asd  
+[2024-06-04 01:10:30] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:10:43] local.ERROR: ja  
+[2024-06-04 01:10:43] local.ERROR: request {"search":"ja"} 
+[2024-06-04 01:10:43] local.ERROR: ja  
+[2024-06-04 01:10:43] local.ERROR: request {"search":"ja"} 
+[2024-06-04 01:13:13] local.ERROR: asd  
+[2024-06-04 01:13:13] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:15:42] local.ERROR: asd  
+[2024-06-04 01:15:42] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:16:08] local.ERROR: asd  
+[2024-06-04 01:16:08] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:18:28] local.ERROR: asd  
+[2024-06-04 01:18:28] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:18:31] local.ERROR: asd  
+[2024-06-04 01:18:31] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:18:32] local.ERROR: asd  
+[2024-06-04 01:18:32] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:20:56] local.ERROR: asd  
+[2024-06-04 01:20:56] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:23:33] local.ERROR: asd  
+[2024-06-04 01:23:33] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:23:35] local.ERROR: asd  
+[2024-06-04 01:23:35] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:23:38] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:23:38] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:23:38] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:23:39] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:23:39] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:23:39] local.ERROR: asd  
+[2024-06-04 01:23:39] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:28:18] local.ERROR: asd  
+[2024-06-04 01:28:18] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:29:10] local.ERROR: asd  
+[2024-06-04 01:29:10] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:29:53] local.ERROR: j  
+[2024-06-04 01:29:53] local.ERROR: request {"search":"j"} 
+[2024-06-04 01:30:15] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:30:15] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:30:15] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:30:15] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:30:15] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:30:16] local.ERROR: sd  
+[2024-06-04 01:30:16] local.ERROR: request {"search":"sd"} 
+[2024-06-04 01:30:20] local.ERROR: j  
+[2024-06-04 01:30:20] local.ERROR: request {"search":"j"} 
+[2024-06-04 01:30:31] local.ERROR: j  
+[2024-06-04 01:30:31] local.ERROR: request {"search":"j"} 
+[2024-06-04 01:30:52] local.ERROR: asd  
+[2024-06-04 01:30:52] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:31:08] local.ERROR: asd  
+[2024-06-04 01:31:08] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:31:12] local.ERROR: j  
+[2024-06-04 01:31:12] local.ERROR: request {"search":"j"} 
+[2024-06-04 01:31:38] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:31:38] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:31:38] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:31:38] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:31:39] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:31:40] local.ERROR: asd  
+[2024-06-04 01:31:40] local.ERROR: request {"search":"asd"} 
+[2024-06-04 01:31:44] local.ERROR: j  
+[2024-06-04 01:31:44] local.ERROR: request {"search":"j"} 
+[2024-06-04 01:35:48] local.ERROR: j  
+[2024-06-04 01:35:48] local.ERROR: request {"search":"j"} 
+[2024-06-04 01:36:37] local.ERROR: j  
+[2024-06-04 01:36:37] local.ERROR: request {"search":"j"} 
+[2024-06-04 01:36:46] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:36:46] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:36:46] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:36:46] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:36:46] local.ERROR: User {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:38:34] local.ERROR: User Logged Out:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:38:37] local.ERROR: Request {"id":"1122","password":"password"} 
+[2024-06-04 01:38:37] local.ERROR: ID: {id}, Password: {password} {"id":"1122","password":"password"} 
+[2024-06-04 01:38:37] local.ERROR: User Authenticated:  {"user":{"App\\Models\\Student":{"id":"1122","name":"John Doe","email":"1122@gmail.com","faculty":"FCI","program":"CS","photo":"https://via.placeholder.com/150","created_at":"2024-05-27T04:37:44.000000Z","updated_at":"2024-05-27T04:37:44.000000Z"}}} 
+[2024-06-04 01:38:40] local.ERROR: ASD  
+[2024-06-04 01:38:40] local.ERROR: request {"search":"ASD"} 
