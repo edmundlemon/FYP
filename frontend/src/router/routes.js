@@ -1,38 +1,40 @@
 import { createRouter, createWebHistory } from "vue-router";
-import store from "../store";
-import Login from "../views/Login.vue";
-import Logout from "../components/Logout.vue";
-import Dashboard from "../views/Dashboard.vue";
-import NotFound from "../views/NotFound.vue";
-import Lecturers from "../components/Lecturers.vue";
-import RegisterLecturer from "../components/RegisterLecturer.vue";
-import Students from "../components/Students.vue";
-import LecturerProfile from "../components/LecturerProfile.vue";
+import store from '../store';
+import Login from '../views/Login.vue';
+import Logout from '../components/Logout.vue';
+import Dashboard from '../views/Dashboard.vue';
+import NotFound from '../views/NotFound.vue';
+import Lecturers from '../components/Lecturers.vue';
+import RegisterLecturer from '../components/RegisterLecturer.vue';
+import Students from '../components/Students.vue';
+import LecturerProfile from '../components/Lecturer-Display.vue';
+import StudentProfile from '../components/Student-Display.vue';
+
 import adminRoutes from "./adminRoutes";
 import lecturerRoutes from "./lecturerRoutes";
 import studentRoutes from "./studentRoutes";
 
 const authRoutes = [
-  {
-    path: "/dashboard",
-    name: "dashboard",
-    component: Dashboard,
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  {
-    path: "/logout",
-    name: "logout",
-    component: Logout,
-    meta: {
-      requiresAuth: true,
-    },
-    beforeEnter: async (to, from, next) => {
-      store.commit("logout");
-      next("/login"); // Redirect to login page after logout
-    },
-  },
+	{
+		path: '/dashboard',
+		name: 'dashboard',
+		component: Dashboard,
+		meta: {
+			requiresAuth: true
+		}
+	},
+	{
+		path: '/logout',
+		name: 'logout',
+		component: Logout,
+		meta: {
+			requiresAuth: true
+		},
+		beforeEnter: async (to, from, next) => {
+			store.commit('logout');
+			next('/login'); // Redirect to login page after logout
+		}
+	},
 ];
 
 const routes = [
@@ -54,9 +56,15 @@ const routes = [
     },
   },
   {
-    path: "/lecturer/:user",
+    path: "/lecturer/:id",
     name: "lecturer",
     component: LecturerProfile,
+    props: true,
+  },
+  {
+    path: "/student/:id",
+    name: "student",
+    component: StudentProfile,
     props: true,
   },
 

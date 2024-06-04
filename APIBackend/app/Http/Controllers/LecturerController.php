@@ -49,7 +49,7 @@ class LecturerController extends Controller
 
             $formFields['photo'] = $request->file('photo')->store('photos', 'public');
             $imgName = basename($formFields['photo']);
-            $linkToImg = asset('photos/'.$imgName);
+            $linkToImg = asset('/storage/photos/'.$imgName);
             $formFields['photo'] = $linkToImg;
         }
         // Log::channel('api_post_log')->error('Lecturer Information Form', $formFields);

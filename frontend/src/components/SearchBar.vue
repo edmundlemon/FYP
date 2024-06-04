@@ -90,7 +90,7 @@ const results = ref(null);
 const noresults = ref(null);
 
 const search = () => {
-  if (query.value.trim() === "") {
+  if (query.value === "") {
     results.value = null;
     return;
   }
