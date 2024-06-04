@@ -35,6 +35,15 @@ const authRoutes = [
 			next('/login'); // Redirect to login page after logout
 		}
 	},
+	{
+		path: '/lecturer/:id',
+		name: 'LecturerDetails',
+		component: LecturerDetails,
+		props: true, // Allows passing route params as props to the component
+		// meta: {
+		// 	requireAuth: true
+		// }
+	}
 ];
 
 const routes = [
