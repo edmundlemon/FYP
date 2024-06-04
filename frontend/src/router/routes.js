@@ -7,6 +7,7 @@ import NotFound from '../views/NotFound.vue';
 import Lecturers from '../components/Lecturers.vue';
 import RegisterLecturer from '../components/RegisterLecturer.vue';
 import Students from '../components/Students.vue';
+import LecturerDetails from '../components/LecturerDetails.vue';
 import LecturerProfile from '../components/Lecturer-Display.vue';
 import StudentProfile from '../components/Student-Display.vue';
 
