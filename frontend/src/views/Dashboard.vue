@@ -1,43 +1,54 @@
 <template>
-  <search-bar v-if="store.state.token" />
+  <!-- <search-bar v-if="store.state.token" /> -->
 
-  <!-- Dashboard User Info -->
-  <div class="flex justify-center">
-    <div class="flex flex-col w-10/12">
-      <div class="bg-white w-full py-5 rounded my-3 shadow-md">
-        <h1 class="font-bold text-4xl pl-6 pb-6">
-          Welcome to your Dashboard, {{ user.name + "!" }}
-        </h1>
-        <div class="flex-row flex ml-6">
-          <div>
-            <img class="rounded-full" :src="user.photo" alt="user photo" />
+  <!-- Upcoming/Approved/Pending slots are here -->
+  <div class="wrapper flex justify-center w-full" style="border: red 1px solid">
+    <div
+      class="container flex justify-center items-center"
+    >
+      <!-- Dashboard User Info -->
+      <div class="flex justify-center">
+        <div class="flex flex-col w-full">
+          <div class="bg-white w-full py-5 rounded my-3 shadow-md">
+            <h1 class="font-bold text-4xl pl-6 pb-6">
+              Welcome to your Dashboard, {{ user.name + "!" }}
+            </h1>
+            <div class="flex-row flex ml-6">
+              <div>
+                <img class="rounded-full" :src="user.photo" alt="user photo" />
+              </div>
+              <div class="flex flex-col justify-center gap-1">
+                <h2 class="font-bold text-2xl pl-3">
+                  E-mail: {{ user.email }}
+                </h2>
+                <h2 class="font-bold text-2xl pl-3">
+                  Faculty: {{ user.faculty }}
+                </h2>
+                <h2
+                  v-if="store.state.role == 'lecturer'"
+                  class="font-bold text-2xl pl-3"
+                >
+                  Office: {{ user.office }}
+                </h2>
+              </div>
+            </div>
           </div>
-          <div class="flex flex-col justify-center gap-1">
-            <h2 class="font-bold text-2xl pl-3">E-mail: {{ user.email }}</h2>
-            <h2 class="font-bold text-2xl pl-3">Faculty: {{ user.faculty }}</h2>
-            <h2
-              v-if="store.state.role == 'lecturer'"
-              class="font-bold text-2xl pl-3"
-            >
-              Office: {{ user.office }}
-            </h2>
+          <div
+            class="flex flex-row space-x-3 justify-center items-center w-full"
+          >
+            <upcoming-slot
+              class="bg-white p-6 shadow-md rounded flex-1 min-w-fit"
+            />
+            <approved-slot
+              class="bg-white p-6 shadow-md rounded flex-1 w-fit"
+            />
+            <pending-slot class="bg-white p-6 shadow-md rounded flex-1 w-fit" />
           </div>
-        </div>
-      </div>
 
-      <!-- Upcoming/Approved/Pending slots are here -->
-      <div class="container">
-        <div class="flex flex-row space-x-3">
-          <upcoming-slot class="bg-white p-6  shadow-md rounded flex-1 h-fit" />
-          <approved-slot class="bg-white p-6  shadow-md rounded flex-1 h-fit" />
-          <div class="flex flex-col flex-1">
-            <pending-slot class="bg-white p-6  shadow-md rounded flex-1 h-fit" />
+          <!-- Past slots are here -->
+          <div class="past-container w-full mt-3 shadow-md mb-3">
+            <past-slot class="bg-white p-6 shadow rounded flex-1 h-fit" />
           </div>
-        </div>
-
-        <!-- Past slots are here -->
-        <div class="past-container w-full mt-3 shadow-md mb-3">
-          <past-slot class="bg-white p-6 shadow rounded flex-1 h-fit" />
         </div>
       </div>
     </div>
