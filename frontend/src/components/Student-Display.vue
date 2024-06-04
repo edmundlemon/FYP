@@ -22,7 +22,7 @@ onMounted(async () => {
 	// console.log(route.path);
 	console.log(studentId);
 	try {
-		const response = await axiosInstance.get(`/student/${studentId}`);
+		const response = await axiosInstance.get(`/view/student/${studentId}`);
 		student.value = response.data.student;
 	} catch (error) {
 		console.error('Failed to fetch student details:', error);

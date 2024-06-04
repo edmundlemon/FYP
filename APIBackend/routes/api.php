@@ -43,9 +43,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     // Route::post('/comments', [CommentController::class, 'store']);
     
     Route::get('/lecturers', [LecturerController::class, 'index']);
-    Route::get('/lecturer/{lecturer}', [LecturerController::class, 'view']);
+    Route::get('/view/lecturer/{lecturer}', [LecturerController::class, 'view']);
     Route::get('/students', [StudentController::class, 'index']);
-    Route::get('/student/{student}', [StudentController::class, 'view']);
+    Route::get('/view/student/{student}', [StudentController::class, 'view']);
     Route::get('/free-slots', [Free_SlotController::class, 'index']);
     Route::get('/upcoming/{lecturer}', [Free_SlotController::class, 'upcomingTime']);
     Route::get('/search', [SearchController::class, 'search']);
