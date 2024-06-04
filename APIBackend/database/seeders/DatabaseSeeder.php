@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'program' => 'CS'
         ]);
         Student::create([
-            'id' => "ST1234",
+            'id' => "1234",
             'name' => 'Johnny G',
             'email' => '1234@gmail.com',
             'password' => bcrypt('password'),

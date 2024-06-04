@@ -19,35 +19,31 @@
 </template>
 
 <script setup>
-import { onMounted, ref, onBeforeMount } from "vue";
-import TimeDisplay from "./TimeDisplay.vue";
-import axios from "axios";
-import store from "../store";
-import axiosGet from "../axiosConfig/customAxios";
+import { onMounted, ref, onBeforeMount } from 'vue'
+import TimeDisplay from './TimeDisplay.vue'
+import axios from 'axios';
+import store from '../store'
+import axiosGet from '../axiosConfig/customAxios'
 // import store from '../../../APIBackend/resources/js/store';
 const slots = ref([]);
 const token = store.state.token;
 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
 onMounted(async () => {
-  console.log("Token => ", token);
-  console.log("Role => ", store.state.role);
-  if (store.state.role === "student") {
-    axiosGet("/student/schedule")
-      .then((response) => {
-        slots.value = response.data.consultation_slots;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+	console.log('Token => ', token);
+  console.log('Role => ', store.state.role);
+  if (store.state.role === 'student') {
+      axiosGet('/student/schedule').then(response => {
+      slots.value = response.data.consultation_slots;
+    }).catch(error => {
+      console.log(error);
+    });
   } else {
-    axiosGet("/lecturer/schedule")
-      .then((response) => {
-        slots.value = response.data.consultation_slots;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      axiosGet('/lecturer/schedule').then(response => {
+      slots.value = response.data.consultation_slots;
+    }).catch(error => {
+      console.log(error);
+    });
   }
 
   // if (store.state.role === 'student') {
