@@ -2,13 +2,13 @@
   <!-- <search-bar v-if="store.state.token" /> -->
 
   <!-- Upcoming/Approved/Pending slots are here -->
-  <div class="wrapper flex justify-center w-full" style="border: red 1px solid">
+  <div class="wrapper flex justify-center w-full">
     <div
       class="container flex justify-center items-center"
     >
       <!-- Dashboard User Info -->
-      <div class="flex justify-center">
-        <div class="flex flex-col w-full">
+      <div class="flex justify-center w-11/12" >
+        <div class="flex flex-col w-full " >
           <div class="bg-white w-full py-5 rounded my-3 shadow-md">
             <h1 class="font-bold text-4xl pl-6 pb-6">
               Welcome to your Dashboard, {{ user.name + "!" }}
@@ -37,12 +37,12 @@
             class="flex flex-row space-x-3 justify-center items-center w-full"
           >
             <upcoming-slot
-              class="bg-white p-6 shadow-md rounded flex-1 min-w-fit"
+              class="bg-white shadow-md rounded flex-1 w-1/3"
             />
             <approved-slot
-              class="bg-white p-6 shadow-md rounded flex-1 w-fit"
+              class="bg-white shadow-md rounded flex-1 w-1/3"
             />
-            <pending-slot class="bg-white p-6 shadow-md rounded flex-1 w-fit" />
+            <pending-slot class="bg-white shadow-md rounded flex-1 w-1/3" />
           </div>
 
           <!-- Past slots are here -->
