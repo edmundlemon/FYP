@@ -43,8 +43,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     // Route::post('/comments', [CommentController::class, 'store']);
     
     Route::get('/lecturers', [LecturerController::class, 'index']);
-    Route::get('/view/lecturer/{lecturer}', [LecturerController::class, 'view']);
     Route::get('/students', [StudentController::class, 'index']);
+    Route::get('/view/lecturer/{lecturer}', [LecturerController::class, 'view']);
     Route::get('/view/student/{student}', [StudentController::class, 'view']);
     Route::get('/free-slots', [Free_SlotController::class, 'index']);
     Route::get('/upcoming/{lecturer}', [Free_SlotController::class, 'upcomingTime']);
@@ -77,7 +77,7 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/student/schedule', [ConsultationController::class, 'studentIndex']);
     Route::get('/student/approved', [ConsultationController::class, 'studentApproved']);
     Route::get('/student/pending', [ConsultationController::class, 'pending']);
-    Route::post('/book/{lecturer}', [LecturerController::class, 'store']);
+    Route::post('/book/{lecturer}', [ConsultationController::class, 'store']);
     Route::put('/students/{student}', [StudentController::class, 'update']);
     Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
     Route::put('/student/reschedule/{consultation_slot}', [ConsultationController::class, 'studentUpdates']);

@@ -10,7 +10,7 @@
 		<div class="mb-3">
 			<label for="name" class="form-label">Lecturer's Name</label>
 			<input type="text" class="form-control border border-gray-400 p-2" id="name" name="name" v-model="lecturer.name"  required>
-			<div v-if="errors.NAME" class="text-red-500 text-xs mt-1">{{ errors.name[0] }}</div>
+			<div v-if="errors.name" class="text-red-500 text-xs mt-1">{{ errors.name[0] }}</div>
 		</div>
 		<div class="mb-3">
 			<label for="email" class="form-label">Lecturer Email</label>

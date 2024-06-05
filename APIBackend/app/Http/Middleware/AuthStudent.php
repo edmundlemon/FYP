@@ -18,7 +18,7 @@ class AuthStudent
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::guard('sanctum')->user();
-        Log::channel('api_post_log')->error('User', ['user' => $user]);
+        // Log::channel('api_post_log')->error('User', ['user' => $user]);
         if (Auth::guard('sanctum')->check() && $user->hasRole('student')) {
             return $next($request);
         }
