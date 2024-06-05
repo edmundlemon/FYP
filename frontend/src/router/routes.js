@@ -8,8 +8,8 @@ import Lecturers from '../components/Lecturers.vue';
 import RegisterLecturer from '../components/RegisterLecturer.vue';
 import Students from '../components/Students.vue';
 import LecturerDetails from '../components/LecturerDetails.vue';
-import LecturerProfile from '../components/Lecturer-Display.vue';
-import StudentProfile from '../components/Student-Display.vue';
+import LecturerProfile from '../components/LecturerDetails.vue';
+import StudentProfile from '../components/StudentDetails.vue';
 
 import adminRoutes from "./adminRoutes";
 import lecturerRoutes from "./lecturerRoutes";

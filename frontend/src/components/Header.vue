@@ -1,8 +1,8 @@
 <template>
-  <navbar class="nav-wrapper">
+  <navbar class="nav-wrapper margin-0">
     <div
       class="navbar-container bg-gray-800 h-28 flex items-center justify-between px-4 sm:px-6 lg:px-8"
-      style="filter: drop-shadow(0px 3px 3px black)"
+      style="filter: drop-shadow(0px 3px 3px black);"
     >
       <div class="ml-10 left-navbar flex flex-row">
         <a
@@ -136,10 +136,10 @@ export default {
   data() {
     return {
       navigation: [
-        { name: "Dashboard", href: "/dashboard", current: false },
-        { name: "Lecturers", href: "#", current: false },
-        { name: "Students", href: "#", current: false },
-        { name: "Scheduling", href: "#", current: false },
+        { name: "Dashboard", href: "/dashboard" },
+        { name: "Lecturers", href: "/lecturers" },
+        { name: "Students", href: "/students" },
+        { name: "Scheduling", href: "/scheduling" },
       ],
       showNotifications: false,
       isDropdownOpen: false,
@@ -155,15 +155,15 @@ export default {
         this.isDropdownOpen = false;
       }
     },
-    activeClass(index) {
-      this.navigation.forEach((item, i) => {
-        if (i === index) {
-          item.current = true;
-        } else {
-          item.current = false;
-        }
-      });
-    },
+    // activeClass(index) {
+    //   this.navigation.forEach((item, i) => {
+    //     if (i === index) {
+    //       item.current = true;
+    //     } else {
+    //       item.current = false;
+    //     }
+    //   });
+    // }, no need this kut
   },
   mounted() {
     document.addEventListener("click", this.handleClickOutside);
