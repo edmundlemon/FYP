@@ -6,7 +6,7 @@ import store from './store'
 
 <template>
   <div>
-    <Header v-if="store.state.token"/>
+    <Header class=" " v-if="store.state.token"/>
     <router-view></router-view>
   </div>
 </template>

@@ -31,7 +31,7 @@
             >
           </li>
         </ul>
-        <SearchBar v-if="store.state.token"/>
+        <SearchBar class="z-50" v-if="store.state.token"/>
       </div>
       <!-- notification & profile drop down menu -->
       <div
