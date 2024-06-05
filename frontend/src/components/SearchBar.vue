@@ -82,7 +82,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import axios from "../axiosConfig/customAxios";
 
 const query = ref("");
@@ -103,4 +103,16 @@ const search = () => {
       console.error("Search error:", error);
     });
 };
+
+let debounceTimeout;
+watch(query, (newQuery)=> {
+  clearTimeout(debounceTimeout);
+  debounceTimeout = setTimeout(() => {
+    if (newQuery) {
+      search(newQuery);
+    } else {
+      results.value = null;
+    }
+  }, 300); // Adjust the debounce delay as needed
+});
 </script>

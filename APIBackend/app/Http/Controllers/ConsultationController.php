@@ -120,11 +120,11 @@ class ConsultationController extends Controller
             'start_time' =>['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $lecturer->id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
-
+        
         $formFields['lecturer_id'] = $lecturer->id;
         $formFields['student_id'] = auth()->guard('sanctum')->user()->id;
         $formFields['status'] = 'Pending';
-
+        Log::channel('api_post_log')->error('Form Fields', ['formFields' => $formFields]);
         Consultation_slot::create($formFields);
         return redirect()->route('dashboard');
     }
