@@ -1,15 +1,14 @@
 <template>
   <div
   class="bg-style relative bg-gray-100 flex flex-col items-center justify-center border border-gray-300 p-5 w-full rounded-lg shadow-md pt-6 hover:shadow-2xl hover:scale-105 transition duration-300 ease-in-out"
-  style="z-index: -1;"
   >
-  <div class="absolute left-3 rounded-t bg-color-red" style="top: -2%; background-color: #F15A59;">
+  <div class="absolute left-3 rounded-t-lg blur-bottom" style="top: -2%; background-color: #F15A59; z-index: 5000; ">
     <p class="text-lg px-6 font-semibold text-center">
       {{ lecturer.faculty}}
     </p>
   </div>
   <!-- Lecturer Image -->
-  <a class="mb-5 z-10" :href="'/lecturer/' + lecturer.id">
+  <a class="mb-5" :href="'/lecturer/' + lecturer.id">
     <img
       :src="lecturer.photo"
       alt="Descriptive Alt Text"
@@ -65,7 +64,17 @@ const props = defineProps({
 </script>
 
 <style scoped>
-.bg-style {
-  
+.blur-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; /* Adjust as needed */
+  left: 0;
+  right: 0;
+  height: 5px; /* Adjust as needed */
+  background: inherit;
+  filter: blur(4px); /* Adjust blur radius as needed */
+  z-index: -1; /* To place the blur behind the original div content */
+  border-bottom-left-radius: inherit; /* To match the border radius */
+  border-bottom-right-radius: inherit; /* To match the border radius */
 }
 </style>

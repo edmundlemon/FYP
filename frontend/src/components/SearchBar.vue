@@ -26,7 +26,7 @@
     <!-- Search results -->
     <div
       v-if="results"
-      class="p-3 pt-2 absolute z-50 mt-16 w-1/4 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+      class="p-3 pt-2 absolute z-10 mt-16 w-1/4 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
       ref="resultsContainer"
     >
       <!-- container that shows the search results or no query results -->

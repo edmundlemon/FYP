@@ -72,4 +72,6 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 onMounted(() => {});
 </script>
 
-<style></style>
+<style>
+
+</style>

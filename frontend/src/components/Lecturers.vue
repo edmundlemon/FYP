@@ -5,7 +5,7 @@
     </div>
     <div
       class="p-10 grid grid-cols-4 gap-8 p-10 w-9/12 my-5 bg-white shadow-xl rounded-lg"
-      style="z-index: -2;"
+      style="z-index: 0;"
     >
       <LecturerDisplay
         v-for="lecturer in lecturers"

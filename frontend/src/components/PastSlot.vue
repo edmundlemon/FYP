@@ -9,7 +9,7 @@
             <Loading style="padding-right: 1vw; padding-left: 0.4vw;"/>
           </div>
           <div
-            class="overflow-y-auto"
+            class="overflow-y-auto load-in-animation"
             v-else-if="slots.length > 0 && !showLoading"
             style="height: 60vh"
           >
