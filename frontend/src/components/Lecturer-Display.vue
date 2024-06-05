@@ -1,27 +1,69 @@
 <template>
-	<div class="flex flex-col items-center justify-center border border-gray-400 p-4 w-full">
-		<a :href="'/lecturer/' + lecturer.id"><img :src="lecturer.photo" alt="Descriptive Alt Text" class="max-h-40 object-contain"></a>
-		<div class="flex flex-col items-center justify-center">
-			<a :href="'/lecturer/' + lecturer.id"><h1 class="text-4xl font-bold my-1.5">{{lecturer.name}}</h1></a>
-			<a :href="'mailto:'+ lecturer.email"><p class="text-lg my-1.5">{{lecturer.email}}</p></a>
-			<p class="text-lg my-1.5">{{lecturer.id}}</p>
-		</div>
-        
+  <div
+    class="relative bg-style bg-gray-100 flex flex-col items-center justify-center border border-gray-300 p-5 w-full rounded-lg shadow-md pt-6 hover:shadow-2xl hover:scale-105 transition duration-300 ease-in-out"
+  >
+  <div class="absolute left-3 rounded-t"
+    style="top: -2%; background-color: #F15A59;"
+  >
+      <p class="text-lg px-6 font-semibold text-center">
+        {{ lecturer.faculty}}
+      </p>
     </div>
+    <!-- Lecturer Image -->
+    <a class="mb-5" :href="'/lecturer/' + lecturer.id"
+      ><img
+        :src="lecturer.photo"
+        alt="Descriptive Alt Text"
+        class="max-h-40 object-contain rounded-full shadow-md"
+    /></a>
+
+    <!-- Lecturer Faculty Display -->
+    
+
+    <!-- Name pill box with lecturer name-->
+    <div class="space-y-1 flex flex-col items-center justify-centerw-full mt-0 ">
+      <div
+        class="transition duration-300 ease-in-out transform hover:scale-105 relative flex flex-col justify-center"
+      >
+        <p
+          class="font-semibold absolute bg-green-400 rounded-full p-3 w-7 h-7 text-xl z-10 flex items-center justify-center border border-black"
+          style="left: -8%"
+        >
+          @
+        </p>
+        <!-- Lecturer name block -->
+        <a :href="'/lecturer/' + lecturer.id"
+          ><h1
+            class="bg-gray-300 rounded-full py-2 px-5 text-2xl font-bold my-1.5 border border-black"
+          >
+            {{ lecturer.name }}
+          </h1></a
+        >
+      </div>
+
+      <a
+        class="transition duration-300 ease-in-out transform hover:scale-105"
+        :href="'mailto:' + lecturer.email"
+        ><p class="text-lg my-1.5">{{ lecturer.email }}</p></a
+      >
+      <p class="text-lg my-1.5">{{ lecturer.id }}</p>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import { defineProps, onMounted } from 'vue';
+import { defineProps, onMounted } from "vue";
 
 const props = defineProps({
-  lecturer:{
-	type: Object,
-	required: true
-	},
+  lecturer: {
+    type: Object,
+    required: true,
+  },
 });
-
 </script>
 
-<style>
-
+<style scoped>
+.bg-style {
+  
+}
 </style>

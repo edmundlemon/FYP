@@ -19,16 +19,16 @@
               </div>
               <div class="flex flex-col justify-center gap-1">
                 <h2 class="font-bold text-2xl pl-3">
-                  E-mail: {{ user.email }}
+                  E-mail: <span class="font-normal">{{ user.email }}</span>
                 </h2>
                 <h2 class="font-bold text-2xl pl-3">
-                  Faculty: {{ user.faculty }}
+                  Faculty: <span class="font-normal">{{ user.faculty }}</span>
                 </h2>
                 <h2
                   v-if="store.state.role == 'lecturer'"
                   class="font-bold text-2xl pl-3"
                 >
-                  Office: {{ user.office }}
+                  Office: <span class="font-normal">{{ user.office }}</span>
                 </h2>
               </div>
             </div>
@@ -37,16 +37,16 @@
             class="flex flex-row space-x-3 justify-center items-center w-full"
           >
             <upcoming-slot
-              class="bg-white shadow-md rounded flex-1 w-1/3"
+              class="bg-white shadow-md rounded flex-1 w-1/3 pb-5"
             />
             <approved-slot
-              class="bg-white shadow-md rounded flex-1 w-1/3"
+              class="bg-white shadow-md rounded flex-1 w-1/3 pb-5"
             />
-            <pending-slot class="bg-white shadow-md rounded flex-1 w-1/3" />
+            <pending-slot class="bg-white shadow-md rounded flex-1 w-1/3 pb-5" />
           </div>
 
           <!-- Past slots are here -->
-          <div class="past-container w-full mt-3 shadow-md mb-3">
+          <div class="past-container w-full mt-3 shadow-md mb-3 pb-5">
             <past-slot class="bg-white p-6 shadow rounded flex-1 h-fit" />
           </div>
         </div>

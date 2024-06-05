@@ -1,15 +1,16 @@
 <template>
-  <div class="flex justify-center">
+  <div class="flex flex-col items-center justify-center">
+    <div class="mt-5">
+      <h1 class="text-6xl font-bold">Lecturers</h1>
+    </div>
     <div
-      class="grid grid-cols-4 gap-4 p-4 w-10/12 mt-5"
-      style="border: 1px red solid"
+      class="p-10 grid grid-cols-4 gap-8 p-10 w-9/12 my-5 bg-white shadow-xl rounded-lg"
     >
       <LecturerDisplay
         v-for="lecturer in lecturers"
         :key="lecturer.id"
         :lecturer="lecturer"
       />
-
     </div>
   </div>
 </template>
