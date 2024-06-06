@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             'email' => '1122@gmail.com',
             'password' => bcrypt('password'),
             'faculty' => 'FCI',
-            'photo' => 'https://via.placeholder.com/150',
+            'photo' => 'https://randomuser.me/api/portraits/men/3.jpg',
             'program' => 'CS'
         ]);
         Student::create([
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'email' => '1234@gmail.com',
             'password' => bcrypt('password'),
             'faculty' => 'FCI',
-            'photo' => 'https://via.placeholder.com/150',
+            'photo' => 'https://randomuser.me/api/portraits/women/3.jpg',
             'program' => 'CS'
         ]);
         Lecturer::create([
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Jane Doe',
             'email' => 'mu1234@gmail.com',
             'password' => bcrypt('password'),
-            'photo' => 'https://via.placeholder.com/150',
+            'photo' => 'https://randomuser.me/api/portraits/men/5.jpg',
             'faculty' => 'FCI',
             'office' => 'A-123',
         ]);
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Jane Hello',
             'email' => 'mu1212@gmail.com',
             'password' => bcrypt('password'),
-            'photo' => 'https://via.placeholder.com/150',
+            'photo' => 'https://randomuser.me/api/portraits/women/7.jpg',
             'faculty' => 'FCI',
             'office' => 'A-133',
         ]);
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Jane Bye',
             'email' => 'mu2233@gmail.com',
             'password' => bcrypt('password'),
-            'photo' => 'https://via.placeholder.com/150',
+            'photo' => 'https://randomuser.me/api/portraits/women/11.jpg',
             'faculty' => 'FOE',
             'office' => 'B-123',
         ]);
@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Ray Bye',
             'email' => 'zaza@gmail.com',
             'password' => bcrypt('password'),
-            'photo' => 'https://via.placeholder.com/150',
+            'photo' => 'https://randomuser.me/api/portraits/men/2.jpg',
             'faculty' => 'FCM',
             'office' => 'C-123',
         ]);
@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Kai Cenat',
             'email' => 'kc2233@gmail.com',
             'password' => bcrypt('password'),
-            'photo' => 'https://via.placeholder.com/150',
+            'photo' => 'https://randomuser.me/api/portraits/men/59.jpg',
             'faculty' => 'FCA',
             'office' => 'C-223',
         ]);

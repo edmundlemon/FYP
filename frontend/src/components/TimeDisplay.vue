@@ -10,10 +10,10 @@
         <div>End Time: <span class="ml-1 font-bold text-red-400 ">{{ slot.end_time }}</span></div>
       </div>
       <h3 class="flex justify-end mt-7" v-if="role === 'lecturer'">
-        Booked by <span class="ml-1 font-bold">{{ slot.student.name }}</span>
+        Booked by <a :href="'/student/'+ slot.student.id"><span class="ml-1 font-bold">{{ slot.student.name }}</span></a>
       </h3>
       <h3 class="flex justify-end mt-7" v-else-if="role === 'student'">
-        Consulted by <span class="ml-1 font-bold">{{ slot.lecturer.name }}</span>
+        Consulted by <a :href="'/lecturer/'+ slot.lecturer.id"><span class="ml-1 font-bold">{{ slot.lecturer.name }}</span></a>
       </h3>
     </div>
   </div>
