@@ -23,7 +23,7 @@ class ConsultationController extends Controller
     {
         $user = Student::find(auth()->guard('sanctum')->user()->id);
         Log::channel('api_post_log')->error('User', ['user' => $user]);
-        $consultation_slots = $user->consultation_slots()->where('date', '>=', today())->with('lecturer')->orderBy('date')->orderBy('start_time')->get();
+        $consultation_slots = $user->consultation_slots()->where('date', '>=', today())->where('status','Approved')->with('lecturer')->orderBy('date')->orderBy('start_time')->get();
         
 
         return response()->json(

@@ -41,7 +41,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/upload', [FileController::class, 'store']);
     // Route::post('/comments', [CommentController::class, 'store']);
-    
+    Route::get('/studentsfaculty', [StudentController::class, 'StudentFaculty']);
+    Route::get('/lecturersfaculty', [LecturerController::class, 'LecturerFaculty']);
+    //test api that return distincy lecturer faculty
     Route::get('/lecturers', [LecturerController::class, 'index']);
     Route::get('/students', [StudentController::class, 'index']);
     Route::get('/view/lecturer/{lecturer}', [LecturerController::class, 'view']);

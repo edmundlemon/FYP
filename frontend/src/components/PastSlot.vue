@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col">
-    <h3 class="text-2xl font-semibold ml-5 py-5">Consultation History </h3>
+    <h3 class="text-2xl font-semibold ml-5 py-5">Consultation History</h3>
     <div class="h-fit">
       <div class="container mx-auto px-4">
-        <div  style="height: 60vh">
+        <div style="height: 60vh">
           <!-- <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> -->
-          <div v-if="showLoading" class="h-full w-full"  >
-            <Loading style="padding-right: 1vw; padding-left: 0.4vw;"/>
+          <div v-if="showLoading" class="h-full w-full">
+            <Loading style="padding-right: 1vw; padding-left: 0.4vw" />
           </div>
           <div
             class="overflow-y-auto load-in-animation"
@@ -51,6 +51,7 @@ onMounted(async () => {
       .get("/student/past")
       .then((response) => {
         slots.value = response.data.consultation_slots;
+        showLoading.value = false;
       })
       .catch((error) => {
         console.log(error);
@@ -60,16 +61,17 @@ onMounted(async () => {
       .get("/lecturer/past")
       .then((response) => {
         slots.value = response.data.consultation_slots;
+        showLoading.value = false;
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
-  setTimeout(() => {
-    showLoading.value = false;
-    console.log("showLoading", showLoading.value);
-  }, 2500);
+  // setTimeout(() => {
+  //   showLoading.value = false;
+  //   console.log("showLoading", showLoading.value);
+  // }, 2500);
 });
 </script>
 

@@ -38,6 +38,24 @@ class DatabaseSeeder extends Seeder
             'photo' => 'https://randomuser.me/api/portraits/women/3.jpg',
             'program' => 'CS'
         ]);
+        Student::create([
+            'id' => "3322",
+            'name' => 'El Negro',
+            'email' => 'negg@gmail.com',
+            'password' => bcrypt('password'),
+            'faculty' => 'FOM',
+            'photo' => 'https://randomuser.me/api/portraits/men/42.jpg',
+            'program' => 'LAW'
+        ]);
+        Student::create([
+            'id' => "3344",
+            'name' => 'Edmund Lemon',
+            'email' => 'elm@gmail.com',
+            'password' => bcrypt('password'),
+            'faculty' => 'FOE',
+            'photo' => 'https://randomuser.me/api/portraits/men/88.jpg',
+            'program' => 'EG'
+        ]);
         Lecturer::create([
             'id' => 'MU1234',
             'name' => 'Jane Doe',

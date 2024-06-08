@@ -46,8 +46,8 @@
           </div>
 
           <!-- Past slots are here -->
-          <div class="past-container w-full mt-3 shadow-md mb-3 pb-5">
-            <past-slot class="bg-white p-6 shadow rounded flex-1 h-fit" />
+          <div class="past-container w-full mt-3 shadow-md mb-3 ">
+            <past-slot class="bg-white pb-5 p-6 shadow rounded flex-1 h-fit" />
           </div>
         </div>
       </div>

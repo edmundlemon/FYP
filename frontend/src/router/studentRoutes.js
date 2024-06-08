@@ -5,7 +5,6 @@ export default [
 		component: () => import('../components/Students.vue'),
 		meta: {
 			requiresAuth: true,
-			role: ['student']
 		}
 	},
 	{

@@ -16,14 +16,55 @@ import store from './store'
   animation: fadeUp 1s cubic-bezier(0, 0, 0.1, 1) backwards;
 }
 
+.fade-down-animation {
+  animation: fadeInDown 0.5s cubic-bezier(0, 0, 0.1, 1) backwards;
+}
+
+.fade-in-animation {
+  animation: fadeIn 0.5s cubic-bezier(0, 0, 0.1, 1) backwards;
+}
+
+.turn90degs {
+  animation: spin90degs 0.5s cubic-bezier(0, 0, 0.1, 1) backwards;
+}
+
 @keyframes fadeUp {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+   0% {
+      opacity: 0.2;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+@keyframes fadeInDown {
+   0% {
+      opacity: 0;
+      transform: translateY(-10px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+@keyframes spin90degs {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
   }
 }
 </style>

@@ -50,6 +50,7 @@ onMounted(async () => {
       .get("/student/approved")
       .then((response) => {
         slots.value = response.data.consultation_slots;
+        showLoading.value = false;
       })
       .catch((error) => {
         console.log(error);
@@ -59,15 +60,16 @@ onMounted(async () => {
       .get("/lecturer/schedule")
       .then((response) => {
         slots.value = response.data.consultation_slots;
+        showLoading.value = false;
       })
       .catch((error) => {
         console.log(error);
       });
   }
-  setTimeout(() => {
-    showLoading.value = false;
-    console.log("showLoading", showLoading.value);
-  }, 2500);
+  // setTimeout(() => {
+  //   showLoading.value = false;
+  //   console.log("showLoading", showLoading.value);
+  // }, 2500);
 });
 </script>
 

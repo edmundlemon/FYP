@@ -32,6 +32,15 @@ class LecturerController extends Controller
         );
     }
 
+    public function LecturerFaculty(){
+        return response()->json(
+            [
+                'lecturer' => Lecturer::distinct()->get('faculty'),
+                'code' => 200
+            ]
+        );
+    }
+
     public function create(){
         return view('testpages.register-lecturer');
     }
