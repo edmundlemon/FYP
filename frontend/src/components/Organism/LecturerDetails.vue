@@ -62,10 +62,10 @@
     </div>
     <div v-if="showBookingform" class="transition-all booking-container z-50 absolute border border-black w-full h-full border flex justify-center items-center" >
       <booking-form
-        
-        class=" border border-gray-600 rounded-xl border-2"
+        class=" border border-gray-600 rounded-xl border-2 fadein-animation "
         style="filter: drop-shadow(0px 4px 10px black);"
         :lecturer-id="lecturerId"
+        @closeBookingForm="showBookingform = false"
       />
     </div>
   </div>

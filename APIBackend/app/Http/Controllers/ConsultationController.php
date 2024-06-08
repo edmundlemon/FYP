@@ -128,7 +128,13 @@ class ConsultationController extends Controller
         
         Log::channel('api_post_log')->error('Form Fields', ['formFields' => $formFields]);
         Consultation_slot::create($formFields);
-        return redirect()->route('dashboard');
+        // return redirect()->route('dashboard');
+        return response()->json(
+            [
+                'message' => 'Slot Created',
+                'code' => 200
+            ]
+        );
     }
 
     public function studentUpdates(Request $request, Consultation_slot $consultation_slot)
