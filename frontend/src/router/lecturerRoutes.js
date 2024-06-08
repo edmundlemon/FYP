@@ -1,4 +1,5 @@
 import Lecturers from '../components/Organism/Lecturers.vue';
+import FreeSlotForm from '../components/FreeSlotForm.vue';
 
 export default [
 	{
@@ -9,4 +10,13 @@ export default [
 			requiresAuth: true,
 		},
 	},
+	{
+		path: '/add-slot',
+		name: 'addSlots',
+		component: FreeSlotForm,
+		meta:{
+			requiresAuth: true,
+			role: ['lecturer']
+		}
+	}
 ];

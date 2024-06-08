@@ -57,7 +57,7 @@ onMounted(async () => {
       });
   } else {
     axiosInstance
-      .get("/lecturer/schedule")
+      .get("/lecturer/approved")
       .then((response) => {
         slots.value = response.data.consultation_slots;
         showLoading.value = false;

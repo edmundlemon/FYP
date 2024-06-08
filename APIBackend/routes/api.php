@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/students', [StudentController::class, 'index']);
     Route::get('/view/lecturer/{lecturer}', [LecturerController::class, 'view']);
     Route::get('/view/student/{student}', [StudentController::class, 'view']);
-    Route::get('/free-slots', [Free_SlotController::class, 'index']);
+    Route::get('/free-slots/{lecturer}', [Free_SlotController::class, 'index']);
     Route::get('/upcoming/{lecturer}', [Free_SlotController::class, 'upcomingTime']);
     Route::get('/search', [SearchController::class, 'search']);
 });
@@ -56,6 +56,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 // Middleware to only allow lecturers
 Route::group(['middleware' => AuthLecturer::class], function () {
     Route::get('/lecturer/schedule', [ConsultationController::class, 'lecturerIndex']);
+    Route::get('/lecturer/pending', [ConsultationController::class, 'pending']);
+    Route::get('/lecturer/approved', [ConsultationController::class, 'lecturerApproved']);
+    Route::get('/lecturer/past', [ConsultationController::class, 'history']);
     Route::post('/free-slots', [Free_SlotController::class, 'store']);
     Route::delete('/free-slots/delete/{free_slot}',[Free_SlotController::class, 'destroy']);
     Route::put('/free-slots/edit/{free_slot}', [Free_SlotController::class, 'update']);
@@ -79,6 +82,7 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/student/schedule', [ConsultationController::class, 'studentIndex']);
     Route::get('/student/approved', [ConsultationController::class, 'studentApproved']);
     Route::get('/student/pending', [ConsultationController::class, 'pending']);
+    Route::get('/student/past', [ConsultationController::class, 'history']);
     Route::post('/book/{lecturer}', [ConsultationController::class, 'store']);
     Route::put('/students/{student}', [StudentController::class, 'update']);
     Route::get('/students/{student}/edit', [StudentController::class, 'edit']);

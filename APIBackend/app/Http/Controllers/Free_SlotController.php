@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Lecturer;
 use App\Models\Free_slot;
+use App\Rules\TimeCollision;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class Free_SlotController extends Controller
 {
@@ -19,11 +22,11 @@ class Free_SlotController extends Controller
         );
     }
 
-    public function index()
+    public function index(Lecturer $lecturer)
     {
         return response()->json(
             [
-                'freeslots' => Free_slot::all(),
+                'freeslots' => $lecturer->free_slots()->get(),
                 'code' => 200
             ]
         );
@@ -31,12 +34,14 @@ class Free_SlotController extends Controller
 
     public function store(Request $request)
     {
+        $lecturer = auth('sanctum')->user();
+        Log::channel('api_post_log')->error('Lecturer: ', ['lecturer'=> $lecturer]);
         $formFields = $request->validate([
             'date' => 'required|date_format:Y-m-d|after:tomorrow',
-            'start_time' => 'required|time_format:H:i',
-            'end_time' => 'required|time_format:H:i|after:start_time',
+            'start_time' =>['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $lecturer->id)],
+            'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
-        $formFields['lecturer_id'] = auth()->user()->id;
+        $formFields['lecturer_id'] = $lecturer->id;
 
         Free_slot::create($formFields);
         return response()->json(
