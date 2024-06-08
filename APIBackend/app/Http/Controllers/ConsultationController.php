@@ -124,6 +124,8 @@ class ConsultationController extends Controller
         $formFields['lecturer_id'] = $lecturer->id;
         $formFields['student_id'] = auth()->guard('sanctum')->user()->id;
         $formFields['status'] = 'Pending';
+        $formFields['topic'] = $request->topic;
+        
         Log::channel('api_post_log')->error('Form Fields', ['formFields' => $formFields]);
         Consultation_slot::create($formFields);
         return redirect()->route('dashboard');

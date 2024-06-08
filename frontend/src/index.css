@@ -3,44 +3,116 @@
 @tailwind utilities;
 
 .load-in-animation {
-    animation: fadeUp 1s cubic-bezier(0, 0, 0.1, 1) backwards;
+  animation: fadeUp 1s cubic-bezier(0, 0, 0.1, 1) backwards;
+}
+
+.fade-down-animation {
+  animation: fadeInDown 0.5s cubic-bezier(0, 0, 0.1, 1) backwards;
+}
+
+.turn90degs {
+  animation: spin90degs 0.5s cubic-bezier(0, 0, 0.1, 1) backwards;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .fade-down-animation {
-    animation: fadeInDown 0.5s cubic-bezier(0, 0, 0.1, 1) backwards;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .turn90degs {
-    animation: spin90degs 0.5s cubic-bezier(0, 0, 0.1, 1) backwards;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  @keyframes fadeUp {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  @keyframes fadeInDown {
-     0% {
-        opacity: 0;
-        transform: translateY(-10px);
-     }
-     100% {
-        opacity: 1;
-        transform: translateY(0);
-     }
+}
+
+@keyframes spin90degs {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @keyframes spin90degs {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(90deg);
-    }
+  100% {
+    transform: rotate(90deg);
   }
+}
+
+.orange-bg {
+  background: linear-gradient(
+      180deg,
+      rgba(248, 184, 139, 0) 20%,
+      rgba(248, 184, 139, 0.1) 20%,
+      rgba(248, 184, 139, 0.1) 40%,
+      rgba(248, 184, 139, 0.2) 40%,
+      rgba(248, 184, 139, 0.2) 60%,
+      rgba(248, 184, 139, 0.4) 60%,
+      rgba(248, 184, 139, 0.4) 80%,
+      rgba(248, 184, 139, 0.5) 80%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(250, 248, 132, 0.3) 20%,
+      rgba(250, 248, 132, 0.4) 20%,
+      rgba(250, 248, 132, 0.4) 40%,
+      rgba(250, 248, 132, 0.5) 40%,
+      rgba(250, 248, 132, 0.5) 60%,
+      rgba(250, 248, 132, 0.6) 60%,
+      rgba(250, 248, 132, 0.6) 80%,
+      rgba(250, 248, 132, 0.7) 80%
+    ),
+    linear-gradient(
+      -45deg,
+      rgba(186, 237, 145, 0) 20%,
+      rgba(186, 237, 145, 0.1) 20%,
+      rgba(186, 237, 145, 0.1) 40%,
+      rgba(186, 237, 145, 0.2) 40%,
+      rgba(186, 237, 145, 0.2) 60%,
+      rgba(186, 237, 145, 0.4) 60%,
+      rgba(186, 237, 145, 0.4) 80%,
+      rgba(186, 237, 145, 0.6) 80%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(178, 206, 254, 0) 20%,
+      rgba(178, 206, 254, 0.3) 20%,
+      rgba(178, 206, 254, 0.3) 40%,
+      rgba(178, 206, 254, 0.5) 40%,
+      rgba(178, 206, 254, 0.5) 60%,
+      rgba(178, 206, 254, 0.7) 60%,
+      rgba(178, 206, 254, 0.7) 80%,
+      rgba(178, 206, 254, 0.8) 80%
+    ),
+    linear-gradient(
+      -90deg,
+      rgba(242, 162, 232, 0) 20%,
+      rgba(242, 162, 232, 0.4) 20%,
+      rgba(242, 162, 232, 0.4) 40%,
+      rgba(242, 162, 232, 0.5) 40%,
+      rgba(242, 162, 232, 0.5) 60%,
+      rgba(242, 162, 232, 0.6) 60%,
+      rgba(242, 162, 232, 0.6) 80%,
+      rgba(242, 162, 232, 0.8) 80%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(254, 163, 170, 0) 20%,
+      rgba(254, 163, 170, 0.4) 20%,
+      rgba(254, 163, 170, 0.4) 40%,
+      rgba(254, 163, 170, 0.6) 40%,
+      rgba(254, 163, 170, 0.6) 60%,
+      rgba(254, 163, 170, 0.8) 60%,
+      rgba(254, 163, 170, 0.8) 80%,
+      rgba(254, 163, 170, 0.9) 80%
+    );
+  background-color: rgb(254, 163, 170);
+  background-size: 100% 100%;
+  min-height: 100%;
+}

@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col items-center justify-center border border-gray-400 p-4" v-if="student">
-		<img :src="student.photo" alt="Descriptive Alt Text" class="max-h-40 object-contain">
+		<img :src="student.photo" alt="student-photo" class="max-h-40 object-contain">
 		<div class="flex flex-col items-center justify-center">
 			<h1 class="text-4xl font-bold my-1.5">{{ student.name }}</h1>
 			<p class="text-lg my-1.5">{{ student.email }}</p>

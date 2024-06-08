@@ -14,6 +14,7 @@ class Consultation_slot extends Model
         'date',
         'start_time',
         'end_time',
+        'topic',
         'status',
     ];
 
