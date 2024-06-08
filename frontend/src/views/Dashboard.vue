@@ -60,10 +60,10 @@ import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
 import store from "../store";
 import axios from "axios";
-import UpcomingSlot from "../components/UpcomingSlot.vue";
-import ApprovedSlot from "../components/ApprovedSlot.vue";
-import PendingSlot from "../components/PendingSlot.vue";
-import PastSlot from "../components/PastSlot.vue";
+import UpcomingSlot from "../components/Molecules/UpcomingSlot.vue";
+import ApprovedSlot from "../components/Molecules/ApprovedSlot.vue";
+import PendingSlot from "../components/Molecules/PendingSlot.vue";
+import PastSlot from "../components/Molecules/PastSlot.vue";
 
 const user = store.state.user.data;
 const token = store.state.user.token;

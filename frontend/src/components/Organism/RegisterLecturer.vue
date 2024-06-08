@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import axiosInstance from '../axiosConfig/customAxios';
+import axiosInstance from '../../axiosConfig/customAxios';
 
 export default {
 	name: 'RegisterLecturer',

@@ -21,7 +21,7 @@
 
 <script setup>
 import { defineProps, onMounted } from "vue";
-import store from "../store";
+import store from "../../store";
 
 const role = store.state.role;
 

@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
 import store from '../store';
 import Login from '../views/Login.vue';
-import Logout from '../components/Logout.vue';
+import Logout from '../components/Atom/Logout.vue';
 import Dashboard from '../views/Dashboard.vue';
 import NotFound from '../views/NotFound.vue';
-import Lecturers from '../components/Lecturers.vue';
-import RegisterLecturer from '../components/RegisterLecturer.vue';
-import Students from '../components/Students.vue';
-import LecturerDetails from '../components/LecturerDetails.vue';
-import LecturerProfile from '../components/LecturerDetails.vue';
-import StudentProfile from '../components/StudentDetails.vue';
+import Lecturers from '../components/Organism/Lecturers.vue';
+import RegisterLecturer from '../components/Organism/RegisterLecturer.vue';
+import Students from '../components/Organism/Students.vue';
+import LecturerDetails from '../components/Organism/LecturerDetails.vue';
+import LecturerProfile from '../components/Organism/LecturerDetails.vue';
+import StudentProfile from '../components/Organism/StudentDetails.vue';
 
 import adminRoutes from "./adminRoutes";
 import lecturerRoutes from "./lecturerRoutes";

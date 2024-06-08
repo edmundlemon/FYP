@@ -15,7 +15,7 @@
         @click="search"
       >
         <img
-          src="../assets/search.png"
+          src="../../assets/search.png"
           alt="search"
           class="h-5"
           title="Search"
@@ -70,7 +70,7 @@
       <div class="absolute top-3 right-3">
         <img
           class="h-4 w-4 hover:cursor-pointer transition-all duration-500 ease-in-out hover:opacity-50"
-          src="../assets/close.png"
+          src="../../assets/close.png"
           alt="close"
           @click="results = null"
           title="Close Result"
@@ -83,7 +83,7 @@
 
 <script setup>
 import { ref, watch } from "vue";
-import axios from "../axiosConfig/customAxios";
+import axios from "../../axiosConfig/customAxios";
 
 const query = ref("");
 const results = ref(null);

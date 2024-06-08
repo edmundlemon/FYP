@@ -29,8 +29,8 @@
 
 <script setup>
 import { ref, defineProps, onMounted } from 'vue'
-import store from '../store'
-import axiosInstance from '../axiosConfig/customAxios'
+import store from '../../store'
+import axiosInstance from '../../axiosConfig/customAxios'
 
 const props = defineProps({
 	lecturerId: {

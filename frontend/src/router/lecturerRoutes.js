@@ -1,4 +1,4 @@
-import Lecturers from '../components/Lecturers.vue';
+import Lecturers from '../components/Organism/Lecturers.vue';
 
 export default [
 	{

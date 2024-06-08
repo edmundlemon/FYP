@@ -35,10 +35,10 @@
 <script setup>
 import { onMounted, ref } from "vue";
 // import axiosInstance from '../axiosConfig/customAxios'
-import TimeDisplay from "./TimeDisplay.vue";
-import store from "../store";
-import axiosInstance from "../axiosConfig/customAxios";
-import Loading from "./Atom/SkeletonLoading.vue";
+import TimeDisplay from "../Atom/TimeDisplay.vue";
+import store from "../../store";
+import axiosInstance from "../../axiosConfig/customAxios";
+import Loading from "../Atom/SkeletonLoading.vue";
 
 const slots = ref([]);
 // loading state

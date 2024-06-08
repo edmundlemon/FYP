@@ -12,9 +12,9 @@
 
 <script setup>
 import { defineProps, onMounted, ref } from 'vue';
-import axiosInstance from '../axiosConfig/customAxios';
+import axiosInstance from '../../axiosConfig/customAxios';
 import { useRoute } from 'vue-router';
-import BookingForm from './BookingForm.vue';
+import BookingForm from '../Molecules/BookingForm.vue';
 
 const route = useRoute();
 const lecturer = ref(null);

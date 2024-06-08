@@ -9,7 +9,7 @@
           href="#"
           class="text-white text-lg font-bold flex flex-row justify-center items-center"
         >
-          <img class="h-12" src="../assets/logo.png" alt="" />
+          <img class="h-12" src="../../assets/logo.png" alt="" />
           3LINGGUN
         </a>
 
@@ -192,11 +192,11 @@ import {
   MenuItems,
 } from "@headlessui/vue";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/vue/24/outline";
-import store from "../store/";
+import store from "../../store";
 import axios from "axios";
 import { useRouter } from "vue-router";
 import { data } from "autoprefixer";
-import SearchBar from "../components/SearchBar.vue";
+import SearchBar from "../Atom/SearchBar.vue";
 
 const router = useRouter();
 const token = store.state.user.token;
