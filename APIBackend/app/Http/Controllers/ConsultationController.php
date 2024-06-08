@@ -46,6 +46,18 @@ class ConsultationController extends Controller
         );
     }
 
+    public function lecturerApproved()
+    {
+        $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
+        $consultation_slots = $user->consultation_slots()->with('student')->where('status', 'Approved')->where('date', '>=', today())->orderBy('date')->orderBy('start_time')->get();
+        return response()->json(
+            [
+                'consultation_slots' => $consultation_slots,
+                'code' => 200
+            ]
+        );
+    }
+
     public function history(){
         if(auth()->guard('sanctum')->user()->hasRole('student')){
             $user = Student::find(auth()->guard('sanctum')->user()->id);
