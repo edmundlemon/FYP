@@ -1,4 +1,4 @@
-import RegisterLecturer from '../components/RegisterLecturer.vue';
+import RegisterLecturer from '../components/Organism/RegisterLecturer.vue';
 // import Students from '../views/Students.vue';
 
 export default [

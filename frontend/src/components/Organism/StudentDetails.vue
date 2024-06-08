@@ -11,7 +11,7 @@
 
 <script setup>
 import { defineProps, onMounted, ref } from 'vue';
-import axiosInstance from '../axiosConfig/customAxios';
+import axiosInstance from '../../axiosConfig/customAxios';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();

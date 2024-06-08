@@ -1,12 +1,16 @@
 <script setup>
 import { defineProps } from 'vue'
-import Header from './components/Header.vue'
+import Header from './components/Molecules/Header.vue'
 import store from './store'
 </script>
 
 <template>
   <div class="w-full h-full">
-    <Header class="sticky w-full z-50" v-if="store.state.token"/>
+    <Header class="sticky w-full z-50" v-if="store.state.token && (store.state.role == 'student' || store.state.role == 'lecturer')"/>
+    <div v-else-if="store.state.token && (store.state.role == 'admin')">
+      <Logout />
+      ADMIN HEADER HERE
+    </div>
     <router-view></router-view>
   </div>
 </template>

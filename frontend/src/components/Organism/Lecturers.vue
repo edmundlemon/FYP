@@ -16,14 +16,14 @@
           <img
             id="filter-icon"
             class="fade-in-animation arrow-down h-5 w-5"
-            src="../assets/filter.png"
+            src="../../assets/filter.png"
             alt="arrow-down"
             v-if="!dropdown"
           />
           <img
             id="closefilter-icon"
             class="close-filter h-4 w-4 transition-all duration-500 turn90degs"
-            src="../assets/close.png"
+            src="../../assets/close.png"
             alt="close-filter-menu"
             v-else
           />
@@ -70,8 +70,8 @@
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
-import store from "../store";
-import LecturerDisplay from "./Lecturer-Display.vue";
+import store from "../../store";
+import LecturerDisplay from "../Molecules/Lecturer-Display.vue";
 import dist from "vuex-persistedstate";
 
 const lecturers = ref([]);

@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <h3 class="text-2xl font-semibold ml-5 py-5">Upcoming Consultations</h3>
+    <h3 class="text-2xl font-semibold ml-5 py-5">Pending Consultations</h3>
     <div class="h-fit">
       <div class="container mx-auto px-4">
         <div style="height: 60vh">
@@ -33,25 +33,20 @@
 </template>
 
 <script setup>
-import { onMounted, ref, onBeforeMount } from "vue";
-import TimeDisplay from "./TimeDisplay.vue";
-import axios from "axios";
-import store from "../store";
-import axiosGet from "../axiosConfig/customAxios";
-import Loading from "./Atom/SkeletonLoading.vue";
-// import store from '../../../APIBackend/resources/js/store';
-const slots = ref([]);
-const token = store.state.token;
-axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+import { onMounted, ref } from "vue";
+// import axiosInstance from '../axiosConfig/customAxios'
+import TimeDisplay from "../Atom/TimeDisplay.vue";
+import store from "../../store";
+import axiosInstance from "../../axiosConfig/customAxios";
+import Loading from "../Atom/SkeletonLoading.vue";
 
+const slots = ref([]);
 // loading state
 const showLoading = ref(true);
-
 onMounted(async () => {
-  console.log("Token => ", token);
-  console.log("Role => ", store.state.role);
   if (store.state.role === "student") {
-    axiosGet("/student/schedule")
+    axiosInstance
+      .get("/student/pending")
       .then((response) => {
         slots.value = response.data.consultation_slots;
         showLoading.value = false;
@@ -60,7 +55,8 @@ onMounted(async () => {
         console.log(error);
       });
   } else {
-    axiosGet("/lecturer/schedule")
+    axiosInstance
+      .get("/lecturer/schedule")
       .then((response) => {
         slots.value = response.data.consultation_slots;
         showLoading.value = false;
@@ -69,23 +65,10 @@ onMounted(async () => {
         console.log(error);
       });
   }
-
   // setTimeout(() => {
   //   showLoading.value = false;
   //   console.log("showLoading", showLoading.value);
   // }, 2500);
-  // if (store.state.role === 'student') {
-  //   const response = await axios.get('http://localhost:8000/api/student/schedule');
-  //   slots.value = response.data.consultation_slots;
-  // } else {
-  //   const response = await axios.get('http://localhost:8000/api/lecturer/schedule');
-  //   slots.value = response.data.consultation_slots;
-  // }
-
-  // console.log(data);
-  // const response = await axios.get('http://localhost:8000/api/student/schedule');
-  // const data = await response.data.consultation_slots;
-  // slots.value = data;
 });
 </script>
 
