@@ -31,7 +31,7 @@
             >
           </li>
         </ul>
-        <SearchBar v-if="store.state.token" />
+        <SearchBar class="z-50" v-if="store.state.token"/>
       </div>
       <!-- notification & profile drop down menu -->
       <div
@@ -77,9 +77,10 @@
               <span class="sr-only">Open user menu</span>
               <img
                 class="h-8 w-8 rounded-full"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                :src="store.state.user.data.photo"
                 alt=""
               />
+              <!-- PROFILE IN NAV BAR PICTURER HERE -->
             </MenuButton>
           </div>
           <transition
@@ -199,6 +200,7 @@ import SearchBar from "../components/SearchBar.vue";
 
 const router = useRouter();
 const token = store.state.user.token;
+
 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
 //   const navigation = [

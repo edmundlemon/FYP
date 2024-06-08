@@ -27,7 +27,14 @@ class StudentController extends Controller
             ]
         );
     }
-
+    public function StudentFaculty(){
+        return response()->json(
+            [
+                'student' => Student::distinct()->get('faculty'),
+                'code' => 200
+            ]
+        );
+    }
     public function store(Request $request)
     {
         $formFields = $request->validate([

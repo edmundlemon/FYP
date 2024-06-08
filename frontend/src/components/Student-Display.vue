@@ -7,21 +7,21 @@
       style="top: -2%; background-color: #f15a59; z-index: 5000"
     >
       <p class="text-lg px-6 font-semibold text-center">
-        {{ lecturer.faculty }}
+        {{ student.faculty }}
       </p>
     </div>
-    <!-- Lecturer Image -->
-    <a class="mb-5" :href="'/lecturer/' + lecturer.id">
+    <!-- student Image -->
+    <a class="mb-5" :href="'/student/' + student.id">
       <img
-        :src="lecturer.photo"
+        :src="student.photo"
         alt="Descriptive Alt Text"
         class="max-h-40 object-contain rounded-full shadow-md"
       />
     </a>
 
-    <!-- Lecturer Faculty Display -->
+    <!-- student Faculty Display -->
 
-    <!-- Name pill box with lecturer name-->
+    <!-- Name pill box with student name-->
     <div
       class="space-y-1 flex flex-col items-center justify-center w-full mt-0 z-10"
     >
@@ -34,23 +34,23 @@
         >
           @
         </p>
-        <!-- Lecturer name block -->
-        <a :href="'/lecturer/' + lecturer.id">
+        <!-- student name block -->
+        <a :href="'/student/' + student.id">
           <h1
             class="bg-gray-300 rounded-full py-2 px-5 text-2xl font-bold my-1.5 border border-black"
           >
-            {{ lecturer.name }}
+            {{ student.name }}
           </h1>
         </a>
       </div>
 
       <a
         class="transition duration-300 ease-in-out transform hover:scale-105 z-10"
-        :href="'mailto:' + lecturer.email"
+        :href="'mailto:' + student.email"
       >
-        <p class="text-lg my-1.5">{{ lecturer.email }}</p>
+        <p class="text-lg my-1.5">{{ student.email }}</p>
       </a>
-      <p class="text-lg my-1.5 z-10">{{ lecturer.id }}</p>
+      <p class="text-lg my-1.5 z-10">{{ student.id }}</p>
     </div>
   </div>
 </template>
@@ -59,7 +59,7 @@
 import { defineProps, onMounted } from "vue";
 
 const props = defineProps({
-  lecturer: {
+  student: {
     type: Object,
     required: true,
   },

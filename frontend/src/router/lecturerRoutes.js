@@ -7,7 +7,6 @@ export default [
 		component: Lecturers,
 		meta: { 
 			requiresAuth: true,
-			role: ['lecturer', 'admin']
 		},
 	},
 ];
