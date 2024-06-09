@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center bg-gray-900" style="width: 30vw">
     <form
-      @submit.prevent="bookTime, $emit('closeBookingForm')"
+      @submit.prevent="bookTime"
       class="p-6 w-full load-in-animation"
     >
       <div class="space-y-5">
@@ -104,6 +104,7 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(['booking-success']);
 const errors = ref({});
 const booking = ref({
   date: "",
@@ -121,6 +122,7 @@ function bookTime() {
     .then((response) => {
       console.log(response);
       alert("Booking successful!");
+      emit('closeBookingForm');
     })
     .catch((error) => {
       console.log(error.response.data.errors);
