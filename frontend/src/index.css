@@ -18,6 +18,10 @@
   animation: fadeIn 0.5s cubic-bezier(0, 0, 0.1, 1) backwards;
 }
 
+.spin360degs:hover {
+  animation: spin360degs 1s cubic-bezier(0, 0, 0.1, 1) backwards;
+}
+
 @keyframes fadeUp {
   0% {
     opacity: 0;
@@ -46,6 +50,15 @@
   }
   100% {
     transform: rotate(90deg);
+  }
+}
+
+@keyframes spin360degs {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 

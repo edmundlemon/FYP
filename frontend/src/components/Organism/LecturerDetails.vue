@@ -1,16 +1,15 @@
 <template>
-  {{ lecturer }}
   <div
-    class="flex flex-row items-center justify-center border border-gray-700 p-4 w-9/12 m-auto"
+    class="relative flex flex-row items-center justify-center border border-gray-700 p-2 w-9/12 h-[80vh] m-auto rounded-lg shadow-lg bg-white mt-5"
     v-if="lecturer"
   >
     <div
-      class="space-y-3 py-12 border border-red-700 w-5/12 flex flex-col justify-center items-center mr-4 orange-bg rounded-lg shadow-md"
+      class="space-y-3 py-12 border border-gray-500 border-opacity-50 w-5/12 h-full flex flex-col justify-center items-center mr-2 orange-bg rounded-lg shadow-lg"
     >
       <img
         :src="lecturer.photo"
         alt="Descriptive Alt Text"
-        class="max-h-40 max-w-40 object-contain rounded-full shadow-md"
+        class="max-h-40 max-w-40 object-contain rounded-lg shadow-xl ring-2 ring-white"
       />
       <div class="flex flex-col items-center justify-center">
         <h1 class="text-4xl font-bold my-1.5">{{ lecturer.name }}</h1>
@@ -60,18 +59,37 @@
         </div>
       </div>
     </div>
-    <div v-if="showBookingform" class="transition-all booking-container z-50 absolute border border-black w-full h-full border flex justify-center items-center" >
+
+    <!-- Lecturer Freeslot view here -->
+    <div
+      class="border border-gray-500 border-opacity-50 rounded-lg w-full h-full flex flex-col justify-center items-center"
+    >
+      <p class="font-bold text-center">Insert lecturer schedule here!</p>
+    </div>
+    <div
+      v-if="showBookingform"
+      class="booking-container fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center"
+    >
       <booking-form
-        class=" border border-gray-600 rounded-xl border-2 fadein-animation "
-        style="filter: drop-shadow(0px 4px 10px black);"
+        class="border border-gray-600 rounded-xl border-2 fadein-animation"
+        style="filter: drop-shadow(0px 4px 10px black)"
         :lecturer-id="lecturerId"
         @closeBookingForm="showBookingform = false"
       />
     </div>
+    <button
+      class="z-[0] right-[2vh] bottom-[2vh] border border-black border-opacity-20 transition duration-300 ease-in-out absolute rounded-full bg-green-300 hover:bg-green-400 active:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-opacity-50 z-50 w-12 h-12 spin360degs"
+      type="button"
+      @click="showBookingform = !showBookingform"
+      title="Custom Booking"
+    >
+      <img
+        class="w-6 h-6 mx-auto shadow-md"
+        src="../../assets/calendar.png"
+        alt="Book Appointment"
+      />
+    </button>
   </div>
-  <button class="absolute z-50"type="button" @click="showBookingform = !showBookingform">
-    BUTTON
-  </button>
 </template>
 
 <script setup>
@@ -101,9 +119,9 @@ onMounted(async () => {
   filter: invert(1) brightness(2) drop-shadow(0px 2px 3px black);
 }
 
-.booking-container{
+.booking-container {
   backdrop-filter: blur(10px);
   height: 103.2vh;
-    
-  }
+  width: 100vw;
+}
 </style>
