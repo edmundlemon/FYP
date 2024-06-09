@@ -1,14 +1,15 @@
 <template>
   <div class="flex flex-col items-center justify-center w-9/12 m-auto">
     <div class="mt-5 mb-5">
-      <h1 class="text-6xl font-bold">{{SelectedFaculty + " "}}Students</h1>
+      <h1 class="text-6xl font-bold">Students</h1>
     </div>
 
     <div class="w-full flex justify-end items-center">
       <p class="mr-2 font-semibold">Filter by Faculty:</p>
-      <div class="w-fit dropdown relative">
+      {{ SelectedFaculty }}
+      <div class="ml-2 w-fit dropdown relative">
         <button
-          class="dropbtn bg-blue-500 p-1 h-8 w-8 text-white rounded-md flex flex-row justify-center items-center"
+          class="dropbtn bg-gray-600 p-1 h-8 w-8 text-white rounded-md flex flex-row justify-center items-center"
           @click="filter()"
         >
           <img

@@ -115,9 +115,7 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.icons {
-  filter: invert(1) brightness(2) drop-shadow(0px 2px 3px black);
-}
+
 
 .booking-container {
   backdrop-filter: blur(10px);
