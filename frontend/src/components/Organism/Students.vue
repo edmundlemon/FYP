@@ -14,14 +14,14 @@
         >
           <img
             id="filter-icon"
-            class="fade-in-animation arrow-down h-5 w-5"
+            class="icons fade-in-animation arrow-down h-5 w-5"
             src="../../assets/filter.png"
             alt="arrow-down"
             v-if="!dropdown"
           />
           <img
             id="closefilter-icon"
-            class="close-filter h-4 w-4 transition-all duration-500 turn90degs"
+            class="icons close-filter h-4 w-4 transition-all duration-500 turn90degs"
             src="../../assets/close.png"
             alt="close-filter-menu"
             v-else
