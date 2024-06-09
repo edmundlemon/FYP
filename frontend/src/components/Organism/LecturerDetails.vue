@@ -22,7 +22,7 @@
               class="icons w-6 h-6 mr-2"
               src="../../assets/email.png"
               alt=""
-            /><span>{{ lecturer.email }}</span>
+            /><a :href="'mailto:'+ lecturer.email"><span>{{ lecturer.email }}</span></a>
           </div>
 
           <!-- Office -->
@@ -32,7 +32,7 @@
               class="icons w-6 h-6 mr-2"
               src="../../assets/office.png"
               alt=""
-            /><span>{{ lecturer.office }}</span>
+            /> <span>{{ lecturer.office }}</span>
           </div>
 
           <!-- Faculty -->
@@ -78,7 +78,7 @@
       />
     </div>
     <button
-      class="z-[0] right-[2vh] bottom-[2vh] border border-black border-opacity-20 transition duration-300 ease-in-out absolute rounded-full bg-green-300 hover:bg-green-400 active:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-opacity-50 z-50 w-12 h-12 spin360degs"
+      class="z-[0] right-[2vh] bottom-[2vh] border border-black border-opacity-20 transition duration-300 ease-in-out absolute rounded-full bg-green-300 hover:bg-green-400 active:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-opacity-50 z-50 w-12 h-12 gelatine"
       type="button"
       @click="showBookingform = !showBookingform"
       title="Custom Booking"
