@@ -64,7 +64,8 @@
     <div
       class="border border-gray-500 border-opacity-50 rounded-lg w-full h-full flex flex-col justify-center items-center"
     >
-      <p class="font-bold text-center">Insert lecturer schedule here!</p>
+      <!-- <p class="font-bold text-center">Insert lecturer schedule here!</p> -->
+      <free-slot :lecturer-id="lecturerId"></free-slot>
     </div>
     <div
       v-if="showBookingform"
@@ -97,6 +98,7 @@ import { defineProps, onMounted, ref } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
 import { useRoute } from "vue-router";
 import BookingForm from "../Molecules/BookingForm.vue";
+import FreeSlot from "../Molecules/FreeSlot.vue"
 
 let showBookingform = ref(false);
 const route = useRoute();

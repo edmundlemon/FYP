@@ -1,5 +1,5 @@
 import Lecturers from '../components/Organism/Lecturers.vue';
-import FreeSlotForm from '../components/FreeSlotForm.vue';
+import FreeSlotForm from '../components/Molecules/FreeSlotForm.vue';
 
 export default [
 	{
