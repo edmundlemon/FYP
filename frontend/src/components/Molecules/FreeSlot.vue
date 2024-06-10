@@ -23,7 +23,7 @@
               >
                 <p class="my-5 text-xl font-bold">{{ getDay(day) }}</p>
                 <div class="space-y-2" v-if="hasSlotsForDay(day)">
-                  <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
+					<div v-for="slot in getSlotsForDay(day)" :key="slot.id">
                     <free-slot-display class="mx-3" :slot="slot" />
                   </div>
                 </div>
@@ -108,8 +108,23 @@ function hasSlotsForDay(day) {
 }
 
 function getSlotsForDay(day) {
-  return slots.value.filter((slot) => new Date(slot.date).getDay() === day);
+  return slots.value
+    .filter(slot => new Date(slot.date).getDay() === day)
+    .sort((a, b) => {
+      // Parse the start times
+      const [aHour, aMinute] = a.start_time.split(':').map(Number);
+      const [bHour, bMinute] = b.start_time.split(':').map(Number);
+
+      // Compare the times
+      if (aHour !== bHour) {
+        return aHour - bHour;
+      } else {
+        return aMinute - bMinute;
+      }
+    });
 }
+
+
 
 function getDay(day) {
   switch (day) {
