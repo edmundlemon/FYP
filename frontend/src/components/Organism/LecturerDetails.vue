@@ -1,10 +1,10 @@
 <template>
   <div
-    class="relative flex flex-row items-center justify-center border border-gray-700 p-2 w-9/12 h-[80vh] m-auto rounded-lg shadow-lg bg-white mt-5"
+    class="relative flex flex-col items-center justify-center border border-gray-700 p-2 w-full m-auto rounded-lg shadow-lg bg-white mt-5"
     v-if="lecturer"
   >
     <div
-      class="space-y-3 py-12 border border-gray-500 border-opacity-50 w-5/12 h-full flex flex-col justify-center items-center mr-2 orange-bg rounded-lg shadow-lg"
+      class="space-y-3 py-12 border border-gray-500 border-opacity-50 w-full h-full flex flex-col justify-center items-center mr-2 orange-bg rounded-lg shadow-lg"
     >
       <img
         :src="lecturer.photo"
