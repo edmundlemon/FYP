@@ -1,29 +1,15 @@
 <template>
-  <div class="flex p-2">
-    <div class="bg-gray-100 p-4 shadow rounded w-full mt-5 drop-shadow-xl">
-      <h3 class="text-lg font-bold mb-2">Date: {{ slot.date }}</h3>
-      <div class="flex flex-row space-x-5">
-        <div class="flex flex-row justify-center items-center">
-			<svg
-            class="w-4 h-4 text-green-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M11 5h10M11 9h6M11 13h4M11 17h2"
-            />
-          </svg>
-          <span class="ml-1 font-bold text-green-400">
-            {{ slot.start_time }}
-          </span>
-        </div>
-        <div class="flex flex-row justify-center items-center">
+  <div class="flex justify-center items-center">
+    <div class="flex flex-col bg-white shadow-md rounded-md p-4 w-full border">
+      <h3 class="text-lg font-bold mb-2 text-gray-800">
+        Date: {{ slot.date }}
+      </h3>
+      <div
+        class="flex space-x-5 lg:flex-row md:flex-col sm:flex-col justify-center items-center"
+      >
+        <div class="flex flex-row items-center">
           <svg
-            class="w-4 h-4 text-red-400"
+            class="w-5 h-5 text-green-500"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -32,12 +18,34 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M11 5h10M11 9h6M11 13h4M11 17h2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 011 18z"
             />
           </svg>
-          <span class="ml-1 font-bold text-red-400">{{ slot.end_time }}</span>
+          <span class="ml-2 font-bold text-green-500">{{
+            slot.start_time
+          }}</span>
+        </div>
+        <div class="flex flex-row items-center">
+          <svg
+            class="w-5 h-5 text-red-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 011 18z"
+            />
+          </svg>
+          <span class="ml-2 font-bold text-red-500">{{ slot.end_time }}</span>
         </div>
       </div>
+      <div class="flex justify-center">
+        
+		<PillButton @click.prevent="console.log('Booking Slot '+ slot.id + ' Clicked !')" class="mt-3" text="Book Slot" v-if="store.state.role === 'student'"/>
+	  </div>
     </div>
   </div>
 </template>
@@ -45,7 +53,8 @@
 <script setup>
 import { defineProps, onMounted } from "vue";
 import store from "../../store";
-
+import axiosInstance from "../../axiosConfig/customAxios";
+import PillButton from "../Atom/Pill-button.vue";
 const role = store.state.role;
 
 const props = defineProps({
@@ -59,8 +68,6 @@ onMounted(() => {
   console.log("Role => ", role);
   console.log("Slot => ", props.slot);
 });
-
-
 </script>
 
 <style></style>

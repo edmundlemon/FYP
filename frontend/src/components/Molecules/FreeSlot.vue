@@ -1,38 +1,49 @@
 <template>
-  <div class="flex flex-col">
-    <h3 class="text-2xl font-semibold ml-5 py-5">Free Slots</h3>
+  <div class="flex flex-col h-fit pb-20 items-center">
+    <h3 class="text-2xl font-semibold py-5 pt-10 letter-spaced">
+      Free Slots
+    </h3>
     <div class="h-fit">
       <div class="container mx-auto px-4">
-        <div style="height: 60vh">
-          <!-- <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> -->
-          <div v-if="showLoading" class="h-full w-full">
+        <div class="h-full overflow-y-auto">
+          <!-- grid container here -->
+          <div v-if="showLoading" class="w-full">
             <Loading style="padding-right: 1vw; padding-left: 0.4vw" />
           </div>
           <div
-            class="overflow-y-auto load-in-animation"
+            class="load-in-animation max-h-screen w-full rounded-lg shadow-lg bg-white"
             v-else-if="slots.length > 0 && !showLoading"
-            style="height: 60vh"
           >
-			<div class="grid grid-cols-5 gap-4">
-			  <div v-for="day in [1, 2, 3, 4, 5]">
-				<p class="text-xl font-semibold">{{ getDay(day) }}</p>
-				<div v-if="hasSlotsForDay(day)">
-				  <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
-					<free-slot-display class="mr-3" :slot="slot" />
-				  </div>
-				</div>
-				<div v-else>
-				  <p>No free slot for this day</p>
-				</div>
-			  </div>
-			</div>
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"
+            >
+              <div
+                class="max-h-screen w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5"
+                v-for="day in [1, 2, 3, 4, 5]"
+              >
+                <p class="my-5 text-xl font-bold">{{ getDay(day) }}</p>
+                <div class="space-y-2" v-if="hasSlotsForDay(day)">
+                  <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
+                    <free-slot-display class="mx-3" :slot="slot" />
+                  </div>
+                </div>
+                <div v-else>
+                  <div>
+                    <div class="flex justify-center items-center">
+                      <p class="text-xl font-semibold text-gray-800">
+                        No available slots
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div v-else class="w-full h-full flex justify-center items-center">
-            <h2 class="text-xl font-bold text-gray-800 animate-bounce">
-              No consultation info...
+          <div v-else class="h-full flex justify-center items-center">
+            <h2 class="text-xl font-bold text-gray-800 animate-bounce my-5">
+              Freeslots not available
             </h2>
           </div>
-          <!-- </div> -->
         </div>
       </div>
     </div>
@@ -122,4 +133,8 @@ function getDay(day) {
 }
 </script>
 
-<style></style>
+<style scoped>
+.letter-spaced {
+  letter-spacing: 0.1em;
+}
+</style>
