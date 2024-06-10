@@ -39,7 +39,7 @@ class Lecturer extends Authenticatable
     }
 
     public function free_slots() {
-        return $this->hasMany(Consultation_slot::class, 'lecturer_id');
+        return $this->hasMany(Free_slot::class, 'lecturer_id');
     }
 
     public function reviews() {
@@ -50,9 +50,9 @@ class Lecturer extends Authenticatable
         return $this->hasMany(Consultation_slot::class, 'lecturer_id');
     }
 
-    public function upcoming() {
+    public function upcoming_free_slots() {
         return $this->free_slots()
-            ->where('start_time', '>=', now())
-            ->where('start_time', '<=', today()->addDays(7));
+            ->where('date', '>', now())
+            ->where('date', '<=', today()->addDays(7));
     }
 }
