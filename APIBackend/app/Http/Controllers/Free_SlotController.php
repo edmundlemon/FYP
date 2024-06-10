@@ -26,7 +26,8 @@ class Free_SlotController extends Controller
     {
         return response()->json(
             [
-                'freeslots' => $lecturer->free_slots()->get(),
+                // 'freeslots' => $lecturer->free_slots()->get(),
+                'freeslots' => $lecturer->upcoming_free_slots()->get(),
                 'code' => 200
             ]
         );
