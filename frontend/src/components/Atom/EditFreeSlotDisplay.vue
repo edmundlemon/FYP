@@ -71,6 +71,7 @@ async function deleteSlot(slot) {
     .delete(`/free-slots/delete/${slot}`)
     .then((response) => {
       console.log(response.data);
+      document.getElementById(slot).remove();
     })
     .catch((error) => {
       console.error("Failed to delete slot:", error.response.data);
