@@ -5,20 +5,19 @@
     </h3>
     <div class="h-fit">
       <div class="container mx-auto px-4">
-        <div class="h-full overflow-y-auto">
+        <div class="h-full overflow-y-auto no-scrollbar">
           <!-- grid container here -->
           <div v-if="showLoading" class="w-full">
             <Loading style="padding-right: 1vw; padding-left: 0.4vw" />
           </div>
           <div
-            class="load-in-animation max-h-screen w-full rounded-lg shadow-lg bg-white"
+            class="load-in-animation max-h-screen w-full rounded-lg"
             v-else-if="slots.length > 0 && !showLoading"
           >
-            <div
-              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"
-            >
+          <div class="flex flex-wrap justify-center items-center space-x-4">
+
               <div
-                class="max-h-screen w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5"
+                class="flex-1 max-h-screen w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5"
                 v-for="day in [1, 2, 3, 4, 5]"
               >
                 <p class="my-5 text-xl font-bold">{{ getDay(day) }}</p>
