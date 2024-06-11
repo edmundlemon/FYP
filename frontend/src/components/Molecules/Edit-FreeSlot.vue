@@ -5,7 +5,7 @@
     </h3>
     <div class="h-fit">
       <div class="container mx-auto px-4">
-        <div class="h-full overflow-y-auto no-scrollbar">
+        <div class="h-full overflow-y-auto no-scrollbar pb-5">
           <!-- grid container here -->
           <div v-if="showLoading" class="w-full">
             <Loading style="padding-right: 1vw; padding-left: 0.4vw" />
