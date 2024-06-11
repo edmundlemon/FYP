@@ -77,7 +77,8 @@ class Free_SlotController extends Controller
 
     public function destroy(Free_slot $free_slot)
     {
-        if(auth()->id() !== $free_slot->lecturer_id){
+        $lecturer = auth('sanctum')->user();
+        if($lecturer->id !== $free_slot->lecturer_id){
             abort(403, 'Unauthorized Action!');
         }
         $free_slot->delete();

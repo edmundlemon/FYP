@@ -51,8 +51,6 @@ class Lecturer extends Authenticatable
     }
 
     public function upcoming_free_slots() {
-        return $this->free_slots()
-            ->where('date', '>', now())
-            ->where('date', '<=', today()->addDays(7));
+        return $this->free_slots()->where('date', '>=', date('Y-m-d'))->orderBy('date', 'asc')->orderBy('start_time', 'asc');
     }
 }

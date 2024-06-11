@@ -213,7 +213,7 @@ export default {
           name: "Scheduling",
           path: "",
           dropdown: [
-          { role: "lecturer", name: "Freeslot Manager", path: "/freeslot" },
+          { role: "lecturer", name: "Freeslot Manager", path: "/freeslot-manager" },
             {
               role: "student",
               name: "Schedule View",

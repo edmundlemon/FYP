@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-fit pb-20 items-center">
     <h3 class="text-2xl font-semibold py-5 pt-10 letter-spaced">
-      {{ text }} 
+      {{ text }}
     </h3>
     <div class="h-fit">
       <div class="container mx-auto px-4">
@@ -24,7 +24,7 @@
                 <p class="my-5 text-xl font-bold">{{ getDay(day) }}</p>
                 <div class="space-y-2" v-if="hasSlotsForDay(day)">
                   <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
-                    <free-slot-display class="mx-3" :slot="slot" />
+                    <EditFreeSlotDisplay class="mx-3" :slot="slot" />
                   </div>
                 </div>
                 <div v-else>
@@ -53,7 +53,7 @@
 <script setup>
 import { onMounted, ref, defineProps } from "vue";
 // import axiosInstance from '../axiosConfig/customAxios'
-import FreeSlotDisplay from "../Atom/FreeSlotDisplay.vue";
+import EditFreeSlotDisplay from "../Atom/EditFreeSlotDisplay.vue";
 import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
 import Loading from "../Atom/SkeletonLoading.vue";
@@ -112,20 +112,7 @@ function hasSlotsForDay(day) {
 }
 
 function getSlotsForDay(day) {
-  return slots.value
-    .filter((slot) => new Date(slot.date).getDay() === day)
-    .sort((a, b) => {
-      // Parse the start times
-      const [aHour, aMinute] = a.start_time.split(":").map(Number);
-      const [bHour, bMinute] = b.start_time.split(":").map(Number);
-
-      // Compare the times
-      if (aHour !== bHour) {
-        return aHour - bHour;
-      } else {
-        return aMinute - bMinute;
-      }
-    });
+  return slots.value.filter((slot) => new Date(slot.date).getDay() === day);
 }
 
 function getDay(day) {

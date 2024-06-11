@@ -1,6 +1,6 @@
 import Lecturers from '../components/Organism/Lecturers.vue';
 import FreeSlotForm from '../components/Molecules/FreeSlotForm.vue';
-
+import FreeslotManager from '../components/Organism/Freeslot-manage.vue';
 export default [
 	{
 		path: '/lecturers',
@@ -18,5 +18,10 @@ export default [
 			requiresAuth: true,
 			role: ['lecturer']
 		}
+	},
+	{
+		path: '/freeslot-manager',
+		name: 'freeslot-manager',
+		component: FreeslotManager,
 	}
 ];

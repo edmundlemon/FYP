@@ -2,6 +2,7 @@
 import { defineProps } from 'vue'
 import Header from './components/Molecules/Header.vue'
 import store from './store'
+
 </script>
 
 <template>
