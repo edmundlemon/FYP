@@ -11,12 +11,12 @@
             <Loading style="padding-right: 1vw; padding-left: 0.4vw" />
           </div>
           <div
-            class="load-in-animation max-h-screen w-full rounded-lg"
+            class="load-in-animation max-h-full w-full rounded-lg"
             v-else-if="slots.length > 0 && !showLoading"
           >
             <div class="flex flex-wrap justify-center space-x-4">
               <div
-                class="flex-1 max-h-screen w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5"
+                class="flex-1 max-h-full w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5"
                 v-for="day in [1, 2, 3, 4, 5]"
               >
                 <p class="my-5 text-xl font-bold">{{ getDay(day) }}</p>
