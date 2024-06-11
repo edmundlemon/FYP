@@ -2,7 +2,6 @@
 import { defineProps } from 'vue'
 import Header from './components/Molecules/Header.vue'
 import store from './store'
-import AdminHeader from './components/AdminHeader.vue';
 </script>
 
 <template>
