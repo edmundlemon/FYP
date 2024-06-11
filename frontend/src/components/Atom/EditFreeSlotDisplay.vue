@@ -11,10 +11,8 @@
       <h3 class="text-lg font-bold mb-2 text-gray-800 text-center">
         Date: {{ slot.date }}
       </h3>
-      <div
-        class="flex flex-col space-y-2 justify-center items-center"
-      >
-        <div class="flex flex-row items-center ">
+      <div class="flex flex-col space-y-2 justify-center items-center">
+        <div class="flex flex-row items-center">
           <svg
             width="16"
             height="16"
@@ -68,16 +66,17 @@ import PillButton from "../Atom/Pill-button.vue";
 const role = store.state.role;
 
 async function deleteSlot(slot) {
-  console.log("Deleting slot:", slot);
-  axiosInstance
-    .delete(`/free-slots/delete/${slot}`)
-    .then((response) => {
-      console.log(response.data);
-      document.getElementById(slot).remove();
-    })
-    .catch((error) => {
-      console.error("Failed to delete slot:", error.response.data);
-    });
+  if (confirm("Are you sure you want to delete this slot?")) {
+    axiosInstance
+      .delete(`/free-slots/delete/${slot}`)
+      .then((response) => {
+        console.log(response.data);
+        window.location.reload()
+      })
+      .catch((error) => {
+        console.error("Failed to delete slot:", error.response.data);
+      });
+  }
 }
 
 const props = defineProps({
@@ -93,6 +92,4 @@ onMounted(() => {
 });
 </script>
 
-<style>
-
-</style>
+<style></style>
