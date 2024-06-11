@@ -14,21 +14,23 @@
             class="load-in-animation max-h-screen w-full rounded-lg"
             v-else-if="slots.length > 0 && !showLoading"
           >
-          <div class="flex flex-wrap justify-center items-center space-x-4">
-
+            <div class="flex flex-wrap justify-center items-center space-x-4">
               <div
                 class="flex-1 max-h-screen w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5"
                 v-for="day in [1, 2, 3, 4, 5]"
               >
                 <p class="my-5 text-xl font-bold">{{ getDay(day) }}</p>
-                <div class="space-y-2" v-if="hasSlotsForDay(day)">
-                  <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
-                    <EditFreeSlotDisplay class="mx-3" :slot="slot" />
+                <div
+                  class="flex-1 min-h-[200px] w-full md:w-[15vw] space-y-2"
+                  :class="{ 'h-full': !hasSlotsForDay(day) }"
+                >
+                  <div v-if="hasSlotsForDay(day)">
+                    <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
+                      <EditFreeSlotDisplay class="mx-3" :slot="slot" />
+                    </div>
                   </div>
-                </div>
-                <div v-else>
-                  <div>
-                    <div class="flex justify-center items-center">
+                  <div v-else>
+                    <div class="flex justify-center items-center h-full">
                       <p class="text-xl font-semibold text-gray-800">
                         No available slots
                       </p>

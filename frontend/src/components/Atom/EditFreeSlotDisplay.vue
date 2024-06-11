@@ -12,7 +12,7 @@
         Date: {{ slot.date }}
       </h3>
       <div
-        class="flex lg:space-x-10 lg:flex-row md:flex-col sm:flex-col justify-center items-center"
+        class="flex flex-col space-y-2 justify-center items-center"
       >
         <div class="flex flex-row items-center ">
           <svg

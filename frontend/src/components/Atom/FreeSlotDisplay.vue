@@ -1,11 +1,11 @@
 <template>
-  <div class="flex justify-center items-center">
+  <div :id="slot.id" class="flex justify-center items-center">
     <div class="flex flex-col bg-white shadow-md rounded-md p-4 w-full border">
       <h3 class="text-lg font-bold mb-2 text-gray-800 text-center">
         Date: {{ slot.date }}
       </h3>
       <div
-        class="flex lg:space-x-10 lg:flex-row md:flex-col sm:flex-col justify-center items-center"
+        class="flex flex-col space-y-2 justify-center items-center"
       >
         <div class="flex flex-row items-center ">
           <svg
@@ -40,7 +40,7 @@
           <span class="ml-0.5 font-bold text-red-500">{{ slot.end_time }}</span>
         </div>
       </div>
-      <div class="flex justify-center">
+      <div class="flex justify-center space-x-5">
         
 		<PillButton @click.prevent="console.log('Booking Slot '+ slot.id + ' Clicked !')" class="mt-3" text="Book Slot" v-if="store.state.role === 'student'"/>
 	  </div>
