@@ -2,37 +2,47 @@
   <navbar class="nav-wrapper margin-0">
     <div
       class="navbar-container bg-gray-800 h-28 flex items-center justify-between px-4 sm:px-6 lg:px-8"
-      style="filter: drop-shadow(0px 3px 3px black);"
+      style="filter: drop-shadow(0px 3px 3px black)"
     >
       <div class="ml-10 left-navbar flex flex-row">
-        <a
-          href="#"
-          class="text-white text-lg font-bold flex flex-row justify-center items-center"
-        >
-          <img class="h-12" src="../../assets/logo.png" alt="" />
-          3LINGGUN
-        </a>
-
-        <ul class="flex flex-row justify-center items-center ml-10 pr-5 gap-5">
-          <li
-            v-for="(item, index) in navigation"
-            :key="index"
-            @click="activeClass(index)"
+        <div class="">
+          <!-- add some margin to the right of the logo -->
+          <a
+            href="/dashboard"
+            class="text-white text-lg font-bold flex flex-row justify-center items-center"
           >
-            <a
-              :href="item.href"
-              :class="[
-                item.current
-                  ? 'text-white font-bold'
-                  : 'text-gray-300 hover:text-white',
-                'ml-4 text-lg',
-              ]"
-              >{{ item.name }}</a
+            <img class="h-12" src="../../assets/logo.png" alt="" />
+            3LINGGUN
+          </a>
+        </div>
+
+        <ul class="flex space-x-8 text-white ml-12">
+          <li
+            v-for="(link, index) in navigation"
+            :key="index"
+            class="relative group flex items-center font-semibold"
+          >
+            <router-link :to="link.path" class="hover:text-gray-400">{{
+              link.name
+            }}</router-link>
+            <ul
+              v-if="link.dropdown"
+              class="font-normal p-2 fade-down-animation absolute left-0 top-full bg-gray-700 text-white rounded shadow-lg hidden group-hover:flex flex-col w-[12vw]"
             >
+              <li v-for="(sublink, subIndex) in link.dropdown" :key="subIndex">
+                <router-link
+                  v-if="sublink.role === store.state.role"
+                  :to="sublink.path"
+                  class="block px-4 py-2 rounded-r-lg transition-all duration-300 ease-in-out"
+                  >{{ sublink.name }}</router-link
+                >
+              </li>
+            </ul>
           </li>
         </ul>
-        <SearchBar class="z-50" v-if="store.state.token"/>
+        <SearchBar class="ml-5 z-50 w-[25vw]" v-if="store.state.token" />
       </div>
+
       <!-- notification & profile drop down menu -->
       <div
         class="mr-5 absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-4"
@@ -132,15 +142,85 @@
     </div>
   </navbar>
 </template>
+
+<style scoped>
+.left-navbar ul li a {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.left-navbar ul li a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.left-navbar ul li a:hover::before {
+  visibility: visible;
+  width: 100%;
+}
+
+.left-navbar ul ul li a {
+  position: relative;
+  padding-left: 5px; /* add some padding to make room for the indent */
+  transition: padding 0.3s ease-in-out, transform 0.3s ease-in-out;
+  padding-bottom: 5px;
+}
+
+.left-navbar ul ul li a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #59ffe1;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.left-navbar ul ul li a:hover {
+  padding-left: 15px; /* add an indent on hover */
+}
+
+.left-navbar ul ul li a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+</style>
+
 <script>
 export default {
   data() {
     return {
       navigation: [
-        { name: "Dashboard", href: "/dashboard" },
-        { name: "Lecturers", href: "/lecturers" },
-        { name: "Students", href: "/students" },
-        { name: "Scheduling", href: "/scheduling" },
+        { name: "Dashboard", path: "/dashboard" },
+        {
+          name: "Lecturers",
+          path: "/lecturers",
+        },
+        {
+          name: "Students",
+          path: "/students",
+        },
+        {
+          name: "Scheduling",
+          path: "",
+          dropdown: [
+          { role: "lecturer", name: "Freeslot Manager", path: "/freeslot-manager" },
+            {
+              role: "student",
+              name: "Schedule View",
+              path: "/student-scheduling",
+            },
+          ],
+        },
       ],
       showNotifications: false,
       isDropdownOpen: false,

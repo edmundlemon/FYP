@@ -1,10 +1,10 @@
 <template>
   <div
-    class="relative flex flex-row items-center justify-center border border-gray-700 p-2 w-9/12 h-[80vh] m-auto rounded-lg shadow-lg bg-white mt-5"
+    class="relative flex flex-col items-center justify-center border border-gray-700 w-10/12 m-auto rounded-lg shadow-lg bg-white mt-5"
     v-if="lecturer"
   >
     <div
-      class="space-y-3 py-12 border border-gray-500 border-opacity-50 w-5/12 h-full flex flex-col justify-center items-center mr-2 orange-bg rounded-lg shadow-lg"
+      class="space-y-3 py-12 border border-gray-500 border-opacity-50 w-full h-fit flex flex-col justify-center items-center orange-bg rounded-t-lg shadow-lg"
     >
       <img
         :src="lecturer.photo"
@@ -14,7 +14,7 @@
       <div class="flex flex-col items-center justify-center">
         <h1 class="text-4xl font-bold my-1.5">{{ lecturer.name }}</h1>
 
-        <div class="contact-container space-y-3">
+        <div class="flex flex-row contact-container space-x-12">
           <!-- Email -->
           <div class="flex flex-row text-lg my-1.5 items-center">
             <img
@@ -22,7 +22,9 @@
               class="icons w-6 h-6 mr-2"
               src="../../assets/email.png"
               alt=""
-            /><a :href="'mailto:'+ lecturer.email"><span>{{ lecturer.email }}</span></a>
+            /><a :href="'mailto:' + lecturer.email"
+              ><span>{{ lecturer.email }}</span></a
+            >
           </div>
 
           <!-- Office -->
@@ -32,7 +34,8 @@
               class="icons w-6 h-6 mr-2"
               src="../../assets/office.png"
               alt=""
-            /> <span>{{ lecturer.office }}</span>
+            />
+            <span>{{ lecturer.office }}</span>
           </div>
 
           <!-- Faculty -->
@@ -62,11 +65,13 @@
 
     <!-- Lecturer Freeslot view here -->
     <div
-      class="border border-gray-500 border-opacity-50 rounded-lg w-full h-full flex flex-col justify-center items-center"
+      class="border border-gray-500 border-opacity-50 rounded-b-lg h-full w-full flex flex-col justify-center items-center"
     >
       <!-- <p class="font-bold text-center">Insert lecturer schedule here!</p> -->
       <free-slot :lecturer-id="lecturerId"></free-slot>
     </div>
+
+    <!-- Booking form -->
     <div
       v-if="showBookingform"
       class="booking-container fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center"
@@ -91,6 +96,7 @@
       />
     </button>
   </div>
+  <div class="h-5"></div>
 </template>
 
 <script setup>
@@ -98,7 +104,7 @@ import { defineProps, onMounted, ref } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
 import { useRoute } from "vue-router";
 import BookingForm from "../Molecules/BookingForm.vue";
-import FreeSlot from "../Molecules/FreeSlot.vue"
+import FreeSlot from "../Molecules/FreeSlot.vue";
 
 let showBookingform = ref(false);
 const route = useRoute();
@@ -117,8 +123,6 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-
-
 .booking-container {
   backdrop-filter: blur(10px);
   height: 103.2vh;

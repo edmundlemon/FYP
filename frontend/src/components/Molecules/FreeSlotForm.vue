@@ -45,6 +45,8 @@ function addSlot() {
 	axiosInstance.post('/free-slots', booking.value)
 		.then(response => {
 			console.log(response.data);
+			alert('Slot added successfully');
+			window.location.reload();
 		})
 		.catch(error => {
 			errors.value = error.response.data.errors;

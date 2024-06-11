@@ -32,7 +32,7 @@
       >
         <img
           class="animate-bounce mx-auto h-40 w-auto rounded-full border-dashed border-2 p-2 shadow-2xl border-white border-2 bg-gray-800"
-          style="filter: drop-shadow(5px 5px 4px black);"
+          style="filter: drop-shadow(5px 5px 4px black)"
           src="../assets/logo.png"
           alt="Your Company"
         />
@@ -42,7 +42,10 @@
         >
           Our time is our money, grind till it's sunny.
         </h1>
-        <p class="text-white text-justify mt-5 px-5 font-medium text-l" style="filter: drop-shadow(5px 3px 2px black)">
+        <p
+          class="text-white text-justify mt-5 px-5 font-medium text-l"
+          style="filter: drop-shadow(5px 3px 2px black)"
+        >
           The greatest free appointment scheduling tool for college, according
           to instructors and students, is called 3LINGGUN. By simplifying
           scheduling and increasing students' access to services and resources,
@@ -55,11 +58,11 @@
       >
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
-          class="mx-auto h-36 w-auto "
-          style="filter: drop-shadow(5px 5px 4px black)"
-          src="../assets/user-logo.png"
-          alt="Your Company"
-        />
+            class="mx-auto h-36 w-auto"
+            style="filter: drop-shadow(5px 5px 4px black)"
+            src="../assets/user-logo.png"
+            alt="Your Company"
+          />
 
           <h2
             class="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900"
