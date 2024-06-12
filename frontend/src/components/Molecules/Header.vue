@@ -239,12 +239,12 @@ export default {
             {
               role: "all",
               name: "View Reviews",
-              path: "/freeslot-manager",
+              path: "",
             },
             {
               role: "all",
               name: "Give Reviews",
-              path: "/student-scheduling",
+              path: "",
             },
           ],
         },
