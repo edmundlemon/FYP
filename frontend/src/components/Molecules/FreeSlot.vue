@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col h-fit pb-20 items-center">
-    <h3 class="text-2xl font-semibold py-5 pt-10 letter-spaced">
+    <h3 class="text-3xl font-bold py-5 pt-10 letter-spaced">
       {{ text }}
     </h3>
     <div class="h-fit">
@@ -10,13 +10,14 @@
           <div v-if="showLoading" class="w-full">
             <Loading style="padding-right: 1vw; padding-left: 0.4vw" />
           </div>
+
           <div
-            class="load-in-animation max-h-screen w-full rounded-lg "
+            class="load-in-animation max-h-full w-full rounded-lg"
             v-else-if="slots.length > 0 && !showLoading"
           >
-          <div class="flex flex-wrap justify-center items-center space-x-4">
+            <div class="flex flex-wrap justify-center space-x-4">
               <div
-                class="flex-1 max-h-screen w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5"
+                class="flex-1 max-h-full w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5"
                 v-for="day in [1, 2, 3, 4, 5]"
               >
                 <p class="my-5 text-xl font-bold">{{ getDay(day) }}</p>
@@ -24,7 +25,7 @@
                   class="flex-1 min-h-[200px] w-full md:w-[15vw] space-y-2"
                   :class="{ 'h-full': !hasSlotsForDay(day) }"
                 >
-                  <div v-if="hasSlotsForDay(day)">
+                  <div class="space-y-3" v-if="hasSlotsForDay(day)">
                     <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
                       <FreeSlotDisplay class="mx-3" :slot="slot" />
                     </div>
@@ -71,6 +72,7 @@ const props = defineProps({
     default: "Available slots",
   },
 });
+
 // loading state
 const showLoading = ref(true);
 onMounted(async () => {
@@ -81,6 +83,7 @@ onMounted(async () => {
       showLoading.value = false;
       days.value = slots.value.map((slot) => new Date(slot.date).getDay());
       console.log(days.value);
+      console.log(slotsl.ength)
     })
     .catch((error) => {
       console.log(error);
@@ -151,8 +154,18 @@ function getDay(day) {
 }
 </script>
 
+<script>
+export default {
+  medhods: {
+    $emit: () => {
+      this.$emit("slots", slots.length);
+    },
+  },
+};
+</script>
+
 <style scoped>
 .letter-spaced {
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 </style>

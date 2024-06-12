@@ -83,11 +83,13 @@
         @closeBookingForm="showBookingform = false"
       />
     </div>
+    
     <button
       class="z-[0] right-[2vh] bottom-[2vh] border border-black border-opacity-20 transition duration-300 ease-in-out absolute rounded-full bg-green-300 hover:bg-green-400 active:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-opacity-50 z-50 w-12 h-12 gelatine"
       type="button"
       @click="showBookingform = !showBookingform"
       title="Custom Booking"
+      v-if="store.state.role === 'student'"
     >
       <img
         class="w-6 h-6 mx-auto shadow-md"
@@ -105,6 +107,7 @@ import axiosInstance from "../../axiosConfig/customAxios";
 import { useRoute } from "vue-router";
 import BookingForm from "../Molecules/BookingForm.vue";
 import FreeSlot from "../Molecules/FreeSlot.vue";
+import store from "../../store";
 
 let showBookingform = ref(false);
 const route = useRoute();

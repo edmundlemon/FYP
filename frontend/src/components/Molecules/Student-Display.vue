@@ -37,7 +37,7 @@
         <!-- student name block -->
         <a :href="'/student/' + student.id">
           <h1
-            class="bg-gray-300 rounded-full py-2 px-5 text-2xl font-bold my-1.5 border border-black"
+            class="bg-gray-300 rounded-full py-2 px-5 text-2xl font-bold my-1.5 border text-center border-black"
           >
             {{ student.name }}
           </h1>
