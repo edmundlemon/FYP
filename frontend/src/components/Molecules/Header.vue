@@ -27,11 +27,17 @@
             }}</router-link>
             <ul
               v-if="link.dropdown"
-              class="font-normal p-2 fade-down-animation absolute left-0 top-full bg-gray-700 text-white rounded shadow-lg hidden group-hover:flex flex-col w-[12vw]"
+              class="font-normal p-2 fade-down-animation absolute left-0 top-full bg-gray-700 text-white rounded shadow-lg hidden group-hover:flex flex-col whitespace-nowrap"
             >
-              <li v-for="(sublink, subIndex) in link.dropdown" :key="subIndex">
+              <li class="relative" v-for="(sublink, subIndex) in link.dropdown" :key="subIndex">
                 <router-link
                   v-if="sublink.role === store.state.role"
+                  :to="sublink.path"
+                  class="block px-4 py-2 rounded-r-lg transition-all duration-300 ease-in-out"
+                  >{{ sublink.name }}</router-link
+                >
+                <router-link
+                  v-else-if="sublink.role === 'all'"
                   :to="sublink.path"
                   class="block px-4 py-2 rounded-r-lg transition-all duration-300 ease-in-out"
                   >{{ sublink.name }}</router-link
@@ -211,12 +217,33 @@ export default {
         },
         {
           name: "Scheduling",
-          path: "",
+          path: "/scheduling",
           dropdown: [
-          { role: "lecturer", name: "Freeslot Manager", path: "/freeslot-manager" },
+            {
+              role: "lecturer",
+              name: "Freeslot Manager",
+              path: "/freeslot-manager",
+            },
             {
               role: "student",
-              name: "Schedule View",
+              name: "Reschedule Consultation",
+              path: "/student-scheduling",
+            },
+          ],
+        },
+        {
+
+          name: "Reviews",
+          path: "",
+          dropdown: [
+            {
+              role: "all",
+              name: "View Reviews",
+              path: "/freeslot-manager",
+            },
+            {
+              role: "all",
+              name: "Give Reviews",
               path: "/student-scheduling",
             },
           ],
