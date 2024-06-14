@@ -29,7 +29,11 @@
               v-if="link.dropdown"
               class="font-normal p-2 fade-down-animation absolute left-0 top-full bg-gray-700 text-white rounded shadow-lg hidden group-hover:flex flex-col whitespace-nowrap"
             >
-              <li class="relative" v-for="(sublink, subIndex) in link.dropdown" :key="subIndex">
+              <li
+                class="relative"
+                v-for="(sublink, subIndex) in link.dropdown"
+                :key="subIndex"
+              >
                 <router-link
                   v-if="sublink.role === store.state.role"
                   :to="sublink.path"
@@ -221,7 +225,7 @@ export default {
           dropdown: [
             {
               role: "lecturer",
-              name: "Freeslot Manager",
+              name: "Manage Free Slots",
               path: "/freeslot-manager",
             },
             {
@@ -229,10 +233,14 @@ export default {
               name: "Reschedule Consultation",
               path: "/student-scheduling",
             },
+            {
+              role: "lecturer",
+              name: "Manage Consultations",
+              path: "/consultation-manager",
+            },
           ],
         },
         {
-
           name: "Reviews",
           path: "",
           dropdown: [

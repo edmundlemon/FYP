@@ -57,14 +57,21 @@ class Free_SlotController extends Controller
 
     public function update(Request $request, Free_slot $free_slot)
     {
-        if(auth()->id() !== $free_slot->lecturer_id){
+        $lecturer = auth('sanctum')->user();
+        if($lecturer->id !== $free_slot->lecturer_id){
             abort(403, 'Unauthorized Action!');
         }
+
         $formFields = $request->validate([
             'date' => 'required|date_format:Y-m-d|after:tomorrow',
-            'start_time' => 'required|time_format:H:i',
-            'end_time' => 'required|time_format:H:i|after:start_time',
+            'start_time' =>['required', 'date_format:H:i', new FreeSlotCollision($request->start_time, $request->end_time, $request->date, $lecturer->id)],
+            'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
+        // $formFields = $request->validate([
+        //     'date' => 'required|date_format:Y-m-d|after:tomorrow',
+        //     'start_time' => 'required|time_format:H:i',
+        //     'end_time' => 'required|time_format:H:i|after:start_time',
+        // ]);
 
         $free_slot->update($formFields);
         return response()->json(

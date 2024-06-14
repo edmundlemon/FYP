@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="flex justify-center space-x-5">
-        
+        <!-- Booking Slot Button -->
 		<PillButton @click.prevent="console.log('Booking Slot '+ slot.id + ' Clicked !')" class="mt-3" text="Book Slot" v-if="store.state.role === 'student'"/>
 	  </div>
     </div>

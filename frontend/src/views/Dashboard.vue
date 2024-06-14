@@ -55,12 +55,12 @@
             v-if="edit"
             class="booking-container fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center"
           >
-            <reschedule-form
+            <ReschedueForm
               class="border border-gray-600 rounded-xl border-2 fadein-animation"
               style="filter: drop-shadow(0px 4px 10px black)"
               :slot="rescheduleSlot"
               @closeRescheduleForm="edit = false"
-              />
+              /> 
         </div>
       </div>
     </div>
@@ -80,12 +80,12 @@ import ReschedueForm from "../components/Molecules/RescheduleForm.vue";
 
 const user = store.state.user.data;
 const token = store.state.user.token;
-let edit = false;
+let edit = ref(false);
 const rescheduleSlot = ref({});
 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
 function handleEditSlot(slot) {
-  edit = edit;
+  edit = !edit;
   rescheduleSlot.value = slot;
   console.log(slot);
 }
