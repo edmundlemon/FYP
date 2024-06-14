@@ -103,8 +103,8 @@ function updateslot(slotid) {
   axiosInstance
     .put(`/free-slots/edit/${slotid}`, receivedslot.value)
     .then((response) => {
-      console.log(response.data);
       alert("Slot updated successfully");
+      window.location.reload();
     })
     .catch((error) => {
       console.error("Failed to update slot:", error.response.data);

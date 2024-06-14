@@ -55,7 +55,7 @@
             v-if="edit"
             class="booking-container fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center"
           >
-            <ReschedueForm
+            <RescheduleForm
               class="border border-gray-600 rounded-xl border-2 fadein-animation"
               style="filter: drop-shadow(0px 4px 10px black)"
               :slot="rescheduleSlot"
