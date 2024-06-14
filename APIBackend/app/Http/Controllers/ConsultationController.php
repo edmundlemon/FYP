@@ -151,12 +151,14 @@ class ConsultationController extends Controller
 
     public function studentUpdates(Request $request, Consultation_slot $consultation_slot)
     {
+        Log::channel('api_post_log')->error('Request', ['request' => $request->lecturer_id]);
         $formFields = $request->validate([
             'date' => 'required|date_format:Y-m-d|after:tomorrow',
-            'start_time' => 'required|time_format:H:i',
-            'end_time' => 'required|time_format:H:i|after:start_time',
+            // 'start_time' => 'required|date_format:H:i',
+            'start_time' =>['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $consultation_slot->lecturer_id)],
+            'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
-
+        Log::channel('api_post_log')->error('Slot', ['request' => $request->all()]);
         if(auth()->guard('sanctum')->id() !== $consultation_slot->student_id){
             abort(403, 'Unauthorized Action!');
         }
@@ -164,14 +166,20 @@ class ConsultationController extends Controller
         $formFields['status'] = 'Student Rescheduled';
         AutomatedReschedule::dispatch($consultation_slot->student->name, $consultation_slot, $formFields)->onConnection('sync');
         $consultation_slot->update($formFields);
-        return redirect()->route('dashboard');
+        return response()->json(
+            [
+                'message' => 'Slot Rescheduled',
+                'code' => 200
+            ]
+        );
     }
 
     public function lecturerUpdates(Request $request, Consultation_slot $consultation_slot)
     {
         $formFields = $request->validate([
             'date' => 'required|date_format:Y-m-d|after:tomorrow',
-            'start_time' => 'required|date_format:H:i',
+            // 'start_time' => 'required|date_format:H:i',
+            'start_time' =>['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $consultation_slot->lecturer_id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
         if(auth()->guard('sanctum')->id() !== $consultation_slot->lecturer_id){

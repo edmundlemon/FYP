@@ -76,18 +76,19 @@ import UpcomingSlot from "../components/Molecules/UpcomingSlot.vue";
 import ApprovedSlot from "../components/Molecules/ApprovedSlot.vue";
 import PendingSlot from "../components/Molecules/PendingSlot.vue";
 import PastSlot from "../components/Molecules/PastSlot.vue";
-import ReschedueForm from "../components/Molecules/RescheduleForm.vue";
+import RescheduleForm from "../components/Molecules/RescheduleForm.vue";
 
 const user = store.state.user.data;
 const token = store.state.user.token;
-let edit = ref(false);
+const edit = ref(false);
 const rescheduleSlot = ref({});
 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
 function handleEditSlot(slot) {
-  edit = !edit;
+  edit.value = true;
   rescheduleSlot.value = slot;
-  console.log(slot);
+  // console.log(slot);
+  // console.log(rescheduleSlot.value);
 }
 onMounted(() => {});
 </script>
