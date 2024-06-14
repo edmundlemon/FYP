@@ -96,8 +96,8 @@ function bookTime() {
 		.put(uri, booking.value.slot)
 		.then((response) => {
 			console.log(response);
-			alert("Booking successful!");
-			emit('closeRescheduleForm');
+			confirm("Reschedule Successful");
+			window.location.reload();
 		})
 		.catch((error) => {
 			console.log(error.response.data.errors);
