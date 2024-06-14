@@ -83,7 +83,7 @@ onMounted(async () => {
       showLoading.value = false;
       days.value = slots.value.map((slot) => new Date(slot.date).getDay());
       console.log(days.value);
-      console.log(slotsl.ength)
+      console.log(slots.length)
     })
     .catch((error) => {
       console.log(error);

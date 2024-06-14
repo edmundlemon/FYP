@@ -41,6 +41,7 @@
             />
             <approved-slot
               class="bg-white shadow-md rounded flex-1 w-1/3 pb-5"
+              @editSlot="handleEditSlot"
             />
             <pending-slot class="bg-white shadow-md rounded flex-1 w-1/3 pb-5" />
           </div>
@@ -49,6 +50,17 @@
           <div class="past-container w-full mt-3 shadow-md mb-3 ">
             <past-slot class="bg-white pb-5 p-6 shadow rounded flex-1 h-fit" />
           </div>
+        </div>
+        <div
+            v-if="edit"
+            class="booking-container fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center"
+          >
+            <reschedule-form
+              class="border border-gray-600 rounded-xl border-2 fadein-animation"
+              style="filter: drop-shadow(0px 4px 10px black)"
+              :slot="rescheduleSlot"
+              @closeRescheduleForm="edit = false"
+              />
         </div>
       </div>
     </div>
@@ -64,11 +76,19 @@ import UpcomingSlot from "../components/Molecules/UpcomingSlot.vue";
 import ApprovedSlot from "../components/Molecules/ApprovedSlot.vue";
 import PendingSlot from "../components/Molecules/PendingSlot.vue";
 import PastSlot from "../components/Molecules/PastSlot.vue";
+import ReschedueForm from "../components/Molecules/RescheduleForm.vue";
 
 const user = store.state.user.data;
 const token = store.state.user.token;
+let edit = false;
+const rescheduleSlot = ref({});
 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
+function handleEditSlot(slot) {
+  edit = edit;
+  rescheduleSlot.value = slot;
+  console.log(slot);
+}
 onMounted(() => {});
 </script>
 

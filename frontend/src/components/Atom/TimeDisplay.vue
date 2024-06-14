@@ -15,22 +15,39 @@
       <h3 class="flex justify-end mt-7" v-else-if="role === 'student'">
         Consultation by <a :href="'/lecturer/'+ slot.lecturer.id"><span class="ml-1 font-bold hover:opacity-70 transition-text duration-300">{{ slot.lecturer.name }}</span></a>
       </h3>
+      <pill-button
+          @click.prevent="emitEvent"
+          class="mt-3 w-[8vw]"
+          text="Edit Slot"
+          v-if="slotType === 'approved'"
+        />
     </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps, onMounted } from "vue";
+import { defineProps, onMounted, defineEmits } from "vue";
 import store from "../../store";
+import PillButton from "./Pill-button.vue";
 
 const role = store.state.role;
+const emit = defineEmits(['edit-slot']);
 
 const props = defineProps({
   slot: {
     type: Object,
     required: true,
   },
+  slotType:{
+    type: String,
+    required: false,
+  }
 });
+
+const emitEvent = () => {
+  const data = {slot: props.slot};
+  emit('edit-slot', data)
+}
 
 onMounted(() => {
   console.log("Role => ", role);
