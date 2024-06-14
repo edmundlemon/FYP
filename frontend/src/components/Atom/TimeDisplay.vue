@@ -18,7 +18,7 @@
       <pill-button
           @click.prevent="emitEvent"
           class="mt-3 w-[8vw]"
-          text="Edit Slot"
+          text="Reschedule"
           v-if="slotType === 'approved'"
         />
     </div>
