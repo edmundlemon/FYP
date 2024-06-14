@@ -1,26 +1,24 @@
 <template>
   <div class="flex flex-col items-center bg-gray-900" style="width: 30vw">
     <form
-      @submit.prevent="updateslot(receivedslot.id)"
+      @submit.prevent="CustomBooking"
       class="p-6 w-full load-in-animation"
-      name="_METHOD"
-      value="PUT"
     >
-      <!-- <div class="space-y-5">
+      <div class="space-y-5">
         <div class="mb-4">
           <label for="date" class="font-bold block text-white mb-2">Date</label>
           <input
             type="date"
             id="date"
             class="p-2 bg-gray-700 text-white rounded w-full transition duration-300 ease-in-out w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-white"
-            v-model="receivedslot.date"
+            v-model="booking.date"
             required
           />
           <div v-if="errors.date" class="text-red-500 text-xs mt-1">
             {{ errors.date[0] }}
           </div>
         </div>
-      </div> -->
+      </div>
 
       <!-- START AND END TIME -->
       <div class="flex flex-row space-x-3 w-full">
@@ -32,7 +30,7 @@
             type="time"
             id="start_time"
             class="p-2 bg-gray-700 text-white rounded w-full transition duration-300 ease-in-out w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-white"
-            v-model="receivedslot.start_time"
+            v-model="booking.start_time"
             min="09:00"
             max="16:00"
             required
@@ -49,7 +47,7 @@
             type="time"
             id="end_time"
             class="p-2 bg-gray-700 text-white rounded w-full transition duration-300 ease-in-out w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-white"
-            v-model="receivedslot.end_time"
+            v-model="booking.end_time"
             min="09:00"
             max="17:00"
             required
@@ -60,20 +58,30 @@
         </div>
       </div>
 
-      <div class="flex flex-row space-x-3 mt-5">
+      <!-- Topic Container -->
+      <div class="mb-4 w-full">
+        <label for="topic" class="font-bold block text-white mb-2">Topic</label>
+        <textarea
+          id="topic"
+          v-model="booking.topic"
+          rows="7"
+          class="p-2 bg-gray-700 text-white rounded w-full transition duration-300 ease-in-out w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-white"
+        ></textarea>
+      </div>
+      <div class="flex flex-row space-x-3">
         <button
           type="button"
-          @click="$emit('closeSlotEditingForm')"
+          @click="$emit('closeBookingForm')"
           class="glow-effect font-bold transition-all duration-300 bg-white text-darkgray rounded py-2 px-4 hover:bg-gray-500 hover:text-white w-1/2"
         >
           Cancel
         </button>
         <button
           type="submit"
-          class="glow-effect font-bold transition-all duration-300 bg-[#FFF] text-darkgray rounded py-2 px-4 hover:bg-gray-900 hover:text-white hover:ring-1 hover:ring-white hover:ring-opacity-50 w-1/2"
+          class="glow-effect font-bold transition-all duration-300 bg-[#FFF] text-darkgray rounded py-2 px-4 hover:bg-gray-900 hover:text-white w-1/2"
           style="font-weight: bold"
         >
-          Edit Slot
+          Book
         </button>
       </div>
     </form>
@@ -82,50 +90,43 @@
 
 <script setup>
 import { ref, defineProps, onMounted } from "vue";
+import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
 
-let receivedslot = ref({});
-onMounted(() => {
-  props.slot.start_time = convertTimeFormat(props.slot.start_time);
-  props.slot.end_time = convertTimeFormat(props.slot.end_time);
-  receivedslot.value = props.slot;
-  console.log(receivedslot.value);
-
-});
-
-function convertTimeFormat(time) {
-  // Check if the input is in the correct format
-  const timeFormatWithSeconds = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/;
-
-  if (timeFormatWithSeconds.test(time)) {
-    // Return the first 5 characters (HH:mm)
-    return time.slice(0, 5);
-  } else {
-    throw new Error(
-      "Invalid time format. Please provide time in HH:mm:ss format."
-    );
-  }
-}
-
 const props = defineProps({
-  slot: {
-    type: Object,
+  lecturerId: {
+    type: String,
+    required: true,
+  },
+  showBookingform: {
+    type: Boolean,
     required: true,
   },
 });
 
+const emit = defineEmits(['booking-success']);
 const errors = ref({});
+const booking = ref({
+  date: "",
+  start_time: "",
+  end_time: "",
+  lecturer_id: "",
+  student_id: "",
+  topic: "",
+});
 
-function updateslot(slotid) {
-  
+function CustomBooking() {
+  errors.value = {};
   axiosInstance
-    .put(`/free-slots/edit/${slotid}`, receivedslot.value)
+    .post(`/book/${props.lecturerId}`, booking.value)
     .then((response) => {
-      alert("Slot updated successfully");
-      window.location.reload();
+      console.log(response);
+      alert("Booking successful!");
+      emit('closeBookingForm');
     })
     .catch((error) => {
-      console.error("Failed to update slot:", error.response.data);
+      console.log(error.response.data.errors);
+      errors.value = error.response.data.errors;
     });
 }
 </script>

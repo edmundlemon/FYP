@@ -105,7 +105,7 @@
 import { defineProps, onMounted, ref } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
 import { useRoute } from "vue-router";
-import BookingForm from "../Molecules/BookingForm.vue";
+import BookingForm from "../Molecules/CustomBookingForm.vue";
 import FreeSlot from "../Molecules/LecturerFreeSlot.vue";
 import store from "../../store";
 

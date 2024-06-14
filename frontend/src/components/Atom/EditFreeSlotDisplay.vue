@@ -45,7 +45,6 @@
           <span class="ml-0.5 font-bold text-red-500">{{ slot.end_time }}</span>
         </div>
       </div>
-      {{ sentslot }}
       <div class="flex justify-center space-x-5">
         <!-- Edit Free Slot Button -->
         <PillButton

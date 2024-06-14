@@ -121,7 +121,8 @@ class DatabaseSeeder extends Seeder
             'date' => Carbon::today()->addDays(2),
             'start_time' => Carbon::now()->addMinutes(30)->format('H:i'),
             'end_time' => Carbon::now()->addMinutes(90)->format('H:i'),
-            'status' => 'Approved'
+            'status' => 'Approved',
+            'topic' => 'Maths'
         ]);
         Consultation_slot::create([
             // 'id' => 2,

@@ -36,9 +36,9 @@
 			</div>
 
 			<!-- Topic Container -->
-			<div class="mb-4 w-full">
+			<div class="mb-4 w-full" v-if="store.state.role === 'student'">
 				<label for="topic" class="font-bold block text-white mb-2">Topic</label>
-				<textarea id="topic" v-model="booking.topic" rows="7"
+				<textarea id="topic" v-model="booking.slot.topic" rows="7"
 					class="p-2 bg-gray-700 text-white rounded w-full transition duration-300 ease-in-out w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-white"></textarea>
 			</div>
 			<div class="flex flex-row space-x-3">
