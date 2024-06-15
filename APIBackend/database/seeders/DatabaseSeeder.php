@@ -128,16 +128,16 @@ class DatabaseSeeder extends Seeder
             // 'id' => 2,
             'lecturer_id' => 'MU1234',
             'student_id' =>"1122",
-            'date' => Carbon::today(),
-            'start_time' => Carbon::now()->addMinutes(25)->format('H:i'),
-            'end_time' => Carbon::now()->addMinutes(75)->format('H:i'),
+            'date' => Carbon::today()->addDays(-5),
+            'start_time' => Carbon::now()->addMinutes(-25)->format('H:i'),
+            'end_time' => Carbon::now()->addMinutes(-75)->format('H:i'),
             'status' => 'Pending'
         ]);
         Consultation_slot::create([
             // 'id' => 2,
             'lecturer_id' => 'MU1234',
             'student_id' =>"1122",
-            'date' => Carbon::today()->addDay(),
+            'date' => Carbon::today()->addDays(4),
             'start_time' => Carbon::now()->addMinutes(25)->format('H:i'),
             'end_time' => Carbon::now()->addMinutes(75)->format('H:i'),
             'status' => 'Pending'
