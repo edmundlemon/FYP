@@ -28,13 +28,18 @@ class ConsultationController extends Controller
         return response()->json(['message' => 'Expiration job dispatched to queue']);
     }
 
-    
+
     public function studentIndex()
     {
         $user = Student::find(auth()->guard('sanctum')->user()->id);
         Log::channel('api_post_log')->error('User', ['user' => $user]);
-        $consultation_slots = $user->consultation_slots()->where('date', '>=', today())->with('lecturer')->orderBy('date')->orderBy('start_time')->get();
-
+        $consultation_slots = $user->consultation_slots()
+            ->with('lecturer')
+            ->where('date', '>=', today())
+            ->whereIn('status', ['Approved', 'Student Reschedule Approved', 'Lecturer Reschedule Approved'])
+            ->orderBy('date')
+            ->orderBy('start_time')
+            ->get();
 
         return response()->json(
             [
@@ -47,7 +52,7 @@ class ConsultationController extends Controller
     public function studentApproved()
     {
         $user = Student::find(auth()->guard('sanctum')->user()->id);
-        $consultation_slots = $user->consultation_slots()->with('lecturer')->where('status', 'Approved')->where('date', '>=', today())->orderBy('date')->orderBy('start_time')->get();
+        $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Approved', 'Student Reschedule Approved', 'Lecturer Reschedule Approved'])->where('date', '>=', today())->orderBy('date')->orderBy('start_time')->get();
         return response()->json(
             [
                 'consultation_slots' => $consultation_slots,
@@ -59,7 +64,7 @@ class ConsultationController extends Controller
     public function lecturerApproved()
     {
         $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
-        $consultation_slots = $user->consultation_slots()->with('student')->where('status', 'Approved')->orderBy('date')->orderBy('start_time')->get();
+        $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Approved', 'Student Reschedule Approved', 'Lecturer Reschedule Approved'])->orderBy('date')->orderBy('start_time')->get();
         return response()->json(
             [
                 'consultation_slots' => $consultation_slots,
@@ -72,16 +77,10 @@ class ConsultationController extends Controller
     {
         if (auth()->guard('sanctum')->user()->hasRole('student')) {
             $user = Student::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()
-                ->with('lecturer')
-                ->orwhere('date', '<', today())
-                ->orwhereIn('status', ['Approved', 'Lecturer Reschedule Approved', 'Rejected'])
-                ->orderBy('date')
-                ->orderBy('start_time')
-                ->get();
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->where('date', '<', today())->orderBy('date')->orderBy('start_time')->get();
         } else {
             $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()->with('student')->where('date', '<', today())->whereOr('status', ['Approved', 'Student Reschedule Approved', 'Rejected'])->orderBy('date')->orderBy('start_time')->get();
+            $consultation_slots = $user->consultation_slots()->with('student')->where('date', '<', today())->orderBy('date')->orderBy('start_time')->get();
         }
 
         return response()->json(
@@ -96,10 +95,10 @@ class ConsultationController extends Controller
     {
         if (auth()->guard('sanctum')->user()->hasRole('student')) {
             $user = Student::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Pending', 'Lecturer Rescheduled'])->orderBy('date')->orderBy('start_time')->get();
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->where('status', ['Pending', 'Student Rescheduled', 'Lecturer Rescheduled'])->orderBy('date')->orderBy('start_time')->get();
         } else {
             $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Pending', 'Student Rescheduled'])->orderBy('date')->orderBy('start_time')->get();
+            $consultation_slots = $user->consultation_slots()->with('student')->where('status', ['Pending', 'Student Rescheduled', 'Lecturer Rescheduled'])->orderBy('date')->orderBy('start_time')->get();
         }
         return response()->json(
             [
@@ -130,8 +129,13 @@ class ConsultationController extends Controller
     public function lecturerIndex()
     {
         $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
-        $consultation_slots = $user->consultation_slots()->with('student')->orderBy('date')->orderBy('start_time')->get();
-
+        $consultation_slots = $user->consultation_slots()
+            ->with('student')
+            ->where('date', '>=', today())
+            ->whereIn('status', ['Approved', 'Student Reschedule Approved', 'Lecturer Reschedule Approved'])
+            ->orderBy('date')
+            ->orderBy('start_time')
+            ->get();
         return response()->json(
             [
                 'consultation_slots' => $consultation_slots,
@@ -231,6 +235,7 @@ class ConsultationController extends Controller
                 abort(403, 'Unauthorized Action!');
             }
         }
+        echo $consultation_slot;
         $collision = $consultation_slot->collision($consultation_slot);
 
         // dd($collision);
@@ -246,6 +251,7 @@ class ConsultationController extends Controller
         } else {
             $consultation_slot->status = 'Approved';
         }
+
         AutomatedApproved::dispatch($consultation_slot)->onConnection('sync');
         $consultation_slot->save();
         return response()->json(

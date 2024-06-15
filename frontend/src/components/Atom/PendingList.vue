@@ -201,6 +201,7 @@ function approveSlot(slotId) {
         .put(`/student/approve/${slotId}`)
         .then((response) => {
           console.log(response.data);
+          window.location.reload();
         })
         .catch((error) => {
           console.log(error);
@@ -210,12 +211,13 @@ function approveSlot(slotId) {
         .put(`/lecturer/approve/${slotId}`)
         .then((response) => {
           console.log(response.data);
+          window.location.reload();
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    window.location.reload();
+    // window.location.reload();
   }
 }
 
@@ -333,5 +335,7 @@ function MultiCondition(status) {
   } else {
     return status !== "Lecturer Rescheduled";
   }
+
+  // return true; testing
 }
 </script>
