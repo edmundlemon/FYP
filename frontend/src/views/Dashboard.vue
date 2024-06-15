@@ -87,8 +87,6 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 function handleEditSlot(slot) {
   edit.value = true;
   rescheduleSlot.value = slot;
-  // console.log(slot);
-  // console.log(rescheduleSlot.value);
 }
 onMounted(() => {});
 </script>
