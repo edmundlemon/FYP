@@ -49,6 +49,7 @@
       </div>
     </div>
   </div>
+  {{ slots }}
 </template>
 
 <script setup>

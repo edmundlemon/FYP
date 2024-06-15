@@ -8,17 +8,10 @@
           <div v-if="showLoading" class="h-full w-full">
             <Loading style="padding-right: 1vw; padding-left: 0.4vw" />
           </div>
-          <div
-            class="overflow-y-auto load-in-animation"
-            v-else-if="slots.length > 0 && !showLoading"
-            style="height: 60vh"
-          >
-            <TimeDisplay
-              class="mr-3"
-              v-for="slot in slots"
-              :key="slot.id"
-              :slot="slot"
-            />
+          <div class="overflow-y-auto load-in-animation" v-else-if="slots.length > 0 && !showLoading"
+            style="height: 60vh">
+            <TimeDisplay class="mr-3" v-for="slot in slots" :key="slot.id" :slot="slot" :slot-type="'approved'"
+              @editSlot="editSlot" />
           </div>
           <div v-else class="w-full h-full flex justify-center items-center">
             <h2 class="text-xl font-bold text-gray-800 animate-bounce">
@@ -33,7 +26,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, defineEmits } from "vue";
 // import axiosInstance from '../axiosConfig/customAxios'
 import TimeDisplay from "../Atom/TimeDisplay.vue";
 import store from "../../store";
@@ -43,6 +36,11 @@ import Loading from "../Atom/SkeletonLoading.vue";
 const slots = ref([]);
 // loading state
 const showLoading = ref(true);
+
+const emit = defineEmits(["edit-slot"]);
+const editSlot = (slot) => {
+  emit("edit-slot", slot);
+};
 
 onMounted(async () => {
   if (store.state.role === "student") {

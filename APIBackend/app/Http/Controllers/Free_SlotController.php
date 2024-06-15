@@ -37,10 +37,10 @@ class Free_SlotController extends Controller
     public function store(Request $request)
     {
         $lecturer = auth('sanctum')->user();
-        Log::channel('api_post_log')->error('Lecturer: ', ['lecturer'=> $lecturer]);
+        Log::channel('api_post_log')->error('Lecturer: ', ['lecturer' => $lecturer]);
         $formFields = $request->validate([
             'date' => 'required|date_format:Y-m-d|after:tomorrow',
-            'start_time' =>['required', 'date_format:H:i', new FreeSlotCollision($request->start_time, $request->end_time, $request->date, $lecturer->id)],
+            'start_time' => ['required', 'date_format:H:i', new FreeSlotCollision($request->start_time, $request->end_time, $request->date, $lecturer->id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
         $formFields['lecturer_id'] = $lecturer->id;
@@ -57,14 +57,21 @@ class Free_SlotController extends Controller
 
     public function update(Request $request, Free_slot $free_slot)
     {
-        if(auth()->id() !== $free_slot->lecturer_id){
+        if (auth()->guard('sanctum')->id() !== $free_slot->lecturer_id) {
             abort(403, 'Unauthorized Action!');
         }
+
         $formFields = $request->validate([
             'date' => 'required|date_format:Y-m-d|after:tomorrow',
-            'start_time' => 'required|time_format:H:i',
-            'end_time' => 'required|time_format:H:i|after:start_time',
+            'start_time' => ['required', 'date_format:H:i', new FreeSlotCollision($request->start_time, $request->end_time, $request->date, $free_slot->id)],
+            'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
+
+        // $formFields = $request->validate([
+        //     'date' => 'required|date_format:Y-m-d|after:tomorrow',
+        //     'start_time' => 'required|time_format:H:i',
+        //     'end_time' => 'required|time_format:H:i|after:start_time',
+        // ]);
 
         $free_slot->update($formFields);
         return response()->json(
@@ -79,7 +86,7 @@ class Free_SlotController extends Controller
     public function destroy(Free_slot $free_slot)
     {
         $lecturer = auth('sanctum')->user();
-        if($lecturer->id !== $free_slot->lecturer_id){
+        if ($lecturer->id !== $free_slot->lecturer_id) {
             abort(403, 'Unauthorized Action!');
         }
         $free_slot->delete();
@@ -91,5 +98,4 @@ class Free_SlotController extends Controller
         );
         return redirect()->route('free_slot.index');
     }
-
 }

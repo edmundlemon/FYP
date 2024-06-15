@@ -1,9 +1,6 @@
 <template>
   <div class="flex flex-col items-center bg-gray-900" style="width: 30vw">
-    <form
-      @submit.prevent="bookTime"
-      class="p-6 w-full load-in-animation"
-    >
+    <form @submit.prevent="BookSlot" class="p-6 w-full load-in-animation">
       <div class="space-y-5">
         <div class="mb-4">
           <label for="date" class="font-bold block text-white mb-2">Date</label>
@@ -11,8 +8,9 @@
             type="date"
             id="date"
             class="p-2 bg-gray-700 text-white rounded w-full transition duration-300 ease-in-out w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-white"
-            v-model="booking.date"
+            v-model="slot.date"
             required
+            disabled
           />
           <div v-if="errors.date" class="text-red-500 text-xs mt-1">
             {{ errors.date[0] }}
@@ -30,10 +28,11 @@
             type="time"
             id="start_time"
             class="p-2 bg-gray-700 text-white rounded w-full transition duration-300 ease-in-out w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-white"
-            v-model="booking.start_time"
+            v-model="slot.start_time"
             min="09:00"
             max="16:00"
             required
+            disabled
           />
           <div v-if="errors.start_time" class="text-red-500 text-xs mt-1">
             {{ errors.start_time[0] }}
@@ -47,10 +46,11 @@
             type="time"
             id="end_time"
             class="p-2 bg-gray-700 text-white rounded w-full transition duration-300 ease-in-out w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-white"
-            v-model="booking.end_time"
+            v-model="slot.end_time"
             min="09:00"
             max="17:00"
             required
+            disabled
           />
           <div v-if="errors.end_time" class="text-red-500 text-xs mt-1">
             {{ errors.end_time[0] }}
@@ -63,7 +63,7 @@
         <label for="topic" class="font-bold block text-white mb-2">Topic</label>
         <textarea
           id="topic"
-          v-model="booking.topic"
+          v-model="slot.topic"
           rows="7"
           class="p-2 bg-gray-700 text-white rounded w-full transition duration-300 ease-in-out w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-white"
         ></textarea>
@@ -93,40 +93,55 @@ import { ref, defineProps, onMounted } from "vue";
 import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
 
+let Booking = ref({});
+
 const props = defineProps({
-  lecturerId: {
+  slot: {
+    type: Object,
+    required: true,
+  },
+  lecturerid: {
     type: String,
     required: true,
   },
-  showBookingform: {
-    type: Boolean,
-    required: true,
-  },
 });
 
-const emit = defineEmits(['booking-success']);
+function convertTimeFormat(time) {
+  // Check if the input is in the correct format
+  const timeFormatWithSeconds = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/;
+
+  if (timeFormatWithSeconds.test(time)) {
+    // Return the first 5 characters (HH:mm)
+    return time.slice(0, 5);
+  } else {
+    throw new Error(
+      "Invalid time format. Please provide time in HH:mm:ss format."
+    );
+  }
+}
+// const emit = defineEmits(['booking-success']);
 const errors = ref({});
-const booking = ref({
-  date: "",
-  start_time: "",
-  end_time: "",
-  lecturer_id: "",
-  student_id: "",
-  topic: "",
-});
 
-function bookTime() {
-  errors.value = {};
+function BookSlot() {
+  Booking = {
+    date: props.slot.date,
+    start_time: convertTimeFormat(props.slot.start_time),
+    end_time: convertTimeFormat(props.slot.end_time),
+    lecturer_id: "",
+    student_id: "",
+    topic: props.slot.topic,
+  };
+
+  console.log(Booking);
   axiosInstance
-    .post(`/book/${props.lecturerId}`, booking.value)
+    .post(`/book/${props.lecturerid}`, Booking)
     .then((response) => {
       console.log(response);
       alert("Booking successful!");
-      emit('closeBookingForm');
+      window.location.reload();
     })
     .catch((error) => {
-      console.log(error.response.data.errors);
-      errors.value = error.response.data.errors;
+      console.log(error.response.data);
     });
 }
 </script>
