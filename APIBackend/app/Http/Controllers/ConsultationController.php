@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Lecturer;
+use App\Rules\WeekdayOnly;
 use App\Jobs\AutomatedEmail;
 use App\Rules\TimeCollision;
 use Illuminate\Http\Request;
@@ -126,11 +127,9 @@ class ConsultationController extends Controller
 
     public function store(Request $request, Lecturer $lecturer)
     {
-        // dd($request->all());
-
-        echo $request;
         $formFields = $request->validate([
-            'date' => 'required|date_format:Y-m-d|after:tomorrow',
+            'date' => ['required', 'date_format:Y-m-d', 'after:tomorrow', new WeekdayOnly],
+            // 'start_time' => 'required|date_format:H:i',
             'start_time' =>['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $lecturer->id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
@@ -146,7 +145,7 @@ class ConsultationController extends Controller
         return response()->json(
             [
                 'message' => 'Slot Created',
-                'code' => 200
+                'code' => 201
             ]
         );
     }
