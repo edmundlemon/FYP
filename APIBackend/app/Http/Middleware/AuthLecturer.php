@@ -18,7 +18,7 @@ class AuthLecturer
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::guard('sanctum')->user();
-        Log::channel('api_post_log')->error('AuthLecturer Middleware', ['lecturer' => $user->hasRole('lecturer'), 'sanctum' => Auth::guard('sanctum')->check()]);
+        // Log::channel('api_post_log')->error('AuthLecturer Middleware', ['lecturer' => $user->hasRole('lecturer'), 'sanctum' => Auth::guard('sanctum')->check()]);
         if (Auth::guard('sanctum')->check() && $user->hasRole('lecturer')) {
             return $next($request);
         }

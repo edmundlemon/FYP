@@ -6,13 +6,13 @@
       <PendingList :page="page" v-if="switchpage" />
     </div>
   </div>
-</template>SELECT * FROM consultation_slots WHERE date < CURDATE() OR status IN ('Approved', 'Lecturer Reschedule Approved', 'Rejected');
+</template>
 
 
 <script setup>
 import axiosInstance from "../../axiosConfig/customAxios";
 import LecturerConsultationSidebar from "../Molecules/LecturerConsultationSidebar.vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import PendingList from "../Atom/PendingList.vue";
 
 let page = ref("Pending");
@@ -25,6 +25,12 @@ function ClickedOption(option) {
     switchpage.value = true;
   }, 200);
 }
+
+// onMounted(() => {
+//   setTimeout(() => {
+//     switchpage.value = true;
+//   }, 100);
+// });
 </script>
 
 <style scoped>

@@ -10,7 +10,6 @@
       <div v-for="(slot, index) in slots" :key="slot.id" class="">
         <div
           class="flex flex-col h-1/4 border border-gray-400 bg-gray-100 rounded-lg space-y-2 mr-2 pt-3"
-          v-if="MultiCondition(slot.status)"
         >
           <div class="flex flex-row items-center h-full">
             <!-- slot number -->
@@ -130,9 +129,7 @@
             <div
               class="flex flex-row items-center justify-end w-full pr-5 space-x-2 font-bold"
               v-if="
-                (page === 'Pending' && store.state.role === 'lecturer') ||
-                (slot.status === 'Lecturer Rescheduled' &&
-                  store.state.role === 'student')
+                (slot.status === 'Pending' && store.state.role === 'lecturer') || slot.status === 'Lecturer Rescheduled' && store.state.role === 'student' || slot.status === 'Student Rescheduled' && store.state.role === 'lecturer'
               "
             >
               <button
@@ -143,6 +140,7 @@
               </button>
               <button
                 class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 min-w-[5.5vw]"
+                @click.prevent="rejectSlot(slot.id)"
               >
                 Reject
               </button>
@@ -221,6 +219,33 @@ function approveSlot(slotId) {
   }
 }
 
+function rejectSlot(slotId) {
+  if (confirm("Are you sure you want to reject this slot?")) {
+    if (store.state.role === "student") {
+      axiosInstance
+        .put(`/student/reject/${slotId}`)
+        .then((response) => {
+          console.log(response.data);
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axiosInstance
+        .put(`/lecturer/reject/${slotId}`)
+        .then((response) => {
+          console.log(response.data);
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    // window.location.reload();
+  }
+}
+
 onMounted(async () => {
   switch (props.page) {
     case "Pending":
@@ -276,7 +301,7 @@ onMounted(async () => {
     case "Approval":
       if (store.state.role === "student") {
         axiosInstance
-          .get("/student/approved")
+          .get("/student/all-approved")
           .then((response) => {
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
@@ -287,7 +312,7 @@ onMounted(async () => {
           });
       } else {
         axiosInstance
-          .get("/lecturer/approved")
+          .get("/lecturer/all-approved")
           .then((response) => {
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
@@ -336,6 +361,6 @@ function MultiCondition(status) {
     return status !== "Lecturer Rescheduled";
   }
 
-  // return true; testing
+  // return true; //testing
 }
 </script>

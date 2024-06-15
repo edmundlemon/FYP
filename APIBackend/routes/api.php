@@ -64,10 +64,11 @@ Route::group(['middleware' => AuthLecturer::class], function () {
     Route::put('/free-slots/edit/{free_slot}', [Free_SlotController::class, 'update']);
     Route::put('/lecturer/approve/{consultation_slot}', [ConsultationController::class, 'approve']);
     Route::put('/lecturer/reschedule/{consultation_slot}', [ConsultationController::class, 'lecturerUpdates']);
-    Route::delete('/lecturer/reject/{consultation_slot}', [ConsultationController::class, 'lecturerDestroy']);
+    Route::put('/lecturer/reject/{consultation_slot}', [ConsultationController::class, 'lecturerReject']);
     Route::get('/lecturer/rejected', [ConsultationController::class, 'lecturerRejected']);
     Route::get('/lecturer/past', [ConsultationController::class, 'history']);
     Route::get('/lecturer/all-pending', [ConsultationController::class, 'allPending']);
+    Route::get('/lecturer/all-approved', [ConsultationController::class, 'allApproved']);
     Route::get('/lecturer/all-past', [ConsultationController::class, 'allPast']);
 
 });
@@ -95,4 +96,7 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::put('/student/approve/{consultation_slot}', [ConsultationController::class, 'approve']);
     Route::get('/student/all-pending', [ConsultationController::class, 'allPending']);
     Route::get('/student/all-past', [ConsultationController::class, 'allPast']);
+    Route::get('/student/all-approved', [ConsultationController::class, 'allApproved']);
+    Route::put('/student/reject/{consultation_slot}', [ConsultationController::class, 'studentReject']);
+
 });
