@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full w-full">
+  <div class="h-full w-[98%]">
     <div role="status" class="flex flex-col h-full w-full animate-pulse justify-evenly"
     >
       <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-5/12 mb-4"></div>

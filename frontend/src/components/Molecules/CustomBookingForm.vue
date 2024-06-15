@@ -121,7 +121,7 @@ function CustomBooking() {
     .post(`/book/${props.lecturerId}`, booking.value)
     .then((response) => {
       console.log(response);
-      alert("Booking successful!");
+      alert("Custom Booking successful!");
       emit('closeBookingForm');
     })
     .catch((error) => {

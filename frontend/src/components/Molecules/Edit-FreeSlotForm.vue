@@ -121,7 +121,7 @@ function updateslot(slotid) {
   axiosInstance
     .put(`/free-slots/edit/${slotid}`, receivedslot.value)
     .then((response) => {
-      alert("Slot updated successfully");
+      alert("Free slot updated successfully");
       window.location.reload();
     })
     .catch((error) => {

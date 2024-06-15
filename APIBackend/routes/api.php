@@ -65,6 +65,7 @@ Route::group(['middleware' => AuthLecturer::class], function () {
     Route::put('/approve/{consultation_slot}', [ConsultationController::class, 'approve']);
     Route::put('/lecturer/reschedule/{consultation_slot}', [ConsultationController::class, 'lecturerUpdates']);
     Route::delete('/lecturer/reject/{consultation_slot}', [ConsultationController::class, 'lecturerDestroy']);
+    Route::get('/lecturer/rejected', [ConsultationController::class, 'lecturerRejected']);
     Route::get('/lecturer/past', [ConsultationController::class, 'history']);
 });
 
@@ -88,5 +89,6 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
     Route::put('/student/reschedule/{consultation_slot}', [ConsultationController::class, 'studentUpdates']);
     Route::get('/student/past', [ConsultationController::class, 'history']);
+    Route::get('/student/rejected', [ConsultationController::class, 'studentRejected']);
 });
 

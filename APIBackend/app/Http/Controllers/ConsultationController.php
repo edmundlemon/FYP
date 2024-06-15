@@ -251,4 +251,28 @@ class ConsultationController extends Controller
         return redirect()->route('free_slots.index');
     }
 
+    public function lecturerRejected()
+    {
+        $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
+        $consultation_slots = $user->consultation_slots()->with('student')->where('status', 'Rejected')->orderBy('date')->orderBy('start_time')->get();
+        return response()->json(
+            [
+                'consultation_slots' => $consultation_slots,
+                'code' => 200
+            ]
+        );
+    }
+
+    public function studentRejected()
+    {
+        $user = Student::find(auth()->guard('sanctum')->user()->id);
+        $consultation_slots = $user->consultation_slots()->with('lecturer')->where('status', 'Rejected')->orderBy('date')->orderBy('start_time')->get();
+        return response()->json(
+            [
+                'consultation_slots' => $consultation_slots,
+                'code' => 200
+            ]
+        );
+    }
+
 }

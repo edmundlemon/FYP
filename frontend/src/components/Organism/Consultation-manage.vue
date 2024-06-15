@@ -1,24 +1,29 @@
 <template>
-    <div>
-        <!-- Your HTML code here -->
+  <div class="flex flex-row mt-5 ml-5">
+    <LecturerConsultationSidebar class="" @ClickedOption="ClickedOption" />
+    <!-- Your HTML code here -->
+    <div class="h-full w-full">
+      <PendingList :page="page" v-if="switchpage" />
     </div>
+  </div>
 </template>
 
-<script>
-export default {
-    name: 'ConsultationManage',
-    data() {
-        return {
-            // Your data properties here
-        };
-    },
-    methods: {
-        // Your methods here
-    },
-    mounted() {
-        // Code to run when the component is mounted
-    },
-};
+<script setup>
+import axiosInstance from "../../axiosConfig/customAxios";
+import LecturerConsultationSidebar from "../Molecules/LecturerConsultationSidebar.vue";
+import { ref } from "vue";
+import PendingList from "../Atom/PendingList.vue";
+
+let page = ref("Pending");
+let switchpage = ref(true);
+
+function ClickedOption(option) {
+  switchpage.value = false;
+  page.value = option;
+  setTimeout(() => {
+    switchpage.value = true;
+  }, 50);
+}
 </script>
 
 <style scoped>
