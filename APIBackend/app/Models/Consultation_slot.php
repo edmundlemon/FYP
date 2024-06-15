@@ -20,6 +20,14 @@ class Consultation_slot extends Model
 
     use HasFactory;
 
+    public function getStartTimeAttribute($value){
+        return date('H:i', strtotime($value));
+    }
+
+    public function getEndTimeAttribute($value){
+        return date('H:i', strtotime($value));
+    }
+
     public function student() {
         return $this->belongsTo(Student::class, 'student_id');
     }
