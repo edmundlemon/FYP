@@ -27,7 +27,7 @@
                 >
                   <div class="space-y-3" v-if="hasSlotsForDay(day)">
                     <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
-                      <FreeSlotDisplay class="mx-3" :slot="slot" />
+                      <FreeSlotDisplay :slot="slot" />
                     </div>
                   </div>
                   <div v-else>
@@ -83,7 +83,6 @@ onMounted(async () => {
       showLoading.value = false;
       days.value = slots.value.map((slot) => new Date(slot.date).getDay());
       console.log(days.value);
-      console.log(slots.length)
     })
     .catch((error) => {
       console.log(error);

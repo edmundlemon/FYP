@@ -1,6 +1,6 @@
 <template>
   <div :id="slot.id" class="flex justify-center items-center">
-    <div class="flex flex-col bg-white shadow-md rounded-md p-4 w-full border">
+    <div class="flex flex-col bg-white shadow-md rounded-md p-4 w-full border mx-3">
       <h3 class="text-lg font-bold mb-2 text-gray-800 text-center">
         Date: {{ slot.date }}
       </h3>
