@@ -77,11 +77,6 @@ const emit = defineEmits(['reschedule-success']);
 const errors = ref({});
 const booking = ref({
 	...props.slot.slot,
-	// 'id': props.slot.slot.id,
-	// 'date': props.slot.slot.date,
-	// 'start_time': props.slot.slot.start_time,
-	// 'end_time': props.slot.slot.end_time,
-	// 'topic': props.slot.slot.topic,
 });
 console.log(props.slot.slot.date);
 watch(() => props.slot, (newData) => {

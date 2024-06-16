@@ -332,7 +332,7 @@ class ConsultationController extends Controller
         );
         return redirect()->route('free_slots.index');
     }
-
+  
     public function lecturerRejected()
     {
         $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
