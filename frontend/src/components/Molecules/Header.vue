@@ -234,7 +234,7 @@ export default {
               path: "/student-scheduling",
             },
             {
-              role: "lecturer",
+              role: "all",
               name: "Manage Consultations",
               path: "/consultation-manager",
             },

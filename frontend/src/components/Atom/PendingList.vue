@@ -3,14 +3,13 @@
     v-if="showLoading"
     class="flex flex-col space-y-4 border rounded-lg border-gray-400 mr-2"
   >
-    <Loading class="mt-2 ml-2 mr-5" />
+    <Loading class="mt-2 ml-2 mr-5" />{{ slots.length }}
   </div>
   <div v-else-if="slots.length">
-    <div class="flex flex-col flex-wrap space-y-2">
+    <div class="flex flex-col flex-wrap space-y-5">
       <div v-for="(slot, index) in slots" :key="slot.id" class="">
         <div
           class="flex flex-col h-1/4 border border-gray-400 bg-gray-100 rounded-lg space-y-2 mr-2 pt-3"
-          v-if="MultiCondition(slot.status)"
         >
           <div class="flex flex-row items-center h-full">
             <!-- slot number -->
@@ -129,15 +128,19 @@
             <!-- buttons -->
             <div
               class="flex flex-row items-center justify-end w-full pr-5 space-x-2 font-bold"
-              v-if="page === 'Pending'"
+              v-if="
+                (slot.status === 'Pending' && store.state.role === 'lecturer') || slot.status === 'Lecturer Rescheduled' && store.state.role === 'student' || slot.status === 'Student Rescheduled' && store.state.role === 'lecturer'
+              "
             >
               <button
                 class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 min-w-[5.5vw]"
+                @click.prevent="approveSlot(slot.id)"
               >
                 Approve
               </button>
               <button
                 class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 min-w-[5.5vw]"
+                @click.prevent="rejectSlot(slot.id)"
               >
                 Reject
               </button>
@@ -189,13 +192,68 @@ const props = defineProps({
   },
 });
 
+function approveSlot(slotId) {
+  if (confirm("Are you sure you want to approve this slot?")) {
+    if (store.state.role === "student") {
+      axiosInstance
+        .put(`/student/approve/${slotId}`)
+        .then((response) => {
+          console.log(response.data);
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axiosInstance
+        .put(`/lecturer/approve/${slotId}`)
+        .then((response) => {
+          console.log(response.data);
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    // window.location.reload();
+  }
+}
+
+function rejectSlot(slotId) {
+  if (confirm("Are you sure you want to reject this slot?")) {
+    if (store.state.role === "student") {
+      axiosInstance
+        .put(`/student/reject/${slotId}`)
+        .then((response) => {
+          console.log(response.data);
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axiosInstance
+        .put(`/lecturer/reject/${slotId}`)
+        .then((response) => {
+          console.log(response.data);
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    // window.location.reload();
+  }
+}
+
 onMounted(async () => {
   switch (props.page) {
     case "Pending":
       if (store.state.role === "student") {
         axiosInstance
-          .get("/student/pending")
+          .get("/student/all-pending")
           .then((response) => {
+            console.log(response.data.consultation_slots);
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
           })
@@ -204,7 +262,7 @@ onMounted(async () => {
           });
       } else {
         axiosInstance
-          .get("/lecturer/schedule")
+          .get("/lecturer/all-pending")
           .then((response) => {
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
@@ -218,7 +276,7 @@ onMounted(async () => {
     case "History":
       if (store.state.role === "student") {
         axiosInstance
-          .get("/student/past")
+          .get("/student/all-past")
           .then((response) => {
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
@@ -229,7 +287,7 @@ onMounted(async () => {
           });
       } else {
         axiosInstance
-          .get("/lecturer/past")
+          .get("/lecturer/all-past")
           .then((response) => {
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
@@ -243,7 +301,7 @@ onMounted(async () => {
     case "Approval":
       if (store.state.role === "student") {
         axiosInstance
-          .get("/student/approved")
+          .get("/student/all-approved")
           .then((response) => {
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
@@ -254,7 +312,7 @@ onMounted(async () => {
           });
       } else {
         axiosInstance
-          .get("/lecturer/approved")
+          .get("/lecturer/all-approved")
           .then((response) => {
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
@@ -297,8 +355,12 @@ onMounted(async () => {
 
 function MultiCondition(status) {
   console.log(store.state.role);
-  if (store.state.role === "lecturer") {
+  if (store.state.role === "student") {
+    return status !== "Student Rescheduled";
+  } else {
     return status !== "Lecturer Rescheduled";
-  } else return status !== "Student Rescheduled";
+  }
+
+  // return true; //testing
 }
 </script>
