@@ -18,6 +18,14 @@ class Free_slot extends Model
 
     use HasFactory;
 
+    public function getStartTimeAttribute($value){
+        return date('H:i', strtotime($value));
+    }
+
+    public function getEndTimeAttribute($value){
+        return date('H:i', strtotime($value));
+    }
+    
     public function user() {
         return $this->belongsTo(Lecturer::class, 'id');
     }

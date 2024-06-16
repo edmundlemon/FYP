@@ -119,8 +119,8 @@ class DatabaseSeeder extends Seeder
             'lecturer_id' => 'MU1234',
             'student_id' =>"1122",
             'date' => Carbon::today()->addDays(2),
-            'start_time' => Carbon::now()->addMinutes(30)->format('H:i'),
-            'end_time' => Carbon::now()->addMinutes(90)->format('H:i'),
+            'start_time' => Carbon::today()->addDays(2)->setHour(10)->setMinute(0)->format('H:i'),
+            'end_time' => Carbon::today()->addDays(2)->setHour(11)->setMinute(0)->format('H:i'),
             'status' => 'Approved',
             'topic' => 'Maths'
         ]);

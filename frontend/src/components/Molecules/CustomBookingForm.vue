@@ -126,6 +126,7 @@ function CustomBooking() {
     })
     .catch((error) => {
       console.log(error.response.data.errors);
+      console.log(error);
       errors.value = error.response.data.errors;
     });
 }
