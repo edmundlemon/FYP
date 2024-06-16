@@ -97,7 +97,7 @@ function bookTime() {
 		.put(uri, booking.value)
 		.then((response) => {
 			console.log(response);
-			confirm("Reschedule Successful");
+			alert("Reschedule Successful");
 			window.location.reload();
 		})
 		.catch((error) => {
