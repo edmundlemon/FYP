@@ -92,6 +92,7 @@ export default {
 					console.log('Response:', response.data);
 				}).catch(error => {
 					console.log('Error: ', error.response.data);
+					console.log('Error: ', error);
 					this.errors = error.response.data.errors;
 				});
 			}

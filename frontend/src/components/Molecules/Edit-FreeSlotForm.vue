@@ -86,8 +86,8 @@ import axiosInstance from "../../axiosConfig/customAxios";
 
 let receivedslot = ref({});
 onMounted(() => {
-  props.slot.start_time = convertTimeFormat(props.slot.start_time);
-  props.slot.end_time = convertTimeFormat(props.slot.end_time);
+  // props.slot.start_time = convertTimeFormat(props.slot.start_time);
+  // props.slot.end_time = convertTimeFormat(props.slot.end_time);
   receivedslot.value = props.slot;
   console.log(receivedslot.value);
 
@@ -125,6 +125,7 @@ function updateslot(slotid) {
       window.location.reload();
     })
     .catch((error) => {
+      errors.value = error.response.data.errors;
       console.error("Failed to update slot:", error.response.data);
     });
 }

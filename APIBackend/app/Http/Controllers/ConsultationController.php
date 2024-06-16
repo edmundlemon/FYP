@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Lecturer;
+use App\Rules\WeekdayOnly;
 use App\Jobs\AutomatedEmail;
 use App\Rules\TimeCollision;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use App\Jobs\AutomatedApproved;
 use App\Jobs\AutomatedRejected;
 use App\Jobs\AutomatedReschedule;
 use App\Models\Consultation_slot;
+use App\Rules\RescheduleCollision;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -126,11 +128,8 @@ class ConsultationController extends Controller
 
     public function store(Request $request, Lecturer $lecturer)
     {
-        // dd($request->all());
-
-        echo $request;
         $formFields = $request->validate([
-            'date' => 'required|date_format:Y-m-d|after:tomorrow',
+            'date' => ['required', 'date_format:Y-m-d', 'after:tomorrow', new WeekdayOnly],
             'start_time' =>['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $lecturer->id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
@@ -146,7 +145,7 @@ class ConsultationController extends Controller
         return response()->json(
             [
                 'message' => 'Slot Created',
-                'code' => 200
+                'code' => 201
             ]
         );
     }
@@ -157,7 +156,7 @@ class ConsultationController extends Controller
         $formFields = $request->validate([
             'date' => 'required|date_format:Y-m-d|after:tomorrow',
             // 'start_time' => 'required|date_format:H:i',
-            'start_time' =>['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $consultation_slot->lecturer_id)],
+            'start_time' =>['required', 'date_format:H:i', new RescheduleCollision($request->start_time, $request->end_time, $request->date, $consultation_slot->lecturer_id, $consultation_slot->id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
         Log::channel('api_post_log')->error('Slot', ['request' => $request->all()]);
@@ -181,7 +180,7 @@ class ConsultationController extends Controller
         $formFields = $request->validate([
             'date' => 'required|date_format:Y-m-d|after:tomorrow',
             // 'start_time' => 'required|date_format:H:i',
-            'start_time' =>['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $consultation_slot->lecturer_id)],
+            'start_time' =>['required', 'date_format:H:i', new RescheduleCollision($request->start_time, $request->end_time, $request->date, $consultation_slot->lecturer_id, $consultation_slot->id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
         if(auth()->guard('sanctum')->id() !== $consultation_slot->lecturer_id){
