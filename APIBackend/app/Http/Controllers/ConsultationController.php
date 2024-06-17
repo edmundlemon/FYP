@@ -235,12 +235,20 @@ class ConsultationController extends Controller
                 abort(403, 'Unauthorized Action!');
             }
         }
-        echo $consultation_slot;
-        $collision = $consultation_slot->collision($consultation_slot);
-
-        // dd($collision);
+        Log::channel('api_post_log')->error('Consultation Slot', ['consultation_slot' => $consultation_slot->start_time]);
+        // echo $consultation_slot;
+        // $formFields = $consultation_slot->validate([
+        //     'start_time' => [new TimeCollision($consultation_slot->start_time, $consultation_slot->end_time, $consultation_slot->date, $consultation_slot->lecturer_id)],
+        // ]);
+        $collision = $consultation_slot->collision();
+        Log::channel('api_post_log')->error('Collision', ['collision' => $collision]);
         if ($collision) {
-            return back()->with('error', 'This slot has been taken!');
+            return response()->json(
+                [
+                    'message' => 'Time Collision',
+                    'code' => 409
+                ]
+            );
         }
 
 
