@@ -62,7 +62,7 @@ import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
 
 const props = defineProps({
-	slot: {
+	booking: {
 		type: Object,
 		required: true,
 	},
@@ -73,28 +73,22 @@ const props = defineProps({
 });
 
 let uri = '';
-const emit = defineEmits(['reschedule-success']);
 const errors = ref({});
-const booking = ref({
-	...props.slot.slot,
-});
-console.log(props.slot.slot.date);
-watch(() => props.slot, (newData) => {
-	booking.value = { ...newData };
-}, { deep: true });
+
+console.log(props.booking);
+// console.log(props.slot.slot.date);
 
 function bookTime() {
-	console.log(booking.value);
-	errors.value = {};
+	console.log("Booking => ", props.booking);
 	if (store.state.role === "student") {
-		uri = `/student/reschedule/${booking.value.id}`;
+		uri = `/student/reschedule/${props.booking.id}`;
 		console.log(uri);
 	} else {
-		uri = `/lecturer/reschedule/${booking.value.id}`;
+		uri = `/lecturer/reschedule/${props.booking.id}`;
 		console.log(uri);
 	}
 	axiosInstance
-		.put(uri, booking.value)
+		.put(uri, props.booking)
 		.then((response) => {
 			console.log(response);
 			alert("Reschedule Successful");

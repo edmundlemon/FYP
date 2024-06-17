@@ -48,12 +48,16 @@
       <div class="flex justify-center space-x-5">
         <!-- Edit Free Slot Button -->
         <PillButton
-          @click.prevent="$emit('edit-slot', slot)"
+          @click.prevent="$emit('openRescheduleForm', slot)"
           class="mt-3 w-[8vw]"
-          text="Edit Slot"
-          v-if="store.state.role === 'lecturer'"
+          text="Reschedule"
+          v-if="store.state.role === 'lecturer' || store.state.role === 'student'"
+
         />
       </div>
+
+
+
     </div>
   </div>
 </template>
@@ -64,22 +68,12 @@ import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
 import PillButton from "../Atom/Pill-button.vue";
 import { ref } from "vue";
+import RescheduleForm from "../Molecules/RescheduleForm.vue";
+
+
 
 const role = store.state.role;
 
-async function deleteSlot(slot) {
-  if (confirm("Are you sure you want to delete this slot?")) {
-    axiosInstance
-      .delete(`/free-slots/delete/${slot}`)
-      .then((response) => {
-        console.log(response.data);
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.error("Failed to delete slot:", error.response.data);
-      });
-  }
-}
 
 function reloadPage() {
   window.location.reload();
