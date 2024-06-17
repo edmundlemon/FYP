@@ -17,12 +17,11 @@ use App\Rules\RescheduleCollision;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use App\Jobs\ExpireConsultationSlots;
+use App\Jobs\UpdateExpiredConsultationSlots;
 
 class ConsultationController extends Controller
 {
     //
-
     public function expireSlots()
     {
         ExpireConsultationSlots::dispatch()->onQueue('default');
@@ -239,11 +238,15 @@ class ConsultationController extends Controller
                 abort(403, 'Unauthorized Action!');
             }
         }
-        $collision = $consultation_slot->collision($consultation_slot);
-
-        // dd($collision);
+        $collision = $consultation_slot->collision();
+        Log::channel('api_post_log')->error('Collision', ['collision' => $collision]);
         if ($collision) {
-            return back()->with('error', 'This slot has been taken!');
+            return response()->json(
+                [
+                    'message' => 'Time Collision',
+                    'code' => 409
+                ]
+            );
         }
 
 
@@ -336,6 +339,29 @@ class ConsultationController extends Controller
         return redirect()->route('free_slots.index');
     }
 
+    public function studentReject(Consultation_slot $consultation_slot)
+    {
+        if (auth()->guard('sanctum')->id() !== $consultation_slot->student_id && ($consultation_slot->status !== 'Lecturer Rescheduled')) {
+            return response()->json(
+                [
+                    'message' => 'Unauthorized Action!',
+                    'code' => 403
+                ]
+            );
+            abort(403, 'Unauthorized Action!');
+        }
+        AutomatedRejected::dispatch($consultation_slot)->onConnection('sync');
+        $consultation_slot->status = 'Rejected';
+        $consultation_slot->save();
+        return response()->json(
+            [
+                'message' => 'Slot Rejected',
+                'code' => 200
+            ]
+        );
+        return redirect()->route('free_slots.index');
+    }
+  
     public function lecturerRejected()
     {
         $user = Lecturer::find(auth()->guard('sanctum')->user()->id);

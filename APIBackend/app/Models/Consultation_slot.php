@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -79,22 +80,41 @@ class Consultation_slot extends Model
             ->where('status', 'Student Rescheduled');
     }
 
-    public function collision(Consultation_slot $consultation_slot){
-        return DB::table('consultation_slots')
-            ->where('lecturer_id', $consultation_slot->lecturer_id)
-            ->where('date', $consultation_slot->date)
-            ->where('status', 'Approved')
-            ->where(function ($query) use ($consultation_slot) {
-                $query->where(function ($query) use ($consultation_slot) {
-                    $query->where('start_time', '<', $consultation_slot->start_time)
-                        ->where('end_time', '>', $consultation_slot->start_time);
-                })->orWhere(function ($query) use ($consultation_slot) {
-                    $query->where('start_time', '<', $consultation_slot->end_time)
-                        ->where('end_time', '>', $consultation_slot->end_time);
-                })->orWhere(function ($query) use ($consultation_slot) {
-                    $query->where('start_time', '>', $consultation_slot->start_time)
-                        ->where('end_time', '<', $consultation_slot->end_time);
-                });
-            })->exists();
+    public function collision(){
+        // return DB::table('consultation_slots')
+        //     ->where('lecturer_id', $consultation_slot->lecturer_id)
+        //     ->where('date', $consultation_slot->date)
+        //     ->where('status', 'Approved')
+        //     ->where(function ($query) use ($consultation_slot) {
+        //         $query->where(function ($query) use ($consultation_slot) {
+        //             $query->where('start_time', '<', $consultation_slot->start_time)
+        //                 ->where('end_time', '>', $consultation_slot->start_time);
+        //         })->orWhere(function ($query) use ($consultation_slot) {
+        //             $query->where('start_time', '<', $consultation_slot->end_time)
+        //                 ->where('end_time', '>', $consultation_slot->end_time);
+        //         })->orWhere(function ($query) use ($consultation_slot) {
+        //             $query->where('start_time', '>', $consultation_slot->start_time)
+        //                 ->where('end_time', '<', $consultation_slot->end_time);
+        //         });
+            // })->exists();
+
+        $collision =   $this->where('lecturer_id', $this->lecturer_id)
+        ->where('date', $this->date)
+        ->where('start_time', '<', $this->end_time)
+        ->where('end_time', '>', $this->start_time)
+        ->where('status', 'Approved')
+        ->orWhere('lecturer_id', $this->lecturer_id)
+        ->where('date', $this->date)
+        ->where('start_time', '<', $this->start_time)
+        ->where('end_time', '>', $this->end_time)
+        ->where('status', 'Approved')
+        ->orWhere('lecturer_id', $this->lecturer_id)
+        ->where('date', $this->date)
+        ->where('start_time', '>=', $this->start_time)
+        ->where('end_time', '<', $this->end_time)
+        ->where('status', 'Approved')
+        ->exists();
+
+        return $collision;
     }
 }

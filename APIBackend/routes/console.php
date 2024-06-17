@@ -7,6 +7,8 @@ use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;
 use App\Console\Commands\SendEmails;
+use App\Jobs\UpdateExpiredConsultationSlots;
+
 // use App\Jobs\UpdateExpiredConsultationSlots;
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +28,5 @@ Artisan::command('inspire', function () {
 // To call the the command on schedule, with athe duration stated in the command
 Schedule::command(SendEmails::class)->everyMinute()->runInBackground();
 Schedule::command(DropPastFreeSlots::class)->daily()->runInBackground();
+Schedule::job(new UpdateExpiredConsultationSlots)->everyMinute()->name('Update Expired Consultation Slots')->runInBackground();
 // Schedule::job(new UpdateExpiredConsultationSlots)->everyMinute()->name('Update Expired Consultation Slots');

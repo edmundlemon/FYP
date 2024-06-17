@@ -192,6 +192,7 @@ const props = defineProps({
   },
 });
 
+
 function approveSlot(slotId) {
   if (confirm("Are you sure you want to approve this slot?")) {
     if (store.state.role === "student") {
