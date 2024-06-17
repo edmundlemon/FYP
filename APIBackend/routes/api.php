@@ -34,6 +34,7 @@ Route::get('/expire-slots', [ConsultationController::class, 'expire Slots']);
 // Route::get('/register/lecturer', [LecturerController::class, 'store']);
 
 Route::get('/rating/{lecturer}', [ReviewController::class, 'index']);
+Route::get('/student/reviews/{student}', [ReviewController::class, 'view']);
 
 Route::middleware('guest:sanctum')->post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
