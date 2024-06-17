@@ -18,7 +18,7 @@ class UpdateExpiredConsultationSlots implements ShouldQueue
         Consultation_Slot::where('date', '<', $currentDateTime->toDateString())
             ->orWhere(function ($query) use ($currentDateTime) {
                 $query->where('date', '=', $currentDateTime->toDateString())
-                    ->where('end_time', '<', $currentDateTime->toTimeString());
+                      ->where('end_time', '<', $currentDateTime->toTimeString());
             })
             ->update(['status' => 'Expired']);
     }

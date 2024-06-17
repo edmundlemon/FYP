@@ -1,10 +1,10 @@
 <template>
   <div
-    class="relative flex flex-col items-center justify-center border border-gray-700 w-10/12 m-auto rounded-lg shadow-lg bg-white mt-5"
+    class="relative flex flex-col items-center justify-center border border-gray-700 w-10/12 m-auto rounded-lg shadow-lg bg-white mt-5 fade-in-animation"
     v-if="lecturer"
   >
     <div
-      class="space-y-3 py-12 border border-gray-500 border-opacity-50 w-full h-fit flex flex-col justify-center items-center orange-bg rounded-t-lg shadow-lg"
+      class="space-y-3 py-12 border-b border-gray-500 border-opacity-50 w-full h-fit flex flex-col justify-center items-center orange-bg rounded-t-lg shadow-lg"
     >
       <img
         :src="lecturer.photo"
@@ -83,7 +83,7 @@
         @closeBookingForm="showBookingform = false"
       />
     </div>
-    
+
     <button
       class="z-[0] right-[2vh] bottom-[2vh] border border-black border-opacity-20 transition duration-300 ease-in-out absolute rounded-full bg-green-300 hover:bg-green-400 active:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-opacity-50 z-50 w-12 h-12 gelatine"
       type="button"
@@ -98,10 +98,14 @@
       />
     </button>
   </div>
+  <div v-else class="relative justify-center items-center flex-row flex w-10/12 h-full m-auto rounded-lg mt-[13vh]">
+    <div class="loader"></div>
+  </div>
   <div class="h-5"></div>
 </template>
 
 <script setup>
+import SkeletonLoading from "../Atom/SkeletonLoading.vue";
 import { defineProps, onMounted, ref } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
 import { useRoute } from "vue-router";
@@ -126,9 +130,5 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.booking-container {
-  backdrop-filter: blur(10px);
-  height: 103.2vh;
-  width: 100vw;
-}
+
 </style>

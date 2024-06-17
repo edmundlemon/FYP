@@ -133,7 +133,7 @@ function BookSlot() {
   };
 
   console.log(Booking);
-  axiosInstance
+  axiosInstanc
     .post(`/book/${props.lecturerid}`, Booking)
     .then((response) => {
       console.log(response);

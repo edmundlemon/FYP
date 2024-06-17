@@ -3,7 +3,7 @@
     v-if="showLoading"
     class="flex flex-col space-y-4 border rounded-lg border-gray-400 mr-2"
   >
-    <Loading class="mt-2 ml-2 mr-5" />{{ slots.length }}
+    <Loading class="mt-2 ml-2 mr-5 my-3" />
   </div>
   <div v-else-if="slots.length">
     <div class="flex flex-col flex-wrap space-y-5">
@@ -363,6 +363,5 @@ function MultiCondition(status) {
   }
 
   // return true; //testing
-
 }
 </script>
