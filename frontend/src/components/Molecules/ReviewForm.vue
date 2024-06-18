@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<div class="flex-row">
-			<div class="flex-col">
+			<!-- <div class="flex-col">
 				<div>
 					Name: {{ name }}
 				</div>
-			</div>
+			</div> -->
 			<div class="flex-col">
 				<label for="email">Rating</label>
 				<div class="star-rating">
@@ -42,7 +42,8 @@ const emit = defineEmits(['update:modelValue']);
 
 const setRating = (value) => {
 	rating.value = value;
-	emit('update:modelValue', value);
+	console.log(value);
+	// emit('update:modelValue', value);
 };
 
 const hoverRating = (value) => {
