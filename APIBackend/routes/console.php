@@ -28,5 +28,5 @@ Artisan::command('inspire', function () {
 // To call the the command on schedule, with athe duration stated in the command
 Schedule::command(SendEmails::class)->everyMinute()->runInBackground();
 Schedule::command(DropPastFreeSlots::class)->daily()->runInBackground();
-Schedule::job(new UpdateExpiredConsultationSlots)->everyMinute()->name('Update Expired Consultation Slots')->withoutOverlapping();
+Schedule::job(new UpdateExpiredConsultationSlots)->everyMinute()->name('Update Expired Consultation Slots')->runInBackground();
 // Schedule::job(new UpdateExpiredConsultationSlots)->everyMinute()->name('Update Expired Consultation Slots');

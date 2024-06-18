@@ -1,7 +1,8 @@
 <template>
   <div
     class="bg-style relative bg-gray-100 flex flex-col items-center justify-center border border-gray-300 p-5 w-full rounded-lg shadow-md pt-6 hover:shadow-2xl hover:scale-105 transition duration-300 ease-in-out"
-  >
+  
+    >
     <div
       class="absolute left-3 rounded-t-lg blur-bottom"
       style="top: -2%; background-color: #f15a59; z-index: 5000"
@@ -53,6 +54,7 @@
       <p class="text-lg my-1.5 z-10">{{ student.id }}</p>
     </div>
   </div>
+  
 </template>
 
 <script setup>

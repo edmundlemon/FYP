@@ -6,6 +6,7 @@ use App\Models\Review;
 use App\Models\Lecturer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Student;
 
 class ReviewController extends Controller
 {
@@ -38,6 +39,15 @@ class ReviewController extends Controller
         return response()->json([
             'message' => 'Review created successfully',
             'code' => 201
+        ]);
+    }
+
+    public function view(Student $student)
+    {
+        $reviews = Review::where('student_id', $student->id)->get();
+        return response()->json([
+            'reviews' => $reviews,
+            'code' => 200
         ]);
     }
 }

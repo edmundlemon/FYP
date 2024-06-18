@@ -22,13 +22,12 @@ use App\Jobs\UpdateExpiredConsultationSlots;
 class ConsultationController extends Controller
 {
     //
+    public function expireSlots()
+    {
+        ExpireConsultationSlots::dispatch()->onQueue('default');
 
-    // public function expireSlots()
-    // {
-    //     UpdateExpiredConsultationSlots::dispatch()->onQueue('default');
-
-    //     return response()->json(['message' => 'Expiration job dispatched to queue']);
-    // }
+        return response()->json(['message' => 'Expiration job dispatched to queue']);
+    }
 
 
     public function studentIndex()
@@ -102,6 +101,7 @@ class ConsultationController extends Controller
             $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
             $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Pending', 'Student Rescheduled', 'Lecturer Rescheduled'])->orderBy('date')->orderBy('start_time')->get();
         }
+        
         return response()->json(
             [
                 'consultation_slots' => $consultation_slots,
@@ -148,8 +148,11 @@ class ConsultationController extends Controller
 
     public function store(Request $request, Lecturer $lecturer)
     {
+        // dd($request->all());
+
+        echo $request;
         $formFields = $request->validate([
-            'date' => ['required', 'date_format:Y-m-d', 'after:tomorrow', new WeekdayOnly],
+            'date' => 'required|date_format:Y-m-d|after:tomorrow',
             'start_time' =>['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $lecturer->id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
@@ -176,7 +179,7 @@ class ConsultationController extends Controller
         $formFields = $request->validate([
             'date' => 'required|date_format:Y-m-d|after:tomorrow',
             // 'start_time' => 'required|date_format:H:i',
-            'start_time' =>['required', 'date_format:H:i', new RescheduleCollision($request->start_time, $request->end_time, $request->date, $consultation_slot->lecturer_id, $consultation_slot->id)],
+            'start_time' =>['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $consultation_slot->lecturer_id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
         Log::channel('api_post_log')->error('Slot', ['request' => $request->all()]);
@@ -200,7 +203,7 @@ class ConsultationController extends Controller
         $formFields = $request->validate([
             'date' => 'required|date_format:Y-m-d|after:tomorrow',
             // 'start_time' => 'required|date_format:H:i',
-            'start_time' =>['required', 'date_format:H:i', new RescheduleCollision($request->start_time, $request->end_time, $request->date, $consultation_slot->lecturer_id, $consultation_slot->id)],
+            'start_time' =>['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $consultation_slot->lecturer_id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
         if (auth()->guard('sanctum')->id() !== $consultation_slot->lecturer_id) {
@@ -235,11 +238,6 @@ class ConsultationController extends Controller
                 abort(403, 'Unauthorized Action!');
             }
         }
-        Log::channel('api_post_log')->error('Consultation Slot', ['consultation_slot' => $consultation_slot->start_time]);
-        // echo $consultation_slot;
-        // $formFields = $consultation_slot->validate([
-        //     'start_time' => [new TimeCollision($consultation_slot->start_time, $consultation_slot->end_time, $consultation_slot->date, $consultation_slot->lecturer_id)],
-        // ]);
         $collision = $consultation_slot->collision();
         Log::channel('api_post_log')->error('Collision', ['collision' => $collision]);
         if ($collision) {
@@ -298,6 +296,29 @@ class ConsultationController extends Controller
     public function lecturerReject(Consultation_slot $consultation_slot)
     {
         if (auth()->guard('sanctum')->id() !== $consultation_slot->lecturer_id) {
+            return response()->json(
+                [
+                    'message' => 'Unauthorized Action!',
+                    'code' => 403
+                ]
+            );
+            abort(403, 'Unauthorized Action!');
+        }
+        AutomatedRejected::dispatch($consultation_slot)->onConnection('sync');
+        $consultation_slot->status = 'Rejected';
+        $consultation_slot->save();
+        return response()->json(
+            [
+                'message' => 'Slot Rejected',
+                'code' => 200
+            ]
+        );
+        return redirect()->route('free_slots.index');
+    }
+
+    public function studentReject(Consultation_slot $consultation_slot)
+    {
+        if (auth()->guard('sanctum')->id() !== $consultation_slot->student_id && ($consultation_slot->status !== 'Lecturer Rescheduled')) {
             return response()->json(
                 [
                     'message' => 'Unauthorized Action!',
