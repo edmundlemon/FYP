@@ -1,47 +1,36 @@
 <template>
-  <div>
-    <!-- Your component content goes here -->
+  <SchedulingSlotView @edit-slot="setRescheduleSlot" />
 
-    <div>
-      <!-- Your component content goes here -->
-      {{ "Schedule shows here! " }}<br />{{
-        "> Reschedule feature implementation"
-      }}<br />{{ "> Info button to show the topic of the meeting." }}<br />{{
-        "> Add a button to cancel the meeting"
-      }}<br />{{ "> Review button if the meeting has been done "
-      }}<br /><br /><br /><br />
-
-      {{ "Lecturer Schedule shows here! " }}<br />{{
-        "> Reschedule feature implementation"
-      }}<br />{{ "> Info button to show the topic of the meeting." }}<br />{{
-        "> Add a button to cancel the meeting"
-      }}<br />
-      <br /><br /><br />
-      {{
-        "Extra stuff to do: "
-      }}<br />{{
-        "> Maybe need to add a review button in the lecturer details page to view reviews of the lecturer."
-      }}<br />
-    </div>
+  <div
+    v-if="edit"
+    class="booking-container fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center"
+  >
+    <RescheduleForm
+      class="border border-gray-600 rounded-xl border-2 fadein-animation"
+      style="filter: drop-shadow(0px 4px 10px black)"
+      :booking="rescheduleSlot"
+      @closeRescheduleForm="reloadpage"
+    />
   </div>
 </template>
-<script>
-export default {
-  name: "Scheduling",
-  data() {
-    return {
-      // Your data properties go here
-    };
-  },
-  methods: {
-    // Your component methods go here
-  },
-  mounted() {
-    // Code to run when the component is mounted goes here
-  },
-};
-</script>
 
-<style scoped>
-/* Your component styles go here */
-</style>
+<script setup>
+import SchedulingSlotView from "../Molecules/SchedulingSlotView.vue";
+import store from "../../store";
+import axiosInstance from "../../axiosConfig/customAxios";
+import RescheduleForm from "../Molecules/RescheduleForm.vue";
+import { ref } from "vue";
+
+let edit = ref(false);
+let rescheduleSlot = ref();
+
+function setRescheduleSlot(slot) {
+  rescheduleSlot.value = slot;
+  edit.value = true;
+}
+
+function reloadpage() {
+  location.reload();
+}
+
+</script>

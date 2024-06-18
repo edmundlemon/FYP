@@ -3,11 +3,11 @@
     v-if="showLoading"
     class="flex flex-col space-y-4 border rounded-lg border-gray-400 mr-2"
   >
-    <Loading class="mt-2 ml-2 mr-5 my-3" />
+    <Loading class="mt-2 ml-2 mr-2 my-3 fade-in-animation" />
   </div>
   <div v-else-if="slots.length">
     <div class="flex flex-col flex-wrap space-y-5">
-      <div v-for="(slot, index) in slots" :key="slot.id" class="">
+      <div v-for="(slot, index) in slots" :key="slot.id" class="fade-in-animation">
         <div
           class="flex flex-col h-1/4 border border-gray-400 bg-gray-100 rounded-lg space-y-2 mr-2 pt-3"
         >
@@ -100,11 +100,19 @@
             >
               <img
                 :src="
-                  slot.status == 'Pending'
+                  slot.status === 'Pending'
                     ? 'src/assets/pending.png'
-                    : slot.status == 'Student Rescheduled'
+                    : slot.status === 'Student Rescheduled' ||
+                      slot.status === 'Student Reschedule Approved'
                     ? 'src/assets/student.png'
-                    : 'src/assets/lecturer.png'
+                    : slot.status === 'Lecturer Rescheduled' ||
+                      slot.status === 'Lecturer Reschedule Approved'
+                    ? 'src/assets/lecturer.png'
+                    : slot.status === 'Approved'
+                    ? 'src/assets/approve.png'
+                    : slot.status === 'Rejected'
+                    ? 'src/assets/reject.png'
+                    : 'src/assets/expired.png'
                 "
                 alt="status_icon"
                 class="w-5 h-5"
@@ -129,7 +137,12 @@
             <div
               class="flex flex-row items-center justify-end w-full pr-5 space-x-2 font-bold"
               v-if="
-                (slot.status === 'Pending' && store.state.role === 'lecturer') || slot.status === 'Lecturer Rescheduled' && store.state.role === 'student' || slot.status === 'Student Rescheduled' && store.state.role === 'lecturer'
+                (slot.status === 'Pending' &&
+                  store.state.role === 'lecturer') ||
+                (slot.status === 'Lecturer Rescheduled' &&
+                  store.state.role === 'student') ||
+                (slot.status === 'Student Rescheduled' &&
+                  store.state.role === 'lecturer')
               "
             >
               <button
@@ -147,24 +160,44 @@
             </div>
           </div>
 
-          <!-- Slot booked by -->
           <div
-            class="flex flex-row items-center border w-full justify-end pr-5 py-0.5 bg-gray-200 border-t-gray-300 rounded-b-lg"
+            class="flex flex-row pr-5 py-1 bg-gray-200 border-t-gray-300 rounded-b-lg"
           >
-            <img
-              src="../../assets/appointment.png"
-              alt="user_icon"
-              class="w-5 h-5 mr-2"
-              :title="
-                store.state.role === 'lecturer'
-                  ? 'Booked by'
-                  : 'Consultation by'
-              "
-            />
-            <p v-if="store.state.role === 'lecturer'" class="font-semibold">
-              {{ slot.student.name }}
-            </p>
-            <p v-else class="font-semibold">{{ slot.lecturer.name }}</p>
+            <!-- Slot booked by -->
+            <div
+              class="flex flex-row items-center border w-full justify-start ml-5"
+            >
+              <img
+                src="../../assets/appointment.png"
+                alt="user_icon"
+                class="w-5 h-5 mr-2"
+                :title="
+                  store.state.role === 'lecturer'
+                    ? 'Booked by'
+                    : 'Consultation by'
+                "
+              />
+              <div v-if="store.state.role === 'lecturer'" class="font-semibold">
+                <a :href="'/student/' + slot.student.id"
+                  ><p>{{ slot.student.name }}</p></a
+                >
+              </div>
+              <div v-else class="font-semibold">
+                <a :href="'/lecturer/' + slot.lecturer.id"
+                  ><p>{{ slot.lecturer.name }}</p></a
+                >
+              </div>
+            </div>
+
+            <!-- Updated at -->
+            <div class="flex flex-row items-center justify-end w-full">
+              <p
+                :title="dayjs(updated_at).format('dddd, MMMM D, YYYY h:mm A')"
+                class="text-s ml-5 mt-1 whitespace-nowrap"
+              >
+                {{ "Updated " + formatRelativeTime(slot.updated_at) }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -182,6 +215,10 @@ import { onMounted, ref, defineProps } from "vue";
 import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
 import Loading from "../Atom/SkeletonLoading.vue";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 const slots = ref([]);
 let showLoading = ref(true);
@@ -192,6 +229,9 @@ const props = defineProps({
   },
 });
 
+function formatRelativeTime(date) {
+  return dayjs(date).fromNow();
+}
 
 function approveSlot(slotId) {
   if (confirm("Are you sure you want to approve this slot?")) {
@@ -210,7 +250,22 @@ function approveSlot(slotId) {
         .put(`/lecturer/approve/${slotId}`)
         .then((response) => {
           console.log(response.data);
-          window.location.reload();
+
+          //if time collision detected
+          if (response.data.message === "Time Collision") {
+            axiosInstance
+              .put(`/lecturer/reject/${slotId}`)
+              .then((response) => {
+                alert("Time Collision Detected! Slot automatically rejected.");
+                window.location.reload();
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          } else {
+            alert("Slot Approved!");
+            window.location.reload();
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -299,7 +354,7 @@ onMounted(async () => {
           });
       }
       break;
-    case "Approval":
+    case "Approved":
       if (store.state.role === "student") {
         axiosInstance
           .get("/student/all-approved")
@@ -348,20 +403,85 @@ onMounted(async () => {
             console.log(error);
           });
       }
-
+      break;
+    case "Rescheduled":
+      if (store.state.role === "student") {
+        axiosInstance
+          .get("/student/all-rescheduled")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        axiosInstance
+          .get("/lecturer/all-rescheduled")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      break;
+    case "Expired":
+      if (store.state.role === "student") {
+        axiosInstance
+          .get("/student/all-expired")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        axiosInstance
+          .get("/lecturer/all-expired")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      break;
+    case "Reschedule Request":
+      if (store.state.role === "student") {
+        axiosInstance
+          .get("/student/reschedule-request")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        axiosInstance
+          .get("/lecturer/reschedule-request")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      break;
     default:
       break;
   }
 });
 
-function MultiCondition(status) {
-  console.log(store.state.role);
-  if (store.state.role === "student") {
-    return status !== "Student Rescheduled";
-  } else {
-    return status !== "Lecturer Rescheduled";
-  }
-
-  // return true; //testing
-}
 </script>

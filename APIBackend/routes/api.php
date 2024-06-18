@@ -71,7 +71,9 @@ Route::group(['middleware' => AuthLecturer::class], function () {
     Route::get('/lecturer/all-pending', [ConsultationController::class, 'allPending']);
     Route::get('/lecturer/all-approved', [ConsultationController::class, 'allApproved']);
     Route::get('/lecturer/all-past', [ConsultationController::class, 'allPast']);
-
+    Route::get('/lecturer/all-rescheduled', [ConsultationController::class, 'allRescheduled']);
+    Route::get('/lecturer/all-expired', [ConsultationController::class, 'allExpired']);
+    Route::get('/lecturer/reschedule-request', [ConsultationController::class, 'RescheduleRequest']);
 });
 
 // Middleware to only allow admins
@@ -98,6 +100,9 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/student/all-pending', [ConsultationController::class, 'allPending']);
     Route::get('/student/all-past', [ConsultationController::class, 'allPast']);
     Route::get('/student/all-approved', [ConsultationController::class, 'allApproved']);
+    Route::get('/student/all-rescheduled', [ConsultationController::class, 'allRescheduled']);
+    Route::get('/student/all-expired', [ConsultationController::class, 'allExpired']);
     Route::put('/student/reject/{consultation_slot}', [ConsultationController::class, 'studentReject']);
+    Route::get('/student/reschedule-request', [ConsultationController::class, 'RescheduleRequest']);
 
 });
