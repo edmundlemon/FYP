@@ -11,6 +11,9 @@ class UpdateExpiredConsultationSlots implements ShouldQueue
 {
     use SerializesModels;
 
+    public $queue = 'default';
+    public $connection = 'sync';
+
     public function handle()
     {
         $currentDateTime = Carbon::now();
