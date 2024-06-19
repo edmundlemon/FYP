@@ -494,10 +494,10 @@ class ConsultationController extends Controller
     {               
         if (auth()->guard('sanctum')->user()->hasRole('student')) {
             $user = Student::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Completed', 'Reviewed & Completed'])->orderBy('updated_at', 'desc')->get();
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Completed', 'Completed & Reviewed'])->orderBy('updated_at', 'desc')->get();
         } else {
             $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Completed', 'Reviewed & Completed'])->orderBy('updated_at', 'desc')->get();
+            $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Completed', 'Completed & Reviewed'])->orderBy('updated_at', 'desc')->get();
         }
 
         return response()->json(

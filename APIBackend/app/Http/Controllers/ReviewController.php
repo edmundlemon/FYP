@@ -31,6 +31,9 @@ class ReviewController extends Controller
             'comment' => 'string'
         ]);
 
+        Consultation_slot::where('id', $request->slot_id)->update(['status' => 'Completed & Reviewed']);
+
+
         $review = new Review();
         $review->rating = $request->rating;
         $review->comment = $request->comment;
