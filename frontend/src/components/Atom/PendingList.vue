@@ -7,7 +7,11 @@
   </div>
   <div v-else-if="slots.length">
     <div class="flex flex-col flex-wrap space-y-5">
-      <div v-for="(slot, index) in slots" :key="slot.id" class="fade-in-animation">
+      <div
+        v-for="(slot, index) in slots"
+        :key="slot.id"
+        class="fade-in-animation"
+      >
         <div
           class="flex flex-col h-1/4 border border-gray-400 bg-gray-100 rounded-lg space-y-2 mr-2 pt-3"
         >
@@ -112,6 +116,8 @@
                     ? 'src/assets/approve.png'
                     : slot.status === 'Rejected'
                     ? 'src/assets/reject.png'
+                    : slot.status === 'Completed'
+                    ? 'src/assets/completed.png'
                     : 'src/assets/expired.png'
                 "
                 alt="status_icon"
@@ -158,6 +164,18 @@
                 Reject
               </button>
             </div>
+            <div
+              class="flex flex-row items-center justify-end w-full pr-5 space-x-2 font-bold"
+              v-else-if="slot.status === 'Completed' && store.state.role === 'student'"
+            >
+              <button
+                class="px-4 py-2 bg-yellow-400 text-white rounded-md hover:bg-yellow-600 min-w-[5.5vw]"
+                @click.prevent="console.log('Review button clicked on slot id =>' + slot.id), $emit('review-slot', slot)"
+
+              >
+                Review
+              </button>
+          </div>
           </div>
 
           <div
@@ -187,6 +205,10 @@
                   ><p>{{ slot.lecturer.name }}</p></a
                 >
               </div>
+
+              <p title="Booking Created At" class="ml-2 font-light">
+                {{ formatDate(slot.created_at) }}
+              </p>
             </div>
 
             <!-- Updated at -->
@@ -231,6 +253,10 @@ const props = defineProps({
 
 function formatRelativeTime(date) {
   return dayjs(date).fromNow();
+}
+
+function formatDate(date) {
+  return dayjs(date).format("dddd, MMMM D, YYYY");
 }
 
 function approveSlot(slotId) {
@@ -479,9 +505,33 @@ onMounted(async () => {
           });
       }
       break;
+    case "Completed":
+      if (store.state.role === "student") {
+        axiosInstance
+          .get("/student/all-completed")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        axiosInstance
+          .get("/lecturer/all-completed")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      break;
     default:
       break;
   }
 });
-
 </script>

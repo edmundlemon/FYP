@@ -17,8 +17,12 @@
             <div class="flex flex-wrap justify-center space-x-4">
               <div class="" v-for="day in [1, 2, 3, 4, 5]">
                 <div
-                  class="flex-1 max-h-full w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5 "
-                  :class="(day === sameday()) ? 'border-2 border-purple-500 bg-purple-50' : 'border-2 border-gray-200'"
+                  class="flex-1 max-h-full w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5"
+                  :class="
+                    day === sameday()
+                      ? 'border-2 border-purple-500 bg-purple-50'
+                      : 'border-2 border-gray-200'
+                  "
                 >
                   <p class="my-5 text-xl font-bold text-center">
                     {{ getDay(day) }}
@@ -38,8 +42,8 @@
                     </div>
                     <div v-else>
                       <div class="flex justify-center items-center h-full">
-                        <p class="text-xl font-semibold text-gray-800">
-                          No available slots
+                        <p class="text-xl font-semibold text-gray-800 px-5">
+                          No consultations
                         </p>
                       </div>
                     </div>
@@ -50,7 +54,7 @@
           </div>
           <div v-else class="h-full flex justify-center items-center">
             <h2 class="text-xl font-bold text-gray-800 animate-bounce my-5">
-              Freeslots not available
+              Yay >w< you have no consultations!
             </h2>
           </div>
         </div>

@@ -52,6 +52,7 @@
           class="mt-3 w-[8vw]"
           text="Edit Slot"
           v-if="store.state.role === 'lecturer'"
+          type="1"
         />
       </div>
     </div>

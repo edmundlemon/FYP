@@ -20,6 +20,7 @@
           class="mt-3 w-[8vw]"
           text="Reschedule"
           v-if="slotType === 'approved'"
+          type="1"
         />
     </div>
   </div>

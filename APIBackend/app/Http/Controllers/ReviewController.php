@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use App\Models\Lecturer;
+use App\Models\Consultation_slot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Student;
+use Laravel\Sanctum\Sanctum;
 
 class ReviewController extends Controller
 {
@@ -50,4 +52,5 @@ class ReviewController extends Controller
             'code' => 200
         ]);
     }
+
 }
