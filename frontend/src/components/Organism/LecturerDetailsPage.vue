@@ -1,67 +1,10 @@
 <template>
   <div
     class="relative flex flex-col items-center justify-center border border-gray-700 w-10/12 m-auto rounded-lg shadow-lg bg-white mt-5 fade-in-animation"
-    v-if="lecturer"
+    v-if="lecturer != null && !fail"
   >
-    <div
-      class="space-y-3 py-12 border-b border-gray-500 border-opacity-50 w-full h-fit flex flex-col justify-center items-center orange-bg rounded-t-lg shadow-lg"
-    >
-      <img
-        :src="lecturer.photo"
-        alt="Descriptive Alt Text"
-        class="max-h-40 max-w-40 object-contain rounded-lg shadow-xl ring-2 ring-white"
-      />
-      <div class="flex flex-col items-center justify-center">
-        <h1 class="text-4xl font-bold my-1.5">{{ lecturer.name }}</h1>
-
-        <div class="flex flex-row contact-container space-x-12">
-          <!-- Email -->
-          <div class="flex flex-row text-lg my-1.5 items-center">
-            <img
-              title="Email"
-              class="icons w-6 h-6 mr-2"
-              src="../../assets/email.png"
-              alt=""
-            /><a :href="'mailto:' + lecturer.email"
-              ><span>{{ lecturer.email }}</span></a
-            >
-          </div>
-
-          <!-- Office -->
-          <div class="flex flex-row text-lg my-1.5 items-center">
-            <img
-              title="Office"
-              class="icons w-6 h-6 mr-2"
-              src="../../assets/office.png"
-              alt=""
-            />
-            <span>{{ lecturer.office }}</span>
-          </div>
-
-          <!-- Faculty -->
-          <div class="flex flex-row text-lg my-1.5 items-center">
-            <img
-              title="Faculty"
-              class="icons w-6 h-6 mr-2"
-              src="../../assets/faculty.png"
-              alt=""
-            /><span>{{ lecturer.faculty }}</span>
-          </div>
-
-          <!-- User since -->
-          <div class="flex flex-row text-lg my-1.5 items-center">
-            <img
-              title="User since"
-              class="icons w-6 h-6 mr-2"
-              src="../../assets/clock.png"
-              alt=""
-            /><span>{{
-              new Date(lecturer.created_at).toLocaleDateString()
-            }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    
+    <LecturerDetails :lecturer="lecturer" />
 
     <!-- Lecturer Freeslot view here -->
     <div
@@ -98,9 +41,16 @@
       />
     </button>
   </div>
-  <div v-else class="relative justify-center items-center flex-row flex w-10/12 h-full m-auto rounded-lg mt-[13vh]">
-    <div class="loader"></div>
+  <div v-else-if="fail" class="flex flex-col items-center justify-center mt-[13vh] font-semibold">
+    <span>User does not exists...</span>
+    <img src="../../assets/edmund.gif" alt="goofy" class="border border-gray-400 shadow-2xl rounded-lg w-[8vw]">
   </div>
+    <div
+      v-else
+      class="relative justify-center items-center flex-row flex w-10/12 h-full m-auto rounded-lg mt-[13vh]"
+    >
+      <div class="loader"></div>
+    </div>
   <div class="h-5"></div>
 </template>
 
@@ -112,23 +62,23 @@ import { useRoute } from "vue-router";
 import BookingForm from "../Molecules/CustomBookingForm.vue";
 import FreeSlot from "../Molecules/LecturerFreeSlot.vue";
 import store from "../../store";
+import LecturerDetails from "../Molecules/LecturerDetails.vue";
 
 let showBookingform = ref(false);
 const route = useRoute();
 const lecturer = ref(null);
 const lecturerId = route.params.id;
-
+const fail = ref(false);
 onMounted(async () => {
   console.log(lecturerId);
   try {
     const response = await axiosInstance.get(`/view/lecturer/${lecturerId}`);
     lecturer.value = response.data.lecturer;
   } catch (error) {
+    fail.value = true;
     console.error("Failed to fetch lecturer details:", error);
   }
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

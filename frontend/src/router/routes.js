@@ -7,9 +7,9 @@ import NotFound from "../views/NotFound.vue";
 import Lecturers from "../components/Organism/Lecturers.vue";
 import RegisterLecturer from "../components/Organism/RegisterLecturer.vue";
 import Students from "../components/Organism/Students.vue";
-import LecturerDetails from "../components/Organism/LecturerDetails.vue";
-import LecturerProfile from "../components/Organism/LecturerDetails.vue";
-import StudentProfile from "../components/Organism/StudentDetails.vue";
+import LecturerDetails from "../components/Organism/LecturerDetailsPage.vue";
+import LecturerProfile from "../components/Organism/LecturerDetailsPage.vue";
+import StudentProfile from "../components/Organism/StudentDetailsPage.vue";
 import Scheduling from "../components/Organism/Scheduling.vue";
 
 

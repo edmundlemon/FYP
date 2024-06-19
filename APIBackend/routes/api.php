@@ -104,5 +104,4 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/student/all-expired', [ConsultationController::class, 'allExpired']);
     Route::put('/student/reject/{consultation_slot}', [ConsultationController::class, 'studentReject']);
     Route::get('/student/reschedule-request', [ConsultationController::class, 'RescheduleRequest']);
-
 });

@@ -18,7 +18,7 @@
               <div class="" v-for="day in [1, 2, 3, 4, 5]">
                 <div
                   class="flex-1 max-h-full w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5 "
-                  :class="(day === sameday()) ? 'border-2 border-red-500 bg-red-50' : 'border-2 border-gray-200'"
+                  :class="(day === sameday()) ? 'border-2 border-purple-500 bg-purple-50' : 'border-2 border-gray-200'"
                 >
                   <p class="my-5 text-xl font-bold text-center">
                     {{ getDay(day) }}
