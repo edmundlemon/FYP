@@ -65,8 +65,10 @@ Route::group(['middleware' => AuthLecturer::class], function () {
     Route::put('/free-slots/edit/{free_slot}', [Free_SlotController::class, 'update']);
     Route::put('/lecturer/approve/{consultation_slot}', [ConsultationController::class, 'approve']);
     Route::put('/lecturer/reschedule/{consultation_slot}', [ConsultationController::class, 'lecturerUpdates']);
+    Route::put('/lecturer/cancel/{consultation_slot}', [ConsultationController::class, 'lecturerCancel']);
     Route::put('/lecturer/reject/{consultation_slot}', [ConsultationController::class, 'lecturerReject']);
     Route::get('/lecturer/rejected', [ConsultationController::class, 'lecturerRejected']);
+    Route::get('/lecturer/cancelled', [ConsultationController::class, 'cancelledSlots']);
     Route::get('/lecturer/past', [ConsultationController::class, 'history']);
     Route::get('/lecturer/all-pending', [ConsultationController::class, 'allPending']);
     Route::get('/lecturer/all-approved', [ConsultationController::class, 'allApproved']);
@@ -74,7 +76,7 @@ Route::group(['middleware' => AuthLecturer::class], function () {
     Route::get('/lecturer/all-rescheduled', [ConsultationController::class, 'allRescheduled']);
     Route::get('/lecturer/all-expired', [ConsultationController::class, 'allExpired']);
     Route::get('/lecturer/all-completed', [ConsultationController::class, 'allCompleted']);
-    Route::get('/lecturer/reschedule-request', [ConsultationController::class, 'RescheduleRequest']);
+    Route::get('/lecturer/requests', [ConsultationController::class, 'Requests']);
     Route::put('/lecturer/complete/{consultation_slot}', [ConsultationController::class, 'complete']);
 });
 
@@ -106,7 +108,10 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/student/all-expired', [ConsultationController::class, 'allExpired']);
     Route::get('/student/all-completed', [ConsultationController::class, 'allCompleted']);
     Route::put('/student/reject/{consultation_slot}', [ConsultationController::class, 'studentReject']);
-    Route::get('/student/reschedule-request', [ConsultationController::class, 'RescheduleRequest']);
+    Route::get('/student/requests', [ConsultationController::class, 'Requests']);
     Route::put('/student/complete/{consultation_slot}', [ConsultationController::class, 'complete']);
-    Route::get('student/reviewstatus/{consultation_slot}', [ReviewController::class, 'reviewStatus']);
+    Route::get('/student/reviewstatus/{consultation_slot}', [ReviewController::class, 'reviewStatus']);
+    Route::put('/student/cancel/{consultation_slot}', [ConsultationController::class, 'studentCancel']);
+    Route::get('/student/cancelled', [ConsultationController::class, 'cancelledSlots']);
+
 });

@@ -114,9 +114,10 @@
                     ? 'src/assets/lecturer.png'
                     : slot.status === 'Approved'
                     ? 'src/assets/approve.png'
-                    : slot.status === 'Rejected'
+                    : slot.status === 'Rejected' || slot.status === 'Cancelled'
                     ? 'src/assets/reject.png'
-                    : slot.status === 'Completed'|| slot.status === 'Completed & Reviewed'
+                    : slot.status === 'Completed' ||
+                      slot.status === 'Completed & Reviewed'
                     ? 'src/assets/completed.png'
                     : 'src/assets/expired.png'
                 "
@@ -166,16 +167,38 @@
             </div>
             <div
               class="flex flex-row items-center justify-end w-full pr-5 space-x-2 font-bold"
-              v-else-if="slot.status === 'Completed' && store.state.role === 'student'"
+              v-else-if="
+                slot.status === 'Completed' && store.state.role === 'student'
+              "
             >
               <button
                 class="px-4 py-2 bg-yellow-400 text-white rounded-md hover:bg-yellow-600 min-w-[5.5vw]"
-                @click.prevent="console.log('Review button clicked on slot id =>' + slot.id), $emit('review-slot', slot)"
-
+                @click.prevent="
+                  console.log('Review button clicked on slot id =>' + slot.id),
+                    $emit('review-slot', slot)
+                "
               >
                 Review
               </button>
-          </div>
+            </div>
+
+            <div
+              class="flex flex-row items-center justify-end w-full pr-5 space-x-2 font-bold"
+              v-else-if="
+                slot.status === 'Cancellation Request' &&
+                store.state.role === 'lecturer'
+              "
+            >
+              <button
+                class="px-4 py-2 bg-red-400 text-white rounded-md hover:bg-red-600 min-w-[5.5vw]"
+                @click.prevent="
+                  console.log('Review button clicked on slot id =>' + slot.id),
+                    cancelSlot(slot.id)
+                "
+              >
+                Approve Cancellation
+              </button>
+            </div>
           </div>
 
           <div
@@ -242,7 +265,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 
 dayjs.extend(relativeTime);
 
-const emit = defineEmits(['runtimeout']);
+const emit = defineEmits(["runtimeout"]);
 
 const slots = ref([]);
 let showLoading = ref(true);
@@ -294,6 +317,23 @@ function approveSlot(slotId) {
             alert("Slot Approved!");
             emit("runtimeout");
           }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    // emit("runtimeout");
+  }
+}
+
+function cancelSlot(slotId) {
+  if (confirm("Are you sure you want to cancel this slot?")) {
+    if (store.state.role === "lecturer") {
+      axiosInstance
+        .put(`/lecturer/cancel/${slotId}`)
+        .then((response) => {
+          console.log(response.data);
+          emit("runtimeout");
         })
         .catch((error) => {
           console.log(error);
@@ -482,10 +522,10 @@ onMounted(async () => {
           });
       }
       break;
-    case "Reschedule Request":
+    case "Requests":
       if (store.state.role === "student") {
         axiosInstance
-          .get("/student/reschedule-request")
+          .get("/student/requests")
           .then((response) => {
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
@@ -496,7 +536,7 @@ onMounted(async () => {
           });
       } else {
         axiosInstance
-          .get("/lecturer/reschedule-request")
+          .get("/lecturer/requests")
           .then((response) => {
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
@@ -532,6 +572,30 @@ onMounted(async () => {
           });
       }
       break;
+      case "Cancelled":
+      if (store.state.role === "student") {
+        axiosInstance
+          .get("/student/cancelled")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        axiosInstance
+          .get("/lecturer/cancelled")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     default:
       break;
   }

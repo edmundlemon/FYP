@@ -53,7 +53,7 @@ export default {
           iconpath: "src/assets/pending.png",
         },
         {
-          title: "Reschedule Request",
+          title: "Requests",
           iconpath: "src/assets/request.png",
         },
         {
@@ -73,6 +73,9 @@ export default {
           title: "History",
           iconpath: "src/assets/history.png",
           dropdown: [
+            {
+              title: "Cancelled",
+            },
             {
               title: "Rejected",
             },

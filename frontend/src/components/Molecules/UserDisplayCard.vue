@@ -40,7 +40,7 @@
             transform: translate(-50%, -50%);
           "
         >
-          <span class="font-light text-xs mb-0.5">
+          <span class="font-light text-xs mb-0.5 whitespace-nowrap">
             {{ role === "student" ? "STUDENT" : "LECTURER" }} NAME
           </span>
         </p>
