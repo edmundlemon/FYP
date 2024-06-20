@@ -12,7 +12,6 @@ import LecturerProfile from "../components/Organism/LecturerDetailsPage.vue";
 import StudentProfile from "../components/Organism/StudentDetailsPage.vue";
 import Scheduling from "../components/Organism/Scheduling.vue";
 
-
 import adminRoutes from "./adminRoutes";
 import lecturerRoutes from "./lecturerRoutes";
 import studentRoutes from "./studentRoutes";
