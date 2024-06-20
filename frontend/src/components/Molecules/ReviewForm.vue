@@ -46,8 +46,6 @@
       </div>
     </form>
   </div>
-  form is here
-  {{ props.slotId }}
 </template>
 
 <script setup>
@@ -55,7 +53,7 @@ import { ref, onMounted, defineProps } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
 import store from "../../store";
 import StarRatingInput from "../Atom/StarRatingInput.vue";
-
+import { defineEmits } from "vue";
 const props = defineProps({
   slot: {
     type: Object,
@@ -63,9 +61,12 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(['closeReviewForm', 'runtimeout']);
+
 const reviewSlot = ref({
   rating: 0,
   comment: "",
+  slot_id: props.slot.id,
 });
 
 function updateRating(rating) {
@@ -77,7 +78,8 @@ function submitReview() {
     .post(`/review/${props.slot.lecturer_id}`, reviewSlot.value)
     .then((response) => {
       console.log(response.data);
-      $emit("closeRatingForm");
+      emit('closeReviewForm');
+      emit('runtimeout');
     })
     .catch((error) => {
       console.log(error);

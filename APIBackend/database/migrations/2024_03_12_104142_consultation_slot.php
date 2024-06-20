@@ -19,6 +19,9 @@ return new class extends Migration
 
             $table->string('student_id');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            
+            $table->integer('review_id');
+            $table->foreign('review_id')->references('id')->on('reviews')->onDelete('cascade');
             // $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
             $table->date('date'); // (Y-m-d H:i:s)
             $table->time('start_time');

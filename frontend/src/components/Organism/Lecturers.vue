@@ -3,12 +3,13 @@
     <div class="mt-5 mb-5">
       <h1 class="text-6xl font-bold">Lecturers</h1>
     </div>
-    <!-- <div v-for="lecturer in lecturers">
-      <input type="radio" :value="lecturer.faculty" >{{ lecturer.faculty }}
-    </div> -->
+
+    <!-- Faculty sorting option -->
     <div class="w-full flex justify-end items-center">
       <p class="mr-2 font-semibold">Filter by Faculty:</p>
       {{ SelectedFaculty }}
+
+      
       <div class="ml-2 w-fit dropdown relative">
         <button
           class="dropbtn bg-gray-600 p-1 h-8 w-8 text-white rounded-md flex flex-row justify-center items-center"
@@ -29,6 +30,7 @@
             v-else
           />
         </button>
+
         <ul
           class="space-y-3 dropdown-content mt-1 absolute z-50 bg-white text-gray-700 py-2 rounded-md shadow-md border border-gray-300 fade-down-animation"
           style="left: 0; width: 5vw; transition: all 0.5s ease-in-out"
@@ -61,7 +63,8 @@
       <LecturerDisplay
         v-for="lecturer in filteredLecturers"
         :key="lecturer.id"
-        :lecturer="lecturer"
+        :user="lecturer"
+        role="lecturer"
         class="load-in-animation"
       />
     </div>
@@ -72,7 +75,7 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import store from "../../store";
-import LecturerDisplay from "../Molecules/Lecturer-Display.vue";
+import LecturerDisplay from "../Molecules/UserDisplayCard.vue";
 import dist from "vuex-persistedstate";
 
 const lecturers = ref([]);

@@ -360,7 +360,7 @@ class ConsultationController extends Controller
     {
         if (auth()->guard('sanctum')->user()->hasRole('student')) {
             $user = Student::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Pending', 'Student Rescheduled'])->orderBy('updated_at', 'desc')->get();
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Pending', 'Student Rescheduled', 'Cancellation Request'])->orderBy('updated_at', 'desc')->get();
         } else {
             $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
             $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Pending', 'Lecturer Rescheduled'])->orderBy('updated_at', 'desc')->get();
@@ -378,12 +378,12 @@ class ConsultationController extends Controller
     {
         if (auth()->guard('sanctum')->user()->hasRole('student')) {
             $user = Student::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Conpleted', 'Student Reschedule Approved', 'Lecturer Reschedule Approved', 'Rejected', 'Expired'])->orderBy('updated_at', 'desc')->get();
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Cancelled', 'Rejected', 'Expired'])->orderBy('updated_at', 'desc')->get();
         } else {
             $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
             $consultation_slots = $user->consultation_slots()
                 ->with('student')
-                ->whereIn('status', ['Conpleted', 'Student Reschedule Approved', 'Lecturer Reschedule Approved', 'Rejected', 'Expired'])
+                ->whereIn('status', ['Cancelled', 'Rejected', 'Expired'])
                 ->orderBy('updated_at', 'desc')
                 ->get();
         }
@@ -450,14 +450,14 @@ class ConsultationController extends Controller
         );
     }
 
-    public function rescheduleRequest()
+    public function Requests()
     {
         if (auth()->guard('sanctum')->user()->hasRole('student')) {
             $user = Student::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Lecturer Rescheduled'])->orderBy('updated_at', 'desc')->get();
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Lecturer Rescheduled', 'Student Rescheduled'])->orderBy('updated_at', 'desc')->get();
         } else {
             $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Student Rescheduled'])->orderBy('updated_at', 'desc')->get();
+            $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Student Rescheduled', 'Lecturer Rescheduled', 'Cancellation Request'])->orderBy('updated_at', 'desc')->get();
         }
 
         return response()->json(
@@ -498,6 +498,67 @@ class ConsultationController extends Controller
         } else {
             $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
             $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Completed', 'Completed & Reviewed'])->orderBy('updated_at', 'desc')->get();
+        }
+
+        return response()->json(
+            [
+                'consultation_slots' => $consultation_slots,
+                'code' => 200
+            ]
+        );
+    }
+
+    public function lecturerCancel(Consultation_slot $consultation_slot)
+    {
+        if (auth()->guard('sanctum')->id() !== $consultation_slot->lecturer_id) {
+            return response()->json(
+                [
+                    'message' => 'Unauthorized Action!',
+                    'code' => 403
+                ]
+            );
+            abort(403, 'Unauthorized Action!');
+        }
+        $consultation_slot->status = 'Cancelled';
+        $consultation_slot->save();
+        return response()->json(
+            [
+                'message' => 'Slot Cancelled',
+                'code' => 200
+            ]
+        );
+        return redirect()->route('free_slots.index');
+    }
+
+    public function studentCancel(Consultation_slot $consultation_slot)
+    {
+        if (auth()->guard('sanctum')->id() !== $consultation_slot->student_id) {
+            return response()->json(
+                [
+                    'message' => 'Unauthorized Action!',
+                    'code' => 403
+                ]
+            );
+            abort(403, 'Unauthorized Action!');
+        }
+        $consultation_slot->status = 'Cancellation Request';
+        $consultation_slot->save();
+        return response()->json(
+            [
+                'message' => 'Cancellation Requested',
+                'code' => 200
+            ]
+        );
+        return redirect()->route('free_slots.index');
+    }
+
+    public function cancelledSlots(){
+        if(auth()->guard('sanctum')->user()->hasRole('student')){
+            $user = Student::find(auth()->guard('sanctum')->user()->id);
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->where('status', 'Cancelled')->orderBy('updated_at', 'desc')->get();
+        } else {
+            $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
+            $consultation_slots = $user->consultation_slots()->with('student')->where('status', 'Cancelled')->orderBy('updated_at', 'desc')->get();
         }
 
         return response()->json(
