@@ -106,8 +106,8 @@ export default [
 		}	
 	},
 	{
-		path: "/lecturer-reviews",
-		name: "lecturer-reviews",
+		path: "/lecturer-listreviews",
+		name: "lecturer-listreviews",
 		component: AdminLecListReview,
 		props: true,
 		meta: {
