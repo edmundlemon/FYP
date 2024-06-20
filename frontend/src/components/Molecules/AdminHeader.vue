@@ -223,7 +223,7 @@ export default {
             { name: 'Edit Lecturers', path: '/edit-details/lecturers', role: 'admin' },
           ]
         },
-        { name: 'Lecturer Reviews', path: '/lecturer-reviews' }
+        { name: 'Lecturer Reviews', path: '/lecturer-listreviews' }
       ],
       showNotifications: false,
       isDropdownOpen: false,
