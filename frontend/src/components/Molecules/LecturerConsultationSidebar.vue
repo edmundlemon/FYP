@@ -23,7 +23,7 @@
             </div>
             <ul
               v-if="data.dropdown"
-              class="hidden group-hover:flex flex-col whitespace-nowrap font-semibold text-xl pb-2 w-fit space-y-1 mt-2 w-full justify-center items-center rounded-lg shadow-lg"
+              class="fade-down-animation hidden group-hover:flex flex-col whitespace-nowrap font-semibold text-xl pb-2 w-fit space-y-1 mt-2 w-full justify-center items-center rounded-lg"
             >
               <li v-for="dropdown in data.dropdown">
                 <h3
@@ -63,6 +63,10 @@ export default {
         {
           title: "Rescheduled",
           iconpath: "src/assets/clock.png",
+        },
+        {
+          title: "Completed",
+          iconpath: "src/assets/completed.png",
         },
 
         {

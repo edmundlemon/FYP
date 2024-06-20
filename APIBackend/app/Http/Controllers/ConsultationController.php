@@ -467,4 +467,44 @@ class ConsultationController extends Controller
             ]
         );
     }
+
+    public function complete(Consultation_slot $consultation_slot)
+    {
+        if (auth()->guard('sanctum')->user()->hasRole('student')) {
+            if (auth()->guard('sanctum')->id() !== $consultation_slot->student_id) {
+                abort(403, 'Unauthorized Action!');
+            }
+        } else {
+            if (auth()->guard('sanctum')->id() !== $consultation_slot->lecturer_id) {
+                abort(403, 'Unauthorized Action!');
+            }
+        }
+        $consultation_slot->status = 'Completed';
+        $consultation_slot->save();
+        return response()->json(
+            [
+                'message' => 'Slot Marked as Completed',
+                'code' => 200
+            ]
+        );
+        return redirect()->route('free_slots.index');
+    }
+
+    public function allCompleted()
+    {               
+        if (auth()->guard('sanctum')->user()->hasRole('student')) {
+            $user = Student::find(auth()->guard('sanctum')->user()->id);
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Completed', 'Completed & Reviewed'])->orderBy('updated_at', 'desc')->get();
+        } else {
+            $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
+            $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Completed', 'Completed & Reviewed'])->orderBy('updated_at', 'desc')->get();
+        }
+
+        return response()->json(
+            [
+                'consultation_slots' => $consultation_slots,
+                'code' => 200
+            ]
+        );
+    }
 }

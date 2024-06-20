@@ -35,7 +35,7 @@ Route::get('/expire-slots', [ConsultationController::class, 'expire Slots']);
 
 Route::get('/rating/{lecturer}', [ReviewController::class, 'index']);
 Route::get('/student/reviews/{student}', [ReviewController::class, 'view']);
-
+Route::post('/review/{lecturer}', [ReviewController::class, 'store']);
 Route::middleware('guest:sanctum')->post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -73,7 +73,9 @@ Route::group(['middleware' => AuthLecturer::class], function () {
     Route::get('/lecturer/all-past', [ConsultationController::class, 'allPast']);
     Route::get('/lecturer/all-rescheduled', [ConsultationController::class, 'allRescheduled']);
     Route::get('/lecturer/all-expired', [ConsultationController::class, 'allExpired']);
+    Route::get('/lecturer/all-completed', [ConsultationController::class, 'allCompleted']);
     Route::get('/lecturer/reschedule-request', [ConsultationController::class, 'RescheduleRequest']);
+    Route::put('/lecturer/complete/{consultation_slot}', [ConsultationController::class, 'complete']);
 });
 
 // Middleware to only allow admins
@@ -102,7 +104,9 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/student/all-approved', [ConsultationController::class, 'allApproved']);
     Route::get('/student/all-rescheduled', [ConsultationController::class, 'allRescheduled']);
     Route::get('/student/all-expired', [ConsultationController::class, 'allExpired']);
+    Route::get('/student/all-completed', [ConsultationController::class, 'allCompleted']);
     Route::put('/student/reject/{consultation_slot}', [ConsultationController::class, 'studentReject']);
     Route::get('/student/reschedule-request', [ConsultationController::class, 'RescheduleRequest']);
-
+    Route::put('/student/complete/{consultation_slot}', [ConsultationController::class, 'complete']);
+    Route::get('student/reviewstatus/{consultation_slot}', [ReviewController::class, 'reviewStatus']);
 });
