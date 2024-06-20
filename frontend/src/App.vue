@@ -1,8 +1,8 @@
 <script setup>
 import { defineProps } from 'vue'
+import AdminHeader from './components/Molecules/AdminHeader.vue'
 import Header from './components/Molecules/Header.vue'
 import store from './store'
-
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import store from './store'
     
     <div v-else-if="store.state.token && (store.state.role == 'admin')">
       <Logout />
-      ADMIN HEADER HERE
+      <AdminHeader class="sticky w-full z-50"/>
     </div>
     <router-view></router-view>
   </div>
