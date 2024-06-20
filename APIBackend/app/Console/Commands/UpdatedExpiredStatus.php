@@ -2,18 +2,18 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Consultation_Slot;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use App\Models\Consultation_Slot;
 
-class UpdateExpiredConsultationSlots extends Command
+class UpdatedExpiredStatus extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:update-expired-consultation-slots';
+    protected $signature = 'app:updated-expired-status';
 
     /**
      * The console command description.
@@ -33,8 +33,7 @@ class UpdateExpiredConsultationSlots extends Command
         Consultation_Slot::where('date', '<', $currentDateTime->toDateString())
             ->orWhere(function ($query) use ($currentDateTime) {
                 $query->where('date', '=', $currentDateTime->toDateString())
-                      ->where('end_time', '<', $currentDateTime->toTimeString());
-            })
-            ->update(['status' => 'Expired']);
+                    ->where('end_time', '<', $currentDateTime->toTimeString())->where('status', '!=', 'Expired');
+            })->update(['status' => 'Expired']);
     }
 }

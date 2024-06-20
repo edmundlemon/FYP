@@ -2,12 +2,12 @@
   <div class="lecturer-consultation-sidebar">
     <!-- Your sidebar content goes here -->
 
-    <div class="h-full flex flex-col items-center mr-2  ">
+    <div class="h-full flex flex-col items-center mr-2">
       <div class="bg-gray-100 rounded-lg shadow-lg border border-gray-400">
         <h1 class="text-center font-bold text-4xl mt-5">
           Manage Consultations
         </h1>
-        <ul class="h-fit py-5 space-y-1 p-3 w-full">
+        <ul class="h-fit py-5 space-y-3 p-3 w-full">
           <li
             class="p-2 flex flex-col border border-black w-full relative group flex font-bold text-xl jusitfy-center rounded-md transition-all duration-300 hover:bg-gray-200 ease-in-out"
             v-for="data in sidebarData"
@@ -50,22 +50,30 @@ export default {
       sidebarData: [
         {
           title: "Pending",
+          iconpath: "src/assets/pending.png",
+        },
+        {
+          title: "Reschedule Request",
+          iconpath: "src/assets/request.png",
+        },
+        {
+          title: "Approved",
+          iconpath: "src/assets/approve.png",
+        },
+        {
+          title: "Rescheduled",
           iconpath: "src/assets/clock.png",
-          link: "/consultation-hours",
         },
 
         {
           title: "History",
           iconpath: "src/assets/history.png",
-          link: "",
           dropdown: [
             {
-              title: "Approval",
-              link: "/consultation-history/upcoming",
+              title: "Rejected",
             },
             {
-              title: "Rejected",
-              link: "/consultation-history/past",
+              title: "Expired",
             },
           ],
         },

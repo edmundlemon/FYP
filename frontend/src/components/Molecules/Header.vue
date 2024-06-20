@@ -229,11 +229,6 @@ export default {
               path: "/freeslot-manager",
             },
             {
-              role: "student",
-              name: "Reschedule Consultation",
-              path: "/student-scheduling",
-            },
-            {
               role: "all",
               name: "Manage Consultations",
               path: "/consultation-manager",

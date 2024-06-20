@@ -1,18 +1,17 @@
 <template>
-  <div class="flex flex-row mt-5 ml-5">
+  <div class="flex flex-row mt-5 ml-2">
     <LecturerConsultationSidebar class="" @ClickedOption="ClickedOption" />
     <!-- Your HTML code here -->
     <div class="h-full w-full">
       <PendingList :page="page" v-if="switchpage" />
     </div>
   </div>
+
 </template>
 
-
 <script setup>
-import axiosInstance from "../../axiosConfig/customAxios";
 import LecturerConsultationSidebar from "../Molecules/LecturerConsultationSidebar.vue";
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import PendingList from "../Atom/PendingList.vue";
 
 let page = ref("Pending");

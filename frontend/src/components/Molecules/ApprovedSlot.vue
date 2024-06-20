@@ -11,7 +11,7 @@
           <div class="overflow-y-auto load-in-animation" v-else-if="slots.length > 0 && !showLoading"
             style="height: 60vh">
             <TimeDisplay class="mr-3" v-for="slot in slots" :key="slot.id" :slot="slot" :slot-type="'approved'"
-              @editSlot="editSlot" />
+              @edit-slot="PassingtoParent" />
           </div>
           <div v-else class="w-full h-full flex justify-center items-center">
             <h2 class="text-xl font-bold text-gray-800 animate-bounce">
@@ -69,6 +69,16 @@ onMounted(async () => {
   //   console.log("showLoading", showLoading.value);
   // }, 2500);
 });
+</script>
+
+<script>
+export default {
+  methods: {
+    PassingtoParent(data) {
+      this.$emit("edit-slot", data);
+    },
+  },
+};
 </script>
 
 <style></style>

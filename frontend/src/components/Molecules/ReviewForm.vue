@@ -11,7 +11,7 @@
 				<div class="star-rating">
 					<span v-for="star in 5" :key="star" @click="setRating(star)" @mouseover="hoverRating(star)"
 						@mouseleave="resetHover">
-						<i :class="['fa', star <= (hoveredRating || rating) ? 'fa-star' : 'fa-star-o']"></i>
+						<i :class="['fa-star', star <= (hoveredRating || rating) ? 'fa-solid' : 'fa-regular']"></i>
 					</span>
 				</div>
 			</div>

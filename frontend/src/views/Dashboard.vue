@@ -41,7 +41,7 @@
             />
             <approved-slot
               class="bg-white shadow-md rounded flex-1 w-1/3 pb-5"
-              @editSlot="handleEditSlot"
+              @edit-slot="setRescheduleSlot"
             />
             <pending-slot class="bg-white shadow-md rounded flex-1 w-1/3 pb-5" />
           </div>
@@ -58,7 +58,7 @@
             <RescheduleForm
               class="border border-gray-600 rounded-xl border-2 fadein-animation"
               style="filter: drop-shadow(0px 4px 10px black)"
-              :slot="rescheduleSlot"
+              :booking="rescheduleSlot"
               @closeRescheduleForm="edit = false"
               /> 
         </div>
@@ -84,10 +84,12 @@ const edit = ref(false);
 const rescheduleSlot = ref({});
 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-function handleEditSlot(slot) {
-  edit.value = true;
+function setRescheduleSlot(slot) {
+  console.log("Slot => ", slot);
   rescheduleSlot.value = slot;
+  edit.value = true;
 }
+
 onMounted(() => {});
 </script>
 

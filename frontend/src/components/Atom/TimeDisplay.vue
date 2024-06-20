@@ -16,7 +16,7 @@
         Consultation by <a :href="'/lecturer/'+ slot.lecturer.id"><span class="ml-1 font-bold hover:opacity-70 transition-text duration-300">{{ slot.lecturer.name }}</span></a>
       </h3>
       <pill-button
-          @click.prevent="emitEvent"
+          @click.prevent="$emit('edit-slot', slot)"
           class="mt-3 w-[8vw]"
           text="Reschedule"
           v-if="slotType === 'approved'"

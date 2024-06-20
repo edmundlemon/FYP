@@ -27,6 +27,7 @@ use Symfony\Component\Console\Event\ConsoleTerminateEvent;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Finder\Finder;
 use Throwable;
+use App\Jobs\UpdateExpiredConsultationSlots;
 
 class Kernel implements KernelContract
 {
