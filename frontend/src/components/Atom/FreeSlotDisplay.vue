@@ -48,6 +48,7 @@
           class="mt-3"
           text="Book Slot"
           v-if="store.state.role === 'student'"
+          type="1"
         />
       </div>
     </div>

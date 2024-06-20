@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use App\Models\Lecturer;
+use App\Models\Consultation_slot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Student;
+use Laravel\Sanctum\Sanctum;
 
 class ReviewController extends Controller
 {
@@ -29,6 +31,9 @@ class ReviewController extends Controller
             'comment' => 'string'
         ]);
 
+        Consultation_slot::where('id', $request->slot_id)->update(['status' => 'Completed & Reviewed']);
+
+
         $review = new Review();
         $review->rating = $request->rating;
         $review->comment = $request->comment;
@@ -50,4 +55,5 @@ class ReviewController extends Controller
             'code' => 200
         ]);
     }
+
 }

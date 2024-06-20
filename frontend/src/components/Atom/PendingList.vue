@@ -6,8 +6,12 @@
     <Loading class="mt-2 ml-2 mr-2 my-3 fade-in-animation" />
   </div>
   <div v-else-if="slots.length">
-    <div class="flex flex-col flex-wrap space-y-5">
-      <div v-for="(slot, index) in slots" :key="slot.id" class="fade-in-animation">
+    <div class="flex flex-col flex-wrap space-y-2">
+      <div
+        v-for="(slot, index) in slots"
+        :key="slot.id"
+        class="fade-in-animation"
+      >
         <div
           class="flex flex-col h-1/4 border border-gray-400 bg-gray-100 rounded-lg space-y-2 mr-2 pt-3"
         >
@@ -110,8 +114,11 @@
                     ? 'src/assets/lecturer.png'
                     : slot.status === 'Approved'
                     ? 'src/assets/approve.png'
-                    : slot.status === 'Rejected'
+                    : slot.status === 'Rejected' || slot.status === 'Cancelled'
                     ? 'src/assets/reject.png'
+                    : slot.status === 'Completed' ||
+                      slot.status === 'Completed & Reviewed'
+                    ? 'src/assets/completed.png'
                     : 'src/assets/expired.png'
                 "
                 alt="status_icon"
@@ -158,6 +165,40 @@
                 Reject
               </button>
             </div>
+            <div
+              class="flex flex-row items-center justify-end w-full pr-5 space-x-2 font-bold"
+              v-else-if="
+                slot.status === 'Completed' && store.state.role === 'student'
+              "
+            >
+              <button
+                class="px-4 py-2 bg-yellow-400 text-white rounded-md hover:bg-yellow-600 min-w-[5.5vw]"
+                @click.prevent="
+                  console.log('Review button clicked on slot id =>' + slot.id),
+                    $emit('review-slot', slot)
+                "
+              >
+                Review
+              </button>
+            </div>
+
+            <div
+              class="flex flex-row items-center justify-end w-full pr-5 space-x-2 font-bold"
+              v-else-if="
+                slot.status === 'Cancellation Request' &&
+                store.state.role === 'lecturer'
+              "
+            >
+              <button
+                class="px-4 py-2 bg-red-400 text-white rounded-md hover:bg-red-600 min-w-[5.5vw]"
+                @click.prevent="
+                  console.log('Review button clicked on slot id =>' + slot.id),
+                    cancelSlot(slot.id)
+                "
+              >
+                Approve Cancellation
+              </button>
+            </div>
           </div>
 
           <div
@@ -187,13 +228,17 @@
                   ><p>{{ slot.lecturer.name }}</p></a
                 >
               </div>
+
+              <p title="Booking Created At" class="ml-2 font-light">
+                {{ formatDate(slot.created_at) }}
+              </p>
             </div>
 
             <!-- Updated at -->
             <div class="flex flex-row items-center justify-end w-full">
               <p
                 :title="dayjs(updated_at).format('dddd, MMMM D, YYYY h:mm A')"
-                class="text-s ml-5 mt-1 whitespace-nowrap"
+                class="text-s ml-5 my-0.5 whitespace-nowrap"
               >
                 {{ "Updated " + formatRelativeTime(slot.updated_at) }}
               </p>
@@ -211,7 +256,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, defineProps } from "vue";
+import { onMounted, ref, defineProps, defineEmits } from "vue";
 import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
 import Loading from "../Atom/SkeletonLoading.vue";
@@ -219,6 +264,8 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
 dayjs.extend(relativeTime);
+
+const emit = defineEmits(["runtimeout"]);
 
 const slots = ref([]);
 let showLoading = ref(true);
@@ -233,6 +280,10 @@ function formatRelativeTime(date) {
   return dayjs(date).fromNow();
 }
 
+function formatDate(date) {
+  return dayjs(date).format("dddd, MMMM D, YYYY");
+}
+
 function approveSlot(slotId) {
   if (confirm("Are you sure you want to approve this slot?")) {
     if (store.state.role === "student") {
@@ -240,7 +291,7 @@ function approveSlot(slotId) {
         .put(`/student/approve/${slotId}`)
         .then((response) => {
           console.log(response.data);
-          window.location.reload();
+          emit("runtimeout");
         })
         .catch((error) => {
           console.log(error);
@@ -257,21 +308,38 @@ function approveSlot(slotId) {
               .put(`/lecturer/reject/${slotId}`)
               .then((response) => {
                 alert("Time Collision Detected! Slot automatically rejected.");
-                window.location.reload();
+                emit("runtimeout");
               })
               .catch((error) => {
                 console.log(error);
               });
           } else {
             alert("Slot Approved!");
-            window.location.reload();
+            emit("runtimeout");
           }
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    // window.location.reload();
+    // emit("runtimeout");
+  }
+}
+
+function cancelSlot(slotId) {
+  if (confirm("Are you sure you want to cancel this slot?")) {
+    if (store.state.role === "lecturer") {
+      axiosInstance
+        .put(`/lecturer/cancel/${slotId}`)
+        .then((response) => {
+          console.log(response.data);
+          emit("runtimeout");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    // emit("runtimeout");
   }
 }
 
@@ -282,7 +350,7 @@ function rejectSlot(slotId) {
         .put(`/student/reject/${slotId}`)
         .then((response) => {
           console.log(response.data);
-          window.location.reload();
+          emit("runtimeout");
         })
         .catch((error) => {
           console.log(error);
@@ -292,13 +360,13 @@ function rejectSlot(slotId) {
         .put(`/lecturer/reject/${slotId}`)
         .then((response) => {
           console.log(response.data);
-          window.location.reload();
+          emit("runtimeout");
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    // window.location.reload();
+    // emit("runtimeout");
   }
 }
 
@@ -454,10 +522,10 @@ onMounted(async () => {
           });
       }
       break;
-    case "Reschedule Request":
+    case "Requests":
       if (store.state.role === "student") {
         axiosInstance
-          .get("/student/reschedule-request")
+          .get("/student/requests")
           .then((response) => {
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
@@ -468,7 +536,7 @@ onMounted(async () => {
           });
       } else {
         axiosInstance
-          .get("/lecturer/reschedule-request")
+          .get("/lecturer/requests")
           .then((response) => {
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
@@ -479,9 +547,57 @@ onMounted(async () => {
           });
       }
       break;
+    case "Completed":
+      if (store.state.role === "student") {
+        axiosInstance
+          .get("/student/all-completed")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        axiosInstance
+          .get("/lecturer/all-completed")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      break;
+      case "Cancelled":
+      if (store.state.role === "student") {
+        axiosInstance
+          .get("/student/cancelled")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        axiosInstance
+          .get("/lecturer/cancelled")
+          .then((response) => {
+            slots.value = response.data.consultation_slots;
+            showLoading.value = false;
+            console.log(response.data.consultation_slots);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     default:
       break;
   }
 });
-
 </script>

@@ -1,28 +1,54 @@
 <template>
   <div class="flex flex-row mt-5 ml-2">
-    <LecturerConsultationSidebar class="" @ClickedOption="ClickedOption" />
+    <LecturerConsultationSidebar class="" @ClickedOption="ClickedOption"  />
     <!-- Your HTML code here -->
     <div class="h-full w-full">
-      <PendingList :page="page" v-if="switchpage" />
+      <PendingList
+        :page="page"
+        v-if="switchpage"
+        @review-slot="inputReceivedSlot"
+        @runtimeout="Set_Timeout()"
+      />
+
+      <div
+        v-if="reviewform"
+        class="booking-container fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center"
+      >
+        <ReviewForm
+          :slot="receivedslot"
+          @closeReviewForm="reviewform = !reviewform"
+          @runtimeout="Set_Timeout()"
+        />
+      </div>
     </div>
   </div>
-
 </template>
 
 <script setup>
 import LecturerConsultationSidebar from "../Molecules/LecturerConsultationSidebar.vue";
 import { ref } from "vue";
 import PendingList from "../Atom/PendingList.vue";
+import ReviewForm from "../Molecules/ReviewForm.vue";
 
 let page = ref("Pending");
 let switchpage = ref(true);
-
+const receivedslot = ref({});
+const reviewform = ref(false);
 function ClickedOption(option) {
-  switchpage.value = false;
+  Set_Timeout();
   page.value = option;
+  
+}
+
+function Set_Timeout() {
+  switchpage.value = false;
   setTimeout(() => {
     switchpage.value = true;
-  }, 200);
+  }, 100);
+}
+function inputReceivedSlot(slot) {
+  receivedslot.value = slot;
+  reviewform.value = true;
 }
 
 // onMounted(() => {

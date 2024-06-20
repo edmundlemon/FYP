@@ -2,11 +2,11 @@
   <div :id="slot.id" class="flex justify-center items-center relative">
     <div class="flex flex-col bg-white shadow-md rounded-md p-4 w-full border">
       <button
-        @click="deleteSlot(slot.id)"
+        @click="cancelSlot(slot.id)"
         type="button"
-        class="absolute top-2 right-2 w-4 h-4"
+        class="absolute top-2 right-2 w-5 h-5 hover:bg-red-500 hover:bg-opacity-30 rounded-full transition-all duration-300 ease-in-out"
       >
-        <img src="../../assets/delete.png" alt="delete" />
+        <img src="../../assets/reject.png" alt="delete" />
       </button>
       <h3 class="text-lg font-bold mb-2 text-gray-800 text-center">
         Date: {{ slot.date }}
@@ -45,19 +45,27 @@
           <span class="ml-0.5 font-bold text-red-500">{{ slot.end_time }}</span>
         </div>
       </div>
-      <div class="flex justify-center space-x-5">
+      <div class="flex flex-col items-center justify-center">
         <!-- Edit Free Slot Button -->
         <PillButton
           @click.prevent="$emit('openRescheduleForm', slot)"
           class="mt-3 w-[8vw]"
           text="Reschedule"
-          v-if="store.state.role === 'lecturer' || store.state.role === 'student'"
-
+          v-if="
+            store.state.role === 'lecturer' || store.state.role === 'student'
+          "
+          type="1"
+        />
+        <PillButton
+          @click.prevent="markCompleted(slot.id)"
+          class="mt-3 w-[8vw]"
+          text="Completed"
+          type="2"
+          v-if="
+            store.state.role === 'lecturer' || store.state.role === 'student'
+          "
         />
       </div>
-
-
-
     </div>
   </div>
 </template>
@@ -70,10 +78,7 @@ import PillButton from "../Atom/Pill-button.vue";
 import { ref } from "vue";
 import RescheduleForm from "../Molecules/RescheduleForm.vue";
 
-
-
 const role = store.state.role;
-
 
 function reloadPage() {
   window.location.reload();
@@ -90,6 +95,58 @@ onMounted(() => {
   console.log("Role => ", role);
   console.log("Slot => ", props.slot);
 });
+
+function markCompleted(slotId) {
+  if (confirm("Are you sure you want to mark this slot as completed?")) {
+    if (role === "lecturer") {
+      axiosInstance
+        .put(`/lecturer/complete/${slotId}`)
+        .then((response) => {
+          console.log(response);
+          reloadPage();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axiosInstance
+        .put(`/student/complete/${slotId}`)
+        .then((response) => {
+          console.log(response);
+          reloadPage();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+}
+
+function cancelSlot(slotId) {
+  if (confirm("Are you sure you want to cancel this slot?")) {
+    if (store.state.role === "lecturer") {
+      axiosInstance
+        .put(`/lecturer/cancel/${slotId}`)
+        .then((response) => {
+          console.log(response);
+          reloadPage();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axiosInstance
+        .put(`/student/cancel/${slotId}`)
+        .then((response) => {
+          console.log(response);
+          reloadPage();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+}
 </script>
 
 <style></style>

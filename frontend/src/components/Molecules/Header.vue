@@ -237,19 +237,7 @@ export default {
         },
         {
           name: "Reviews",
-          path: "",
-          dropdown: [
-            {
-              role: "all",
-              name: "View Reviews",
-              path: "",
-            },
-            {
-              role: "all",
-              name: "Give Reviews",
-              path: "",
-            },
-          ],
+          path: "reviews",
         },
       ],
       showNotifications: false,
