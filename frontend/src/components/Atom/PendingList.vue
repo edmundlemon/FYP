@@ -6,7 +6,7 @@
     <Loading class="mt-2 ml-2 mr-2 my-3 fade-in-animation" />
   </div>
   <div v-else-if="slots.length">
-    <div class="flex flex-col flex-wrap space-y-5">
+    <div class="flex flex-col flex-wrap space-y-2">
       <div
         v-for="(slot, index) in slots"
         :key="slot.id"
@@ -116,7 +116,7 @@
                     ? 'src/assets/approve.png'
                     : slot.status === 'Rejected'
                     ? 'src/assets/reject.png'
-                    : slot.status === 'Completed'
+                    : slot.status === 'Completed'|| slot.status === 'Completed & Reviewed'
                     ? 'src/assets/completed.png'
                     : 'src/assets/expired.png'
                 "
@@ -215,7 +215,7 @@
             <div class="flex flex-row items-center justify-end w-full">
               <p
                 :title="dayjs(updated_at).format('dddd, MMMM D, YYYY h:mm A')"
-                class="text-s ml-5 mt-1 whitespace-nowrap"
+                class="text-s ml-5 my-0.5 whitespace-nowrap"
               >
                 {{ "Updated " + formatRelativeTime(slot.updated_at) }}
               </p>
@@ -233,7 +233,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, defineProps } from "vue";
+import { onMounted, ref, defineProps, defineEmits } from "vue";
 import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
 import Loading from "../Atom/SkeletonLoading.vue";
@@ -241,6 +241,8 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
 dayjs.extend(relativeTime);
+
+const emit = defineEmits(['runtimeout']);
 
 const slots = ref([]);
 let showLoading = ref(true);
@@ -266,7 +268,7 @@ function approveSlot(slotId) {
         .put(`/student/approve/${slotId}`)
         .then((response) => {
           console.log(response.data);
-          window.location.reload();
+          emit("runtimeout");
         })
         .catch((error) => {
           console.log(error);
@@ -283,21 +285,21 @@ function approveSlot(slotId) {
               .put(`/lecturer/reject/${slotId}`)
               .then((response) => {
                 alert("Time Collision Detected! Slot automatically rejected.");
-                window.location.reload();
+                emit("runtimeout");
               })
               .catch((error) => {
                 console.log(error);
               });
           } else {
             alert("Slot Approved!");
-            window.location.reload();
+            emit("runtimeout");
           }
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    // window.location.reload();
+    // emit("runtimeout");
   }
 }
 
@@ -308,7 +310,7 @@ function rejectSlot(slotId) {
         .put(`/student/reject/${slotId}`)
         .then((response) => {
           console.log(response.data);
-          window.location.reload();
+          emit("runtimeout");
         })
         .catch((error) => {
           console.log(error);
@@ -318,13 +320,13 @@ function rejectSlot(slotId) {
         .put(`/lecturer/reject/${slotId}`)
         .then((response) => {
           console.log(response.data);
-          window.location.reload();
+          emit("runtimeout");
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    // window.location.reload();
+    // emit("runtimeout");
   }
 }
 

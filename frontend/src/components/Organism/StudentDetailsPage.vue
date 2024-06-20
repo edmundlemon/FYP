@@ -57,6 +57,7 @@ async function getReview() {
   try {
     const response = await axiosInstance.get(`/student/reviews/${studentId}`);
     review.value = response.data.reviews;
+    console.log(review.value);
   } catch (error) {
     console.error("Failed to fetch student review:", error);
   }
