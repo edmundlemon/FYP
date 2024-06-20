@@ -10,7 +10,6 @@
           <div v-if="showLoading" class="w-full">
             <Loading style="padding-right: 1vw; padding-left: 0.4vw" />
           </div>
-
           <div
             class="load-in-animation max-h-full w-full rounded-lg"
             v-else-if="slots.length > 0 && !showLoading"
@@ -25,20 +24,26 @@
                       : 'border-2 border-gray-200'
                   "
                 >
-                  <p class="my-5 text-xl font-bold">{{ getDay(day) }}</p>
+                  <p class="my-5 text-xl font-bold text-center">
+                    {{ getDay(day) }}
+                  </p>
                   <div
                     class="flex-1 min-h-[200px] w-full md:w-[15vw] space-y-2"
                     :class="{ 'h-full': !hasSlotsForDay(day) }"
                   >
                     <div class="space-y-3" v-if="hasSlotsForDay(day)">
                       <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
-                        <FreeSlotDisplay :slot="slot" />
+                        <DisplaySchedulingSlot
+                          class="mx-3"
+                          :slot="slot"
+                          @openRescheduleForm="PassingtoParent"
+                        />
                       </div>
                     </div>
                     <div v-else>
                       <div class="flex justify-center items-center h-full">
-                        <p class="text-xl font-semibold text-gray-800">
-                          No available slots
+                        <p class="text-xl font-semibold text-gray-800 px-5">
+                          No consultations
                         </p>
                       </div>
                     </div>
@@ -49,7 +54,7 @@
           </div>
           <div v-else class="h-full flex justify-center items-center">
             <h2 class="text-xl font-bold text-gray-800 animate-bounce my-5">
-              Freeslots not available
+              Yay >w< you have no consultations!
             </h2>
           </div>
         </div>
@@ -58,10 +63,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  methods: {
+    PassingtoParent(data) {
+      this.$emit("edit-slot", data);
+    },
+  },
+};
+</script>
+
 <script setup>
 import { onMounted, ref, defineProps } from "vue";
 // import axiosInstance from '../axiosConfig/customAxios'
-import FreeSlotDisplay from "../Atom/FreeSlotDisplay.vue";
+import DisplaySchedulingSlot from "../Atom/DisplaySchedulingSlot.vue";
 import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
 import Loading from "../Atom/SkeletonLoading.vue";
@@ -75,69 +90,45 @@ const props = defineProps({
   },
   text: {
     type: String,
-    default: "Available slots",
+    default: "Your Schedule",
   },
 });
 
-// loading state
 const showLoading = ref(true);
 onMounted(async () => {
-  axiosInstance
-    .get(`/free-slots/${props.lecturerId}`)
-    .then((response) => {
-      slots.value = response.data.freeslots;
-      showLoading.value = false;
-      days.value = slots.value.map((slot) => new Date(slot.date).getDay());
-      console.log(days.value);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  // if (store.state.role === "student") {
-  //   axiosInstance
-  // 	.get("/student/pending")
-  // 	.then((response) => {
-  // 	  slots.value = response.data.consultation_slots;
-  // 	  showLoading.value = false;
-  // 	})
-  // 	.catch((error) => {
-  // 	  console.log(error);
-  // 	});
-  // } else {
-  //   axiosInstance
-  // 	.get("/lecturer/schedule")
-  // 	.then((response) => {
-  // 	  slots.value = response.data.consultation_slots;
-  // 	  showLoading.value = false;
-  // 	})
-  // 	.catch((error) => {
-  // 	  console.log(error);
-  // 	});
-  // }
+  if (store.state.role === "student") {
+    axiosInstance
+      .get(`/student/schedule`)
+      .then((response) => {
+        slots.value = response.data.consultation_slots;
+        days.value = slots.value.map((slot) => new Date(slot.date).getDay());
+        console.log(response.data.consultation_slots);
+        showLoading.value = false;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } else {
+    axiosInstance
+      .get(`/lecturer/schedule`)
+      .then((response) => {
+        slots.value = response.data.consultation_slots;
+        days.value = slots.value.map((slot) => new Date(slot.date).getDay());
+        console.log(response.data.consultation_slots);
+        showLoading.value = false;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 });
-function sameday() {
-  return new Date().getDay();
-}
 
 function hasSlotsForDay(day) {
   return days.value.includes(day);
 }
 
 function getSlotsForDay(day) {
-  return slots.value
-    .filter((slot) => new Date(slot.date).getDay() === day)
-    .sort((a, b) => {
-      // Parse the start times
-      const [aHour, aMinute] = a.start_time.split(":").map(Number);
-      const [bHour, bMinute] = b.start_time.split(":").map(Number);
-
-      // Compare the times
-      if (aHour !== bHour) {
-        return aHour - bHour;
-      } else {
-        return aMinute - bMinute;
-      }
-    });
+  return slots.value.filter((slot) => new Date(slot.date).getDay() === day);
 }
 
 function getDay(day) {
@@ -160,20 +151,8 @@ function getDay(day) {
       return "Unknown";
   }
 }
-</script>
 
-<script>
-export default {
-  medhods: {
-    $emit: () => {
-      this.$emit("slots", slots.length);
-    },
-  },
-};
-</script>
-
-<style scoped>
-.letter-spaced {
-  letter-spacing: 0.05em;
+function sameday() {
+  return new Date().getDay();
 }
-</style>
+</script>

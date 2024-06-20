@@ -229,11 +229,6 @@ export default {
               path: "/freeslot-manager",
             },
             {
-              role: "student",
-              name: "Reschedule Consultation",
-              path: "/student-scheduling",
-            },
-            {
               role: "all",
               name: "Manage Consultations",
               path: "/consultation-manager",
@@ -242,19 +237,7 @@ export default {
         },
         {
           name: "Reviews",
-          path: "",
-          dropdown: [
-            {
-              role: "all",
-              name: "View Reviews",
-              path: "",
-            },
-            {
-              role: "all",
-              name: "Give Reviews",
-              path: "",
-            },
-          ],
+          path: "reviews",
         },
       ],
       showNotifications: false,

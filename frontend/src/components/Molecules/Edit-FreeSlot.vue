@@ -15,25 +15,35 @@
             v-else-if="slots.length > 0 && !showLoading"
           >
             <div class="flex flex-wrap justify-center space-x-4">
-              <div
-                class="flex-1 max-h-full w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5"
-                v-for="day in [1, 2, 3, 4, 5]"
-              >
-                <p class="my-5 text-xl font-bold">{{ getDay(day) }}</p>
+              <div class="" v-for="day in [1, 2, 3, 4, 5]">
                 <div
-                  class="flex-1 min-h-[200px] w-full md:w-[15vw] space-y-2"
-                  :class="{ 'h-full': !hasSlotsForDay(day) }"
+                  class="flex-1 max-h-full w-full border border-black flex flex-col items-center pb-5 rounded-lg shadow-lg bg-white mt-5"
+                  :class="
+                    day === sameday()
+                      ? 'border-2 border-purple-500 bg-purple-50'
+                      : 'border-2 border-gray-200'
+                  "
                 >
-                  <div class="space-y-3" v-if="hasSlotsForDay(day)">
-                    <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
-                      <EditFreeSlotDisplay class="mx-3" :slot="slot" />
+                  <p class="my-5 text-xl font-bold">{{ getDay(day) }}</p>
+                  <div
+                    class="flex-1 min-h-[200px] w-full md:w-[15vw] space-y-2"
+                    :class="{ 'h-full': !hasSlotsForDay(day) }"
+                  >
+                    <div class="space-y-3" v-if="hasSlotsForDay(day)">
+                      <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
+                        <EditFreeSlotDisplay
+                          class="mx-3"
+                          :slot="slot"
+                          @edit-slot="PassingtoParent"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div v-else>
-                    <div class="flex justify-center items-center h-full">
-                      <p class="text-xl font-semibold text-gray-800">
-                        No available slots
-                      </p>
+                    <div v-else>
+                      <div class="flex justify-center items-center h-full">
+                        <p class="text-xl font-semibold text-gray-800">
+                          No available slots
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -50,7 +60,16 @@
     </div>
   </div>
 </template>
-
+<script>
+export default {
+  methods: {
+    PassingtoParent(data) {
+      console.log(data);
+      this.$emit("edit-slot", data);
+    },
+  },
+};
+</script>
 <script setup>
 import { onMounted, ref, defineProps } from "vue";
 // import axiosInstance from '../axiosConfig/customAxios'
@@ -71,6 +90,7 @@ const props = defineProps({
     default: "Available slots",
   },
 });
+
 // loading state
 const showLoading = ref(true);
 onMounted(async () => {
@@ -108,6 +128,9 @@ onMounted(async () => {
   // }
 });
 
+function sameday() {
+  return new Date().getDay();
+}
 function hasSlotsForDay(day) {
   return days.value.includes(day);
 }

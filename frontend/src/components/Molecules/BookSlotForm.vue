@@ -106,27 +106,13 @@ const props = defineProps({
   },
 });
 
-function convertTimeFormat(time) {
-  // Check if the input is in the correct format
-  const timeFormatWithSeconds = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/;
-
-  if (timeFormatWithSeconds.test(time)) {
-    // Return the first 5 characters (HH:mm)
-    return time.slice(0, 5);
-  } else {
-    throw new Error(
-      "Invalid time format. Please provide time in HH:mm:ss format."
-    );
-  }
-}
-// const emit = defineEmits(['booking-success']);
 const errors = ref({});
 
 function BookSlot() {
   Booking = {
     date: props.slot.date,
-    start_time: convertTimeFormat(props.slot.start_time),
-    end_time: convertTimeFormat(props.slot.end_time),
+    start_time: props.slot.start_time,
+    end_time: props.slot.end_time,
     lecturer_id: "",
     student_id: "",
     topic: props.slot.topic,

@@ -135,7 +135,6 @@
 </template>
 
 <script setup>
-import Button from "../components/Atom/Pill-button.vue";
 import axios from "axios";
 import store from "../store";
 import { ref } from "vue";

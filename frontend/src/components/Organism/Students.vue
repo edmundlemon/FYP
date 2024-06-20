@@ -59,18 +59,20 @@
       <StudentDisplay
         v-for="student in filteredStudents"
         :key="student.id"
-        :student="student"
+        :user="student"
+        role="student"
         class="load-in-animation"
       />
     </div>
   </div>
+
 </template>
 
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import store from "../../store";
-import StudentDisplay from "../Molecules/Student-Display.vue";
+import StudentDisplay from "../Molecules/UserDisplayCard.vue";
 
 const students = ref([]);
 const token = store.state.token;
