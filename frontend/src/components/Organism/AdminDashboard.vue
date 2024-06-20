@@ -9,20 +9,13 @@
 
       <!-- This is the Counter of each box -->
       <div class="bg-gray-50 flex justify-around py-2">
+        <!-- Students Chart -->
         <div class="w-full md:w-1/3 px-2">
           <div class="rounded-lg shadow-sm mb-4 mx-6">
-            <div
-              class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden"
-            >
+            <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
               <div class="px-3 pt-8 pb-10 text-center relative z-10">
-                <h4 class="text-sm uppercase text-gray-500 leading-tight">
-                  Students
-                </h4>
-                <h3
-                  class="text-3xl text-gray-700 font-semibold leading-tight my-3"
-                >
-                  3,682
-                </h3>
+                <h4 class="text-sm uppercase text-gray-500 leading-tight">Students</h4>
+                <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">3,682</h3>
                 <p class="text-xs text-green-500 leading-tight">▲ 57.1%</p>
               </div>
               <div class="absolute bottom-0 inset-x-0">
@@ -31,20 +24,13 @@
             </div>
           </div>
         </div>
+        <!-- Lecturers Chart -->
         <div class="w-full md:w-1/3 px-2">
           <div class="rounded-lg shadow-sm mb-4 mx-6">
-            <div
-              class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden"
-            >
+            <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
               <div class="px-3 pt-8 pb-10 text-center relative z-10">
-                <h4 class="text-sm uppercase text-gray-500 leading-tight">
-                  Lecturers
-                </h4>
-                <h3
-                  class="text-3xl text-gray-700 font-semibold leading-tight my-3"
-                >
-                  11,427
-                </h3>
+                <h4 class="text-sm uppercase text-gray-500 leading-tight">Lecturers</h4>
+                <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">11,427</h3>
                 <p class="text-xs text-red-500 leading-tight">▼ 42.8%</p>
               </div>
               <div class="absolute bottom-0 inset-x-0">
@@ -53,20 +39,13 @@
             </div>
           </div>
         </div>
+        <!-- Lecturer Reviews Chart -->
         <div class="w-full md:w-1/3 px-2">
           <div class="rounded-lg shadow-sm mb-4 mx-6">
-            <div
-              class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden"
-            >
+            <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
               <div class="px-3 pt-8 pb-10 text-center relative z-10">
-                <h4 class="text-sm uppercase text-gray-500 leading-tight">
-                  Lecturer Reviews
-                </h4>
-                <h3
-                  class="text-3xl text-gray-700 font-semibold leading-tight my-3"
-                >
-                  8,028
-                </h3>
+                <h4 class="text-sm uppercase text-gray-500 leading-tight">Lecturer Reviews</h4>
+                <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">8,028</h3>
                 <p class="text-xs text-green-500 leading-tight">▲ 8.2%</p>
               </div>
               <div class="absolute bottom-0 inset-x-0">
@@ -81,49 +60,20 @@
       <div class="w-10/12 bg-gray-50 shadow-lg rounded-lg p-6 w-full">
         <h1 class="text-3xl font-bold mb-2">Lecturer List</h1>
         <div class="overflow-x-auto">
-          <div v-for="lecturer in lecturers" :key="lecturer.id"></div>
-
           <table class="min-w-full bg-white border-2">
             <thead>
               <tr>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Lectuer ID
-                </th>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Name
-                </th>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Email
-                </th>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Faculty
-                </th>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Office
-                </th>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Schedule
-                </th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Lecturer ID</th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Name</th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Email</th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Faculty</th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Office</th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Schedule</th>
               </tr>
             </thead>
-
-            {{
-              lecturers
-            }}
+            <!-- {{lecturers}} -->
             <tbody>
-              <tr v-for="(lecturer, index) in lecturers" class="border-t">
+              <tr v-for="lecturer in lecturers" class="border-t">
                 <td class="py-2 px-4">{{ lecturer.id }}</td>
                 <td class="py-2 px-4">{{ lecturer.name }}</td>
                 <td class="py-2 px-4">{{ lecturer.email }}</td>
@@ -147,49 +97,19 @@
       <div class="w-10/12 bg-gray-50 shadow-lg rounded-lg p-6 w-full">
         <h1 class="text-3xl font-bold mb-2">Student List</h1>
         <div class="overflow-x-auto">
-          <div v-for="student in students" :key="student.id"></div>
-
           <table class="min-w-full bg-white border-2">
             <thead>
               <tr>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Student ID
-                </th>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Name
-                </th>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Email
-                </th>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Faculty
-                </th>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Programme
-                </th>
-                <th
-                  class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2"
-                >
-                  Schedule
-                </th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Student ID</th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Name</th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Email</th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Faculty</th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Programme</th>
+                <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left border-b-2">Schedule</th>
               </tr>
             </thead>
-
-            {{
-              students
-            }}
             <tbody>
-              <tr v-for="(student, index) in students" class="border-t">
+              <tr v-for="student in students" :key="student.id" class="border-t">
                 <td class="py-2 px-4">{{ student.id }}</td>
                 <td class="py-2 px-4">{{ student.name }}</td>
                 <td class="py-2 px-4">{{ student.email }}</td>
@@ -208,13 +128,16 @@
           </table>
         </div>
       </div>
-      <div></div>
     </div>
   </div>
 </template>
 
 <script>
 import { Chart } from "chart.js";
+import { LineController, LineElement, PointElement, LinearScale, Title, CategoryScale } from 'chart.js';
+
+// Register the necessary components
+Chart.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale);
 
 export default {
   name: "DashboardComponent",
@@ -234,27 +157,33 @@ export default {
           },
         },
         scales: {
-          xAxes: [
-            {
-              gridLines: false,
-              scaleLabel: false,
-              ticks: {
-                display: false,
-              },
+            x: {
+                display: false, // Hide x-axis
+                grid: {
+                    display: false // Hide grid lines for x-axis
+                },
+                title: {
+                    display: false // Hide scale label for x-axis
+                },
+                ticks: {
+                    display: false // Hide ticks for x-axis
+                }
             },
-          ],
-          yAxes: [
-            {
-              gridLines: false,
-              scaleLabel: false,
-              ticks: {
-                display: false,
-                suggestedMin: 0,
-                suggestedMax: 10,
-              },
-            },
-          ],
-        },
+            y: {
+                display: false, // Hide y-axis
+                grid: {
+                    display: false // Hide grid lines for y-axis
+                },
+                title: {
+                    display: false // Hide scale label for y-axis
+                },
+                ticks: {
+                    display: false, // Hide ticks for y-axis
+                    suggestedMin: 0, // Suggested minimum value
+                    suggestedMax: 10 // Suggested maximum value
+                }
+            }
+        }
       },
     };
   },
@@ -306,7 +235,7 @@ import { ref, onMounted } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
 import store from "../../store";
 
-const lecturers = ref([]);
+const lecturers = ref({});
 
 onMounted(() => {
   getLecturers();
@@ -316,8 +245,8 @@ async function getLecturers() {
   axiosInstance
     .get("/lecturers")
     .then((response) => {
-      lecturers.value = response.data;
-      console.log(response.data);
+      lecturers.value = response.data.lecturer;
+      console.log(response.data.lecturer);
     })
     .catch((error) => {
       console.error(error);
@@ -334,7 +263,7 @@ async function getStudents() {
   axiosInstance
     .get("/students")
     .then((response) => {
-      students.value = response.data;
+      students.value = response.data.students;
       console.log(response.data);
     })
     .catch((error) => {

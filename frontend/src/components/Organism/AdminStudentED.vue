@@ -43,9 +43,6 @@
             </tr>
           </thead>
 
-          {{
-            students
-          }}
           <tbody>
             <tr
               v-for="(student, index) in students"
@@ -93,7 +90,7 @@ async function getStudents() {
   axiosInstance
     .get("/students")
     .then((response) => {
-      students.value = response.data;
+      students.value = response.data.students;
       console.log(response.data);
     })
     .catch((error) => {
