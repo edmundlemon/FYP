@@ -11,8 +11,7 @@ import LecturerDetails from "../components/Organism/LecturerDetailsPage.vue";
 import LecturerProfile from "../components/Organism/LecturerDetailsPage.vue";
 import StudentProfile from "../components/Organism/StudentDetailsPage.vue";
 import Scheduling from "../components/Organism/Scheduling.vue";
-
-
+import ReviewPage from "../components/Organism/ReviewsPage.vue";
 import adminRoutes from "./adminRoutes";
 import lecturerRoutes from "./lecturerRoutes";
 import studentRoutes from "./studentRoutes";
@@ -83,6 +82,12 @@ const routes = [
     path: "/scheduling",
     name: "scheduling",
     component: Scheduling,
+    props: true,
+  },
+  {
+    path: "/reviews",
+    name: "reviews",
+    component: ReviewPage,
     props: true,
   },
 

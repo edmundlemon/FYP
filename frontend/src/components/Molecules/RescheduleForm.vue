@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col items-center bg-gray-900" style="width: 30vw">
-		<form @submit.prevent="bookTime" class="p-6 w-full load-in-animation">
+		<form @submit.prevent="bookTime" class="p-6 w-full load-in-animation ">
 			<div class="space-y-5">
 				<div class="mb-4">
 					<label for="date" class="font-bold block text-white mb-2">Date</label>
