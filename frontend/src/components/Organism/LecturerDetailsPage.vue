@@ -38,7 +38,7 @@
         @closeBookingForm="showBookingform = false"
       />
     </div>
-    <div class="w-full mb-10">
+    <div class="w-full mb-10" v-if="rating != null">
       <ReviewCards :reviewslots="ratingSlots" setrole="lecturer" class=""/>
     </div>
   </div>
@@ -78,7 +78,7 @@ const route = useRoute();
 const lecturer = ref(null);
 const lecturerId = route.params.id;
 const fail = ref(false);
-const rating = ref(0);
+const rating = ref(0.00);
 const ratingSlots = ref({});
 onMounted(async () => {
   console.log(lecturerId);

@@ -62,7 +62,6 @@ onMounted(() => {
     .get(`/view/lecturer/${props.slot.lecturer_id}`)
     .then((response) => {
       lecturer.value = response.data.lecturer;
-      rating.value = response.data.rating;
       console.log(response.data);
     })
     .catch((error) => {

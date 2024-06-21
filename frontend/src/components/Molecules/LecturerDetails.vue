@@ -11,8 +11,7 @@
       <div class="flex flex-row items-end justify-center">
         <h1 class="text-4xl font-bold my-1.5">{{ lecturer.name }}</h1>
         <div class="flex flex-row items-center ml-2 mb-2">
-          ( <span>{{ rating.toFixed(2) }}</span
-          >)
+          ( <span>{{ returnRating(rating) }}</span>)
           <svg
             class="w-4 h-4 ms-1 text-yellow-300"
             aria-hidden="true"
@@ -79,6 +78,7 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 export default {
   props: {
     lecturer: {
@@ -90,5 +90,17 @@ export default {
       required: true,
     },
   },
+  methods: {
+    returnRating(rating) {
+      if (rating === null) {
+        return 'No rating yet';
+      }
+      else {
+        return rating.toFixed(2); 
+      }
+    },
+  },
 };
+
+
 </script>

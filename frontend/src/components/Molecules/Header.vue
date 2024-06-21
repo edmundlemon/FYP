@@ -237,7 +237,7 @@ export default {
         },
         {
           name: "Reviews",
-          path: "reviews",
+          path: "/reviews",
         },
       ],
       showNotifications: false,
