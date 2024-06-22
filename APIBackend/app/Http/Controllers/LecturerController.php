@@ -23,6 +23,24 @@ class LecturerController extends Controller
         );
     }
 
+    public function countLecturer(){
+        if(auth()->user()->hasRole('admin')){
+            $count = Lecturer::count();
+            return response()->json(
+                [
+                    'count' => $count,
+                    'code' => 200
+                ]
+            );
+        }
+        return response()->json(
+            [
+                'message' => 'Unauthorized',
+                'code' => 401
+            ]
+        );
+    }
+
     public function view(Lecturer $lecturer){
         return response()->json(
             [

@@ -39,7 +39,7 @@
       />
     </div>
     <div class="w-full mb-10" v-if="rating != null">
-      <ReviewCards :reviewslots="ratingSlots" setrole="lecturer" class=""/>
+      <ReviewCards :loading="loading" :reviewslots="ratingSlots" setrole="lecturer" class=""/>
     </div>
   </div>
   <div
@@ -80,6 +80,7 @@ const lecturerId = route.params.id;
 const fail = ref(false);
 const rating = ref(0.00);
 const ratingSlots = ref({});
+const loading = ref(true);
 onMounted(async () => {
   console.log(lecturerId);
   try {
@@ -95,6 +96,7 @@ onMounted(async () => {
     .then((response) => {
       ratingSlots.value = response.data.reviews;
       rating.value = response.data.rating;
+      loading.value = false;
     })
     .catch((error) => {
       console.log(error);

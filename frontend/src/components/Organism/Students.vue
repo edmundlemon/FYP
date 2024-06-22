@@ -53,19 +53,31 @@
     </div>
 
     <div
-      class="p-10 grid grid-cols-4 gap-8 p-10 w-full my-5 bg-white shadow-xl rounded-lg"
+      class="p-10 grid grid-cols-4 gap-8 p-10 w-full my-5 bg-white shadow-xl rounded-lg relative"
       style="z-index: 0"
     >
+      <div
+        v-if="filteredStudents.length === 0"
+        class="loader absolute left-[50%] top-[50%]"
+        style="transform: translate(-50%, -50%)"
+      ></div>
+
       <StudentDisplay
         v-for="student in filteredStudents"
         :key="student.id"
         :user="student"
         role="student"
         class="load-in-animation"
+        v-else-if="filteredStudents.length"
       />
+      <div v-else>
+        <div class="absolute left-[50%] top-[50%] text-2xl font-bold"
+        style="transform: translate(-50%, -50%)">
+          No students found.
+        </div>
+      </div>
     </div>
   </div>
-
 </template>
 
 <script setup>

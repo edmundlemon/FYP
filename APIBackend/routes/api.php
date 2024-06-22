@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/search', [SearchController::class, 'search']);
 
     //admin's shit here
-
+    Route::get('/reviewcount', [ReviewController::class, 'reviewCount']);
 });
 
 // Middleware to only allow lecturers

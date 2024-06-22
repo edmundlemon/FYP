@@ -42,34 +42,34 @@
   height: 103.2vh;
   width: 100vw;
 }
+/* HTML: <div class="loader"></div> */
 .loader {
   width: 50px;
-  aspect-ratio: 1.154;
-  position: relative;
-  background: conic-gradient(from 120deg at 50% 64%,#0000, #525252 1deg 120deg,#0000 121deg);
-  animation: l27-0 1.5s infinite cubic-bezier(0.3,1,0,1);
+  aspect-ratio: 1;
+  display: grid;
 }
-.loader:before,
-.loader:after {
-  content:'';
-  position: absolute;
-  inset:0;
-  background:inherit;
-  transform-origin: 50% 66%;
-  animation: l27-1 1.5s infinite;
+.loader::before,
+.loader::after {    
+  content:"";
+  grid-area: 1/1;
+  --c:no-repeat radial-gradient(farthest-side,#25b09b 92%,#0000);
+  background: 
+    var(--c) 50%  0, 
+    var(--c) 50%  100%, 
+    var(--c) 100% 50%, 
+    var(--c) 0    50%;
+  background-size: 12px 12px;
+  animation: l12 1s infinite;
 }
-.loader:after {
-  --s:-1;
+.loader::before {
+  margin: 4px;
+  filter: hue-rotate(45deg);
+  background-size: 8px 8px;
+  animation-timing-function: linear
 }
-@keyframes l27-0 {
-   0%,30%      {transform: rotate(0)}
-   70%         {transform: rotate(120deg)}
-   70.01%,100% {transform: rotate(360deg)}
-}
-@keyframes l27-1 {
-   0%      {transform: rotate(calc(var(--s,1)*120deg)) translate(0)}
-   30%,70% {transform: rotate(calc(var(--s,1)*120deg)) translate(calc(var(--s,1)*-5px),10px)}
-   100%    {transform: rotate(calc(var(--s,1)*120deg)) translate(0)}
+
+@keyframes l12 { 
+  100%{transform: rotate(.5turn)}
 }
 
 @keyframes gelatine {

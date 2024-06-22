@@ -24,6 +24,15 @@ class ReviewController extends Controller
         ]);
     }
 
+    public function reviewCount()
+    {
+        $count = Review::count();
+        return response()->json([
+            'count' => $count,
+            'code' => 200
+        ]);
+    }
+
     public function store(Request $request, Lecturer $lecturer)
     {
         $request->validate([
@@ -55,5 +64,4 @@ class ReviewController extends Controller
             'code' => 200
         ]);
     }
-
 }

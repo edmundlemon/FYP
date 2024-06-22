@@ -19,7 +19,30 @@ class StudentController extends Controller
         );
     }
 
-    public function view(Student $student){
+    public function countStudent()
+    {
+
+        if (auth()->user()->hasRole('admin')) {
+            $count = Student::count();
+
+            return response()->json(
+                [
+                    'count' => $count,
+                    'code' => 200
+                ]
+            );
+        }
+        return response()->json(
+            [
+                'message' => 'Unauthorized',
+                'code' => 401
+            ]
+        );
+    }
+
+
+    public function view(Student $student)
+    {
         return response()->json(
             [
                 'student' => Student::find($student->id),
@@ -27,7 +50,8 @@ class StudentController extends Controller
             ]
         );
     }
-    public function StudentFaculty(){
+    public function StudentFaculty()
+    {
         return response()->json(
             [
                 'student' => Student::distinct()->get('faculty'),
@@ -38,7 +62,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'id'=> 'required|unique:students|numeric',
+            'id' => 'required|unique:students|numeric',
             'name' => 'required',
             'email' => 'required|email|unique:students',
             'password' => 'required|confirmed|min:8',
@@ -49,12 +73,12 @@ class StudentController extends Controller
             // 'address' => 'required',
         ]);
 
-        if($request->hasFile('photo')){
+        if ($request->hasFile('photo')) {
             // The line below would store the file in the public disk, in the logos folder
             // It would also return the path to the file
             $formFields['photo'] = $request->file('photo')->store('photos', 'public');
             $imgName = basename($formFields['photo']);
-            $linkToImg = asset('photos/'.$imgName);
+            $linkToImg = asset('photos/' . $imgName);
             $formFields['photo'] = $linkToImg;
         }
         // dd($formFields);
@@ -98,7 +122,7 @@ class StudentController extends Controller
                 ]
             );
         }
-        if($request->hasFile('photo')){
+        if ($request->hasFile('photo')) {
             // The line below would store the file in the public disk, in the logos folder
             // It would also return the path to the file
             $formFields['photo'] = $request->file('photo')->store('photos', 'public');
@@ -113,7 +137,8 @@ class StudentController extends Controller
         );
     }
 
-    public function destroy(Student $student){
+    public function destroy(Student $student)
+    {
 
         if(auth('sanctum')->user()->hasRole('admin')){
             $student->delete();

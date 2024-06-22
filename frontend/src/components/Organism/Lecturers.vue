@@ -9,7 +9,6 @@
       <p class="mr-2 font-semibold">Filter by Faculty:</p>
       {{ SelectedFaculty }}
 
-      
       <div class="ml-2 w-fit dropdown relative">
         <button
           class="dropbtn bg-gray-600 p-1 h-8 w-8 text-white rounded-md flex flex-row justify-center items-center"
@@ -57,16 +56,30 @@
     </div>
 
     <div
-      class="p-10 grid grid-cols-4 gap-8 p-10 w-full my-5 bg-white shadow-xl rounded-lg"
+      class="p-10 grid grid-cols-4 gap-8 p-10 w-full my-5 bg-white shadow-xl rounded-lg relative"
       style="z-index: 0"
     >
+      <div
+        v-if="filteredLecturers.length === 0"
+        class="loader absolute left-[50%] top-[50%]"
+        style="transform: translate(-50%, -50%)"
+      ></div>
       <LecturerDisplay
         v-for="lecturer in filteredLecturers"
         :key="lecturer.id"
         :user="lecturer"
         role="lecturer"
         class="load-in-animation"
+        v-else-if="filteredLecturers.length"
       />
+      <div v-else>
+        <div
+          class="absolute left-[50%] top-[50%] text-2xl font-bold"
+          style="transform: translate(-50%, -50%)"
+        >
+          No lecturers found.
+        </div>
+      </div>
     </div>
   </div>
 </template>
