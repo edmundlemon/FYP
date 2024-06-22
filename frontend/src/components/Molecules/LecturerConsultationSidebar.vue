@@ -10,6 +10,7 @@
         <ul class="h-fit py-5 space-y-3 p-3 w-full">
           <li
             class="p-2 flex flex-col border border-black w-full relative group flex font-bold text-xl jusitfy-center rounded-md transition-all duration-300 hover:bg-gray-200 ease-in-out"
+            :class="currentpage === data.title ? 'bg-gray-300' : 'bg-gray-100'"
             v-for="data in sidebarData"
           >
             <div class="flex flex-row items-center ml-2 p-1">
@@ -86,6 +87,11 @@ export default {
         },
       ],
     };
+  },
+  props: {
+    currentpage: {
+      type: String,
+    },
   },
 };
 </script>

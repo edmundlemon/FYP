@@ -9,6 +9,7 @@
       :class="
         rating >= 1 ? 'text-yellow-300' : 'text-gray-300 dark:text-gray-500'
       "
+      style="filter: drop-shadow(0px 1px 1px black)"
       @click="$emit('rating', 1)"
     >
       <path
@@ -24,6 +25,7 @@
       :class="
         rating >= 2 ? 'text-yellow-300' : 'text-gray-300 dark:text-gray-500'
       "
+      style="filter: drop-shadow(0px 1px 1px black)"
       @click="$emit('rating', 2)"
     >
       <path
@@ -39,6 +41,7 @@
       :class="
         rating >= 3 ? 'text-yellow-300' : 'text-gray-300 dark:text-gray-500'
       "
+      style="filter: drop-shadow(0px 1px 1px black)"
       @click="$emit('rating', 3)"
     >
       <path
@@ -54,6 +57,7 @@
       :class="
         rating >= 4 ? 'text-yellow-300' : 'text-gray-300 dark:text-gray-500'
       "
+      style="filter: drop-shadow(0px 1px 1px black)"
       @click="$emit('rating', 4)"
     >
       <path
@@ -69,6 +73,7 @@
       :class="
         rating >= 5 ? 'text-yellow-300' : 'text-gray-300 dark:text-gray-500'
       "
+      style="filter: drop-shadow(0px 1px 1px black)"
       @click="$emit('rating', 5)"
     >
       <path

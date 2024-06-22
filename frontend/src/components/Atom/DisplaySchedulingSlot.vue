@@ -62,7 +62,7 @@
           text="Completed"
           type="2"
           v-if="
-            store.state.role === 'lecturer' || store.state.role === 'student'
+            store.state.role === 'lecturer'
           "
         />
       </div>
