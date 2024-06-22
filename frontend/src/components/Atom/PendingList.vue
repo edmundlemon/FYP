@@ -291,7 +291,7 @@ function approveSlot(slotId) {
         .put(`/student/approve/${slotId}`)
         .then((response) => {
           console.log(response.data);
-          emit("runtimeout");
+          getPage(props.page);
         })
         .catch((error) => {
           console.log(error);
@@ -308,21 +308,21 @@ function approveSlot(slotId) {
               .put(`/lecturer/reject/${slotId}`)
               .then((response) => {
                 alert("Time Collision Detected! Slot automatically rejected.");
-                emit("runtimeout");
+                getPage(props.page);
               })
               .catch((error) => {
                 console.log(error);
               });
           } else {
             alert("Slot Approved!");
-            emit("runtimeout");
+            getPage(props.page);
           }
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    // emit("runtimeout");
+    // getPage(props.page);
   }
 }
 
@@ -333,13 +333,13 @@ function cancelSlot(slotId) {
         .put(`/lecturer/cancel/${slotId}`)
         .then((response) => {
           console.log(response.data);
-          emit("runtimeout");
+          getPage(props.page);
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    // emit("runtimeout");
+    // getPage(props.page);
   }
 }
 
@@ -350,7 +350,7 @@ function rejectSlot(slotId) {
         .put(`/student/reject/${slotId}`)
         .then((response) => {
           console.log(response.data);
-          emit("runtimeout");
+          getPage(props.page);
         })
         .catch((error) => {
           console.log(error);
@@ -360,18 +360,22 @@ function rejectSlot(slotId) {
         .put(`/lecturer/reject/${slotId}`)
         .then((response) => {
           console.log(response.data);
-          emit("runtimeout");
+          getPage(props.page);
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    // emit("runtimeout");
+    // getPage(props.page);
   }
 }
 
 onMounted(async () => {
-  switch (props.page) {
+    getPage(props.page);
+});
+
+function getPage(page){
+  switch (page) {
     case "Pending":
       if (store.state.role === "student") {
         axiosInstance
@@ -599,5 +603,5 @@ onMounted(async () => {
     default:
       break;
   }
-});
+}
 </script>

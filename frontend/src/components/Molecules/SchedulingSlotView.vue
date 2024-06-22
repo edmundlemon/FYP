@@ -37,6 +37,7 @@
                           class="mx-3"
                           :slot="slot"
                           @openRescheduleForm="PassingtoParent"
+                          @getSchedule="getSchedule"
                         />
                       </div>
                     </div>
@@ -96,6 +97,10 @@ const props = defineProps({
 
 const showLoading = ref(true);
 onMounted(async () => {
+  getSchedule();
+});
+
+function getSchedule() {
   if (store.state.role === "student") {
     axiosInstance
       .get(`/student/schedule`)
@@ -121,7 +126,7 @@ onMounted(async () => {
         console.log(error);
       });
   }
-});
+}
 
 function hasSlotsForDay(day) {
   return days.value.includes(day);

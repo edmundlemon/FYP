@@ -70,6 +70,19 @@ class LecturerController extends Controller
             ]
         );
         
+        
         // redirect()->route('student.index');
+    }
+
+    public function destroy(Lecturer $lecturer){
+        if(auth()->user()->hasRole('admin')){
+            $lecturer->delete();
+            return response()->json(
+                [
+                    'message' => 'Lecturer deleted successfully',
+                    'code' => 200
+                ]
+            );
+        }
     }
 }

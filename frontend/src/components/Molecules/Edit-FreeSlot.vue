@@ -35,6 +35,7 @@
                           class="mx-3"
                           :slot="slot"
                           @edit-slot="PassingtoParent"
+                          @getslots="getFreeSlots"
                         />
                       </div>
                     </div>
@@ -94,6 +95,10 @@ const props = defineProps({
 // loading state
 const showLoading = ref(true);
 onMounted(async () => {
+  getFreeSlots();
+});
+
+function getFreeSlots() {
   axiosInstance
     .get(`/free-slots/${props.lecturerId}`)
     .then((response) => {
@@ -105,28 +110,7 @@ onMounted(async () => {
     .catch((error) => {
       console.log(error);
     });
-  // if (store.state.role === "student") {
-  //   axiosInstance
-  // 	.get("/student/pending")
-  // 	.then((response) => {
-  // 	  slots.value = response.data.consultation_slots;
-  // 	  showLoading.value = false;
-  // 	})
-  // 	.catch((error) => {
-  // 	  console.log(error);
-  // 	});
-  // } else {
-  //   axiosInstance
-  // 	.get("/lecturer/schedule")
-  // 	.then((response) => {
-  // 	  slots.value = response.data.consultation_slots;
-  // 	  showLoading.value = false;
-  // 	})
-  // 	.catch((error) => {
-  // 	  console.log(error);
-  // 	});
-  // }
-});
+}
 
 function sameday() {
   return new Date().getDay();
