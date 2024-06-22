@@ -46,7 +46,7 @@ export default [
 		}
 	},
 	{
-		path: "/adminEDStudent",
+		path: "/edit-student/:studentId",
 		name: "adminEDStudent",
 		component: AdminEDStudent,
 		props: true,
@@ -56,7 +56,7 @@ export default [
 		}
 	},
 	{
-		path: "/adminEDLecturer",
+		path: "/edit-lecturer/:lecturerId",
 		name: "adminEDLecturer",
 		component: AdminEDLecturer,
 		props: true,

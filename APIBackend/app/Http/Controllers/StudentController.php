@@ -22,7 +22,7 @@ class StudentController extends Controller
     public function countStudent()
     {
 
-        if (auth()->user()->hasRole('admin')) {
+        if (auth('sanctum')->user()->hasRole('admin')) {
             $count = Student::count();
 
             return response()->json(

@@ -24,7 +24,7 @@ class LecturerController extends Controller
     }
 
     public function countLecturer(){
-        if(auth()->user()->hasRole('admin')){
+        if(auth('sanctum')->user()->hasRole('admin')){
             $count = Lecturer::count();
             return response()->json(
                 [

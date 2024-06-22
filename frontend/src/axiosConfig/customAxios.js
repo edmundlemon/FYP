@@ -27,6 +27,10 @@ axiosInstance.interceptors.response.use(
     if (error.response) {
       const { status } = error.response;
       if (status === 401) {
+        // console.log("Message is", error.response.data.message);
+        if(error.response.data.message === "Invalid ID or password"){
+          return Promise.reject(error);
+        }
         store.commit('logout');
         router.push('/login');
       } else if (status === 403) {

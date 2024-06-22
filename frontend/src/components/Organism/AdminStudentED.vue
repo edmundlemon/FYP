@@ -79,7 +79,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
-import store from "../../store";
+import router from "../../router/routes";
 
 const students = ref([]);
 
@@ -102,7 +102,7 @@ async function getStudents() {
 function deleteStudent(studentId) {
   if(confirm("Are you sure you want to delete this student?")) {
     axiosInstance
-      .delete(`/student/delete/${studentId}`)
+      .delete(`/delete/student/${studentId}`)
       .then((response) => {
         console.log(response.data);
         getStudents();
@@ -122,7 +122,7 @@ export default {
   methods: {
     editStudent(studentId) {
       // Logic to edit student
-      console.log(`Editing student with ID: ${studentId}`);
+      router.push({ name: 'adminEDStudent', params: { studentId } });
     },
 
   },
