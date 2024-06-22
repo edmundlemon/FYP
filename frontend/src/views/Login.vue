@@ -88,6 +88,7 @@
                   v-model="id"
                   class="transition duration-300 ease-in-out block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                 />
+                <div v-if="errors.id" class="text-red-500 text-xs mt-1">{{ errors.id[0] }}</div>
               </div>
             </div>
 
@@ -116,7 +117,9 @@
                   v-model="password"
                   class="transition duration-300 ease-in-out block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                 />
+                <div v-if="errors.password" class="text-red-500 text-xs mt-1">{{ errors.password[0] }}</div>
               </div>
+              <div v-if="errors" class="text-red-500 text-xs mt-1">{{ errors.message }}</div>
             </div>
 
             <div>
@@ -144,6 +147,7 @@ import axiosInstance from "../axiosConfig/customAxios";
 const router = useRouter();
 const id = ref("id");
 const password = ref("password");
+const errors = ref([]);
 
 async function login() {
   // store.dispatch('login', {id: id.value, password: password.value});
@@ -186,7 +190,9 @@ async function login() {
       router.push("/admin");
     }
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
+    errors.value = error.response.data;
+    console.log("Error message: ", errors.value.message);
     return;
   }
 }
