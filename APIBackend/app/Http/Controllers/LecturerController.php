@@ -69,13 +69,49 @@ class LecturerController extends Controller
                 'code' => 201
             ]
         );
-        
-        
-        // redirect()->route('student.index');
+    }
+
+    public function update(Request $request, Lecturer $lecturer){
+        if ($request->id != $lecturer->id) {
+            return response()->json(
+                [
+                    'message' => 'ID cannot be changed',
+                    'code' => 400
+                ]
+            );
+        }
+        $formFields = $request->validate([
+            // 'id' => 'required|starts_with:MU|unique:lecturers',
+            'name' => 'required',
+            'email' => 'required|email',
+            'faculty' => 'required',
+            'office' => 'required',
+        ]);
+        if (!auth('sanctum')->user()->hasRole('admin')) {
+            return response()->json(
+                [
+                    'message' => 'Unauthorized',
+                    'code' => 401
+                ]
+            );
+        }
+        if($request->hasFile('photo')){
+            // The line below would store the file in the public disk, in the logos folder
+            // It would also return the path to the file
+            $formFields['photo'] = $request->file('photo')->store('photos', 'public');
+        }
+
+        $lecturer->update($formFields);
+        return response()->json(
+            [
+                'message' => 'Lecturer updated successfully',
+                'code' => 200
+            ]
+        );
     }
 
     public function destroy(Lecturer $lecturer){
-        if(auth()->user()->hasRole('admin')){
+        if(auth('sanctum')->user()->hasRole('admin')){
             $lecturer->delete();
             return response()->json(
                 [

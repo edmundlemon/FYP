@@ -75,19 +75,28 @@ class StudentController extends Controller
 
     public function update(Request $request, Student $student)
     {
+        if ($request->id != $student->id) {
+            return response()->json(
+                [
+                    'message' => 'ID cannot be changed',
+                    'code' => 400
+                ]
+            );
+        }
         $formFields = $request->validate([
-            'id'=> 'required|numeric',
+            // 'id'=> 'required|numeric',
             'name' => 'required',
             'email' => 'required|email',
-            // 'password' => 'required|confirmed|min:8',
             'faculty' => 'required',
             'program' => 'required',
-            // 'photo' => 'required',
-            // 'phone' => 'required|numeric',
-            // 'address' => 'required',
         ]);
-        if(auth()->user()->id != $request->id){
-            return abort(403, 'Unauthorized Action!');
+        if (!auth('sanctum')->user()->hasRole('admin')) {
+            return response()->json(
+                [
+                    'message' => 'Unauthorized',
+                    'code' => 401
+                ]
+            );
         }
         if($request->hasFile('photo')){
             // The line below would store the file in the public disk, in the logos folder
@@ -96,12 +105,17 @@ class StudentController extends Controller
         }
 
         $student->update($formFields);
-        return view('/dashboard');
+        return response()->json(
+            [
+                'message' => 'Student updated successfully',
+                'code' => 200
+            ]
+        );
     }
 
     public function destroy(Student $student){
 
-        if(auth()->user()->hasRole('admin')){
+        if(auth('sanctum')->user()->hasRole('admin')){
             $student->delete();
             return response()->json(
                 [
