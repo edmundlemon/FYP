@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row mt-5 ml-2">
-    <LecturerConsultationSidebar class="" @ClickedOption="ClickedOption"  />
+    <LecturerConsultationSidebar class="" @ClickedOption="ClickedOption" :currentpage="page"  />
     <!-- Your HTML code here -->
     <div class="h-full w-full">
       <PendingList
@@ -16,8 +16,10 @@
       >
         <ReviewForm
           :slot="receivedslot"
+          style="filter: drop-shadow(0px 4px 10px black)"
           @closeReviewForm="reviewform = !reviewform"
           @runtimeout="Set_Timeout()"
+          class="rounded-xl border border-gray-600 border-2 fadein-animation"
         />
       </div>
     </div>

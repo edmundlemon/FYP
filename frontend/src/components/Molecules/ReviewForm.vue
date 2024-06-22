@@ -86,3 +86,9 @@ function submitReview() {
     });
 }
 </script>
+
+<style scoped>
+.glow-effect:hover {
+	box-shadow: 0 0 7px #ffffff;
+}
+</style>

@@ -4,7 +4,7 @@
   >
     <div
       class="absolute left-3 rounded-t-lg blur-bottom"
-      style="top: -2%; background-color: #f15a59; z-index: 5000"
+      style="top: -3%; background-color: #f15a59; z-index: 5000"
     >
       <p class="text-lg px-6 font-semibold text-center">
         {{ user.faculty }}
@@ -32,13 +32,13 @@
         class="w-full transition-all duration-300 ease-in-out transform hover:scale-105 relative flex flex-col justify-center z-10"
       >
         <p
-          class="font-semibold absolute bg-green-400 opacity-80 rounded-full px-2 text-xl flex items-center justify-center border border-black"
+          class="font-semibold absolute bg-green-400 opacity-80 rounded-xl px-2 text-xl flex items-center justify-center border border-gray-700 border-opacity-50"
           style="
             z-index: 10;
-            left: 50%;
-            top: 2%;
+            top: -10%;
             transform: translate(-50%, -50%);
           "
+          :style="role === 'lecturer' ? 'left: 24%' : 'left: 22.5%;'"
         >
           <span class="font-light text-xs mb-0.5 whitespace-nowrap">
             {{ role === "student" ? "STUDENT" : "LECTURER" }} NAME
@@ -51,7 +51,7 @@
           "
         >
           <h1
-            class="name-box bg-gray-200 rounded-full py-2 px-5 text-2xl font-bold border border-black text-center"
+            class="name-box bg-gray-200 rounded-xl py-2 px-5 text-2xl font-bold border border-black text-center"
           >
             {{ user.name }}
           </h1>
@@ -59,7 +59,7 @@
       </div>
       <!-- Lecturer Email Display -->
       <div
-        class="flex flex-row justify items-center transition duration-300 ease-in-out transform hover:scale-105 z-10 detail-box px-3 rounded-full w-full"
+        class="flex flex-row justify items-center transition duration-300 ease-in-out transform hover:scale-105 z-10 detail-box px-3 rounded-xl w-full"
       >
         <img
           src="../../assets/email.png"
@@ -77,7 +77,7 @@
       >
         <div class="flex flex-row w-full space-x-[0.2px]">
           <div
-            class="text-lg z-10 detail-box text-center rounded-l-full p-2 px-3 flex items-center justify-center"
+            class="text-lg z-10 detail-box text-center rounded-l-xl p-2 px-3 flex items-center justify-center"
           >
             <img
               :src="role === 'lecturer' ? 'src/assets/office.png' : 'src/assets/faculty.png'"
@@ -87,10 +87,10 @@
           </div>
 
           <div class="w-full">
-            <p class="text-lg z-10 detail-box rounded-r-full py-2 pl-3" v-if="role === 'lecturer'">
+            <p class="text-lg z-10 detail-box rounded-r-xl py-2 pl-3" v-if="role === 'lecturer'">
               {{ user.office }}
             </p>
-            <p class="text-lg z-10 detail-box rounded-r-full py-2 pl-3" v-else>{{ user.program }}</p>
+            <p class="text-lg z-10 detail-box rounded-r-xl py-2 pl-3" v-else>{{ user.program }}</p>
           </div>
         </div>
       </div>
