@@ -7,8 +7,8 @@
       <div class="container mx-auto px-4">
         <div class="h-full overflow-y-auto no-scrollbar pb-5">
           <!-- grid container here -->
-          <div v-if="showLoading" class="w-full">
-            <Loading style="padding-right: 1vw; padding-left: 0.4vw" />
+          <div v-if="showLoading" class="loader">
+            
           </div>
           <div
             class="load-in-animation max-h-full w-full rounded-lg"
@@ -80,7 +80,6 @@ import { onMounted, ref, defineProps } from "vue";
 import DisplaySchedulingSlot from "../Atom/DisplaySchedulingSlot.vue";
 import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
-import Loading from "../Atom/SkeletonLoading.vue";
 
 const days = ref([]);
 const slots = ref([]);
