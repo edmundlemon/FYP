@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     //admin's shit here
     Route::delete('/student/delete/{student}', [StudentController::class, 'destroy']);
     Route::delete('/lecturer/delete/{lecturer}', [LecturerController::class, 'destroy']);
+    Route::get('/reviewcount', [ReviewController::class, 'reviewCount']);
 });
 
 // Middleware to only allow lecturers
