@@ -299,6 +299,7 @@ class ConsultationController extends Controller
         }
         AutomatedRejected::dispatch($consultation_slot)->onConnection('sync');
         $consultation_slot->status = 'Rejected';
+        $consultation_slot->lecturer_read = true;
         $consultation_slot->save();
         return response()->json(
             [
@@ -322,6 +323,7 @@ class ConsultationController extends Controller
         }
         AutomatedRejected::dispatch($consultation_slot)->onConnection('sync');
         $consultation_slot->status = 'Rejected';
+        $consultation_slot->student_read = true;
         $consultation_slot->save();
         return response()->json(
             [
@@ -454,10 +456,10 @@ class ConsultationController extends Controller
     {
         if (auth()->guard('sanctum')->user()->hasRole('student')) {
             $user = Student::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Lecturer Rescheduled', 'Student Rescheduled'])->orderBy('updated_at', 'desc')->get();
+            $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Lecturer Rescheduled'])->orderBy('updated_at', 'desc')->get();
         } else {
             $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
-            $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Student Rescheduled', 'Lecturer Rescheduled', 'Cancellation Request'])->orderBy('updated_at', 'desc')->get();
+            $consultation_slots = $user->consultation_slots()->with('student')->whereIn('status', ['Student Rescheduled', 'Cancellation Request'])->orderBy('updated_at', 'desc')->get();
         }
 
         return response()->json(
@@ -491,7 +493,7 @@ class ConsultationController extends Controller
     }
 
     public function allCompleted()
-    {               
+    {
         if (auth()->guard('sanctum')->user()->hasRole('student')) {
             $user = Student::find(auth()->guard('sanctum')->user()->id);
             $consultation_slots = $user->consultation_slots()->with('lecturer')->whereIn('status', ['Completed', 'Completed & Reviewed'])->orderBy('updated_at', 'desc')->get();
@@ -552,8 +554,9 @@ class ConsultationController extends Controller
         return redirect()->route('free_slots.index');
     }
 
-    public function cancelledSlots(){
-        if(auth()->guard('sanctum')->user()->hasRole('student')){
+    public function cancelledSlots()
+    {
+        if (auth()->guard('sanctum')->user()->hasRole('student')) {
             $user = Student::find(auth()->guard('sanctum')->user()->id);
             $consultation_slots = $user->consultation_slots()->with('lecturer')->where('status', 'Cancelled')->orderBy('updated_at', 'desc')->get();
         } else {
@@ -561,9 +564,101 @@ class ConsultationController extends Controller
             $consultation_slots = $user->consultation_slots()->with('student')->where('status', 'Cancelled')->orderBy('updated_at', 'desc')->get();
         }
 
+
+
         return response()->json(
             [
                 'consultation_slots' => $consultation_slots,
+                'code' => 200
+            ]
+        );
+    }
+
+    public function Notification()
+    {
+        if (auth()->guard('sanctum')->user()->hasRole('student')) {
+            $rescheduled_slots = Consultation_slot::where('student_id', auth()->guard('sanctum')->id())->where('status', 'Lecturer Rescheduled')->where('student_read', '!=', true)->orderBy('updated_at', 'desc')->count();
+            $cancelled_slots = Consultation_slot::where('student_id', auth()->guard('sanctum')->id())->where('status', 'Cancelled')->where('student_read', '!=', true)->orderBy('updated_at', 'desc')->count();
+            $rejected_slots = Consultation_slot::where('student_id', auth()->guard('sanctum')->id())->where('status', 'Rejected')->where('student_read', '!=', true)->orderBy('updated_at', 'desc')->count();
+        } else {
+            $rescheduled_slots = Consultation_slot::where('lecturer_id', auth()->guard('sanctum')->id())->where('status', 'Student Rescheduled')->where('lecturer_read', '!=', true)->orderBy('updated_at', 'desc')->count();
+            $cancelled_slots = Consultation_slot::where('lecturer_id', auth()->guard('sanctum')->id())->where('status', 'Cancellation Request')->where('lecturer_read', '!=', true)->orderBy('updated_at', 'desc')->count();
+            $rejected_slots = Consultation_slot::where('lecturer_id', auth()->guard('sanctum')->id())->where('status', 'Rejected')->where('lecturer_read', '!=', true)->orderBy('updated_at', 'desc')->count();
+        }
+
+        return response()->json(
+            [
+                'rescheduled_slots' => $rescheduled_slots,
+                'cancelled_slots' => $cancelled_slots,
+                'rejected_slots' => $rejected_slots,
+                'code' => 200
+            ]
+        );
+    }
+
+    public function updateCancelled_ReadStatus()
+    {
+        if (auth()->guard('sanctum')->user()->hasRole('student')) {
+            $user = Student::find(auth()->guard('sanctum')->user()->id);
+            $cancelled_slots = Consultation_slot::where('student_id', $user->id)->where('status', 'Cancelled')->where('student_read', '!=', true)->get();
+        } else {
+            $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
+            $cancelled_slots = Consultation_slot::where('lecturer_id',  $user->id)->where('status', 'Cancelled')->where('lecturer_read', '!=', true)->get();
+        }
+
+        if ($cancelled_slots->count() > 0) {
+            foreach ($cancelled_slots as $slot) {
+                if (auth()->guard('sanctum')->user()->hasRole('student'))
+                    $slot->student_read = true;
+                else
+                    $slot->lecturer_read = true;
+
+                $slot->save();
+            }
+            return response()->json(
+                [
+                    'message' => 'Read Status Updated',
+                    'code' => 200
+                ]
+            );
+        }
+        return response()->json(
+            [
+                'message' => 'No Read Status Updated',
+                'code' => 200
+            ]
+        );
+    }
+
+    public function updateRejected_ReadStatus()
+    {
+        if (auth()->guard('sanctum')->user()->hasRole('student')) {
+            $user = Student::find(auth()->guard('sanctum')->user()->id);
+            $rejected_slots = Consultation_slot::where('student_id', $user->id)->where('status', 'Rejected')->where('student_read', '!=', true)->get();
+        } else {
+            $user = Lecturer::find(auth()->guard('sanctum')->user()->id);
+            $rejected_slots = Consultation_slot::where('lecturer_id',  $user->id)->where('status', 'Rejected')->where('lecturer_read', '!=', true)->get();
+        }
+
+        if ($rejected_slots->count() > 0) {
+            foreach ($rejected_slots as $slot) {
+                if (auth()->guard('sanctum')->user()->hasRole('student'))
+                    $slot->student_read = true;
+                else
+                    $slot->lecturer_read = true;
+
+                $slot->save();
+            }
+            return response()->json(
+                [
+                    'message' => 'Read Status Updated',
+                    'code' => 200
+                ]
+            );
+        }
+        return response()->json(
+            [
+                'message' => 'No Read Status Updated',
                 'code' => 200
             ]
         );

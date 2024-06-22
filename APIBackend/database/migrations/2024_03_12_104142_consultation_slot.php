@@ -26,6 +26,8 @@ return new class extends Migration
             $table->time('end_time');
             $table->string('status');
             $table->longText('topic')->nullable();
+            $table->boolean('student_read')->default(false);
+            $table->boolean('lecturer_read')->default(false);
             $table->timestamps();
         });
     }

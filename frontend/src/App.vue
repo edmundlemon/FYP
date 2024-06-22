@@ -7,7 +7,9 @@ import store from './store'
 
 <template>
   <div class="w-full h-full">
-    <Header class="sticky w-full z-50" v-if="store.state.token && (store.state.role == 'student' || store.state.role == 'lecturer')"></Header>
+    <Header class="relative w-full" v-if="store.state.token && (store.state.role == 'student' || store.state.role == 'lecturer')"
+    style="z-index: 9999;"
+    />
     
     <div v-else-if="store.state.token && (store.state.role == 'admin')">
       <Logout />

@@ -24,6 +24,10 @@ export default [
 		path: '/freeslot-manager',
 		name: 'freeslot-manager',
 		component: FreeslotManager,
+		meta:{
+			requiresAuth: true,
+			role: ['lecturer']
+		}
 	},
 	{
 		path: '/consultation-manager',

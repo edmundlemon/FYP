@@ -53,6 +53,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/upcoming/{lecturer}', [Free_SlotController::class, 'upcomingTime']);
     Route::get('/search', [SearchController::class, 'search']);
 
+    Route::get('/user/notification', [ConsultationController::class, 'Notification']);
+    
     //admin's shit here
     Route::delete('/student/delete/{student}', [StudentController::class, 'destroy']);
     Route::delete('/lecturer/delete/{lecturer}', [LecturerController::class, 'destroy']);
@@ -83,6 +85,8 @@ Route::group(['middleware' => AuthLecturer::class], function () {
     Route::get('/lecturer/all-completed', [ConsultationController::class, 'allCompleted']);
     Route::get('/lecturer/requests', [ConsultationController::class, 'Requests']);
     Route::put('/lecturer/complete/{consultation_slot}', [ConsultationController::class, 'complete']);
+    Route::put('/lecturer/cancelled-readstatus', [ConsultationController::class, 'updateCancelled_ReadStatus']);
+    Route::put('/lecturer/rejected-readstatus', [ConsultationController::class, 'updateRejected_ReadStatus']);
 });
 
 // Middleware to only allow admins
@@ -119,4 +123,6 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/student/reviewstatus/{consultation_slot}', [ReviewController::class, 'reviewStatus']);
     Route::put('/student/cancel/{consultation_slot}', [ConsultationController::class, 'studentCancel']);
     Route::get('/student/cancelled', [ConsultationController::class, 'cancelledSlots']);
+    Route::put('/student/cancelled-readstatus', [ConsultationController::class, 'updateCancelled_ReadStatus']);
+    Route::put('/student/rejected-readstatus', [ConsultationController::class, 'updateRejected_ReadStatus']);
 });
