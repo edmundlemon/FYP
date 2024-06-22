@@ -60,13 +60,14 @@
 </template>
 
 <script setup>
-import { defineProps, onMounted } from "vue";
+import { defineProps, onMounted, defineEmits } from "vue";
 import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
 import PillButton from "../Atom/Pill-button.vue";
 import { ref } from "vue";
 
 const role = store.state.role;
+const emit = defineEmits(["getslots"]);
 
 async function deleteSlot(slot) {
   if (confirm("Are you sure you want to delete this slot?")) {
@@ -74,7 +75,7 @@ async function deleteSlot(slot) {
       .delete(`/free-slots/delete/${slot}`)
       .then((response) => {
         console.log(response.data);
-        window.location.reload();
+        emit("getslots")
       })
       .catch((error) => {
         console.error("Failed to delete slot:", error.response.data);
@@ -82,9 +83,6 @@ async function deleteSlot(slot) {
   }
 }
 
-function reloadPage() {
-  window.location.reload();
-}
 
 const props = defineProps({
   slot: {

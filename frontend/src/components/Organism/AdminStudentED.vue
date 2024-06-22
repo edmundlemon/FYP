@@ -63,7 +63,8 @@
                 </button>
                 <button
                   class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white rounded-full py-2 px-4 border border-red-500 hover:border-transparent rounded"
-                >
+                  @click.prevent="deleteStudent(student.id)"
+                  >
                   Delete
                 </button>
               </td>
@@ -97,6 +98,22 @@ async function getStudents() {
       console.error(error);
     });
 }
+
+function deleteStudent(studentId) {
+  if(confirm("Are you sure you want to delete this student?")) {
+    axiosInstance
+      .delete(`/student/delete/${studentId}`)
+      .then((response) => {
+        console.log(response.data);
+        getStudents();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+}
+
+
 </script>
 <script>
 export default {
@@ -107,13 +124,7 @@ export default {
       // Logic to edit student
       console.log(`Editing student with ID: ${studentId}`);
     },
-    deleteStudent(studentId) {
-      // Logic to delete student
-      console.log(`Deleting student with ID: ${studentId}`);
-      this.students = this.students.filter(
-        (student) => student.id !== studentId
-      );
-    },
+
   },
 };
 </script>

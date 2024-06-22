@@ -71,7 +71,7 @@
 </template>
 
 <script setup>
-import { defineProps, onMounted } from "vue";
+import { defineProps, onMounted, defineEmits } from "vue";
 import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
 import PillButton from "../Atom/Pill-button.vue";
@@ -79,7 +79,7 @@ import { ref } from "vue";
 import RescheduleForm from "../Molecules/RescheduleForm.vue";
 
 const role = store.state.role;
-
+const emit = defineEmits(["getSchedule"]);
 function reloadPage() {
   window.location.reload();
 }
@@ -91,11 +91,6 @@ const props = defineProps({
   },
 });
 
-onMounted(() => {
-  console.log("Role => ", role);
-  console.log("Slot => ", props.slot);
-});
-
 function markCompleted(slotId) {
   if (confirm("Are you sure you want to mark this slot as completed?")) {
     if (role === "lecturer") {
@@ -103,7 +98,8 @@ function markCompleted(slotId) {
         .put(`/lecturer/complete/${slotId}`)
         .then((response) => {
           console.log(response);
-          reloadPage();
+          // reloadPage();
+          emit("getSchedule");
         })
         .catch((error) => {
           console.log(error);
@@ -113,7 +109,8 @@ function markCompleted(slotId) {
         .put(`/student/complete/${slotId}`)
         .then((response) => {
           console.log(response);
-          reloadPage();
+          // reloadPage();
+          emit("getSchedule");
         })
         .catch((error) => {
           console.log(error);
@@ -129,7 +126,8 @@ function cancelSlot(slotId) {
         .put(`/lecturer/cancel/${slotId}`)
         .then((response) => {
           console.log(response);
-          reloadPage();
+          // reloadPage();
+          emit("getSchedule");
         })
         .catch((error) => {
           console.log(error);
@@ -139,7 +137,8 @@ function cancelSlot(slotId) {
         .put(`/student/cancel/${slotId}`)
         .then((response) => {
           console.log(response);
-          reloadPage();
+          // reloadPage();
+          emit("getSchedule");
         })
         .catch((error) => {
           console.log(error);

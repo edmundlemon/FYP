@@ -5,7 +5,7 @@
     <div class="w-10/12 bg-white shadow-lg rounded-lg p-6">
       <h1 class="text-3xl font-bold mb-6">Lecturer List</h1>
       <div class="overflow-x-auto">
-      <div v-for="lecturer in lecturers" :key="lecturer.id"></div>
+        <div v-for="lecturer in lecturers" :key="lecturer.id"></div>
 
         <table class="min-w-full bg-white border-2">
           <thead>
@@ -43,11 +43,12 @@
             </tr>
           </thead>
 
-          {{
-            lecturers
-          }}
           <tbody>
-            <tr v-for="(lecturer, index) in lecturers" class="border-t" :key="index">
+            <tr
+              v-for="(lecturer, index) in lecturers"
+              class="border-t"
+              :key="index"
+            >
               <td class="py-2 px-4">{{ lecturer.id }}</td>
               <td class="py-2 px-4">{{ lecturer.name }}</td>
               <td class="py-2 px-4">{{ lecturer.email }}</td>
@@ -62,7 +63,8 @@
                 </button>
                 <button
                   class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white rounded-full py-2 px-4 border border-red-500 hover:border-transparent rounded"
-                >
+                  @click.prevent="deleteLecturer(lecturer.id)"
+                  >
                   Delete
                 </button>
               </td>
@@ -89,12 +91,26 @@ async function getLecturers() {
   axiosInstance
     .get("/lecturers")
     .then((response) => {
-      lecturers.value = response.data;
+      lecturers.value = response.data.lecturer;
       console.log(response.data);
     })
     .catch((error) => {
       console.error(error);
     });
+}
+
+function deleteLecturer(lecturerId) {
+  if (confirm("Are you sure you want to delete this lecturer?")) {
+    axiosInstance
+      .delete(`/lecturer/delete/${lecturerId}`)
+      .then((response) => {
+        console.log(response.data);
+        getLecturers();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 }
 </script>
 
@@ -106,13 +122,6 @@ export default {
     editLecturer(lecturerId) {
       // Logic to edit lecturer
       console.log(`Editing lecturer with ID: ${lecturerId}`);
-    },
-    deleteLecturer(lecturerId) {
-      // Logic to delete lecturer
-      console.log(`Deleting lecturer with ID: ${lecturerId}`);
-      this.lecturers = this.lecturers.filter(
-        (lecturer) => lecturer.id !== lecturerId
-      );
     },
   },
 };

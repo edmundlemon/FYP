@@ -98,4 +98,23 @@ class StudentController extends Controller
         $student->update($formFields);
         return view('/dashboard');
     }
+
+    public function destroy(Student $student){
+
+        if(auth()->user()->hasRole('admin')){
+            $student->delete();
+            return response()->json(
+                [
+                    'message' => 'Student deleted successfully',
+                    'code' => 200
+                ]
+            );
+        }
+        return response()->json(
+            [
+                'message' => 'Unauthorized',
+                'code' => 401
+            ]
+        );
+    }
 }
