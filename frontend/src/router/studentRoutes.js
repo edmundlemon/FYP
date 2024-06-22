@@ -15,5 +15,14 @@ export default [
 		// 	requiresAuth: true,
 		// 	role: ['student']
 		// }
+	},
+	{
+		path: '/review',
+		name: 'review',
+		component: () => import('../components/Molecules/ReviewForm.vue'),
+		meta:{
+			requiresAuth: true,
+			role: ['student']
+		}
 	}
 ];

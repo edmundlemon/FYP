@@ -7,6 +7,7 @@ use App\Models\Free_slot;
 use App\Rules\TimeCollision;
 use Illuminate\Http\Request;
 use App\Rules\FreeSlotCollision;
+use App\Rules\WeekdayOnly;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,6 +41,7 @@ class Free_SlotController extends Controller
         Log::channel('api_post_log')->error('Lecturer: ', ['lecturer' => $lecturer]);
         $formFields = $request->validate([
             'date' => 'required|date_format:Y-m-d|after:tomorrow',
+            'date' => ['required', 'date_format:Y-m-d', 'after:tomorrow', new WeekdayOnly($request->date)],
             'start_time' => ['required', 'date_format:H:i', new FreeSlotCollision($request->start_time, $request->end_time, $request->date, $lecturer->id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
@@ -62,16 +64,10 @@ class Free_SlotController extends Controller
         }
 
         $formFields = $request->validate([
-            'date' => 'required|date_format:Y-m-d|after:tomorrow',
+            'date' => ['required', 'date_format:Y-m-d', 'after:tomorrow', new WeekdayOnly($request->date)],
             'start_time' => ['required', 'date_format:H:i', new FreeSlotCollision($request->start_time, $request->end_time, $request->date, $free_slot->lecturer_id, $free_slot->id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
-
-        // $formFields = $request->validate([
-        //     'date' => 'required|date_format:Y-m-d|after:tomorrow',
-        //     'start_time' => 'required|time_format:H:i',
-        //     'end_time' => 'required|time_format:H:i|after:start_time',
-        // ]);
 
         $free_slot->update($formFields);
         return response()->json(
