@@ -67,6 +67,14 @@
           <span class="absolute -inset-1.5" />
           <span class="sr-only">View notifications</span>
 
+          <div
+            class="animate-bounce border text-xs absolute top-[-10%] right-[-18%] bg-red-900 rounded-full w-4 h-4 flex justify-center items-center right-0"
+            v-if="rescheduleSlots + rejectedSlots + cancelledSlots > 0"
+          >
+            <p class="text-center">
+              {{ rescheduleSlots + rejectedSlots + cancelledSlots }}
+            </p>
+          </div>
           <BellIcon class="h-6 w-6" aria-hidden="true" />
           <transition
             enter-active-class="transition ease-out duration-100"
@@ -82,10 +90,12 @@
               style="width: 40vh; z-index: 9999"
             >
               <div class="flex flex-row space-x-2 items-center pb-3">
-                <img class="w-5 h-5" src="../../assets/notification.png" alt="">
-                <h4 class="text-2xl text-left text-gray-700 ">
-                  Notifications
-                </h4>
+                <img
+                  class="w-5 h-5"
+                  src="../../assets/notification.png"
+                  alt=""
+                />
+                <h4 class="text-2xl text-left text-gray-700">Requests</h4>
               </div>
               <!-- <li class="block px-4 py-2 text-sm text-gray-700">
                 Notification will show here!
@@ -156,7 +166,7 @@
                 "
                 class="block px-4 py-2 text-sm text-gray-700"
               >
-                No new notification
+                No new requests yet...
               </li>
             </ul>
           </transition>
@@ -341,15 +351,6 @@ export default {
         this.isDropdownOpen = false;
       }
     },
-    // activeClass(index) {
-    //   this.navigation.forEach((item, i) => {
-    //     if (i === index) {
-    //       item.current = true;
-    //     } else {
-    //       item.current = false;
-    //     }
-    //   });
-    // }, no need this kut
   },
   mounted() {
     document.addEventListener("click", this.handleClickOutside);
@@ -357,13 +358,6 @@ export default {
   beforeDestroy() {
     document.removeEventListener("click", this.handleClickOutside);
   },
-  // mounted() {
-  //   window.addEventListener('click', () => {
-  //     if(this.showNotification !== false) {
-  //       this.showNotifications = false;
-  //     }
-  //   });
-  // },
 };
 </script>
 <script setup>
@@ -388,11 +382,18 @@ import axiosInstance from "../../axiosConfig/customAxios";
 const rescheduleSlots = ref(0);
 const cancelledSlots = ref(0);
 const rejectedSlots = ref(0);
+let intervalId = null;
 onMounted(() => {
   console.log("mounted");
   getNotification();
-  setInterval(getNotification, 10000); // Set up the interval
+  intervalId = setInterval(getNotification, 10000); // Set up the interval
 });
+
+onUnmounted(() => {
+  console.log("unmounted");
+  clearInterval(intervalId); // Clear the interval
+});
+
 
 function getNotification() {
   console.log("Getting notification");
@@ -421,7 +422,10 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 //   ]
 
 async function logout() {
+  clearInterval(intervalId); // Clear the interval
   console.log("Logging out");
   store.commit("logout");
+  
+
 }
 </script>
