@@ -56,8 +56,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/user/notification', [ConsultationController::class, 'Notification']);
     
     //admin's shit here
-    Route::delete('/student/delete/{student}', [StudentController::class, 'destroy']);
-    Route::delete('/lecturer/delete/{lecturer}', [LecturerController::class, 'destroy']);
     Route::get('/reviewcount', [ReviewController::class, 'reviewCount']);
 });
 
@@ -95,7 +93,12 @@ Route::group(['middleware' => AuthAdmin::class], function () {
     Route::post('/register/lecturer', [LecturerController::class, 'store']);
     Route::post('/register/admin', [AdminController::class, 'store']);
     Route::delete('/delete/admin/{admin}', [AdminController::class, 'destroy']);
-
+    Route::get('/student-details/{student}', [StudentController::class, 'view']);
+    Route::get('/lecturer-details/{lecturer}', [LecturerController::class, 'view']);
+    Route::put('/edit/student/{student}', [StudentController::class, 'update']);
+    Route::put('/edit/lecturer/{lecturer}', [LecturerController::class, 'update']);
+    Route::delete('/delete/student/{student}', [StudentController::class, 'destroy']);
+    Route::delete('/delete/lecturer/{lecturer}', [LecturerController::class, 'destroy']);
 });
 
 // Middleware to only allow students
@@ -105,7 +108,6 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/student/pending', [ConsultationController::class, 'pending']);
     Route::get('/student/past', [ConsultationController::class, 'history']);
     Route::post('/book/{lecturer}', [ConsultationController::class, 'store']);
-    Route::put('/students/{student}', [StudentController::class, 'update']);
     Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
     Route::put('/student/reschedule/{consultation_slot}', [ConsultationController::class, 'studentUpdates']);
     Route::get('/student/past', [ConsultationController::class, 'history']);

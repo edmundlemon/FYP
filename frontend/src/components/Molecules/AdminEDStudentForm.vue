@@ -1,96 +1,44 @@
 <template>
-  <div
-    class="relative w-full h-full flex justify-center items-center bg-gray-100 py-10"
-  >
+  <div class="relative w-full h-full flex justify-center items-center bg-gray-100 py-10">
     <div class="absolute inset-0 bg-black opacity-50 backdrop-blur-sm"></div>
-    <div
-      class="relative z-10 bg-white rounded-lg shadow-md p-6 w-full max-w-md"
-    >
+    <div class="relative z-10 bg-white rounded-lg shadow-md p-6 w-full max-w-md">
       <h2 class="text-2xl font-bold text-gray-800 mb-4">
         Edit Student Details
       </h2>
       <hr class="mb-4" />
       <form @submit.prevent="submitForm">
         <div class="mb-4">
-          <label
-            for="student-name"
-            class="block text-sm font-bold text-gray-700"
-            >Name</label
-          >
-          <input
-            type="text"
-            id="student-name"
-            v-model="student.name"
-            class="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            required
-          />
+          <label for="student-name" class="block text-sm font-bold text-gray-700">Name</label>
+          <input type="text" id="student-name" v-model="student.name"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md" required />
         </div>
         <div class="mb-4">
-          <label for="student-id" class="block text-sm font-bold text-gray-700"
-            >Student ID</label
-          >
-          <input
-            type="text"
-            id="student-id"
-            v-model="student.id"
-            class="mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-100 cursor-not-allowed"
-            readonly
-          />
+          <label for="student-id" class="block text-sm font-bold text-gray-700">Student ID</label>
+          <input type="text" id="student-id" v-model="student.id"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-100 cursor-not-allowed" readonly />
         </div>
         <div class="mb-4">
-          <label
-            for="student-email"
-            class="block text-sm font-bold text-gray-700"
-            >Email</label
-          >
-          <input
-            type="email"
-            id="student-email"
-            v-model="student.email"
-            class="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            required
-          />
+          <label for="student-email" class="block text-sm font-bold text-gray-700">Email</label>
+          <input type="email" id="student-email" v-model="student.email"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md" required />
         </div>
         <div class="mb-4">
-          <label
-            for="student-faculty"
-            class="block text-sm font-bold text-gray-700"
-            >Faculty</label
-          >
-          <input
-            type="text"
-            id="student-faculty"
-            v-model="student.faculty"
-            class="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            required
-          />
+          <label for="student-faculty" class="block text-sm font-bold text-gray-700">Faculty</label>
+          <input type="text" id="student-faculty" v-model="student.faculty"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md" required />
         </div>
         <div class="mb-4">
-          <label
-            for="student-programme"
-            class="block text-sm font-bold text-gray-700"
-            >Programme</label
-          >
-          <input
-            type="text"
-            id="student-programme"
-            v-model="student.programme"
-            class="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            required
-          />
+          <label for="student-programme" class="block text-sm font-bold text-gray-700">Programme</label>
+          <input type="text" id="student-program" v-model="student.program"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md" required />
         </div>
         <div class="flex justify-end space-x-4">
-          <button
-            type="button"
-            @click="refreshDetails"
-            class="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
-          >
-            Refresh
+          <button type="button" @click="cancel"
+            class="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
+            Cancel
           </button>
-          <button
-            type="submit"
-            class="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
-          >
+          <button type="submit"
+            class="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
             Save Changes
           </button>
         </div>
@@ -99,37 +47,36 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
+import { useRoute } from "vue-router";
+import route from "../../router/routes";
+import axiosInstance from "../../axiosConfig/customAxios";
 
-export default {
-  name: "StudentEdit",
-  setup() {
-    const originalStudent = ref({
-      id: "S123456", // This would be fetched from the backend
-      name: "John Doe",
-      email: "john.doe@example.com",
-      faculty: "Engineering",
-      programme: "Computer Science",
-    });
+const router = useRoute();
+const studentId = router.params.studentId;
+const student = ref({});
+axiosInstance.get(`/student-details/${studentId}`).then((response) => {
+  // return response.data;
+  console.log(response.data);
+  student.value = response.data.student;
+}).catch((error) => {
+  console.error(error);
+});
 
-    const student = ref({ ...originalStudent.value });
 
-    const refreshDetails = () => {
-      student.value = { ...originalStudent.value };
-    };
+const submitForm = () => {
+  // Handle form submission here
+  axiosInstance.put(`/edit/student/${studentId}`, student.value).then((response) => {
+    console.log(response.data);
+  }).catch((error) => {
+    console.error(error);
+  })
+  console.log("Student data saved", student.value);
+};
 
-    const submitForm = () => {
-      // Handle form submission here
-      console.log("Student data saved", student.value);
-    };
-
-    return {
-      student,
-      refreshDetails,
-      submitForm,
-    };
-  },
+const cancel = () => {
+  route.push({ name: 'edit-details/students'});
 };
 </script>
 

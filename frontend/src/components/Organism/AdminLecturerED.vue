@@ -79,7 +79,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
-import store from "../../store";
+import router from "../../router/routes";
 
 const lecturers = ref([]);
 
@@ -102,7 +102,7 @@ async function getLecturers() {
 function deleteLecturer(lecturerId) {
   if (confirm("Are you sure you want to delete this lecturer?")) {
     axiosInstance
-      .delete(`/lecturer/delete/${lecturerId}`)
+      .delete(`/delete/lecturer/${lecturerId}`)
       .then((response) => {
         console.log(response.data);
         getLecturers();
@@ -122,6 +122,7 @@ export default {
     editLecturer(lecturerId) {
       // Logic to edit lecturer
       console.log(`Editing lecturer with ID: ${lecturerId}`);
+      router.push({ name: 'adminEDLecturer', params: { lecturerId } });
     },
   },
 };
