@@ -17,9 +17,24 @@ class ReviewController extends Controller
     {
         $reviews = Review::where('lecturer_id', $lecturer->id)->get();
         $rating = $reviews->avg('rating');
+        $distinct_count = Review::where('lecturer_id', $lecturer->id)->distinct()->count('student_id');
+        $student_count = Student::all()->count();
+        $comment_count = Review::where('lecturer_id', $lecturer->id)->count();
         return response()->json([
             'reviews' => $reviews,
             'rating' => $rating,
+            'distinct_count' => $distinct_count,
+            'student_count' => $student_count,
+            'comment_count' => $comment_count,
+            'code' => 200
+        ]);
+    }
+
+    public function destroy(Review $review)
+    {
+        $review->delete();
+        return response()->json([
+            'message' => 'Review deleted successfully',
             'code' => 200
         ]);
     }

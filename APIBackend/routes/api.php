@@ -99,6 +99,7 @@ Route::group(['middleware' => AuthAdmin::class], function () {
     Route::put('/edit/lecturer/{lecturer}', [LecturerController::class, 'update']);
     Route::delete('/delete/student/{student}', [StudentController::class, 'destroy']);
     Route::delete('/delete/lecturer/{lecturer}', [LecturerController::class, 'destroy']);
+    Route::delete('/delete/review/{review}', [ReviewController::class, 'destroy']);
 });
 
 // Middleware to only allow students
