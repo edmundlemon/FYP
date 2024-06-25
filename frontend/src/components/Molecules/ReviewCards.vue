@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mt-7 text-center font-bold text-5xl"><h1>Reviews</h1></div>
+    <div v-if="store.state.role !== 'admin'" class="mt-7 text-center font-bold text-5xl"><h1>Reviews {{ store.state.role === "lecturer" ? "you've received so far" : " you've made so far" }}</h1></div>
     <div class="w-full h-full flex items-center justify-center">
       <div v-if="loading" class="loader mt-10 "></div>
 

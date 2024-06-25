@@ -58,6 +58,7 @@
         class="mr-5 absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-4"
       >
         <button
+          title="Notification"
           ref="dropdownContainer"
           type="button"
           class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -66,6 +67,14 @@
           <span class="absolute -inset-1.5" />
           <span class="sr-only">View notifications</span>
 
+          <div
+            class="animate-bounce border text-xs absolute top-[-10%] right-[-18%] bg-red-900 rounded-full w-4 h-4 flex justify-center items-center right-0"
+            v-if="rescheduleSlots + rejectedSlots + cancelledSlots > 0"
+          >
+            <p class="text-center">
+              {{ rescheduleSlots + rejectedSlots + cancelledSlots }}
+            </p>
+          </div>
           <BellIcon class="h-6 w-6" aria-hidden="true" />
           <transition
             enter-active-class="transition ease-out duration-100"
@@ -77,11 +86,87 @@
           >
             <ul
               v-if="isDropdownOpen"
-              class="absolute right-0 z-10 mt-6 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-              style="width: 40vh"
+              class="bg-gray-100 space-y-1 absolute right-0 mt-6 origin-top-right rounded-md pt-5 px-2 pb-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              style="width: 40vh; z-index: 9999"
             >
-              <li class="block px-4 py-2 text-sm text-gray-700">
+              <div class="flex flex-row space-x-2 items-center pb-3">
+                <img
+                  class="w-5 h-5"
+                  src="../../assets/notification.png"
+                  alt=""
+                />
+                <h4 class="text-2xl text-left text-gray-700">Requests</h4>
+              </div>
+              <!-- <li class="block px-4 py-2 text-sm text-gray-700">
                 Notification will show here!
+              </li> -->
+
+              <!-- Reschedule slots Notification is here -->
+              <li
+                v-if="rescheduleSlots > 0"
+                :key="index"
+                class="block px-4 py-2 text-sm text-gray-700 bg-white rounded"
+                @click="router.push('/consultation-manager')"
+                style="z-index: 9999"
+              >
+                <p>
+                  You have {{ rescheduleSlots }} reschedule
+                  {{ rescheduleSlots == 1 ? "request" : "requests" }}
+                  pending for approval in the
+                  <span class="text-blue-500">request section</span>.
+                </p>
+              </li>
+
+              <!-- Cancelled slots Notification is here -->
+              <li
+                v-if="cancelledSlots > 0"
+                :key="index"
+                class="block px-4 py-2 text-sm text-gray-700 bg-white rounded"
+                @click="router.push('/consultation-manager')"
+                style="z-index: 9999"
+              >
+                <p v-if="store.state.role === 'lecturer'">
+                  You have {{ cancelledSlots }}
+                  {{ cancelledSlots == 1 ? "student" : "students" }}
+                  cancelled their consultation with you, please approve their
+                  cancellation request in the
+                  <span class="text-blue-500">request section</span>.
+                </p>
+                <p v-else>
+                  You have {{ cancelledSlots }}
+                  {{ cancelledSlots == 1 ? "consultation" : "consultations" }}
+                  cancelled by the lecturer, you can check in the
+                  <span class="text-blue-500">cancelled section</span>.
+                </p>
+              </li>
+
+              <!-- Rejected slots notification is here -->
+              <li
+                v-if="rejectedSlots > 0"
+                :key="index"
+                class="block px-4 py-2 text-sm text-gray-700 bg-white rounded"
+                @click="router.push('/consultation-manager')"
+                style="z-index: 9999"
+              >
+                <p>
+                  You have {{ rejectedSlots }}
+                  {{ rejectedSlots == 1 ? "consultation" : "consultations" }}
+                  rejected by the
+                  {{
+                    store.state.role === "lecturer" ? "student" : "lecturer"
+                  }}, you can check in the
+                  <span class="text-blue-500">rejected section</span>.
+                </p>
+              </li>
+              <li
+                v-if="
+                  rescheduleSlots === 0 &&
+                  cancelledSlots === 0 &&
+                  rejectedSlots === 0
+                "
+                class="block px-4 py-2 text-sm text-gray-700"
+              >
+                No new requests yet...
               </li>
             </ul>
           </transition>
@@ -151,6 +236,10 @@
       </div>
     </div>
   </navbar>
+  <!-- {{ store.state.role }}
+  {{ rejectedSlots }}
+  {{ rescheduleSlots }}
+  {{ cancelledSlots }} -->
 </template>
 
 <style scoped>
@@ -203,6 +292,14 @@
   visibility: visible;
   transform: scaleX(1);
 }
+
+navbar {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
 </style>
 
 <script>
@@ -254,15 +351,6 @@ export default {
         this.isDropdownOpen = false;
       }
     },
-    // activeClass(index) {
-    //   this.navigation.forEach((item, i) => {
-    //     if (i === index) {
-    //       item.current = true;
-    //     } else {
-    //       item.current = false;
-    //     }
-    //   });
-    // }, no need this kut
   },
   mounted() {
     document.addEventListener("click", this.handleClickOutside);
@@ -270,13 +358,6 @@ export default {
   beforeDestroy() {
     document.removeEventListener("click", this.handleClickOutside);
   },
-  // mounted() {
-  //   window.addEventListener('click', () => {
-  //     if(this.showNotification !== false) {
-  //       this.showNotifications = false;
-  //     }
-  //   });
-  // },
 };
 </script>
 <script setup>
@@ -295,6 +376,38 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 import { data } from "autoprefixer";
 import SearchBar from "../Atom/SearchBar.vue";
+import { ref, onMounted, onUnmounted } from "vue";
+import axiosInstance from "../../axiosConfig/customAxios";
+
+const rescheduleSlots = ref(0);
+const cancelledSlots = ref(0);
+const rejectedSlots = ref(0);
+let intervalId = null;
+onMounted(() => {
+  console.log("mounted");
+  getNotification();
+  intervalId = setInterval(getNotification, 10000); // Set up the interval
+});
+
+onUnmounted(() => {
+  console.log("unmounted");
+  clearInterval(intervalId); // Clear the interval
+});
+
+
+function getNotification() {
+  console.log("Getting notification");
+  axiosInstance
+    .get("/user/notification")
+    .then((response) => {
+      rescheduleSlots.value = response.data.rescheduled_slots;
+      cancelledSlots.value = response.data.cancelled_slots;
+      rejectedSlots.value = response.data.rejected_slots;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 
 const router = useRouter();
 const token = store.state.user.token;
@@ -309,7 +422,10 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 //   ]
 
 async function logout() {
+  clearInterval(intervalId); // Clear the interval
   console.log("Logging out");
   store.commit("logout");
+  
+
 }
 </script>

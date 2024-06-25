@@ -7,7 +7,6 @@
         :page="page"
         v-if="switchpage"
         @review-slot="inputReceivedSlot"
-        @runtimeout="Set_Timeout()"
       />
 
       <div

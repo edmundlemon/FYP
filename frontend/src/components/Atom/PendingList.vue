@@ -371,10 +371,54 @@ function rejectSlot(slotId) {
 }
 
 onMounted(async () => {
-    getPage(props.page);
+  getPage(props.page);
 });
 
-function getPage(page){
+function update_reject_readstatus() {
+  if (store.state.role === "student") {
+    axiosInstance
+      .put("/student/rejected-readstatus")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } else {
+    axiosInstance
+      .put("/lecturer/rejected-readstatus")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+}
+
+function update_cancelled_readstatus() {
+  if (store.state.role === "student") {
+    axiosInstance
+      .put("/student/cancelled-readstatus")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } else {
+    axiosInstance
+      .put("/lecturer/cancelled-readstatus")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+}
+
+function getPage(page) {
   switch (page) {
     case "Pending":
       if (store.state.role === "student") {
@@ -409,6 +453,8 @@ function getPage(page){
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
             console.log(response.data.consultation_slots);
+            update_cancelled_readstatus();
+            update_reject_readstatus();
           })
           .catch((error) => {
             console.log(error);
@@ -420,6 +466,8 @@ function getPage(page){
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
             console.log(response.data.consultation_slots);
+            update_cancelled_readstatus();
+            update_reject_readstatus();
           })
           .catch((error) => {
             console.log(error);
@@ -459,6 +507,9 @@ function getPage(page){
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
             console.log(response.data.consultation_slots);
+
+            // update read status to true
+            update_reject_readstatus();
           })
           .catch((error) => {
             console.log(error);
@@ -470,6 +521,7 @@ function getPage(page){
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
             console.log(response.data.consultation_slots);
+            update_reject_readstatus();
           })
           .catch((error) => {
             console.log(error);
@@ -576,7 +628,7 @@ function getPage(page){
           });
       }
       break;
-      case "Cancelled":
+    case "Cancelled":
       if (store.state.role === "student") {
         axiosInstance
           .get("/student/cancelled")
@@ -584,6 +636,9 @@ function getPage(page){
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
             console.log(response.data.consultation_slots);
+
+            // update read status to true
+            update_cancelled_readstatus();
           })
           .catch((error) => {
             console.log(error);
@@ -595,6 +650,7 @@ function getPage(page){
             slots.value = response.data.consultation_slots;
             showLoading.value = false;
             console.log(response.data.consultation_slots);
+            update_cancelled_readstatus();
           })
           .catch((error) => {
             console.log(error);

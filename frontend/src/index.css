@@ -40,7 +40,7 @@
 .booking-container {
   backdrop-filter: blur(10px);
   height: 103.2vh;
-  width: 100vw;
+  width: 100%;
 }
 /* HTML: <div class="loader"></div> */
 .loader {

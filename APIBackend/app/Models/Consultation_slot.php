@@ -17,70 +17,85 @@ class Consultation_slot extends Model
         'end_time',
         'topic',
         'status',
+        'student_read',
+        'lecturer_read',
     ];
 
     use HasFactory;
 
-    public function getStartTimeAttribute($value){
+    public function getStartTimeAttribute($value)
+    {
         return date('H:i', strtotime($value));
     }
 
-    public function getEndTimeAttribute($value){
+    public function getEndTimeAttribute($value)
+    {
         return date('H:i', strtotime($value));
     }
 
-    public function student() {
+    public function student()
+    {
         return $this->belongsTo(Student::class, 'student_id');
     }
 
-    public function lecturer() {
+    public function lecturer()
+    {
         return $this->belongsTo(Lecturer::class, 'lecturer_id');
     }
 
-    public function upcoming(){
+    public function upcoming()
+    {
         return $this->where('start_time', '>=', now())
             ->where('start_time', '<=', now()->addMinutes(30))
             ->where('status', 'Request');
     }
 
-    public function pending(){
+    public function pending()
+    {
         return $this->where('start_time', '>=', now())
             ->where('status', 'Requested');
     }
 
-    public function approved(){
+    public function approved()
+    {
         return $this->where('start_time', '>=', now())
             ->where('status', 'Approved');
     }
 
-    public function rejected(){
+    public function rejected()
+    {
         return $this->where('start_time', '>=', now())
             ->where('status', 'Rejected');
     }
 
-    public function studentCheckRescheduled(){
+    public function studentCheckRescheduled()
+    {
         return $this->where('start_time', '>=', now())
             ->where('status', 'Lecturer Rescheduled');
     }
 
-    public function lecturerCheckRescheduled(){
+    public function lecturerCheckRescheduled()
+    {
         return $this->where('start_time', '>=', now())
             ->where('status', 'Student Rescheduled');
     }
 
-    public function lecturerReschedule(Lecturer $lecturer){
+    public function lecturerReschedule(Lecturer $lecturer)
+    {
         return $this->where('lecturer_id', $lecturer->id)
             ->where('start_time', '>=', now())
             ->where('status', 'Lecturer Rescheduled');
     }
 
-    public function studentReschedule(Student $student){
+    public function studentReschedule(Student $student)
+    {
         return $this->where('student_id', $student->id)
             ->where('start_time', '>=', now())
             ->where('status', 'Student Rescheduled');
     }
 
-    public function collision(){
+    public function collision()
+    {
         // return DB::table('consultation_slots')
         //     ->where('lecturer_id', $consultation_slot->lecturer_id)
         //     ->where('date', $consultation_slot->date)
@@ -96,24 +111,24 @@ class Consultation_slot extends Model
         //             $query->where('start_time', '>', $consultation_slot->start_time)
         //                 ->where('end_time', '<', $consultation_slot->end_time);
         //         });
-            // })->exists();
+        // })->exists();
 
         $collision =   $this->where('lecturer_id', $this->lecturer_id)
-        ->where('date', $this->date)
-        ->where('start_time', '<', $this->end_time)
-        ->where('end_time', '>', $this->start_time)
-        ->where('status', 'Approved')
-        ->orWhere('lecturer_id', $this->lecturer_id)
-        ->where('date', $this->date)
-        ->where('start_time', '<', $this->start_time)
-        ->where('end_time', '>', $this->end_time)
-        ->where('status', 'Approved')
-        ->orWhere('lecturer_id', $this->lecturer_id)
-        ->where('date', $this->date)
-        ->where('start_time', '>=', $this->start_time)
-        ->where('end_time', '<', $this->end_time)
-        ->where('status', 'Approved')
-        ->exists();
+            ->where('date', $this->date)
+            ->where('start_time', '<', $this->end_time)
+            ->where('end_time', '>', $this->start_time)
+            ->where('status', 'Approved')
+            ->orWhere('lecturer_id', $this->lecturer_id)
+            ->where('date', $this->date)
+            ->where('start_time', '<', $this->start_time)
+            ->where('end_time', '>', $this->end_time)
+            ->where('status', 'Approved')
+            ->orWhere('lecturer_id', $this->lecturer_id)
+            ->where('date', $this->date)
+            ->where('start_time', '>=', $this->start_time)
+            ->where('end_time', '<', $this->end_time)
+            ->where('status', 'Approved')
+            ->exists();
 
         return $collision;
     }

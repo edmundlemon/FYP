@@ -24,27 +24,24 @@
       />
     </a>
 
+    <!-- Lecturer name block -->
     <div
       class="space-y-3 flex flex-col items-center justify-center w-full mt-0 z-10"
     >
       <!-- Name @ box with lecturer name-->
       <div
-        class="w-full transition-all duration-300 ease-in-out transform hover:scale-105 relative flex flex-col justify-center z-10"
+        class="w-full transition-all duration-300 ease-in-out transform hover:scale-105 relative z-10 p-0"
       >
-        <p
-          class="font-semibold absolute bg-green-400 opacity-80 rounded-xl px-2 text-xl flex items-center justify-center border border-gray-700 border-opacity-50"
-          style="
-            z-index: 10;
-            top: -10%;
-            transform: translate(-50%, -50%);
-          "
-          :style="role === 'lecturer' ? 'left: 24%' : 'left: 22.5%;'"
+        <div
+          class="font-semibold absolute bg-green-400 opacity-70 rounded-xl px-2 text-xl border border-gray-700 border-opacity-50"
+          style="z-index: 10; top: -35%; left: 0%; "
+          
         >
-          <span class="font-light text-xs mb-0.5 whitespace-nowrap">
-            {{ role === "student" ? "STUDENT" : "LECTURER" }} NAME
+          <span class="font-light text-xs whitespace-nowrap tracking-wide p-0">
+            NAME
           </span>
-        </p>
-        <!-- Lecturer name block -->
+        </div>
+
         <a
           :href="
             role === 'lecturer' ? '/lecturer/' + user.id : '/student/' + user.id
@@ -65,13 +62,14 @@
           src="../../assets/email.png"
           alt="email_icon"
           class="w-5 h-5 mr-2"
+          title="Email Address"
         />
         <a class="font-normal" :href="'mailto:' + user.email">
           <p class="text-lg my-1.5">{{ user.email }}</p>
         </a>
       </div>
 
-      <!-- Lecturer Office Display -->
+      <!-- Student Program / Lecturer office -->
       <div
         class="flex flex-row justify items-center z-10 w-full transition duration-300 ease-in-out transform hover:scale-105"
       >
@@ -80,21 +78,34 @@
             class="text-lg z-10 detail-box text-center rounded-l-xl p-2 px-3 flex items-center justify-center"
           >
             <img
-              :src="role === 'lecturer' ? 'src/assets/office.png' : 'src/assets/faculty.png'"
+              :src="
+                role === 'lecturer'
+                  ? 'src/assets/office.png'
+                  : 'src/assets/faculty.png'
+              "
               alt="office_icon"
               class="w-5 h-5"
+              :title="
+                role === 'lecturer'
+                  ? 'Office'
+                  : 'Program'
+              "
             />
           </div>
 
           <div class="w-full">
-            <p class="text-lg z-10 detail-box rounded-r-xl py-2 pl-3" v-if="role === 'lecturer'">
+            <p
+              class="text-lg z-10 detail-box rounded-r-xl py-2 pl-3"
+              v-if="role === 'lecturer'"
+            >
               {{ user.office }}
             </p>
-            <p class="text-lg z-10 detail-box rounded-r-xl py-2 pl-3" v-else>{{ user.program }}</p>
+            <p class="text-lg z-10 detail-box rounded-r-xl py-2 pl-3" v-else>
+              {{ user.program }}
+            </p>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -155,7 +166,7 @@ const props = defineProps({
   border: 1px solid rgba(88, 88, 88, 0.27);
 }
 
-.picture{
+.picture {
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.4));
 }
 </style>
