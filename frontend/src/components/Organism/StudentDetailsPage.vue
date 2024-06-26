@@ -3,22 +3,28 @@
     class="relative flex flex-col border border-gray-700 w-10/12 m-auto rounded-lg shadow-lg bg-white mt-5 fade-in-animation"
     v-if="student != null && !fail"
   >
-    
-  <StudentDetails :student="student" />
-
-	<!-- Reviews -->
-    <ViewReview class="m-5" :review="review" :reviewsize="review.length"/>
+    <StudentDetails :student="student" />
+    <DetailsPageSlotsView :studentId="studentId" v-if="store.state.role === 'lecturer'"/>
+    <ViewReview class="m-5" :review="review" :reviewsize="review.length" />
+    <!-- Reviews -->
   </div>
-  <div v-else-if="fail" class="flex flex-col items-center justify-center mt-[13vh] font-semibold">
+  <div
+    v-else-if="fail"
+    class="flex flex-col items-center justify-center mt-[13vh] font-semibold"
+  >
     <span>User does not exists...</span>
-    <img src="../../assets/edmund.gif" alt="goofy" class="border border-gray-400 shadow-2xl rounded-lg w-[8vw]">
+    <img
+      src="../../assets/edmund.gif"
+      alt="goofy"
+      class="border border-gray-400 shadow-2xl rounded-lg w-[8vw]"
+    />
   </div>
-    <div
-      v-else
-      class="relative justify-center items-center flex-row flex w-10/12 h-full m-auto rounded-lg mt-[13vh]"
-    >
-      <div class="loader"></div>
-    </div>
+  <div
+    v-else
+    class="relative justify-center items-center flex-row flex w-10/12 h-full m-auto rounded-lg mt-[13vh]"
+  >
+    <div class="loader"></div>
+  </div>
   <div class="h-5"></div>
 </template>
 
@@ -28,11 +34,13 @@ import axiosInstance from "../../axiosConfig/customAxios";
 import { useRoute } from "vue-router";
 import ViewReview from "../Molecules/ViewReview.vue";
 import StudentDetails from "../Molecules/StudentDetails.vue";
-
+import DetailsPageSlotsView from "../Molecules/DetailsPageSlotsView.vue";
+import store from "../../store";
 const route = useRoute();
 const student = ref(null);
 const review = ref(null);
 const fail = ref(false);
+const studentId = route.params.id;
 
 onMounted(() => {
   getStudentInfo();
@@ -40,7 +48,6 @@ onMounted(() => {
 });
 
 async function getStudentInfo() {
-  const studentId = route.params.id;
   // console.log(route.path);
   console.log(studentId);
   try {
