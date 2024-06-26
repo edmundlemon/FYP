@@ -5,7 +5,7 @@
         <h1>Lecturer Reviews</h1>
       </div>
       <div
-        class="w-full max-w-4xl p-4 min-h-screen"
+        class="w-full max-w-4xl p-4"
         v-if="lecturers.length && showing"
       >
         <AdminLecturerReviewDisplay
