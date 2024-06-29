@@ -177,7 +177,6 @@ export default {
         if (this.form.photo) {
           formData.append("photo", this.form.photo);
         }
-
         const response = await axios.post(
           "/register/lecturer",
           formData,

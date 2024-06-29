@@ -124,7 +124,7 @@ class LecturerController extends Controller
             // It would also return the path to the file
             $formFields['photo'] = $request->file('photo')->store('photos', 'public');
         }
-
+            
         $lecturer->update($formFields);
         return response()->json(
             [
