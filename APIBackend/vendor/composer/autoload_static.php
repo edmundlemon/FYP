@@ -139,6 +139,7 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
             'Illuminate\\Support\\' => 19,
             'Illuminate\\Foundation\\Auth\\' => 27,
             'Illuminate\\' => 11,
+            'Ichtrojan\\Otp\\' => 14,
         ),
         'G' => 
         array (
@@ -459,6 +460,10 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Ichtrojan\\Otp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ichtrojan/laravel-otp/src',
+        ),
         'GuzzleHttp\\UriTemplate\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/uri-template/src',
@@ -545,8 +550,11 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\DropPastFreeSlots' => __DIR__ . '/../..' . '/app/Console/Commands/DropPastFreeSlots.php',
         'App\\Console\\Commands\\SendEmails' => __DIR__ . '/../..' . '/app/Console/Commands/SendEmails.php',
+        'App\\Console\\Commands\\UpdatedExpiredStatus' => __DIR__ . '/../..' . '/app/Console/Commands/UpdatedExpiredStatus.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\ConsultationController' => __DIR__ . '/../..' . '/app/Http/Controllers/ConsultationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\FileController' => __DIR__ . '/../..' . '/app/Http/Controllers/FileController.php',
@@ -554,7 +562,12 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'App\\Http\\Controllers\\LecturerController' => __DIR__ . '/../..' . '/app/Http/Controllers/LecturerController.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
+        'App\\Http\\Controllers\\ReviewController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReviewController.php',
+        'App\\Http\\Controllers\\SearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/SearchController.php',
         'App\\Http\\Controllers\\StudentController' => __DIR__ . '/../..' . '/app/Http/Controllers/StudentController.php',
+        'App\\Http\\Middleware\\AuthAdmin' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthAdmin.php',
+        'App\\Http\\Middleware\\AuthLecturer' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthLecturer.php',
+        'App\\Http\\Middleware\\AuthStudent' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthStudent.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
@@ -581,7 +594,10 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'App\\Models\\Student' => __DIR__ . '/../..' . '/app/Models/Student.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
+        'App\\Rules\\FreeSlotCollision' => __DIR__ . '/../..' . '/app/Rules/FreeSlotCollision.php',
+        'App\\Rules\\RescheduleCollision' => __DIR__ . '/../..' . '/app/Rules/RescheduleCollision.php',
         'App\\Rules\\TimeCollision' => __DIR__ . '/../..' . '/app/Rules/TimeCollision.php',
+        'App\\Rules\\WeekdayOnly' => __DIR__ . '/../..' . '/app/Rules/WeekdayOnly.php',
         'App\\View\\Components\\AppLayout' => __DIR__ . '/../..' . '/app/View/Components/AppLayout.php',
         'App\\View\\Components\\GuestLayout' => __DIR__ . '/../..' . '/app/View/Components/GuestLayout.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -1584,6 +1600,10 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Ichtrojan\\Otp\\Commands\\CleanOtps' => __DIR__ . '/..' . '/ichtrojan/laravel-otp/src/Commands/CleanOtps.php',
+        'Ichtrojan\\Otp\\Models\\Otp' => __DIR__ . '/..' . '/ichtrojan/laravel-otp/src/Models/Otp.php',
+        'Ichtrojan\\Otp\\Otp' => __DIR__ . '/..' . '/ichtrojan/laravel-otp/src/Otp.php',
+        'Ichtrojan\\Otp\\OtpServiceProvider' => __DIR__ . '/..' . '/ichtrojan/laravel-otp/src/OtpServiceProvider.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Events\\GateEvaluated' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Events/GateEvaluated.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
@@ -6596,6 +6616,7 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'Termwind\\ValueObjects\\Node' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Node.php',
         'Termwind\\ValueObjects\\Style' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Style.php',
         'Termwind\\ValueObjects\\Styles' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Styles.php',
+        'Tests\\Feature\\ApiTest' => __DIR__ . '/../..' . '/tests/Feature/ApiTest.php',
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Tests\\Unit\\ExampleTest' => __DIR__ . '/../..' . '/tests/Unit/ExampleTest.php',

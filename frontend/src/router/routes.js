@@ -15,6 +15,7 @@ import ReviewPage from "../components/Organism/ReviewsPage.vue";
 import adminRoutes from "./adminRoutes";
 import lecturerRoutes from "./lecturerRoutes";
 import studentRoutes from "./studentRoutes";
+import ForgotPassword from "../components/Molecules/ForgotPassword.vue";
 
 const authRoutes = [
   {
@@ -62,6 +63,14 @@ const routes = [
     path: "/login",
     name: "login",
     component: Login,
+    meta: {
+      requiresGuest: true,
+    },
+  },
+  {
+    path: "/forgot-password",
+    name: "ForgotPassword",
+    component: ForgotPassword,
     meta: {
       requiresGuest: true,
     },
