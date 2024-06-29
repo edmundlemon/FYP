@@ -1,15 +1,15 @@
 <template>
-  <div class="flex flex-col h-fit pb-20 items-center">
+  <div class="flex flex-col h-fit pb-20 items-center"
+  v-if="slots.length"
+  >
     <h3 class="text-4xl font-bold py-5 pt-10 letter-spaced">
-      {{ text }}
+      Slots Booked with this Student
     </h3>
     <div class="h-fit">
       <div class="container mx-auto px-4">
         <div class="overflow-y-auto no-scrollbar pb-5">
           <!-- grid container here -->
-          <div v-if="showLoading" class="loader">
-            
-          </div>
+          <div v-if="showLoading" class="loader"></div>
           <div
             class="load-in-animation max-h-full w-full rounded-lg"
             v-else-if="slots.length > 0 && !showLoading"
@@ -33,7 +33,7 @@
                   >
                     <div class="space-y-3" v-if="hasSlotsForDay(day)">
                       <div v-for="slot in getSlotsForDay(day)" :key="slot.id">
-                        <DisplaySchedulingSlot
+                        <DisplaySlot_Detailspage
                           class="mx-3"
                           :slot="slot"
                           @openRescheduleForm="PassingtoParent"
@@ -53,26 +53,11 @@
               </div>
             </div>
           </div>
-          <div v-else class="h-full flex justify-center items-center">
-            <h2 class="text-xl font-bold text-gray-800 animate-bounce my-5">
-              Yay >w< you have no consultations!
-            </h2>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  methods: {
-    PassingtoParent(data) {
-      this.$emit("edit-slot", data);
-    },
-  },
-};
-</script>
 
 <script setup>
 import { onMounted, ref, defineProps } from "vue";
@@ -80,52 +65,41 @@ import { onMounted, ref, defineProps } from "vue";
 import DisplaySchedulingSlot from "../Atom/DisplaySchedulingSlot.vue";
 import store from "../../store";
 import axiosInstance from "../../axiosConfig/customAxios";
+import DisplaySlot_Detailspage from "../Atom/DisplaySlot_Detailspage.vue";
 
 const days = ref([]);
-const slots = ref([]);
+const slots = ref({});
+const showLoading = ref(true);
+
 const props = defineProps({
-  lecturerId: {
+  studentId: {
     type: String,
     required: true,
   },
-  text: {
-    type: String,
-    default: "Your Schedule",
-  },
 });
-
-const showLoading = ref(true);
 
 onMounted(async () => {
-  getSchedule();
+  getLecturerSchedule();
 });
 
-function getSchedule() {
-  if (store.state.role === "student") {
-    axiosInstance
-      .get(`/student/schedule`)
-      .then((response) => {
-        slots.value = response.data.consultation_slots;
-        days.value = slots.value.map((slot) => new Date(slot.date).getDay());
-        console.log(response.data.consultation_slots);
-        showLoading.value = false;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  } else {
-    axiosInstance
-      .get(`/lecturer/schedule`)
-      .then((response) => {
-        slots.value = response.data.consultation_slots;
-        days.value = slots.value.map((slot) => new Date(slot.date).getDay());
-        console.log(response.data.consultation_slots);
-        showLoading.value = false;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+function getLecturerSchedule() {
+  axiosInstance
+    .get(`/lecturer/schedule`)
+    .then((response) => {
+      slots.value = response.data.consultation_slots;
+      slots.value = getRelatedSlots();
+      console.log(slots.value);
+      days.value = slots.value.map((slot) => new Date(slot.date).getDay());
+      console.log(response.data.consultation_slots);
+      showLoading.value = false;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function getRelatedSlots() {
+  return slots.value.filter((slot) => slot.student_id === props.studentId);
 }
 
 function hasSlotsForDay(day) {
