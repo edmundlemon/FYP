@@ -74,7 +74,10 @@ class LecturerController extends Controller
         $formFields['password'] = bcrypt($formFields['password']);
         if ($request->hasFile('photo')) {
 
-            $formFields['photo'] = $request->file('photo')->store('photos', 'public');
+            // $formFields['photo'] = $request->file('photo')->store('photos', 'public');
+            $formFields['photo'] = $request->file('photo');
+            $formFields['photo'] = $formFields['photo']->move(public_path('storage/photos'), $formFields['photo']->getClientOriginalName());
+            //  $request->file('photo')->getClientOriginalName();
             $imgName = basename($formFields['photo']);
             $linkToImg = asset('/storage/photos/'.$imgName);
             $formFields['photo'] = $linkToImg;

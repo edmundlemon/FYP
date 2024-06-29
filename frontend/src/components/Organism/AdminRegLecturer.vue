@@ -16,6 +16,7 @@
             class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           />
+          <div v-if="errors.name" class="text-red-500 text-xs mt-1">{{ errors.name[0] }}</div>
         </div>
 
         <div class="mb-4">
@@ -23,13 +24,14 @@
             >Lecturer ID</label
           >
           <input
-            type="number"
+            type="text"
             v-model.number="form.id"
             id="id"
             class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             @input="handleInput"
             required
           />
+          <div v-if="errors.id" class="text-red-500 text-xs mt-1">{{ errors.id[0] }}</div>
         </div>
 
         <div class="mb-4">
@@ -43,6 +45,35 @@
             class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           />
+          <div v-if="errors.email" class="text-red-500 text-xs mt-1">{{ errors.email[0] }}</div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700 font-bold mb-2"
+            >Password</label
+          >
+          <input
+            type="password"
+            v-model="form.password"
+            id="password"
+            class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            required
+          />
+          <div v-if="errors.password" class="text-red-500 text-xs mt-1">{{ errors.password[0] }}</div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password_confirmation" class="block text-gray-700 font-bold mb-2"
+            >Password</label
+          >
+          <input
+            type="password"
+            v-model="form.password_confirmation"
+            id="password_confirmation"
+            class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            required
+          />
+          <div v-if="errors.password_confirmation" class="text-red-500 text-xs mt-1">{{ errors.password_confirmation[0] }}</div>
         </div>
 
         <div class="flex space-x-4 mb-4">
@@ -62,6 +93,7 @@
               <option value="FCM">FCM</option>
               <option value="FCA">FCA</option>
             </select>
+            <div v-if="errors.faculty" class="text-red-500 text-xs mt-1">{{ errors.faculty[0] }}</div>
           </div>
 
           <div class="w-1/2">
@@ -75,6 +107,7 @@
               class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
               required
             />
+            <div v-if="errors.office" class="text-red-500 text-xs mt-1">{{ errors.office[0] }}</div>
           </div>
         </div>
 
@@ -111,6 +144,7 @@
 </template>
 
 <script>
+import axios from "../../axiosConfig/customAxios";
 export default {
   name: "LecturerRegistrationForm",
   data() {
@@ -119,10 +153,13 @@ export default {
         name: "",
         id: "MU",
         email: "",
+        password: "",
+        password_confirmation: "",
         faculty: "",
         program: "",
         photo: null,
       },
+      errors: {},
     };
   },
   methods: {
@@ -132,6 +169,8 @@ export default {
         formData.append("name", this.form.name);
         formData.append("id", this.form.id);
         formData.append("email", this.form.email);
+        formData.append("password", this.form.password);
+        formData.append("password_confirmation", this.form.password_confirmation);
         formData.append("faculty", this.form.faculty);
         formData.append("office", this.form.office);
         if (this.form.photo) {
@@ -139,7 +178,7 @@ export default {
         }
 
         const response = await axios.post(
-          "https://your-api-endpoint.com/register",
+          "/register/lecturer",
           formData,
           {
             headers: {
@@ -152,6 +191,7 @@ export default {
         alert("Registration successful");
         this.resetForm();
       } catch (error) {
+        this.errors = error.response.data.errors;
         console.error("Error submitting form:", error);
         alert("An error occurred during registration");
       }
@@ -159,8 +199,10 @@ export default {
     resetForm() {
       this.form = {
         name: "",
-        id: "",
+        id: "MU",
         email: "",
+        password: "",
+        password_confirmation: "",
         faculty: "",
         program: "",
         photo: null,
@@ -169,14 +211,14 @@ export default {
     handleFileUpload(event) {
       this.form.photo = event.target.files[0];
     },
-    handleInput(event) {
-      const inputValue = event.target.value;
-      if (inputValue.startsWith("MU")) {
-        this.form.id = inputValue.slice(2);
-      } else {
-        this.form.id = inputValue;
-      }
-    },
+    // handleInput(event) {
+    //   const inputValue = event.target.value;
+    //   if (inputValue.startsWith("MU")) {
+    //     this.form.id = inputValue.slice(2);
+    //   } else {
+    //     this.form.id = inputValue;
+    //   }
+    // },
   },
 };
 </script>

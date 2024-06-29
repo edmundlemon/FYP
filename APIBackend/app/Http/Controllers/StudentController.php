@@ -76,9 +76,10 @@ class StudentController extends Controller
         if ($request->hasFile('photo')) {
             // The line below would store the file in the public disk, in the logos folder
             // It would also return the path to the file
-            $formFields['photo'] = $request->file('photo')->store('photos', 'public');
+            $formFields['photo'] = $request->file('photo');
+            $formFields['photo'] = $formFields['photo']->move(public_path('storage/photos'), $formFields['photo']->getClientOriginalName());
             $imgName = basename($formFields['photo']);
-            $linkToImg = asset('photos/' . $imgName);
+            $linkToImg = asset('/storage/photos/'.$imgName);
             $formFields['photo'] = $linkToImg;
         }
         // dd($formFields);
@@ -86,7 +87,12 @@ class StudentController extends Controller
         $formFields['password'] = bcrypt($formFields['password']);
 
         $student = Student::create($formFields);
-        return view('/welcome');
+        return response()->json(
+            [
+                'message' => 'Student created successfully',
+                'code' => 201
+            ]
+        );
         // redirect()->route('login');
     }
 

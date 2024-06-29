@@ -36,8 +36,14 @@ Route::get('/expire-slots', [ConsultationController::class, 'expire Slots']);
 Route::get('/rating/{lecturer}', [ReviewController::class, 'index']);
 Route::get('/student/reviews/{student}', [ReviewController::class, 'view']);
 Route::post('/review/{lecturer}', [ReviewController::class, 'store']);
-Route::middleware('guest:sanctum')->post('/login', [LoginController::class, 'authenticate']);
+// Route::middleware('guest:sanctum')->post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::group(['middleware' => 'guest:sanctum'], function () {
+    Route::post('/login', [LoginController::class, 'authenticate']);
+    Route::post('/forgot-password', [LoginController::class, 'forgotPassword']);
+    Route::post('/validate-otp', [LoginController::class, 'validateOtp']);
+});
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/upload', [FileController::class, 'store']);

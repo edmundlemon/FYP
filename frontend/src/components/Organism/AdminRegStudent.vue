@@ -4,7 +4,7 @@
       <h1 class="text-3xl font-bold mb-6 text-gray-900">
         Student Registration
       </h1>
-      <form @submit.prevent="submitForm">
+      <form @submit.prevent="submitForm" enctype="multipart/form-data">
         <div class="mb-4">
           <label for="name" class="block text-gray-700 font-bold mb-2"
             >Student Name</label
@@ -16,6 +16,7 @@
             class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           />
+          <div v-if="errors.name" class="text-red-500 text-xs mt-1">{{ errors.name[0] }}</div>
         </div>
 
         <div class="mb-4">
@@ -30,6 +31,7 @@
             @input="handleInput"
             required
           />
+          <div v-if="errors.id" class="text-red-500 text-xs mt-1">{{ errors.id[0] }}</div>
         </div>
 
         <div class="mb-4">
@@ -43,6 +45,35 @@
             class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           />
+          <div v-if="errors.email" class="text-red-500 text-xs mt-1">{{ errors.email[0] }}</div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700 font-bold mb-2"
+            >Password</label
+          >
+          <input
+            type="password"
+            v-model="form.password"
+            id="password"
+            class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            required
+          />
+          <div v-if="errors.email" class="text-red-500 text-xs mt-1">{{ errors.email[0] }}</div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password_confirmation" class="block text-gray-700 font-bold mb-2"
+            >Password</label
+          >
+          <input
+            type="password"
+            v-model="form.password_confirmation"
+            id="password_confirmation"
+            class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            required
+          />
+          <div v-if="errors.password" class="text-red-500 text-xs mt-1">{{ errors.password[0] }}</div>
         </div>
 
         <div class="flex space-x-4 mb-4">
@@ -62,6 +93,7 @@
               <option value="FCM">FCM</option>
               <option value="FCA">FCA</option>
             </select>
+            <div v-if="errors.password_confirmation" class="text-red-500 text-xs mt-1">{{ errors.password_confirmation[0] }}</div>
           </div>
 
           <div class="w-1/2">
@@ -80,6 +112,7 @@
               <option value="Foundation">Foundation</option>
               <option value="Master">Master</option>
             </select>
+            <div v-if="errors.program" class="text-red-500 text-xs mt-1">{{ errors.program[0] }}</div>
           </div>
         </div>
 
@@ -116,7 +149,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "../../axiosConfig/customAxios";
 
 export default {
   name: "StudentRegistrationForm",
@@ -126,10 +159,13 @@ export default {
         name: "",
         id: "",
         email: "",
+        password: "",
+        password_confirmation: "",
         faculty: "",
         program: "",
         photo: null,
       },
+      errors: {},
     };
   },
   methods: {
@@ -139,6 +175,8 @@ export default {
         formData.append("name", this.form.name);
         formData.append("id", this.form.id);
         formData.append("email", this.form.email);
+        formData.append("password", this.form.password);
+        formData.append("password_confirmation", this.form.password_confirmation);
         formData.append("faculty", this.form.faculty);
         formData.append("program", this.form.program);
         if (this.form.photo) {
@@ -146,7 +184,7 @@ export default {
         }
 
         const response = await axios.post(
-          "https://your-api-endpoint.com/register",
+          "/register/student",
           formData,
           {
             headers: {
@@ -159,6 +197,7 @@ export default {
         alert("Registration successful");
         this.resetForm();
       } catch (error) {
+        this.errors = error.response.data.errors;
         console.error("Error submitting form:", error);
         alert("An error occurred during registration");
       }
@@ -168,6 +207,8 @@ export default {
         name: "",
         id: "",
         email: "",
+        password: "",
+        password_confirmation: "",
         faculty: "",
         program: "",
         photo: null,
