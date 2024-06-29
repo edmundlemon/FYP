@@ -117,6 +117,7 @@
           >
           <input
             type="file"
+            ref="profilepic"
             @change="handleFileUpload"
             id="photo"
             class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -205,8 +206,9 @@ export default {
         password_confirmation: "",
         faculty: "",
         program: "",
-        photo: null,
       };
+      this.$refs.profilepic.value = null;
+      this.errors = {};
     },
     handleFileUpload(event) {
       this.form.photo = event.target.files[0];
