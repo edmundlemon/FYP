@@ -91,7 +91,6 @@ import axiosInstance from "../../axiosConfig/customAxios";
 import { ref } from "vue";
 import RescheduleForm from "../Molecules/RescheduleForm.vue";
 
-const role = store.state.role;
 const emit = defineEmits(["getSchedule"]);
 
 const props = defineProps({

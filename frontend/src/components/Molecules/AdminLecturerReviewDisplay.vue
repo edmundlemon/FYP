@@ -114,6 +114,10 @@ function returnRating(rating) {
 }
 
 function returnPercentage(value) {
-  return value * 100;
+  if (value === null) {
+    return "0";
+  } else {
+    return (value * 100).toFixed(2);
+  }
 }
 </script>
