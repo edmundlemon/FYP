@@ -79,8 +79,10 @@ class StudentController extends Controller
             $formFields['photo'] = $request->file('photo');
             $formFields['photo'] = $formFields['photo']->move(public_path('storage/photos'), $formFields['photo']->getClientOriginalName());
             $imgName = basename($formFields['photo']);
-            $linkToImg = asset('/storage/photos/'.$imgName);
+            $linkToImg = asset('/storage/photos/' . $imgName);
             $formFields['photo'] = $linkToImg;
+        } else {
+            $formFields['photo'] = 'https://ui-avatars.com/api/?name=' . urlencode($formFields['name']) . '&color=7F9CF5&background=EBF4FF';
         }
         // dd($formFields);
         // Hsshing the password for storage
@@ -146,7 +148,7 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
 
-        if(auth('sanctum')->user()->hasRole('admin')){
+        if (auth('sanctum')->user()->hasRole('admin')) {
             $student->delete();
             return response()->json(
                 [

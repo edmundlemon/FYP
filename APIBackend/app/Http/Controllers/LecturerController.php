@@ -82,6 +82,9 @@ class LecturerController extends Controller
             $linkToImg = asset('/storage/photos/'.$imgName);
             $formFields['photo'] = $linkToImg;
         }
+        else{
+            $formFields['photo'] = 'https://ui-avatars.com/api/?name='.urlencode($formFields['name']).'&color=7F9CF5&background=EBF4FF';
+        }
         // Log::channel('api_post_log')->error('Lecturer Information Form', $formFields);
         Lecturer::create($formFields);
         return response()->json(

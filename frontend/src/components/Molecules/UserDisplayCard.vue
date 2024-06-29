@@ -34,8 +34,7 @@
       >
         <div
           class="font-semibold absolute bg-green-400 opacity-70 rounded-xl px-2 text-xl border border-gray-700 border-opacity-50"
-          style="z-index: 10; top: -35%; left: 0%; "
-          
+          style="z-index: 10; top: -35%; left: 0%"
         >
           <span class="font-light text-xs whitespace-nowrap tracking-wide p-0">
             NAME
@@ -64,9 +63,12 @@
           class="w-5 h-5 mr-2"
           title="Email Address"
         />
-        <a class="font-normal" :href="'mailto:' + user.email">
-          <p class="text-lg my-1.5">{{ user.email }}</p>
-        </a>
+
+        <p class="text-lg my-1.5 h-full truncate flex items-center">
+          <a class="font-normal w-full block" :href="'mailto:' + user.email"
+            >{{ user.email }}
+          </a>
+        </p>
       </div>
 
       <!-- Student Program / Lecturer office -->
@@ -85,22 +87,18 @@
               "
               alt="office_icon"
               class="w-5 h-5"
-              :title="
-                role === 'lecturer'
-                  ? 'Office'
-                  : 'Program'
-              "
+              :title="role === 'lecturer' ? 'Office' : 'Program'"
             />
           </div>
 
           <div class="w-full">
             <p
-              class="text-lg z-10 detail-box rounded-r-xl py-2 pl-3"
+              class="text-lg z-10 detail-box rounded-r-xl py-2 pl-3 truncate"
               v-if="role === 'lecturer'"
             >
               {{ user.office }}
             </p>
-            <p class="text-lg z-10 detail-box rounded-r-xl py-2 pl-3" v-else>
+            <p class="text-lg z-10 detail-box rounded-r-xl py-2 pl-3 truncate" v-else>
               {{ user.program }}
             </p>
           </div>
