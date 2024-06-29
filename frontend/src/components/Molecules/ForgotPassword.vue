@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper h-screen bg-gray-200 flex justify-center items-center">
+  <div class="wrapper h-screen bg-gray-200 flex justify-center items-center load-in-animation">
     <div
       class="flex-container w-3/12 h-5/6 flex flex-col justify-center items-center bg-gray-100 p-2 rounded-xl bg-white"
       style="filter: drop-shadow(15px 10px 20px black)"
@@ -26,7 +26,7 @@
         <form
           v-if="!requestSuccess"
           @submit.prevent="requestOTP"
-          class="flex flex-col w-full mx-8"
+          class="flex flex-col w-full mx-8 fadein-animation"
         >
           <div class="h-20">
             <div class="flex flex-col">
@@ -73,7 +73,7 @@
         <form
           v-else
           @submit.prevent="validateOTP"
-          class="flex flex-col w-full mx-8 space-y-5"
+          class="flex flex-col w-full mx-8 space-y-5 fadein-animation"
         >
           <div class="flex flex-col w-full">
             <label for="otp">OTP</label>

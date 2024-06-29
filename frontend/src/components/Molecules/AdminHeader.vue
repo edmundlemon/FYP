@@ -68,7 +68,7 @@
               <span class="sr-only">Open user menu</span>
               <img
                 class="h-8 w-8 rounded-full"
-                :src="store.state.user.data.photo"
+                :src="'src/assets/admin.jpg'"
                 alt=""
               />
               <!-- PROFILE IN NAV BAR PICTURER HERE -->
