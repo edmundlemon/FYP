@@ -57,35 +57,6 @@
       <div
         class="mr-5 absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-4"
       >
-        <button
-          ref="dropdownContainer"
-          type="button"
-          class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-          @click="toggleDropdown"
-        >
-          <span class="absolute -inset-1.5" />
-          <span class="sr-only">View notifications</span>
-
-          <BellIcon class="h-6 w-6" aria-hidden="true" />
-          <transition
-            enter-active-class="transition ease-out duration-100"
-            enter-from-class="transform opacity-0 scale-95"
-            enter-to-class="transform opacity-100 scale-100"
-            leave-active-class="transition ease-in duration-75"
-            leave-from-class="transform opacity-100 scale-100"
-            leave-to-class="transform opacity-0 scale-95"
-          >
-            <ul
-              v-if="isDropdownOpen"
-              class="absolute right-0 z-10 mt-6 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-              style="width: 40vh"
-            >
-              <li class="block px-4 py-2 text-sm text-gray-700">
-                Notification will show here!
-              </li>
-            </ul>
-          </transition>
-        </button>
 
         <!-- Profile dropdown -->
         <Menu as="div" class="relative ml-3">
@@ -97,7 +68,7 @@
               <span class="sr-only">Open user menu</span>
               <img
                 class="h-8 w-8 rounded-full"
-                :src="store.state.user.data.photo"
+                :src="'src/assets/admin.jpg'"
                 alt=""
               />
               <!-- PROFILE IN NAV BAR PICTURER HERE -->

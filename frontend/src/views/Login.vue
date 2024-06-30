@@ -21,7 +21,7 @@
 	  <body class="h-full">
 	  ```
 	-->
-  <div class="wrapper h-screen bg-gray-200 flex justify-center items-center">
+  <div class="wrapper h-screen bg-gray-200 flex justify-center items-center load-in-animation">
     <div
       class="flex-container w-7/12 h-5/6 flex justify-center items-center bg-gray-100 p-2 rounded-xl bg-white"
       style="filter: drop-shadow(15px 10px 20px black)"
@@ -101,7 +101,7 @@
                 >
                 <div class="text-sm">
                   <a
-                    href="#"
+                    href="/forgot-password"
                     class="font-semibold text-indigo-600 hover:text-indigo-500"
                     >Forgot password?</a
                   >

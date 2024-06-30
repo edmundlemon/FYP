@@ -81,6 +81,7 @@ const fail = ref(false);
 const rating = ref(0.00);
 const ratingSlots = ref({});
 const loading = ref(true);
+
 onMounted(async () => {
   console.log(lecturerId);
   try {
