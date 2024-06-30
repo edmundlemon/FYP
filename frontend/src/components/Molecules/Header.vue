@@ -376,7 +376,7 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 import { data } from "autoprefixer";
 import SearchBar from "../Atom/SearchBar.vue";
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
 
 const rescheduleSlots = ref(0);

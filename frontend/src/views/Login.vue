@@ -183,11 +183,11 @@ async function login() {
     console.log(response.data.user);
     console.log(response.data.role);
     if (response.data.role == "student") {
-      router.push("/students");
+      router.push("/dashboard");
     } else if (response.data.role == "lecturer") {
-      router.push("/lecturers");
+      router.push("/dashboard");
     } else if (response.data.role == "admin") {
-      router.push("/admin");
+      router.push("/adminDashboard");
     }
   } catch (error) {
     console.log(error.response.data);

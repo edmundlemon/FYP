@@ -8,7 +8,7 @@
         <div class="">
           <!-- add some margin to the right of the logo -->
           <a
-            href="/dashboard"
+            href="/adminDashboard"
             class="text-white text-lg font-bold flex flex-row justify-center items-center"
           >
             <img class="h-12" src="../../assets/logo.png" alt="" />
