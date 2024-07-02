@@ -13,7 +13,7 @@
       v-if="profileEdit"
       class="booking-container absolute z-50"
       style="filter: drop-shadow(0px 4px 10px black)"
-      @close-edit="profileEdit = false"
+      @close-edit="closeEditProfile"
     />
 
     <div v-if="store.state.token && store.state.role == 'admin'">
@@ -30,9 +30,15 @@ import Header from "./components/Molecules/Header.vue";
 import store from "./store";
 import UserDetailsEdit from "./components/Organism/UserDetailsEdit.vue";
 
+let user = store.state.user.data;
 const profileEdit = ref(false);
 
 function openEditProfile() {
   profileEdit.value = !profileEdit.value;
+}
+
+function closeEditProfile() {
+  profileEdit.value = false;
+  window.location.reload();
 }
 </script>
