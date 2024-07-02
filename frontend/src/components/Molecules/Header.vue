@@ -201,7 +201,11 @@
             >
               <MenuItem v-slot="{ active }">
                 <a
-                  href="#"
+                  :href="
+                    store.state.role === 'lecturer'
+                      ? '/lecturer/' + store.state.user.data.id
+                      : '/student/' + store.state.user.data.id
+                  "
                   :class="[
                     active ? 'bg-gray-100' : '',
                     'block px-4 py-2 text-sm text-gray-700',
@@ -216,8 +220,7 @@
                     active ? 'bg-gray-100' : '',
                     'block px-4 py-2 text-sm text-gray-700',
                   ]"
-                  >Settings</a
-                >
+                  >Change Profile Picture</a>
               </MenuItem>
               <MenuItem v-slot="{ active }">
                 <a
@@ -394,7 +397,6 @@ onUnmounted(() => {
   clearInterval(intervalId); // Clear the interval
 });
 
-
 function getNotification() {
   console.log("Getting notification");
   axiosInstance
@@ -425,7 +427,5 @@ async function logout() {
   clearInterval(intervalId); // Clear the interval
   console.log("Logging out");
   store.commit("logout");
-  
-
 }
 </script>

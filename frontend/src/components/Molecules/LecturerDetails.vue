@@ -5,7 +5,7 @@
     <img
       :src="lecturer.photo"
       alt="Descriptive Alt Text"
-      class="max-h-40 max-w-40 object-contain rounded-lg shadow-xl ring-2 ring-white"
+      class="h-24 w-24 object-contain rounded-lg shadow-xl ring-2 ring-white"
     />
     <div class="flex flex-col items-center justify-center">
       <div class="flex flex-row items-end justify-center">
