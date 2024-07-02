@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center py-10"
+    class="min-w-screen min-h-fit bg-gray-100 flex justify-center py-5"
   >
     <div class="w-10/12 bg-white shadow-lg rounded-lg p-6">
       <h1 class="text-3xl font-bold mb-6">Lecturer List</h1>

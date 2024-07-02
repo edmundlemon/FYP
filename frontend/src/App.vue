@@ -1,19 +1,23 @@
 <script setup>
-import { defineProps } from 'vue'
-import AdminHeader from './components/Molecules/AdminHeader.vue'
-import Header from './components/Molecules/Header.vue'
-import store from './store'
+import { defineProps } from "vue";
+import AdminHeader from "./components/Molecules/AdminHeader.vue";
+import Header from "./components/Molecules/Header.vue";
+import store from "./store";
 </script>
 
 <template>
   <div class="w-full h-full">
-    <Header class="relative w-full" v-if="store.state.token && (store.state.role == 'student' || store.state.role == 'lecturer')"
-    style="z-index: 9999;"
+    <Header
+      class="relative w-full"
+      v-if="
+        store.state.token &&
+        (store.state.role == 'student' || store.state.role == 'lecturer')
+      "
+      style="z-index: 9999"
     />
-    
-    <div v-else-if="store.state.token && (store.state.role == 'admin')">
-      <Logout />
-      <AdminHeader class="sticky w-full z-50"/>
+
+    <div v-else-if="store.state.token && store.state.role == 'admin'">
+      <AdminHeader class="sticky w-full z-50" />
     </div>
     <router-view></router-view>
   </div>
@@ -48,23 +52,23 @@ import store from './store'
 }
 
 @keyframes fadeIn {
-   0% {
-      opacity: 0.2;
-   }
-   100% {
-      opacity: 1;
-   }
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInDown {
-   0% {
-      opacity: 0;
-      transform: translateY(-10px);
-   }
-   100% {
-      opacity: 1;
-      transform: translateY(0);
-   }
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes spin90degs {

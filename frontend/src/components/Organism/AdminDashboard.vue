@@ -1,14 +1,14 @@
 <template>
-  <div class="w-full h-full flex justify-center bg-gray-200 rounded-lg">
-    <div class="mt-5 w-9/12 shadow-xl bg-white">
-      <div class="bg-gray-50 shadow px-6 py-4 w-full pt-10 pb-10">
+  <div class="w-full h-full flex justify-center bg-gray-100">
+    <div class="mt-5 w-9/12 shadow-xl bg-white rounded-xl mb-5">
+      <div class="bg-white shadow px-6 py-4 w-full pt-10 pb-10 mt-5 ">
         <h1 class="text-4xl font-bold tracking-tight text-gray-900">
           Welcome Aboard, Admin
         </h1>
       </div>
 
       <!-- This is the Counter of each box -->
-      <div class="bg-gray-50 flex justify-around py-2">
+      <div class="bg-white flex justify-around py-2">
         <!-- Students Chart -->
         <div class="w-full md:w-1/3 px-2">
           <div class="rounded-lg shadow-sm mb-4 mx-6">
@@ -26,7 +26,6 @@
                 </h3>
               </div>
               <div class="absolute bottom-0 inset-x-0">
-                <canvas id="chart1" height="70"></canvas>
               </div>
             </div>
           </div>
@@ -48,7 +47,6 @@
                 </h3>
               </div>
               <div class="absolute bottom-0 inset-x-0">
-                <canvas id="chart2" height="70"></canvas>
               </div>
             </div>
           </div>
@@ -70,7 +68,6 @@
                 </h3>
               </div>
               <div class="absolute bottom-0 inset-x-0">
-                <canvas id="chart3" height="70"></canvas>
               </div>
             </div>
           </div>
@@ -78,7 +75,7 @@
       </div>
 
       <!-- This is lecturer list -->
-      <div class="w-10/12 bg-gray-50 shadow-lg rounded-lg p-6 w-full">
+      <div class="w-10/12 bg-white shadow-lg rounded-t-lg p-6 w-full">
         <h1 class="text-3xl font-bold mb-2">Lecturer List</h1>
         <div class="overflow-x-auto">
           <table class="min-w-full bg-white border-2">
@@ -139,10 +136,10 @@
       </div>
 
       <!-- This is student list -->
-      <div class="w-10/12 bg-gray-50 shadow-lg rounded-lg p-6 w-full">
+      <div class="w-10/12 bg-white shadow-lg rounded-b-lg p-6 w-full">
         <h1 class="text-3xl font-bold mb-2">Student List</h1>
         <div class="overflow-x-auto">
-          <table class="min-w-full bg-white border-2">
+          <table class="min-w-full bg-white border-2 mb-5">
             <thead>
               <tr>
                 <th
@@ -204,119 +201,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import { Chart } from "chart.js";
-import {
-  LineController,
-  LineElement,
-  PointElement,
-  LinearScale,
-  Title,
-  CategoryScale,
-} from "chart.js";
-
-// Register the necessary components
-Chart.register(
-  LineController,
-  LineElement,
-  PointElement,
-  LinearScale,
-  Title,
-  CategoryScale
-);
-
-export default {
-  name: "DashboardComponent",
-  data() {
-    return {
-      chartOptions: {
-        maintainAspectRatio: false,
-        legend: {
-          display: false,
-        },
-        tooltips: {
-          enabled: false,
-        },
-        elements: {
-          point: {
-            radius: 0,
-          },
-        },
-        scales: {
-          x: {
-            display: false, // Hide x-axis
-            grid: {
-              display: false, // Hide grid lines for x-axis
-            },
-            title: {
-              display: false, // Hide scale label for x-axis
-            },
-            ticks: {
-              display: false, // Hide ticks for x-axis
-            },
-          },
-          y: {
-            display: false, // Hide y-axis
-            grid: {
-              display: false, // Hide grid lines for y-axis
-            },
-            title: {
-              display: false, // Hide scale label for y-axis
-            },
-            ticks: {
-              display: false, // Hide ticks for y-axis
-              suggestedMin: 0, // Suggested minimum value
-              suggestedMax: 10, // Suggested maximum value
-            },
-          },
-        },
-      },
-    };
-  },
-  mounted() {
-    // Chart.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale);
-    // this.createChart(
-    //   "chart1",
-    //   [1, 2, 1, 3, 5, 4, 7],
-    //   "rgba(101, 116, 205, 0.1)",
-    //   "rgba(101, 116, 205, 0.8)"
-    // );
-    // this.createChart(
-    //   "chart2",
-    //   [2, 3, 2, 9, 7, 7, 4],
-    //   "rgba(246, 109, 155, 0.1)",
-    //   "rgba(246, 109, 155, 0.8)"
-    // );
-    // this.createChart(
-    //   "chart3",
-    //   [2, 5, 1, 3, 2, 6, 7],
-    //   "rgba(246, 153, 63, 0.1)",
-    //   "rgba(246, 153, 63, 0.8)"
-    // );
-  },
-  methods: {
-    // createChart(chartId, data, backgroundColor, borderColor) {
-    //   const ctx = document.getElementById(chartId).getContext("2d");
-    //   new Chart(ctx, {
-    //     type: "line",
-    //     data: {
-    //       labels: data,
-    //       datasets: [
-    //         {
-    //           backgroundColor: backgroundColor,
-    //           borderColor: borderColor,
-    //           borderWidth: 2,
-    //           data: data,
-    //         },
-    //       ],
-    //     },
-    //     options: this.chartOptions,
-    //   });
-    // },
-  },
-};
-</script>
 
 <script setup>
 import { ref, onMounted } from "vue";
