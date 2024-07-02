@@ -45,7 +45,7 @@
   position: fixed;  /* Ensures the container stays fixed */
   top: 0;
   left: 0;
-  z-index: 9998;    /* Ensures the container is on top of all other elements */
+  z-index: 9999;    /* Ensures the container is on top of all other elements */
 }
 /* HTML: <div class="loader"></div> */
 .loader {

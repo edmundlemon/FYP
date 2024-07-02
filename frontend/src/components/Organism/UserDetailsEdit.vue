@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center items-center">
     <div
-      class="booking-form w-4/12 border border-black h-fit bg-gray-900 rounded-lg p-5 relative"
+      class="booking-form w-4/12 border border-black h-fit bg-gray-900 rounded-lg p-5 relative load-in-animation"
     >
       <button
         class="absolute w-3 h-3 top-3 right-3"
