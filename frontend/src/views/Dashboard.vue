@@ -15,7 +15,7 @@
             </h1>
             <div class="flex-row flex ml-6">
               <div>
-                <img class="rounded-full" :src="user.photo" alt="user photo" />
+                <img class="rounded-full h-24 w-24" :src="user.photo" alt="user photo" />
               </div>
               <div class="flex flex-col justify-center gap-1">
                 <h2 class="font-bold text-2xl pl-3">

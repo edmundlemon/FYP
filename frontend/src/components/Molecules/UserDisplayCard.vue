@@ -20,7 +20,7 @@
       <img
         :src="user.photo"
         alt="Descriptive Alt Text"
-        class="picture max-h-40 object-contain rounded-full"
+        class="picture h-32 object-contain rounded-full"
       />
     </a>
 
