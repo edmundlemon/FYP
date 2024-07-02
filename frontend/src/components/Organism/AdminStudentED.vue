@@ -1,13 +1,13 @@
 <template>
   <div
-    class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center py-10"
+    class="min-w-screen min-h-fit bg-gray-100 flex justify-center py-5"
   >
     <div class="w-10/12 bg-white shadow-lg rounded-lg p-6">
       <h1 class="text-3xl font-bold mb-6">Student List</h1>
       <div class="overflow-x-auto">
         <div v-for="student in students" :key="student.id"></div>
 
-        <table class="min-w-full bg-white">
+        <table class="min-w-full bg-white border">
           <thead>
             <tr>
               <th

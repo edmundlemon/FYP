@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 p-4 flex justify-center relative">
+  <div class="bg-gray-100 flex justify-center relative">
     <div class="flex flex-col w-full items-center">
       <div class="mt-7 text-center font-bold text-5xl">
         <h1>Lecturer Reviews</h1>
@@ -18,8 +18,9 @@
     <div
       v-if="showReviews"
       class="booking-container w-9/12 rounded-xl shadow-lg absolute"
+      style="background-color: rgba(255, 255, 255, 0.8);"
     >
-      <div class="text-white flex justify-end mr-5">
+      <div class="text-white flex justify-end mr-3 mt-3">
         <span
           @click.prevent="refreshandclose"
           class="cursor-pointer bg-red-500 rounded-full"
@@ -28,7 +29,7 @@
         </span>
       </div>
       <ReviewCards
-        class="fade-in-animation flex justify-center items-center"
+        class="fade-in-animation flex flex-col justify-center items-center"
         :reviewslots="showingReviews"
         setrole="lecturer"
         :loading="false"
