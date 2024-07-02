@@ -11,7 +11,7 @@
           >
           <input
             type="text"
-            v-model.number="form.name"
+            v-model="form.name"
             id="name"
             class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
@@ -25,7 +25,7 @@
           >
           <input
             type="text"
-            v-model.number="form.id"
+            v-model="form.id"
             id="id"
             class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             @input="handleInput"
@@ -64,7 +64,7 @@
 
         <div class="mb-4">
           <label for="password_confirmation" class="block text-gray-700 font-bold mb-2"
-            >Password</label
+            >Password Confirmation</label
           >
           <input
             type="password"
@@ -144,88 +144,89 @@
   </div>
 </template>
 
-<script>
-import axios from "../../axiosConfig/customAxios";
-export default {
-  name: "LecturerRegistrationForm",
-  data() {
-    return {
-      form: {
-        name: "",
-        id: "MU",
-        email: "",
-        password: "",
-        password_confirmation: "",
-        faculty: "",
-        program: "",
-        photo: null,
-      },
-      errors: {},
-    };
-  },
-  methods: {
-    async submitForm() {
-      try {
-        const formData = new FormData();
-        formData.append("name", this.form.name);
-        formData.append("id", this.form.id);
-        formData.append("email", this.form.email);
-        formData.append("password", this.form.password);
-        formData.append("password_confirmation", this.form.password_confirmation);
-        formData.append("faculty", this.form.faculty);
-        formData.append("office", this.form.office);
-        if (this.form.photo) {
-          formData.append("photo", this.form.photo);
-        }
-        const response = await axios.post(
-          "/register/lecturer",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+<script setup>
+import { ref, reactive, nextTick } from 'vue';
+import axios from '../../axiosConfig/customAxios';
 
-        console.log("Form Submitted:", response.data);
-        alert("Registration successful");
-        this.resetForm();
-      } catch (error) {
-        this.errors = error.response.data.errors;
-        console.error("Error submitting form:", error);
-        alert("An error occurred during registration");
-      }
-    },
-    resetForm() {
-      this.form = {
-        name: "",
-        id: "MU",
-        email: "",
-        password: "",
-        password_confirmation: "",
-        faculty: "",
-        program: "",
-      };
-      this.$refs.profilepic.value = null;
-      this.errors = {};
-    },
-    handleFileUpload(event) {
-      this.form.photo = event.target.files[0];
-    },
-    // handleInput(event) {
-    //   const inputValue = event.target.value;
-    //   if (inputValue.startsWith("MU")) {
-    //     this.form.id = inputValue.slice(2);
-    //   } else {
-    //     this.form.id = inputValue;
-    //   }
-    // },
-  },
+const form = reactive({
+  name: '',
+  id: 'MU',
+  email: '',
+  password: '',
+  password_confirmation: '',
+  faculty: '',
+  office: '',
+  photo: null,
+});
+
+const errors = ref({});
+const profilepic = ref(null);
+
+const handleInput = (event) => {
+  const originalValue = 'MU';
+  const inputValue = event.target.value;
+
+  if (inputValue.startsWith(originalValue)) {
+    form.id = inputValue;
+  } else {
+    form.id = originalValue + inputValue.slice(originalValue.length);
+  }
+
+  // Update the cursor position to the end of the input field
+  nextTick(() => {
+    const inputField = event.target;
+    inputField.selectionStart = inputField.selectionEnd = inputField.value.length;
+  });
+};
+
+const handleFileUpload = (event) => {
+  form.photo = event.target.files[0];
+};
+
+const resetForm = () => {
+  form.name = '';
+  form.id = 'MU';
+  form.email = '';
+  form.password = '';
+  form.password_confirmation = '';
+  form.faculty = '';
+  form.office = '';
+  form.photo = null;
+  profilepic.value.value = null;
+  errors.value = {};
+};
+
+const submitForm = async () => {
+  try {
+    const formData = new FormData();
+    formData.append('name', form.name);
+    formData.append('id', form.id);
+    formData.append('email', form.email);
+    formData.append('password', form.password);
+    formData.append('password_confirmation', form.password_confirmation);
+    formData.append('faculty', form.faculty);
+    formData.append('office', form.office);
+    if (form.photo) {
+      formData.append('photo', form.photo);
+    }
+
+    const response = await axios.post('/register/lecturer', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    console.log('Form Submitted:', response.data);
+    alert('Registration successful');
+    resetForm();
+  } catch (error) {
+    errors.value = error.response.data.errors;
+    console.error('Error submitting form:', error);
+    alert('An error occurred during registration');
+  }
 };
 </script>
 
 <style scoped>
 /* Add any scoped styles here */
-
-
 </style>

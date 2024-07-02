@@ -57,13 +57,19 @@
             class="block text-sm font-bold text-gray-700"
             >Faculty</label
           >
-          <input
-            type="text"
-            id="student-faculty"
+
+          <select
             v-model="student.faculty"
+            id="faculty"
             class="mt-1 p-2 w-full border border-gray-300 rounded-md"
             required
-          />
+          >
+            <option value="" disabled selected>Select Faculty</option>
+            <option value="FCI">FCI</option>
+            <option value="FOE">FOE</option>
+            <option value="FCM">FCM</option>
+            <option value="FCA">FCA</option>
+          </select>
         </div>
         <div class="mb-4">
           <label
@@ -71,13 +77,19 @@
             class="block text-sm font-bold text-gray-700"
             >Programme</label
           >
-          <input
-            type="text"
-            id="student-program"
-            v-model="student.program"
-            class="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            required
-          />
+
+          <select
+              v-model="student.program"
+              id="program"
+              class="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              required
+            >
+              <option value="" disabled selected>Select Program</option>
+              <option value="Diploma">Diploma</option>
+              <option value="Degree">Degree</option>
+              <option value="Foundation">Foundation</option>
+              <option value="Master">Master</option>
+            </select>
         </div>
         <div class="flex justify-end space-x-4">
           <button

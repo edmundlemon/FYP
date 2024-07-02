@@ -70,7 +70,9 @@ class LecturerController extends Controller
             'email' => 'required|email|unique:lecturers',
             'password' => 'required|min:8|confirmed',
             'faculty' => 'required',
+            'office' => 'nullable',
         ]);
+
         $formFields['password'] = bcrypt($formFields['password']);
         if ($request->hasFile('photo')) {
 
