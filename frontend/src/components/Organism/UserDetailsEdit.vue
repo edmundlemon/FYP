@@ -11,35 +11,8 @@
       </button>
       <h2 class="text-3xl font-bold text-white mb-4">Edit User Details</h2>
       <form @submit.prevent="submitForm">
-        <div class="mb-4">
-          <label for="email" class="block text-sm font-bold text-white"
-            >Email</label
-          >
-          <input
-            type="email"
-            id="email"
-            v-model="form.email"
-            class="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            required
-          />
-        </div>
-        <div class="mb-4" v-if="store.state.role === 'lecturer'">
-          <label for="office" class="block text-sm font-bold text-white"
-            >Office</label
-          >
-          <input
-            type="text"
-            id="office"
-            v-model="form.office"
-            class="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            required
-          />
-        </div>
-
-        <!-- Profile Photo --><a class="text-white" @click="form.photo = null"
-          >asd</a
-        >
-        <div class="flex items-center justify-center mb-4">
+        <!-- Profile Photo -->
+        <div class="flex items-center justify-center mb-4 mt-8">
           <div
             v-if="form.photo != null && imageUrl == null"
             class="relative group"
@@ -49,7 +22,10 @@
               alt="Profile Picture"
               class="w-24 rounded-full shadow-xl ring-2 ring-gray-300 cursor-pointer"
             />
-            <div class="border absolute w-full h-full top-0 bg-white opacity-50 hidden group-hover:flex flex-col border-gray-400 rounded-full" title="Remove Photo">
+            <div
+              class="border absolute w-full h-full top-0 bg-white opacity-50 hidden group-hover:flex flex-col border-gray-400 rounded-full"
+              title="Remove Photo"
+            >
               <button
                 class="text-white absolute left-[50%] top-[50%] hidden group-hover:flex flex-col rounded-xl border-gray-400"
                 style="transform: translate(-50%, -50%)"
@@ -77,6 +53,7 @@
             class="w-24 rounded-full shadow-xl ring-2 ring-gray-300 mt-5"
           />
         </div>
+        
         <div class="mb-4">
           <label for="photo" class="block text-sm font-bold text-white"
             >Photo</label
@@ -90,12 +67,45 @@
               @change="onFileChange"
               ref="profilepic"
             />
-            <PillButton @click="resetphoto" text="Reset" type="1" class="ring-2 ring-white"
+            <PillButton
+              @click="resetphoto"
+              text="Reset"
+              type="1"
+              class="ring-2 ring-white"
               >Reset</PillButton
             >
           </div>
         </div>
-        <button type="submit" class="my-2 text-white bg-blue-500 p-2 rounded-md w-full hover:bg-blue-400 transition-all duration-300 ease-in-out">
+
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-bold text-white"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="email"
+            v-model="form.email"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            required
+          />
+        </div>
+        <div class="mb-4" v-if="store.state.role === 'lecturer'">
+          <label for="office" class="block text-sm font-bold text-white"
+            >Office</label
+          >
+          <input
+            type="text"
+            id="office"
+            v-model="form.office"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="my-2 mt-5 text-white bg-blue-500 p-2 rounded-md w-full hover:bg-blue-400 transition-all duration-300 ease-in-out"
+        >
           Save
         </button>
       </form>
@@ -121,6 +131,7 @@ onMounted(() => {
     store.state.user.data.name.replace(/\s/g, "+") +
     "&color=7F9CF5&background=EBF4FF";
 });
+// Edmund i think this is the logic? You may try this i guess :O
 
 // form.photo != null && imageUrl == null (This send the original photo to the backend)
 // form.photo == null(This send the default photo "imgLink" to the backend)
