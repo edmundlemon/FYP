@@ -1,6 +1,5 @@
 <template>
   <!-- <search-bar v-if="store.state.token" /> -->
-
   <!-- Upcoming/Approved/Pending slots are here -->
   <div class="wrapper flex justify-center w-full">
     <div

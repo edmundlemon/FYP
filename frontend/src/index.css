@@ -39,8 +39,13 @@
 }
 .booking-container {
   backdrop-filter: blur(10px);
-  height: 103.2vh;
+  height: 100%;
   width: 100%;
+  overflow: hidden; /* Disables scrolling within the container */
+  position: fixed;  /* Ensures the container stays fixed */
+  top: 0;
+  left: 0;
+  z-index: 9998;    /* Ensures the container is on top of all other elements */
 }
 /* HTML: <div class="loader"></div> */
 .loader {
