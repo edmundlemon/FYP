@@ -215,6 +215,7 @@
               </MenuItem>
               <MenuItem v-slot="{ active }">
                 <a
+                @click="changePfp = true"
                   href="#"
                   :class="[
                     active ? 'bg-gray-100' : '',
@@ -237,6 +238,11 @@
           </transition>
         </Menu>
       </div>
+    </div>
+    <div v-if="changePfp" class="booking-container fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center">
+      <ChangeProfilePic v-if="changePfp"  
+      class="border border-gray-600 rounded-xl border-2 fadein-animation"
+      style="filter: drop-shadow(0px 4px 10px black)" @close="changePfp = false" />
     </div>
   </navbar>
   <!-- {{ store.state.role }}
@@ -381,10 +387,12 @@ import { data } from "autoprefixer";
 import SearchBar from "../Atom/SearchBar.vue";
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
+import ChangeProfilePic from "./ChangeProfilePic.vue";
 
 const rescheduleSlots = ref(0);
 const cancelledSlots = ref(0);
 const rejectedSlots = ref(0);
+const changePfp = ref(false);
 let intervalId = null;
 onMounted(() => {
   console.log("mounted");

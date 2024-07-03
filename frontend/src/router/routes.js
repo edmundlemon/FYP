@@ -16,6 +16,7 @@ import adminRoutes from "./adminRoutes";
 import lecturerRoutes from "./lecturerRoutes";
 import studentRoutes from "./studentRoutes";
 import ForgotPassword from "../components/Molecules/ForgotPassword.vue";
+import ChangeProfilePicture from "../components/Molecules/ChangeProfilePic.vue";
 
 const authRoutes = [
   {
@@ -47,6 +48,15 @@ const authRoutes = [
     // 	requireAuth: true
     // }
   },
+  {
+    path: '/change-profile-picture',
+    name: 'ChangeProfilePicture',
+    component: ChangeProfilePicture,
+    meta: {
+      requiresAuth: true,
+      role: ['lecturer', 'student']
+    }
+  }
 ];
 
 const routes = [

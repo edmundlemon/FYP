@@ -76,10 +76,9 @@ class LecturerController extends Controller
         $formFields['password'] = bcrypt($formFields['password']);
         if ($request->hasFile('photo')) {
 
-            // $formFields['photo'] = $request->file('photo')->store('photos', 'public');
+            $formFields['photo'] = $request->file('photo')->store('photos', 'public');
             $formFields['photo'] = $request->file('photo');
             $formFields['photo'] = $formFields['photo']->move(public_path('storage/photos'), $formFields['photo']->getClientOriginalName());
-            //  $request->file('photo')->getClientOriginalName();
             $imgName = basename($formFields['photo']);
             $linkToImg = asset('/storage/photos/'.$imgName);
             $formFields['photo'] = $linkToImg;
@@ -131,6 +130,34 @@ class LecturerController extends Controller
         return response()->json(
             [
                 'message' => 'Lecturer updated successfully',
+                'code' => 200
+            ]
+        );
+    }
+
+    public function changePhoto(Request $request, Lecturer $lecturer)
+    {
+        Log::channel('api_post_log')->error('User New Profile Picture: ', ['user' => $request->photo]);
+        $formFields = $request->validate([
+            'photo' => 'required|image|mimes:jpeg,jpg,png,gif|max:10000',
+        ]);
+        if ($request->hasFile('photo')) {
+            // The line below would store the file in the public disk, in the logos folder
+            // It would also return the path to the file
+            // $formFields['photo'] = $request->file('photo')->store('photos', 'public');
+
+            $formFields['photo'] = $request->file('photo');
+            $formFields['photo'] = $formFields['photo']->move(public_path('storage/photos'), $formFields['photo']->getClientOriginalName());
+            $imgName = basename($formFields['photo']);
+            $linkToImg = asset('/storage/photos/' . $imgName);
+            $formFields['photo'] = $linkToImg;
+        }
+
+        $lecturer->update($formFields);
+        return response()->json(
+            [
+                'message' => 'Photo updated successfully',
+                'photo' => $formFields['photo'],
                 'code' => 200
             ]
         );
