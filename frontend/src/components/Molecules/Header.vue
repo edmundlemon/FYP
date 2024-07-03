@@ -69,10 +69,15 @@
 
           <div
             class="animate-bounce border text-xs absolute top-[-10%] right-[-18%] bg-red-900 rounded-full w-4 h-4 flex justify-center items-center right-0"
-            v-if="rescheduleSlots + rejectedSlots + cancelledSlots + pendingSlots > 0"
+            v-if="
+              rescheduleSlots + rejectedSlots + cancelledSlots + pendingSlots >
+              0
+            "
           >
             <p class="text-center">
-              {{ rescheduleSlots + rejectedSlots + cancelledSlots + pendingSlots }}
+              {{
+                rescheduleSlots + rejectedSlots + cancelledSlots + pendingSlots
+              }}
             </p>
           </div>
           <BellIcon class="h-6 w-6" aria-hidden="true" />
@@ -116,7 +121,7 @@
                   <span class="text-blue-500">pending section</span>.
                 </p>
               </li>
-              
+
               <!-- Reschedule slots Notification is here -->
               <li
                 v-if="rescheduleSlots > 0"
@@ -178,7 +183,8 @@
                 v-if="
                   rescheduleSlots === 0 &&
                   cancelledSlots === 0 &&
-                  rejectedSlots === 0
+                  rejectedSlots === 0 &&
+                  pendingSlots === 0
                 "
                 class="block px-4 py-2 text-sm text-gray-700"
               >
@@ -236,7 +242,8 @@
                     active ? 'bg-gray-100' : '',
                     'block px-4 py-2 text-sm text-gray-700 cursor-pointer',
                   ]"
-                  >Change Profile Details</a>
+                  >Change Profile Details</a
+                >
               </MenuItem>
               <MenuItem v-slot="{ active }">
                 <a
@@ -254,10 +261,16 @@
         </Menu>
       </div>
     </div>
-    <div v-if="changePfp" class="booking-container fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center">
-      <ChangeProfilePic v-if="changePfp"  
-      class="border border-gray-600 rounded-xl border-2 fadein-animation"
-      style="filter: drop-shadow(0px 4px 10px black)" @close="changePfp = false" />
+    <div
+      v-if="changePfp"
+      class="booking-container fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center"
+    >
+      <ChangeProfilePic
+        v-if="changePfp"
+        class="border border-gray-600 rounded-xl border-2 fadein-animation"
+        style="filter: drop-shadow(0px 4px 10px black)"
+        @close="changePfp = false"
+      />
     </div>
   </navbar>
   <!-- {{ store.state.role }}
@@ -428,7 +441,7 @@ function getNotification() {
       rescheduleSlots.value = response.data.rescheduled_slots;
       cancelledSlots.value = response.data.cancelled_slots;
       rejectedSlots.value = response.data.rejected_slots;
-      if(store.state.role === "lecturer") {
+      if (store.state.role === "lecturer") {
         pendingSlots.value = response.data.pending_slots;
       }
     })
