@@ -113,11 +113,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, defineEmits } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
 import store from "../../store";
 import PillButton from "../Atom/Pill-button.vue";
 
+const emit = defineEmits(['close-edit'])
 const imageUrl = ref(null);
 const form = ref({});
 const namelink = ref("");
@@ -130,11 +131,56 @@ onMounted(() => {
     store.state.user.data.name.replace(/\s/g, "+") +
     "&color=7F9CF5&background=EBF4FF";
 });
-// Edmund i think this is the logic? You may try this i guess :O
 
-// form.photo != null && imageUrl == null (This send the original photo to the backend)
-// form.photo == null(This send the default photo "imgLink" to the backend)
-// imageUrl != null (This send the new photo to the backend)
+// # HEHE it is done try to test it if possible
+const submitForm = () =>{
+  const formData = new FormData();
+  if (imageUrl.value != null) {
+    formData.append("photo", document.getElementById('photo').files[0]);
+    form.value.photo = imageUrl;
+  } else if (form.value.photo == null) {
+    console.log(namelink.value);
+    formData.append("photo", namelink.value);
+  }
+  formData.append("email", form.value.email);
+  
+  if (store.state.role === "lecturer") {
+    formData.append("office", form.value.office);
+  }
+  if (store.state.role === 'student') {
+    axiosInstance
+      .post(`/student/edit-details/${store.state.user.data.id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        store.commit('setPhoto', response.data.photo);
+        closeEdit();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  if (store.state.role === 'lecturer') {
+    axiosInstance
+      .post(`/lecturer/edit-details/${store.state.user.data.id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        store.commit('setPhoto', response.data.photo);
+        closeEdit();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+ 
+};
 
 const onFileChange = (event) => {
   const file = event.target.files[0];
@@ -152,4 +198,8 @@ const resetphoto = () => {
   form.value.photo = photo;
   profilepic.value.value = null;
 };
+
+const closeEdit = () => {
+  emit('close-edit')
+}
 </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lecturer;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 
 class LecturerController extends Controller
@@ -14,7 +15,8 @@ class LecturerController extends Controller
     //         'lecturers' => Lecturer::all()
     //     ]);
     // }
-    public function index(){
+    public function index()
+    {
         return response()->json(
             [
                 'lecturer' => Lecturer::all(),
@@ -23,8 +25,9 @@ class LecturerController extends Controller
         );
     }
 
-    public function countLecturer(){
-        if(auth('sanctum')->user()->hasRole('admin')){
+    public function countLecturer()
+    {
+        if (auth('sanctum')->user()->hasRole('admin')) {
             $count = Lecturer::count();
             return response()->json(
                 [
@@ -41,7 +44,8 @@ class LecturerController extends Controller
         );
     }
 
-    public function view(Lecturer $lecturer){
+    public function view(Lecturer $lecturer)
+    {
         return response()->json(
             [
                 'lecturer' => Lecturer::find($lecturer->id),
@@ -50,7 +54,8 @@ class LecturerController extends Controller
         );
     }
 
-    public function LecturerFaculty(){
+    public function LecturerFaculty()
+    {
         return response()->json(
             [
                 'lecturer' => Lecturer::distinct()->get('faculty'),
@@ -59,11 +64,8 @@ class LecturerController extends Controller
         );
     }
 
-    public function create(){
-        return view('testpages.register-lecturer');
-    }
-
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $formFields = $request->validate([
             'id' => 'required|starts_with:MU|unique:lecturers',
             'name' => 'required',
@@ -80,11 +82,10 @@ class LecturerController extends Controller
             $formFields['photo'] = $request->file('photo');
             $formFields['photo'] = $formFields['photo']->move(public_path('storage/photos'), $formFields['photo']->getClientOriginalName());
             $imgName = basename($formFields['photo']);
-            $linkToImg = asset('/storage/photos/'.$imgName);
+            $linkToImg = asset('/storage/photos/' . $imgName);
             $formFields['photo'] = $linkToImg;
-        }
-        else{
-            $formFields['photo'] = 'https://ui-avatars.com/api/?name='.urlencode($formFields['name']).'&color=7F9CF5&background=EBF4FF';
+        } else {
+            $formFields['photo'] = 'https://ui-avatars.com/api/?name=' . urlencode($formFields['name']) . '&color=7F9CF5&background=EBF4FF';
         }
         // Log::channel('api_post_log')->error('Lecturer Information Form', $formFields);
         Lecturer::create($formFields);
@@ -96,7 +97,8 @@ class LecturerController extends Controller
         );
     }
 
-    public function update(Request $request, Lecturer $lecturer){
+    public function update(Request $request, Lecturer $lecturer)
+    {
         if ($request->id != $lecturer->id) {
             return response()->json(
                 [
@@ -120,12 +122,12 @@ class LecturerController extends Controller
                 ]
             );
         }
-        if($request->hasFile('photo')){
+        if ($request->hasFile('photo')) {
             // The line below would store the file in the public disk, in the logos folder
             // It would also return the path to the file
             $formFields['photo'] = $request->file('photo')->store('photos', 'public');
         }
-            
+
         $lecturer->update($formFields);
         return response()->json(
             [
@@ -135,17 +137,16 @@ class LecturerController extends Controller
         );
     }
 
-    public function changePhoto(Request $request, Lecturer $lecturer)
+    public function editDetails(Request $request, Lecturer $lecturer)
     {
-        Log::channel('api_post_log')->error('User New Profile Picture: ', ['user' => $request->photo]);
         $formFields = $request->validate([
-            'photo' => 'required|image|mimes:jpeg,jpg,png,gif|max:10000',
+            'email' => ['required', Rule::unique('lecturers')->ignore(auth('sanctum')->user()->id)],
         ]);
-        if ($request->hasFile('photo')) {
+        if (is_string($request->photo)) {
+            $formFields['photo'] = $request->photo;
+        } else if ($request->hasFile('photo')) {
             // The line below would store the file in the public disk, in the logos folder
             // It would also return the path to the file
-            // $formFields['photo'] = $request->file('photo')->store('photos', 'public');
-
             $formFields['photo'] = $request->file('photo');
             $formFields['photo'] = $formFields['photo']->move(public_path('storage/photos'), $formFields['photo']->getClientOriginalName());
             $imgName = basename($formFields['photo']);
@@ -154,17 +155,19 @@ class LecturerController extends Controller
         }
 
         $lecturer->update($formFields);
+        $photo = $lecturer->photo;
         return response()->json(
             [
                 'message' => 'Photo updated successfully',
-                'photo' => $formFields['photo'],
+                'photo' => $photo,
                 'code' => 200
             ]
         );
     }
 
-    public function destroy(Lecturer $lecturer){
-        if(auth('sanctum')->user()->hasRole('admin')){
+    public function destroy(Lecturer $lecturer)
+    {
+        if (auth('sanctum')->user()->hasRole('admin')) {
             $lecturer->delete();
             return response()->json(
                 [

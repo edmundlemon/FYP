@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Hamcrest\Type\IsString;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
@@ -152,17 +153,17 @@ class StudentController extends Controller
         );
     }
 
-    public function changePhoto(Request $request, Student $student)
+    public function editDetails(Request $request, Student $student)
     {
-        Log::channel('api_post_log')->error('User New Profile Picture: ', ['user' => $request->photo]);
         $formFields = $request->validate([
-            'photo' => 'required|image|mimes:jpeg,jpg,png,gif|max:10000',
+            'email' => ['required', Rule::unique('lecturers')->ignore(auth('sanctum')->user()->id)],
         ]);
-        if ($request->hasFile('photo')) {
+
+        if (is_string($request->photo)) {
+            $formFields['photo'] = $request->photo;
+        } else if ($request->hasFile('photo')) {
             // The line below would store the file in the public disk, in the logos folder
             // It would also return the path to the file
-            // $formFields['photo'] = $request->file('photo')->store('photos', 'public');
-
             $formFields['photo'] = $request->file('photo');
             $formFields['photo'] = $formFields['photo']->move(public_path('storage/photos'), $formFields['photo']->getClientOriginalName());
             $imgName = basename($formFields['photo']);
@@ -171,10 +172,11 @@ class StudentController extends Controller
         }
 
         $student->update($formFields);
+        $photo = $student->photo;
         return response()->json(
             [
                 'message' => 'Photo updated successfully',
-                'photo' => $formFields['photo'],
+                'photo' => $photo,
                 'code' => 200
             ]
         );
