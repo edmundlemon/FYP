@@ -386,7 +386,6 @@ import { data } from "autoprefixer";
 import SearchBar from "../Atom/SearchBar.vue";
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import axiosInstance from "../../axiosConfig/customAxios";
-import ChangeProfilePic from "./ChangeProfilePic.vue";
 
 const rescheduleSlots = ref(0);
 const cancelledSlots = ref(0);

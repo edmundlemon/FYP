@@ -169,6 +169,7 @@ const validateOTP = () => {
     .then((response) => {
       if (response.data.code === 200) {
         // Redirect to reset password page
+        alert("Password reset successfully");
         routes.push("/");
       } else {
         console.log(response.data);
