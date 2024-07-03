@@ -91,6 +91,7 @@ Route::group(['middleware' => AuthLecturer::class], function () {
     Route::put('/lecturer/complete/{consultation_slot}', [ConsultationController::class, 'complete']);
     Route::put('/lecturer/cancelled-readstatus', [ConsultationController::class, 'updateCancelled_ReadStatus']);
     Route::put('/lecturer/rejected-readstatus', [ConsultationController::class, 'updateRejected_ReadStatus']);
+    Route::post('/lecturer/edit-details/{lecturer}', [LecturerController::class, 'editDetails']);
 });
 
 // Middleware to only allow admins
@@ -134,4 +135,5 @@ Route::group(['middleware' => AuthStudent::class], function () {
     Route::get('/student/cancelled', [ConsultationController::class, 'cancelledSlots']);
     Route::put('/student/cancelled-readstatus', [ConsultationController::class, 'updateCancelled_ReadStatus']);
     Route::put('/student/rejected-readstatus', [ConsultationController::class, 'updateRejected_ReadStatus']);
+    Route::post('/student/edit-details/{student}', [StudentController::class, 'editDetails']);
 });

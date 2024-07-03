@@ -35,3 +35,7 @@ export function logout(state){
 	console.log("Token is : ", state.token);
 	router.push('/login');
 }
+
+export function setPhoto(state, photo){
+	state.user.data.photo = photo;
+}

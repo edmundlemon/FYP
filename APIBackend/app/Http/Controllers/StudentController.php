@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Hamcrest\Type\IsString;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 
 class StudentController extends Controller
 {
@@ -134,12 +136,47 @@ class StudentController extends Controller
             // The line below would store the file in the public disk, in the logos folder
             // It would also return the path to the file
             $formFields['photo'] = $request->file('photo')->store('photos', 'public');
+
+            $formFields['photo'] = $request->file('photo');
+            $formFields['photo'] = $formFields['photo']->move(public_path('storage/photos'), $formFields['photo']->getClientOriginalName());
+            $imgName = basename($formFields['photo']);
+            $linkToImg = asset('/storage/photos/' . $imgName);
+            $formFields['photo'] = $linkToImg;
         }
 
         $student->update($formFields);
         return response()->json(
             [
                 'message' => 'Student updated successfully',
+                'code' => 200
+            ]
+        );
+    }
+
+    public function editDetails(Request $request, Student $student)
+    {
+        $formFields = $request->validate([
+            'email' => ['required', Rule::unique('lecturers')->ignore(auth('sanctum')->user()->id)],
+        ]);
+
+        if (is_string($request->photo)) {
+            $formFields['photo'] = $request->photo;
+        } else if ($request->hasFile('photo')) {
+            // The line below would store the file in the public disk, in the logos folder
+            // It would also return the path to the file
+            $formFields['photo'] = $request->file('photo');
+            $formFields['photo'] = $formFields['photo']->move(public_path('storage/photos'), $formFields['photo']->getClientOriginalName());
+            $imgName = basename($formFields['photo']);
+            $linkToImg = asset('/storage/photos/' . $imgName);
+            $formFields['photo'] = $linkToImg;
+        }
+
+        $student->update($formFields);
+        $photo = $student->photo;
+        return response()->json(
+            [
+                'message' => 'Photo updated successfully',
+                'photo' => $photo,
                 'code' => 200
             ]
         );
