@@ -181,6 +181,8 @@ class ConsultationController extends Controller
         }
 
         $formFields['status'] = 'Student Rescheduled';
+        $formFields['lecturer_read'] = false;
+        $formFields['student_read'] = true;
         AutomatedReschedule::dispatch($consultation_slot->student->name, $consultation_slot, $formFields)->onConnection('sync');
         $consultation_slot->update($formFields);
         return response()->json(
@@ -208,6 +210,8 @@ class ConsultationController extends Controller
             );
         }
         $formFields['status'] = 'Lecturer Rescheduled';
+        $formFields['lecturer_read'] = false;
+        $formFields['student_read'] = true;
         AutomatedReschedule::dispatch($consultation_slot->lecturer->name, $consultation_slot, $formFields)->onConnection('sync');
         $consultation_slot->update($formFields);
         return response()->json(
@@ -245,8 +249,12 @@ class ConsultationController extends Controller
 
         if ($consultation_slot->status === 'Student Rescheduled') {
             $consultation_slot->status = 'Student Reschedule Approved';
+            $consultation_slot->lecturer_read = true;
+            $consultation_slot->student_read = false;
         } else if ($consultation_slot->status === 'Lecturer Rescheduled') {
             $consultation_slot->status = 'Lecturer Reschedule Approved';
+            $consultation_slot->student_read = true;
+            $consultation_slot->lecturer_read = false;
         } else {
             $consultation_slot->status = 'Approved';
         }
@@ -580,20 +588,31 @@ class ConsultationController extends Controller
             $rescheduled_slots = Consultation_slot::where('student_id', auth()->guard('sanctum')->id())->where('status', 'Lecturer Rescheduled')->where('student_read', '!=', true)->orderBy('updated_at', 'desc')->count();
             $cancelled_slots = Consultation_slot::where('student_id', auth()->guard('sanctum')->id())->where('status', 'Cancelled')->where('student_read', '!=', true)->orderBy('updated_at', 'desc')->count();
             $rejected_slots = Consultation_slot::where('student_id', auth()->guard('sanctum')->id())->where('status', 'Rejected')->where('student_read', '!=', true)->orderBy('updated_at', 'desc')->count();
+
+            return response()->json(
+                [
+                    'rescheduled_slots' => $rescheduled_slots,
+                    'cancelled_slots' => $cancelled_slots,
+                    'rejected_slots' => $rejected_slots,
+                    'code' => 200
+                ]
+            );
         } else {
             $rescheduled_slots = Consultation_slot::where('lecturer_id', auth()->guard('sanctum')->id())->where('status', 'Student Rescheduled')->where('lecturer_read', '!=', true)->orderBy('updated_at', 'desc')->count();
             $cancelled_slots = Consultation_slot::where('lecturer_id', auth()->guard('sanctum')->id())->where('status', 'Cancellation Request')->where('lecturer_read', '!=', true)->orderBy('updated_at', 'desc')->count();
             $rejected_slots = Consultation_slot::where('lecturer_id', auth()->guard('sanctum')->id())->where('status', 'Rejected')->where('lecturer_read', '!=', true)->orderBy('updated_at', 'desc')->count();
-        }
+            $pending_slots = Consultation_slot::where('lecturer_id', auth()->guard('sanctum')->id())->where('status', 'Pending')->where('lecturer_read', '!=', true)->orderBy('updated_at', 'desc')->count();
 
-        return response()->json(
-            [
-                'rescheduled_slots' => $rescheduled_slots,
-                'cancelled_slots' => $cancelled_slots,
-                'rejected_slots' => $rejected_slots,
-                'code' => 200
-            ]
-        );
+            return response()->json(
+                [
+                    'rescheduled_slots' => $rescheduled_slots,
+                    'cancelled_slots' => $cancelled_slots,
+                    'rejected_slots' => $rejected_slots,
+                    'pending_slots' => $pending_slots,
+                    'code' => 200
+                ]
+            );
+        }
     }
 
     public function updateCancelled_ReadStatus()
