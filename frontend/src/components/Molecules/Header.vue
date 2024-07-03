@@ -69,10 +69,10 @@
 
           <div
             class="animate-bounce border text-xs absolute top-[-10%] right-[-18%] bg-red-900 rounded-full w-4 h-4 flex justify-center items-center right-0"
-            v-if="rescheduleSlots + rejectedSlots + cancelledSlots > 0"
+            v-if="rescheduleSlots + rejectedSlots + cancelledSlots + pendingSlots > 0"
           >
             <p class="text-center">
-              {{ rescheduleSlots + rejectedSlots + cancelledSlots }}
+              {{ rescheduleSlots + rejectedSlots + cancelledSlots + pendingSlots }}
             </p>
           </div>
           <BellIcon class="h-6 w-6" aria-hidden="true" />
@@ -101,6 +101,22 @@
                 Notification will show here!
               </li> -->
 
+              <!-- Pending slots Notification is here -->
+              <li
+                v-if="pendingSlots > 0 && store.state.role === 'lecturer'"
+                :key="index"
+                class="block px-4 py-2 text-sm text-gray-700 bg-white rounded"
+                @click="router.push('/consultation-manager')"
+                style="z-index: 9999"
+              >
+                <p>
+                  You have new {{ pendingSlots }} pending
+                  {{ rescheduleSlots == 1 ? "request" : "requests" }}
+                  pending for approval in the
+                  <span class="text-blue-500">pending section</span>.
+                </p>
+              </li>
+              
               <!-- Reschedule slots Notification is here -->
               <li
                 v-if="rescheduleSlots > 0"
@@ -390,6 +406,7 @@ import axiosInstance from "../../axiosConfig/customAxios";
 const rescheduleSlots = ref(0);
 const cancelledSlots = ref(0);
 const rejectedSlots = ref(0);
+const pendingSlots = ref(0);
 const changePfp = ref(false);
 let intervalId = null;
 onMounted(() => {
@@ -411,6 +428,9 @@ function getNotification() {
       rescheduleSlots.value = response.data.rescheduled_slots;
       cancelledSlots.value = response.data.cancelled_slots;
       rejectedSlots.value = response.data.rejected_slots;
+      if(store.state.role === "lecturer") {
+        pendingSlots.value = response.data.pending_slots;
+      }
     })
     .catch((error) => {
       console.log(error);
