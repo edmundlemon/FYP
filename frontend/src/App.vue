@@ -1,10 +1,3 @@
-<script setup>
-import { defineProps } from "vue";
-import AdminHeader from "./components/Molecules/AdminHeader.vue";
-import Header from "./components/Molecules/Header.vue";
-import store from "./store";
-</script>
-
 <template>
   <div class="w-full h-full">
     <Header
@@ -14,69 +7,38 @@ import store from "./store";
         (store.state.role == 'student' || store.state.role == 'lecturer')
       "
       style="z-index: 9999"
+      @edit-profile="openEditProfile"
+    />
+    <UserDetailsEdit
+      v-if="profileEdit"
+      class="booking-container absolute z-50"
+      style="filter: drop-shadow(0px 4px 10px black)"
+      @close-edit="closeEditProfile"
     />
 
-    <div v-else-if="store.state.token && store.state.role == 'admin'">
+    <div v-if="store.state.token && store.state.role == 'admin'">
       <AdminHeader class="sticky w-full z-50" />
     </div>
     <router-view></router-view>
   </div>
 </template>
 
-<style>
-.load-in-animation {
-  animation: fadeUp 1s cubic-bezier(0, 0, 0.1, 1) backwards;
+<script setup>
+import { defineProps, ref } from "vue";
+import AdminHeader from "./components/Molecules/AdminHeader.vue";
+import Header from "./components/Molecules/Header.vue";
+import store from "./store";
+import UserDetailsEdit from "./components/Organism/UserDetailsEdit.vue";
+
+let user = store.state.user.data;
+const profileEdit = ref(false);
+
+function openEditProfile() {
+  profileEdit.value = !profileEdit.value;
 }
 
-.fade-down-animation {
-  animation: fadeInDown 0.5s cubic-bezier(0, 0, 0.1, 1) backwards;
+function closeEditProfile() {
+  profileEdit.value = false;
+  window.location.reload();
 }
-
-.fade-in-animation {
-  animation: fadeIn 0.5s cubic-bezier(0, 0, 0.1, 1) backwards;
-}
-
-.turn90degs {
-  animation: spin90degs 0.5s cubic-bezier(0, 0, 0.1, 1) backwards;
-}
-
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0.2;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes spin90degs {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(90deg);
-  }
-}
-</style>
+</script>
