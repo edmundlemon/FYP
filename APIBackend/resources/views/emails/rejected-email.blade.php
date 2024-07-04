@@ -1,8 +1,18 @@
 @component('mail::message')
 <div>
 	{{-- <h1>{{ $details['title'] }}</h1> --}}
-	<p>Your appointment request with {{$name}} has been REJECTED.</p>
-	<p>Appointment Date: {{$date}}</p>
-	<p>Appointment Time: {{$start_time}}</p>
-	<p>Thank you</p>
+	<p>Your appointment request with {{$name}} has been <span style="color: red; font-weight:900;">REJECTED</span></p>
+	<br>
+	<h3>Appointment Details</h3>
+	<table>
+		<tr>
+			<td>Appointment Date:</td>
+			<td>{{$date}}</td>
+		</tr>
+		<tr>
+			<td>Appointment Time:</td>
+			<td>{{$start_time}}</td>
+		</tr>
+	</table>
+	<h4>Thank you</h4>
 </div>

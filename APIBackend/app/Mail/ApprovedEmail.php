@@ -28,7 +28,7 @@ class ApprovedEmail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Approved Slot',
+            subject: 'Slot Approved',
         );
     }
 

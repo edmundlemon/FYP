@@ -7,6 +7,7 @@ use App\Mail\TestMail;
 use App\Jobs\AutomatedEmail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class SendEmails extends Command
@@ -31,6 +32,9 @@ class SendEmails extends Command
     public function handle()
     {
         // To call the queued job from the command, we can use the dispatch method.
-        AutomatedEmail::dispatch();
+        Log::channel('api_post_log')->error('Running Automated Email Job from command');
+        // AutomatedEmail::dispatch();
+        (new AutomatedEmail())->handle();
+        $this->info('Automated Email Job dispatched successfully.');
     }
 }
