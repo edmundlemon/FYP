@@ -154,9 +154,39 @@ class DatabaseSeeder extends Seeder
         Free_slot::create([
             'id' => 1,
             'lecturer_id' => 'MU1234',
-            'date' => Carbon::now()->addDays(2),
-            'start_time' => Carbon::now()->addDays(2)->setHour(10)->setMinute(0)->format('H:i'),
-            'end_time' => Carbon::now()->addDays(2)->setHour(11)->setMinute(0)->format('H:i'),
+            'date' => Carbon::now()->next(Carbon::WEDNESDAY),
+            'start_time' => Carbon::now()->setHour(10)->setMinute(0)->format('H:i'),
+            'end_time' => Carbon::now()->setHour(11)->setMinute(0)->format('H:i'),
+        ]);
+
+        Free_slot::create([
+            'id' => 2,
+            'lecturer_id' => 'MU1234',
+            'date' => Carbon::now()->next(Carbon::MONDAY),
+            'start_time' => Carbon::now()->setHour(10)->setMinute(0)->format('H:i'),
+            'end_time' => Carbon::now()->setHour(11)->setMinute(0)->format('H:i'),
+        ]);
+
+        Free_slot::create([
+            'id' => 3,
+            'lecturer_id' => 'MU1212',
+            'date' => Carbon::now()->next(Carbon::MONDAY),
+            'start_time' => Carbon::now()->setHour(13)->setMinute(0)->format('H:i'),
+            'end_time' => Carbon::now()->setHour(14)->setMinute(0)->format('H:i'),
+        ]);
+        Free_slot::create([
+            'id' => 4,
+            'lecturer_id' => 'MU1234',
+            'date' => Carbon::now()->next(Carbon::WEDNESDAY),
+            'start_time' => Carbon::now()->setHour(12)->setMinute(0)->format('H:i'),
+            'end_time' => Carbon::now()->setHour(13)->setMinute(0)->format('H:i'),
+        ]);
+        Free_slot::create([
+            'id' => 5,
+            'lecturer_id' => 'MU1234',
+            'date' => Carbon::now()->next(Carbon::THURSDAY),
+            'start_time' => Carbon::now()->setHour(11)->setMinute(0)->format('H:i'),
+            'end_time' => Carbon::now()->setHour(13)->setMinute(0)->format('H:i'),
         ]);
         // \App\Models\User::factory(10)->create();
 
