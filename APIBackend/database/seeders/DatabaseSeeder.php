@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
         Student::create([
             'id' =>"1122",
             'name' => 'John Doe',
-            'email' => '1122@gmail.com',
+            // 'email' => '1122@gmail.com',
+            'email' => 'edmundngxhunyan@gmail.com',
             'password' => bcrypt('password'),
             'faculty' => 'FCI',
             'photo' => 'https://randomuser.me/api/portraits/men/3.jpg',
@@ -121,6 +122,16 @@ class DatabaseSeeder extends Seeder
             'date' => Carbon::today()->addDays(2),
             'start_time' => Carbon::today()->addDays(2)->setHour(10)->setMinute(0)->format('H:i'),
             'end_time' => Carbon::today()->addDays(2)->setHour(11)->setMinute(0)->format('H:i'),
+            'status' => 'Approved',
+            'topic' => 'Maths'
+        ]);
+        Consultation_slot::create([
+            // 'id' => test,
+            'lecturer_id' => 'MU1234',
+            'student_id' =>"1122",
+            'date' => Carbon::today(),
+            'start_time' => Carbon::now()->addMinutes(15)->format('H:i'),
+            'end_time' => Carbon::now()->addMinute(15)->format('H:i'),
             'status' => 'Approved',
             'topic' => 'Maths'
         ]);

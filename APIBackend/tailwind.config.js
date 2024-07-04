@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
     "./views/**/*.blade.php",
+    // './resources/views/emails/*.blade.php',
     './resources/js/components/**/*.{html,js}',
     "./resources/js/**/*.{vue,js,ts,jsx,tsx}",
     "./resources/**/*.{vue,js,ts,jsx,tsx}",

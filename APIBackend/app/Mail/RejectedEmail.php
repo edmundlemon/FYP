@@ -28,7 +28,7 @@ class RejectedEmail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Rejected Slot',
+            subject: 'Slot Rejected',
         );
     }
 

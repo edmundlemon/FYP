@@ -29,12 +29,14 @@ class UpdatedExpiredStatus extends Command
     {
         //
         $currentDateTime = Carbon::now();
-
+        $this->info('The current time is: ' . $currentDateTime->toDateTimeString());
+        $this->info('The current day is: ' . $currentDateTime->toDateString());
+        $this->info('The current day is: ' . $currentDateTime->format('H:i'));
         Consultation_Slot::where(function ($query) use ($currentDateTime) {
             $query->where('date', '<', $currentDateTime->toDateString())
                 ->orWhere(function ($query) use ($currentDateTime) {
                     $query->where('date', '=', $currentDateTime->toDateString())
-                        ->where('end_time', '<', $currentDateTime->toTimeString());
+                        ->where('end_time', '<', $currentDateTime->format('H:i'));
                 });
         })
             ->where('status', '!=', 'Expired')

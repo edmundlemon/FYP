@@ -28,7 +28,7 @@ class RescheduleEmail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Reschedule Email',
+            subject: 'Slot Rescheduled',
         );
     }
 

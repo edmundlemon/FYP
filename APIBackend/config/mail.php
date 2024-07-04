@@ -45,6 +45,8 @@ return [
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
+            'auth_mode' => null,
+            'verify_peer' => false,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
 
@@ -107,5 +109,21 @@ return [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
+
+    'markdown' => [
+        'theme' => 'default',
+
+        'paths' => [
+            resource_path('views/vendor/mail'),
+        ],
+    ],
+
+    // 'stream' => [
+    //     'ssl' => [
+    //         'verify_peer' => false,
+    //         'verify_peer_name' => false,
+    //         'allow_self_signed' => true,
+    //     ],
+    // ],
 
 ];
