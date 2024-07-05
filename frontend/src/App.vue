@@ -25,7 +25,14 @@
     <FlashCard style="z-index: 999;"/>
 
     <div v-if="store.state.token && store.state.role == 'admin'">
-      <AdminHeader class="sticky w-full z-50" />
+      <AdminHeader class="sticky w-full z-50" 
+        @change-password="changePassword"/>
+      <ChangePassword
+      v-if="passwordChange"
+      class="booking-container absolute z-50"
+      style="filter: drop-shadow(0px 4px 10px black)"
+      @close-edit="closeChangePassword"
+    />
     </div>
     <router-view></router-view>
   </div>
