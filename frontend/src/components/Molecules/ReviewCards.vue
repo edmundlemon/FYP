@@ -5,7 +5,7 @@
       <div v-if="loading" class="loader mt-10 "></div>
 
       <div
-        class="w-10/12 flex space-x-3 overflow-y-auto justify-center items-center flex-wrap"
+        class="w-10/12 flex space-x-3 overflow-y-auto justify-center items-center flex-wrap load-in-animation"
         v-else-if="reviewslots.length"
       >
         <ReviewDisplayCard

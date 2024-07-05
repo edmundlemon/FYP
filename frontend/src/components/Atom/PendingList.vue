@@ -3,14 +3,14 @@
     v-if="showLoading"
     class="flex flex-col space-y-4 border rounded-lg border-gray-400 mr-2"
   >
-    <Loading class="mt-2 ml-2 mr-2 my-3 fade-in-animation" />
+    <Loading class="mt-2 ml-2 mr-2 my-3 fadein-animation" />
   </div>
   <div v-else-if="slots.length">
-    <div class="flex flex-col flex-wrap space-y-2">
+    <div class="flex flex-col flex-wrap space-y-2 ">
       <div
         v-for="(slot, index) in slots"
         :key="slot.id"
-        class="fade-in-animation"
+        class="fadein-animation"
       >
         <div
           class="flex flex-col h-1/4 border border-gray-400 bg-gray-100 rounded-lg space-y-2 mr-2 pt-3"
@@ -248,7 +248,7 @@
       </div>
     </div>
   </div>
-  <div v-else class="h-full border border-gray-400 rounded mr-2">
+  <div v-else class="h-full border border-gray-400 rounded mr-2 fadein-animation">
     <h2 class="text-xl font-bold text-gray-800 animate-bounce my-5 ml-5">
       Nothing to show here yet.
     </h2>

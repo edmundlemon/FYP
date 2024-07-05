@@ -56,7 +56,7 @@
             "
           >
             <div v-if="!loader">Submit</div>
-            <div v-else class="loader2 h-full p-2 fade-in-animation"></div>
+            <div v-else class="loader2 h-full p-2 fadein-animation"></div>
           </button>
           <button
             type="button"

@@ -14,7 +14,7 @@
         >
           <img
             id="filter-icon"
-            class="icons fade-in-animation arrow-down h-5 w-5"
+            class="icons fadein-animation arrow-down h-5 w-5"
             src="../../assets/filter.png"
             alt="arrow-down"
             v-if="!dropdown"
