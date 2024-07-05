@@ -152,6 +152,54 @@ class LoginController extends Controller
         );
     }
 
+    public function changePassword(Request $request){
+        $formFields = $request->validate([
+            'oldPassword' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        if (auth('sanctum')->user()->hasRole('student')){
+            $user = Student::find(auth('sanctum')->user()->id);
+        }
+        else if (auth('sanctum')->user()->hasRole('lecturer')){
+            $user = Lecturer::find(auth('sanctum')->user()->id);
+        }
+        else if (auth('sanctum')->user()->hasRole('admin')){
+            $user = Admin::find(auth('sanctum')->user()->id);
+        }
+
+        if (!password_verify($formFields['oldPassword'], $user->password)){
+            return response()->json(
+                [
+                    'errors' => [
+                        'oldPassword' => ['Incorrect password']
+                    ],
+                    'code' => 400
+                ], 400
+            );
+        }
+
+        if ($formFields['oldPassword'] == $formFields['password']){
+            return response()->json(
+                [
+                    'errors' => [
+                        'password' => ['New password cannot be the same as old password']
+                    ],
+                    'code' => 400
+                ], 400
+            );
+        }
+
+        $user->password = bcrypt($formFields['password']);
+        $user->save();
+        return response()->json(
+            [
+                'message' => 'Password changed successfully',
+                'code' => 200
+            ]
+        );
+    }
+
     public function validateOtp(Request $request){
         $formFields = $request->validate([
             'id' => 'required',

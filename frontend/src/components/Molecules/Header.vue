@@ -247,6 +247,16 @@
               </MenuItem>
               <MenuItem v-slot="{ active }">
                 <a
+                  @click="$emit('change-password')"
+                  :class="[
+                    active ? 'bg-gray-100' : '',
+                    'block px-4 py-2 text-sm text-gray-700 cursor-pointer',
+                  ]"
+                  >Change Password</a
+                >
+              </MenuItem>
+              <MenuItem v-slot="{ active }">
+                <a
                   @click="logout"
                   href="#"
                   :class="[
@@ -261,7 +271,7 @@
         </Menu>
       </div>
     </div>
-    <div
+    <!-- <div
       v-if="changePfp"
       class="booking-container fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center"
     >
@@ -271,7 +281,7 @@
         style="filter: drop-shadow(0px 4px 10px black)"
         @close="changePfp = false"
       />
-    </div>
+    </div> -->
   </navbar>
   <!-- {{ store.state.role }}
   {{ rejectedSlots }}
@@ -420,7 +430,7 @@ const rescheduleSlots = ref(0);
 const cancelledSlots = ref(0);
 const rejectedSlots = ref(0);
 const pendingSlots = ref(0);
-const changePfp = ref(false);
+// const changePfp = ref(false);
 let intervalId = null;
 onMounted(() => {
   console.log("mounted");

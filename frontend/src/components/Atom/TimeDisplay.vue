@@ -50,10 +50,10 @@ const emitEvent = () => {
   emit('edit-slot', data)
 }
 
-onMounted(() => {
-  console.log("Role => ", role);
-  console.log("Slot => ", props.slot);
-});
+// onMounted(() => {
+//   console.log("Role => ", role);
+//   console.log("Slot => ", props.slot);
+// });
 </script>
 
 <style></style>

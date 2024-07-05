@@ -85,6 +85,7 @@
                   name="id"
                   type="text"
                   required=""
+                  placeholder="ID"
                   v-model="id"
                   class="transition duration-300 ease-in-out block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                 />
@@ -113,6 +114,7 @@
                   name="password"
                   type="password"
                   autocomplete="current-password"
+                  placeholder="Password"
                   required=""
                   v-model="password"
                   class="transition duration-300 ease-in-out block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
@@ -145,8 +147,8 @@ import { useRouter } from "vue-router";
 import axiosInstance from "../axiosConfig/customAxios";
 
 const router = useRouter();
-const id = ref("id");
-const password = ref("password");
+const id = ref("");
+const password = ref("");
 const errors = ref([]);
 
 async function login() {

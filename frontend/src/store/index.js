@@ -9,8 +9,11 @@ const store = createStore({
 		user:{},
 		token: null,
 		role: [],
+		flashMessage: null,
 	},
-	getters:{},
+	getters:{
+		getFlashMessage: state => state.flashMessage
+	},
 	mutations,
 	actions,
 	plugins: [createPersistedState()]
