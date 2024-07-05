@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/search', [SearchController::class, 'search']);
 
     Route::get('/user/notification', [ConsultationController::class, 'Notification']);
+    Route::post('/auth/change-password', [LoginController::class, 'changePassword']);
     
     //admin's shit here
     Route::get('/reviewcount', [ReviewController::class, 'reviewCount']);
