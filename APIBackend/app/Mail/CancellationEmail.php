@@ -2,22 +2,23 @@
 
 namespace App\Mail;
 
-use App\Models\Consultation_slot;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use App\Models\Consultation_slot;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ApprovedEmail extends Mailable implements ShouldQueue
+class CancellationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(protected Consultation_slot $consultation_slot, private $requestor)
+    public function __construct(protected Consultation_slot $consultation_slot, protected $requestor)
     {
         //
     }
@@ -28,7 +29,7 @@ class ApprovedEmail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Slot Approved',
+            subject: 'Slot Cancellation Email',
         );
     }
 
@@ -38,12 +39,12 @@ class ApprovedEmail extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            view: 'emails.approved-email',
+            view: 'emails.cancellation-email',
             with: [
                 'name' => $this->requestor,
                 'date' => $this->consultation_slot->date,
                 'start_time' => $this->consultation_slot->start_time,
-                'end_time' => $this->consultation_slot->end_time,
+                // 'end_time' => $this->consultation_slot->end_time,
             ],
         );
     }

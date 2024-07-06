@@ -39,7 +39,7 @@ class UpdatedExpiredStatus extends Command
                         ->where('end_time', '<', $currentDateTime->format('H:i'));
                 });
         })
-            ->where('status', '!=', 'Expired')
+            ->where('status', '=', 'Pending')
             ->update(['status' => 'Expired']);
     }
 }
