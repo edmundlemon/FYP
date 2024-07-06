@@ -9,6 +9,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class RescheduleEmail extends Mailable implements ShouldQueue
 {
@@ -47,11 +48,6 @@ class RescheduleEmail extends Mailable implements ShouldQueue
             view: 'emails.reschedule-email',
             with: [
                 'requestor' => $this->requestor,
-                'consultation_slot' => $this->consultation_slot,
-                'oldDate' => $this->consultation_slot->date,
-                'oldStartTime' => $oldStartTime,
-                'oldEndTime' => $oldEndTime,
-                // 'requestor' => $this->consultation_slot->lecturer->name,
                 'newDate' => $formFields['date'],
                 'newStartTime' => $formFields['start_time'],
                 'newEndTime' => $formFields['end_time'],
