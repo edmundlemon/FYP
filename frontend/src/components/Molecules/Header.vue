@@ -149,9 +149,8 @@
                 <p v-if="store.state.role === 'lecturer'">
                   You have {{ cancelledSlots }}
                   {{ cancelledSlots == 1 ? "student" : "students" }}
-                  cancelled their consultation with you, please approve their
-                  cancellation request in the
-                  <span class="text-blue-500">request section</span>.
+                  cancelled their consultation with you, you can check in the
+                  <span class="text-blue-500">cancelled section</span>.
                 </p>
                 <p v-else>
                   You have {{ cancelledSlots }}
