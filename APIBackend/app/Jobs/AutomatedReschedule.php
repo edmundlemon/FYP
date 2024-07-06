@@ -3,8 +3,9 @@
 namespace App\Jobs;
 
 use App\Mail\RescheduleEmail;
-use App\Models\Consultation_slot;
 use Illuminate\Bus\Queueable;
+use App\Models\Consultation_slot;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -30,7 +31,6 @@ class AutomatedReschedule implements ShouldQueue
     {
         //
         $formFields = $this->formFields;
-
         Mail::to($this->to)->send(new RescheduleEmail($this->requestor, $this->consultation_slot, $formFields));
     }
 }
