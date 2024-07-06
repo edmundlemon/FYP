@@ -29,7 +29,7 @@
         </span>
       </div>
       <ReviewCards
-        class="fade-in-animation flex flex-col justify-center items-center"
+        class="fadein-animation flex flex-col justify-center items-center"
         :reviewslots="showingReviews"
         setrole="lecturer"
         :loading="false"

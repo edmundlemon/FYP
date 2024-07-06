@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center justify-center border border-gray-700 w-10/12 m-auto rounded-lg shadow-lg bg-white mt-5 fade-in-animation"
+    class="flex flex-col items-center justify-center border border-gray-700 w-10/12 m-auto rounded-lg shadow-lg bg-white mt-5 fadein-animation"
     v-if="lecturer != null && !fail"
   >
     <LecturerDetails :lecturer="lecturer" :rating="rating" />

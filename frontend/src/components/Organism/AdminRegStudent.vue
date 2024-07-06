@@ -64,7 +64,7 @@
 
         <div class="mb-4">
           <label for="password_confirmation" class="block text-gray-700 font-bold mb-2"
-            >Password</label
+            >Password Confirmation</label
           >
           <input
             type="password"

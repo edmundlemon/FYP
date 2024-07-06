@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex flex-col border border-gray-700 w-10/12 m-auto rounded-lg shadow-lg bg-white mt-5 fade-in-animation"
+    class="relative flex flex-col border border-gray-700 w-10/12 m-auto rounded-lg shadow-lg bg-white mt-5 fadein-animation"
     v-if="student != null && !fail"
   >
     <StudentDetails :student="student" />
