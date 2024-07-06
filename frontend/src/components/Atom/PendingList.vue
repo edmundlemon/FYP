@@ -182,23 +182,6 @@
               </button>
             </div>
 
-            <div
-              class="flex flex-row items-center justify-end w-full pr-5 space-x-2 font-bold"
-              v-else-if="
-                slot.status === 'Cancellation Request' &&
-                store.state.role === 'lecturer'
-              "
-            >
-              <button
-                class="px-4 py-2 bg-red-400 text-white rounded-md hover:bg-red-600 min-w-[5.5vw]"
-                @click.prevent="
-                  console.log('Review button clicked on slot id =>' + slot.id),
-                    cancelSlot(slot.id)
-                "
-              >
-                Approve Cancellation
-              </button>
-            </div>
           </div>
 
           <div
