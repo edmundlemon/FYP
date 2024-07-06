@@ -15,8 +15,10 @@ use App\Jobs\AutomatedReschedule;
 use App\Models\Consultation_slot;
 use App\Rules\RescheduleCollision;
 use Illuminate\Support\Facades\DB;
+use App\Jobs\AutomatedCancellation;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use App\Jobs\AutomatedCancellationEmail;
 use App\Jobs\UpdateExpiredConsultationSlots;
 
 class ConsultationController extends Controller
@@ -183,7 +185,7 @@ class ConsultationController extends Controller
         $formFields['status'] = 'Student Rescheduled';
         $formFields['lecturer_read'] = false;
         $formFields['student_read'] = true;
-        AutomatedReschedule::dispatch($consultation_slot->student->name, $consultation_slot, $formFields)->onConnection('sync');
+        AutomatedReschedule::dispatch($consultation_slot->student->name, $consultation_slot, $formFields, $consultation_slot->lecturer->email)->onConnection('sync');
         $consultation_slot->update($formFields);
         return response()->json(
             [
@@ -212,7 +214,7 @@ class ConsultationController extends Controller
         $formFields['status'] = 'Lecturer Rescheduled';
         $formFields['lecturer_read'] = false;
         $formFields['student_read'] = true;
-        AutomatedReschedule::dispatch($consultation_slot->lecturer->name, $consultation_slot, $formFields)->onConnection('sync');
+        AutomatedReschedule::dispatch($consultation_slot->lecturer->name, $consultation_slot, $formFields, $consultation_slot->student->email)->onConnection('sync');
         $consultation_slot->update($formFields);
         return response()->json(
             [
@@ -530,6 +532,7 @@ class ConsultationController extends Controller
             abort(403, 'Unauthorized Action!');
         }
         $consultation_slot->status = 'Cancelled';
+        AutomatedCancellation::dispatch($consultation_slot, $consultation_slot->student->email, $consultation_slot->lecturer->name)->onConnection('sync');
         $consultation_slot->save();
         return response()->json(
             [
@@ -552,6 +555,7 @@ class ConsultationController extends Controller
             abort(403, 'Unauthorized Action!');
         }
         $consultation_slot->status = 'Cancellation Request';
+        AutomatedCancellation::dispatch($consultation_slot, $consultation_slot->lecturer->email, $consultation_slot->student->name)->onConnection('sync');
         $consultation_slot->save();
         return response()->json(
             [

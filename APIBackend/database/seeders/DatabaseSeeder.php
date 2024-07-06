@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
         Lecturer::create([
             'id' => 'MU1234',
             'name' => 'Jane Doe',
-            'email' => 'mu1234@gmail.com',
+            'email' => '1221203841@student.mmu.edu.my',
             'password' => bcrypt('password'),
             'photo' => 'https://randomuser.me/api/portraits/men/5.jpg',
             'faculty' => 'FCI',
@@ -126,10 +126,20 @@ class DatabaseSeeder extends Seeder
             'topic' => 'Maths'
         ]);
         Consultation_slot::create([
-            // 'id' => test,
+            // Seed for approval,
             'lecturer_id' => 'MU1234',
             'student_id' =>"1122",
             'date' => Carbon::today(),
+            'start_time' => Carbon::now()->addMinutes(15)->format('H:i'),
+            'end_time' => Carbon::now()->addMinute(15)->format('H:i'),
+            'status' => 'Approved',
+            'topic' => 'Maths'
+        ]);
+        Consultation_slot::create([
+            // Seed for approval,
+            'lecturer_id' => 'MU1234',
+            'student_id' =>"1122",
+            'date' => Carbon::today()->addDays(-2),
             'start_time' => Carbon::now()->addMinutes(15)->format('H:i'),
             'end_time' => Carbon::now()->addMinute(15)->format('H:i'),
             'status' => 'Approved',

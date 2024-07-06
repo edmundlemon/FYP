@@ -29,6 +29,12 @@ class AutomatedApproved implements ShouldQueue
     public function handle(): void
     {
         //
-        Mail::to($this->consultation_slot->student->email)->send(new ApprovedEmail($this->consultation_slot));
+        if (auth('sanctum')->user()->hasRole('lecturer')) {
+            Mail::to($this->consultation_slot->student->email)->send(new ApprovedEmail($this->consultation_slot, $this->consultation_slot->lecturer->name));
+        }
+        else if(auth('sanctum')->user()->hasRole('student')) {
+            Mail::to($this->consultation_slot->lecturer->email)->send(new ApprovedEmail($this->consultation_slot, $this->consultation_slot->student->name));
+        }
+        // Mail::to($this->consultation_slot->student->email)->send(new ApprovedEmail($this->consultation_slot));
     }
 }
