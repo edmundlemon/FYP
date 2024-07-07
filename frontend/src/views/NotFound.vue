@@ -49,6 +49,4 @@ export default {
 
 <script setup>
 import store from '../store';
-
-store
 </script>
