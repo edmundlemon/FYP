@@ -172,7 +172,7 @@ class ConsultationController extends Controller
     {
         Log::channel('api_post_log')->error('Request', ['request' => $request->lecturer_id]);
         $formFields = $request->validate([
-            'date' => 'required|date_format:Y-m-d|after:tomorrow',
+            'date' => ['required', 'date_format:Y-m-d', 'after:tomorrow', new WeekdayOnly],
             // 'start_time' => 'required|date_format:H:i',
             'start_time' => ['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $consultation_slot->lecturer_id)],
             'end_time' => 'required|date_format:H:i|after:start_time',
