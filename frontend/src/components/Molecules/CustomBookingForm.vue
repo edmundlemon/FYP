@@ -14,9 +14,9 @@
             v-model="booking.date"
             required
           />
-          <div v-if="errors.date" class="text-red-500 text-xs mt-1">
+          <!-- <div v-if="errors.date" class="text-red-500 text-xs mt-1">
             {{ errors.date[0] }}
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -35,9 +35,9 @@
             max="16:00"
             required
           />
-          <div v-if="errors.start_time" class="text-red-500 text-xs mt-1">
+          <!-- <div v-if="errors.start_time" class="text-red-500 text-xs mt-1">
             {{ errors.start_time[0] }}
-          </div>
+          </div> -->
         </div>
         <div class="mb-4 w-1/2">
           <label for="end_time" class="font-bold block text-white mb-2"
@@ -52,9 +52,9 @@
             max="17:00"
             required
           />
-          <div v-if="errors.end_time" class="text-red-500 text-xs mt-1">
+          <!-- <div v-if="errors.end_time" class="text-red-500 text-xs mt-1">
             {{ errors.end_time[0] }}
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -125,7 +125,7 @@ function CustomBooking() {
       emit('closeBookingForm');
     })
     .catch((error) => {
-      console.log(error.response.data.errors);
+      console.log(error.response.data);
       console.log(error);
       errors.value = error.response.data.errors;
     });

@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'id' =>"1122",
             'name' => 'John Doe',
             // 'email' => '1122@gmail.com',
-            'email' => 'edmundngxhunyan@gmail.com',
+            'email' => '1221203841@student.mmu.edu.my',
             'password' => bcrypt('password'),
             'faculty' => 'FCI',
             'photo' => 'https://randomuser.me/api/portraits/men/3.jpg',
@@ -126,22 +126,32 @@ class DatabaseSeeder extends Seeder
             'topic' => 'Maths'
         ]);
         Consultation_slot::create([
-            // Seed for approval,
+            // !Seed for Approval,
             'lecturer_id' => 'MU1234',
             'student_id' =>"1122",
             'date' => Carbon::today(),
-            'start_time' => Carbon::now()->addMinutes(15)->format('H:i'),
-            'end_time' => Carbon::now()->addMinute(15)->format('H:i'),
+            'start_time' => Carbon::today()->addDays(3)->setHour(10)->setMinute(30)->format('H:i'),
+            'end_time' => Carbon::today()->addDays(3)->setHour(11)->setMinute(30)->format('H:i'),
             'status' => 'Approved',
             'topic' => 'Maths'
         ]);
         Consultation_slot::create([
-            // Seed for approval,
+            // !Seed to Collide
             'lecturer_id' => 'MU1234',
             'student_id' =>"1122",
-            'date' => Carbon::today()->addDays(-2),
-            'start_time' => Carbon::now()->addMinutes(15)->format('H:i'),
-            'end_time' => Carbon::now()->addMinute(15)->format('H:i'),
+            'date' => Carbon::today()->addDays(2),
+            'start_time' => Carbon::today()->addDays(2)->setHour(10)->setMinute(30)->format('H:i'),
+            'end_time' => Carbon::today()->addDays(2)->setHour(11)->setMinute(30)->format('H:i'),
+            'status' => 'Pending',
+            'topic' => 'Maths'
+        ]);
+        Consultation_slot::create([
+            // !Seed for History,
+            'lecturer_id' => 'MU1234',
+            'student_id' =>"1122",
+            'date' => Carbon::today()->addDays(-5),
+            'start_time' => Carbon::now()->setHour(9)->setMinutes(15)->format('H:i'),
+            'end_time' => Carbon::now()->setHour(10)->setMinute(15)->format('H:i'),
             'status' => 'Approved',
             'topic' => 'Maths'
         ]);
