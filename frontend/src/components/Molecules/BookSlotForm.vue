@@ -128,6 +128,7 @@ function BookSlot() {
     })
     .catch((error) => {
       console.log(error.response.data);
+      errors.value = error.response.data.errors;
     });
 }
 </script>

@@ -145,7 +145,6 @@ class ConsultationController extends Controller
     {
         // dd($request->all());
 
-        echo $request;
         $formFields = $request->validate([
             'date' => ['required', 'date_format:Y-m-d', 'after:tomorrow', new WeekdayOnly],
             'start_time' => ['required', 'date_format:H:i', new TimeCollision($request->start_time, $request->end_time, $request->date, $lecturer->id)],
@@ -157,7 +156,7 @@ class ConsultationController extends Controller
         $formFields['status'] = 'Pending';
         $formFields['topic'] = $request->topic;
 
-        Log::channel('api_post_log')->error('Form Fields', ['formFields' => $formFields]);
+        // Log::channel('api_post_log')->error('Form Fields', ['formFields' => $formFields]);
         Consultation_slot::create($formFields);
         // return redirect()->route('dashboard');
         return response()->json(
