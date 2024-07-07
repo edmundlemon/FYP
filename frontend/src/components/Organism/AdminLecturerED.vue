@@ -42,7 +42,6 @@
               </th>
             </tr>
           </thead>
-
           <tbody>
             <tr
               v-for="(lecturer, index) in lecturers"
@@ -53,7 +52,7 @@
               <td class="py-2 px-4">{{ lecturer.name }}</td>
               <td class="py-2 px-4">{{ lecturer.email }}</td>
               <td class="py-2 px-4">{{ lecturer.faculty }}</td>
-              <td class="py-2 px-4">{{ lecturer.program }}</td>
+              <td class="py-2 px-4">{{ lecturer.office }}</td>
               <td class="py-2 px-4 flex flex-row space-x-2">
                 <button
                   class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white rounded-full py-2 px-4 border border-blue-500 hover:border-transparent rounded"

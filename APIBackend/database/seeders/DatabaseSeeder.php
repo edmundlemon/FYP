@@ -21,32 +21,32 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Student::create([
-            'id' =>"1122",
+            'id' => "1122",
             'name' => 'John Doe',
             // 'email' => '1122@gmail.com',
             'email' => '1221203841@student.mmu.edu.my',
             'password' => bcrypt('password'),
             'faculty' => 'FCI',
             'photo' => 'https://randomuser.me/api/portraits/men/3.jpg',
-            'program' => 'CS'
+            'program' => 'Degree'
         ]);
         Student::create([
             'id' => "1234",
-            'name' => 'Johnny G',
-            'email' => '1234@gmail.com',
+            'name' => 'Yap Hoong Hey',
+            'email' => 'yaphoonghey@gmail.com',
             'password' => bcrypt('password'),
             'faculty' => 'FCI',
             'photo' => 'https://randomuser.me/api/portraits/women/3.jpg',
-            'program' => 'CS'
+            'program' => 'Diploma'
         ]);
         Student::create([
             'id' => "3322",
-            'name' => 'El Negro',
-            'email' => 'negg@gmail.com',
+            'name' => 'Jeff Monack',
+            'email' => 'yaphoonghey6633@gmail.com',
             'password' => bcrypt('password'),
             'faculty' => 'FOM',
             'photo' => 'https://randomuser.me/api/portraits/men/42.jpg',
-            'program' => 'LAW'
+            'program' => 'Foundation'
         ]);
         Student::create([
             'id' => "3344",
@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'faculty' => 'FOE',
             'photo' => 'https://randomuser.me/api/portraits/men/88.jpg',
-            'program' => 'EG'
+            'program' => 'Master'
         ]);
         Lecturer::create([
             'id' => 'MU1234',
@@ -105,20 +105,25 @@ class DatabaseSeeder extends Seeder
         Admin::create([
             'id' => 'AD1234',
             'name' => 'Admin',
-            'email' => 'ad1234@gmail.com',
+            'email' => '1221202641@student.mmu.edu.my',
             'password' => bcrypt('password')
         ]);
         Review::create([
-            'id' => 1,
             'lecturer_id' => 'MU1234',
-            'student_id' =>"1122",
+            'student_id' => "1122",
             'rating' => '5',
             'comment' => 'Great'
+        ]);
+        Review::create([
+            'lecturer_id' => 'MU1234',
+            'student_id' => "1234",
+            'rating' => '4',
+            'comment' => 'Overrall good lecturer and understanding, I feel like can be improved abit!'
         ]);
         Consultation_slot::create([
             // 'id' => 1,
             'lecturer_id' => 'MU1234',
-            'student_id' =>"1122",
+            'student_id' => "1122",
             'date' => Carbon::today()->addDays(2),
             'start_time' => Carbon::today()->addDays(2)->setHour(10)->setMinute(0)->format('H:i'),
             'end_time' => Carbon::today()->addDays(2)->setHour(11)->setMinute(0)->format('H:i'),
@@ -128,7 +133,7 @@ class DatabaseSeeder extends Seeder
         Consultation_slot::create([
             // !Seed for Approval,
             'lecturer_id' => 'MU1234',
-            'student_id' =>"1122",
+            'student_id' => "1122",
             'date' => Carbon::today(),
             'start_time' => Carbon::today()->addDays(3)->setHour(10)->setMinute(30)->format('H:i'),
             'end_time' => Carbon::today()->addDays(3)->setHour(11)->setMinute(30)->format('H:i'),
@@ -138,7 +143,7 @@ class DatabaseSeeder extends Seeder
         Consultation_slot::create([
             // !Seed to Collide
             'lecturer_id' => 'MU1234',
-            'student_id' =>"1122",
+            'student_id' => "1122",
             'date' => Carbon::today()->addDays(2),
             'start_time' => Carbon::today()->addDays(2)->setHour(10)->setMinute(30)->format('H:i'),
             'end_time' => Carbon::today()->addDays(2)->setHour(11)->setMinute(30)->format('H:i'),
@@ -148,7 +153,7 @@ class DatabaseSeeder extends Seeder
         Consultation_slot::create([
             // !Seed for History,
             'lecturer_id' => 'MU1234',
-            'student_id' =>"1122",
+            'student_id' => "1122",
             'date' => Carbon::today()->addDays(-5),
             'start_time' => Carbon::now()->setHour(9)->setMinutes(15)->format('H:i'),
             'end_time' => Carbon::now()->setHour(10)->setMinute(15)->format('H:i'),
@@ -158,7 +163,7 @@ class DatabaseSeeder extends Seeder
         Consultation_slot::create([
             // 'id' => 2,
             'lecturer_id' => 'MU1234',
-            'student_id' =>"1122",
+            'student_id' => "1122",
             'date' => Carbon::today()->addDays(-5),
             'start_time' => Carbon::now()->addMinutes(-25)->format('H:i'),
             'end_time' => Carbon::now()->addMinutes(-75)->format('H:i'),
@@ -167,7 +172,7 @@ class DatabaseSeeder extends Seeder
         Consultation_slot::create([
             // 'id' => 2,
             'lecturer_id' => 'MU1234',
-            'student_id' =>"1122",
+            'student_id' => "1122",
             'date' => Carbon::today()->addDays(4),
             'start_time' => Carbon::now()->addMinutes(25)->format('H:i'),
             'end_time' => Carbon::now()->addMinutes(75)->format('H:i'),
@@ -176,22 +181,74 @@ class DatabaseSeeder extends Seeder
         Consultation_slot::create([
             // 'id' => 2,
             'lecturer_id' => 'MU1234',
-            'student_id' =>"1122",
+            'student_id' => "1122",
             'date' => Carbon::today()->addDays(2),
             'start_time' => Carbon::today()->setHour(10)->setMinute(30)->format('H:i'),
             'end_time' => Carbon::today()->setHour(11)->setMinute(30)->format('H:i'),
             'status' => 'Pending'
         ]);
-        Free_slot::create([
-            'id' => 1,
+        Consultation_slot::create([
+            // 'id' => 2,
             'lecturer_id' => 'MU1234',
-            'date' => Carbon::now()->next(Carbon::WEDNESDAY),
-            'start_time' => Carbon::now()->setHour(10)->setMinute(0)->format('H:i'),
-            'end_time' => Carbon::now()->setHour(11)->setMinute(0)->format('H:i'),
+            'student_id' => "1234",
+            'date' => Carbon::now()->next(Carbon::THURSDAY),
+            'start_time' => Carbon::today()->setHour(10)->setMinute(30)->format('H:i'),
+            'end_time' => Carbon::today()->setHour(11)->setMinute(30)->format('H:i'),
+            'status' => 'Approved'
+        ]);
+
+        Consultation_slot::create([
+            // 'id' => 2,
+            'lecturer_id' => 'MU1234',
+            'student_id' => "3322",
+            'date' => Carbon::now()->next(Carbon::FRIDAY),
+            'start_time' => Carbon::today()->setHour(9)->setMinute(30)->format('H:i'),
+            'end_time' => Carbon::today()->setHour(10)->setMinute(30)->format('H:i'),
+            'status' => 'Approved'
+        ]);
+
+        Consultation_slot::create([
+            // 'id' => 2,
+            'lecturer_id' => 'MU1234',
+            'student_id' => "1122",
+            'date' => Carbon::now()->next(Carbon::FRIDAY)->next(Carbon::FRIDAY),
+            'start_time' => Carbon::today()->setHour(11)->setMinute(30)->format('H:i'),
+            'end_time' => Carbon::today()->setHour(12)->setMinute(45)->format('H:i'),
+            'status' => 'Lecturer Rescheduled',
+            'lecturer_read' => true,
+        ]);
+
+        Consultation_slot::create([
+            // 'id' => 2,
+            'lecturer_id' => 'MU1234',
+            'student_id' => "1234",
+            'date' => Carbon::now()->next(Carbon::FRIDAY),
+            'start_time' => Carbon::today()->setHour(13)->setMinute(30)->format('H:i'),
+            'end_time' => Carbon::today()->setHour(15)->setMinute(00)->format('H:i'),
+            'status' => 'Student Rescheduled',
+            'student_read' => true,
+        ]);
+
+        Consultation_slot::create([
+            // 'id' => 2,
+            'lecturer_id' => 'MU1234',
+            'student_id' => "1234",
+            'date' => Carbon::today()->addDays(-4),
+            'start_time' => Carbon::today()->setHour(10)->setMinute(00)->format('H:i'),
+            'end_time' => Carbon::today()->setHour(12)->setMinute(00)->format('H:i'),
+            'status' => 'Completed',
         ]);
 
         Free_slot::create([
-            'id' => 2,
+            // 'id' => 1,
+            'lecturer_id' => 'MU1234',
+            'date' => Carbon::now()->next(Carbon::WEDNESDAY),
+            'start_time' => Carbon::now()->setHour(12)->setMinute(0)->format('H:i'),
+            'end_time' => Carbon::now()->setHour(13)->setMinute(30)->format('H:i'),
+        ]);
+
+        Free_slot::create([
+            // 'id' => 2,
             'lecturer_id' => 'MU1234',
             'date' => Carbon::now()->next(Carbon::MONDAY),
             'start_time' => Carbon::now()->setHour(10)->setMinute(0)->format('H:i'),
@@ -199,21 +256,21 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Free_slot::create([
-            'id' => 3,
+            // 'id' => 3,
             'lecturer_id' => 'MU1212',
             'date' => Carbon::now()->next(Carbon::MONDAY),
             'start_time' => Carbon::now()->setHour(13)->setMinute(0)->format('H:i'),
             'end_time' => Carbon::now()->setHour(14)->setMinute(0)->format('H:i'),
         ]);
         Free_slot::create([
-            'id' => 4,
+            // 'id' => 4,
             'lecturer_id' => 'MU1234',
             'date' => Carbon::now()->next(Carbon::WEDNESDAY),
             'start_time' => Carbon::now()->setHour(12)->setMinute(0)->format('H:i'),
             'end_time' => Carbon::now()->setHour(13)->setMinute(0)->format('H:i'),
         ]);
         Free_slot::create([
-            'id' => 5,
+            // 'id' => 5,
             'lecturer_id' => 'MU1234',
             'date' => Carbon::now()->next(Carbon::THURSDAY),
             'start_time' => Carbon::now()->setHour(11)->setMinute(0)->format('H:i'),
