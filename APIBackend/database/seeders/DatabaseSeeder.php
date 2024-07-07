@@ -32,8 +32,8 @@ class DatabaseSeeder extends Seeder
         ]);
         Student::create([
             'id' => "1234",
-            'name' => 'Johnny G',
-            'email' => '1234@gmail.com',
+            'name' => 'Yap Hoong Hey',
+            'email' => 'yaphoonghey@gmail.com',
             'password' => bcrypt('password'),
             'faculty' => 'FCI',
             'photo' => 'https://randomuser.me/api/portraits/women/3.jpg',
@@ -41,8 +41,8 @@ class DatabaseSeeder extends Seeder
         ]);
         Student::create([
             'id' => "3322",
-            'name' => 'El Negro',
-            'email' => 'negg@gmail.com',
+            'name' => 'Jeff Monack',
+            'email' => 'yaphoonghey6633@gmail.com',
             'password' => bcrypt('password'),
             'faculty' => 'FOM',
             'photo' => 'https://randomuser.me/api/portraits/men/42.jpg',
@@ -105,7 +105,7 @@ class DatabaseSeeder extends Seeder
         Admin::create([
             'id' => 'AD1234',
             'name' => 'Admin',
-            'email' => 'ad1234@gmail.com',
+            'email' => '1221202641@student.mmu.edu.my',
             'password' => bcrypt('password')
         ]);
         Review::create([
