@@ -158,7 +158,7 @@ class StudentController extends Controller
         $formFields = $request->validate([
             'email' => ['required', Rule::unique('lecturers')->ignore(auth('sanctum')->user()->id)],
         ]);
-
+//email
         if (is_string($request->photo)) {
             $formFields['photo'] = $request->photo;
         } else if ($request->hasFile('photo')) {
