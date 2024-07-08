@@ -32,8 +32,8 @@ class DatabaseSeeder extends Seeder
         ]);
         Student::create([
             'id' => "1234",
-            'name' => 'Yap Hoong Hey',
-            'email' => 'yaphoonghey@gmail.com',
+            'name' => 'Yappy Hey',
+            'email' => '1221202641@student.mmu.edu.my',
             'password' => bcrypt('password'),
             'faculty' => 'FCI',
             'photo' => 'https://randomuser.me/api/portraits/women/3.jpg',
@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
         Student::create([
             'id' => "3322",
             'name' => 'Jeff Monack',
-            'email' => 'yaphoonghey6633@gmail.com',
+            'email' => 'jeffmonacker123@gmail.com',
             'password' => bcrypt('password'),
             'faculty' => 'FOM',
             'photo' => 'https://randomuser.me/api/portraits/men/42.jpg',
