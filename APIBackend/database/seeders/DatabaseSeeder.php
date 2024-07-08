@@ -134,7 +134,7 @@ class DatabaseSeeder extends Seeder
             // !Seed for Approval,
             'lecturer_id' => 'MU1234',
             'student_id' => "1122",
-            'date' => Carbon::today(),
+            'date' => Carbon::today()->addDays(3),
             'start_time' => Carbon::today()->addDays(3)->setHour(10)->setMinute(30)->format('H:i'),
             'end_time' => Carbon::today()->addDays(3)->setHour(11)->setMinute(30)->format('H:i'),
             'status' => 'Approved',
