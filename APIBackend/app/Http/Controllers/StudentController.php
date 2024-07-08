@@ -156,7 +156,7 @@ class StudentController extends Controller
     public function editDetails(Request $request, Student $student)
     {
         $formFields = $request->validate([
-            'email' => ['required', Rule::unique('lecturers')->ignore(auth('sanctum')->user()->id)],
+            'email' => ['required', Rule::unique('students')->ignore(auth('sanctum')->user()->id)],
         ]);
 
         if (is_string($request->photo)) {
