@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col items-center bg-gray-900" style="width: 30vw">
-    <p class="text-white">{{ errors }}</p>
     <form
       @submit.prevent="CustomBooking"
       class="p-6 w-full load-in-animation"
