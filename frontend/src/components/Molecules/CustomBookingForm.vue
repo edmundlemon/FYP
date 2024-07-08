@@ -15,9 +15,7 @@
             required
           />
           <div v-if="errors.date" class="text-red-500 text-xs mt-1">
-
             {{ errors.date[0] }}
-
           </div>
         </div>
       </div>
@@ -39,7 +37,6 @@
           />
           <div v-if="errors.start_time" class="text-red-500 text-xs mt-1">
             {{ errors.start_time[0] }}
-
           </div>
         </div>
         <div class="mb-4 w-1/2">
@@ -56,9 +53,7 @@
             required
           />
           <div v-if="errors.end_time" class="text-red-500 text-xs mt-1">
-
             {{ errors.end_time[0] }}
-
           </div>
         </div>
       </div>
@@ -136,11 +131,17 @@ function CustomBooking() {
     })
     .catch((error) => {
       console.log(error.response.data);
-      let startIndex = error.response.data.indexOf('"errors":');
-      let slicedError = error.response.data.slice(startIndex+9, -1);
-      let replacedStr = slicedError.replace(/\[/g, '').replace(/\]/g, '');
-      errors.value = JSON.parse(replacedStr);
-      console.log(errors.value);
+      if (error.response.data.errors) {
+        errors.value = error.response.data.errors;
+        return;
+      }
+      else{
+        let startIndex = error.response.data.indexOf('"errors":');
+        let slicedError = error.response.data.slice(startIndex+9, -1);
+        let replacedStr = slicedError.replace(/\[/g, '').replace(/\]/g, '');
+        errors.value = JSON.parse(replacedStr);
+        console.log(errors.value);
+      }
     });
 }
 </script>
