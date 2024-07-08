@@ -21,7 +21,9 @@
 	  <body class="h-full">
 	  ```
 	-->
-  <div class="wrapper h-screen bg-gray-200 flex justify-center items-center load-in-animation">
+  <div
+    class="wrapper h-screen bg-gray-200 flex justify-center items-center load-in-animation"
+  >
     <div
       class="flex-container w-7/12 h-5/6 flex justify-center items-center bg-gray-100 p-2 rounded-xl bg-white"
       style="filter: drop-shadow(15px 10px 20px black)"
@@ -89,7 +91,9 @@
                   v-model="id"
                   class="transition duration-300 ease-in-out block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                 />
-                <div v-if="errors.id" class="text-red-500 text-xs mt-1">{{ errors.id[0] }}</div>
+                <div v-if="errors.id" class="text-red-500 text-xs mt-1">
+                  {{ errors.id[0] }}
+                </div>
               </div>
             </div>
 
@@ -119,17 +123,27 @@
                   v-model="password"
                   class="transition duration-300 ease-in-out block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                 />
-                <div v-if="errors.password" class="text-red-500 text-xs mt-1">{{ errors.password[0] }}</div>
+                <div v-if="errors.password" class="text-red-500 text-xs mt-1">
+                  {{ errors.password[0] }}
+                </div>
               </div>
-              <div v-if="errors" class="text-red-500 text-xs mt-1">{{ errors.message }}</div>
+              <div v-if="errors" class="text-red-500 text-xs mt-1">
+                {{ errors.message }}
+              </div>
             </div>
 
             <div>
               <button
                 type="submit"
-                class="buttonstyle shadow-xl transition duration-300 ease-in-out flex w-full justify-center rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                class="h-9 items-center shadow-xl transition duration-300 ease-in-out flex w-full justify-center rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                :class="
+                  loading
+                    ? 'cursor-not-allowed'
+                    : 'buttonstyle cursor-pointer hover:bg-white hover:text-black hover:ring-1 hover:ring-gray-300 buttonstyle'
+                "
               >
-                Login
+                <p v-if="!loading">Login</p>
+                <div v-else class="loader2"></div>
               </button>
             </div>
           </form>
@@ -150,31 +164,9 @@ const router = useRouter();
 const id = ref("");
 const password = ref("");
 const errors = ref([]);
-
+const loading = ref(false);
 async function login() {
-  // store.dispatch('login', {id: id.value, password: password.value});
-  // await axios
-  //   .post("http://localhost:8000/api/login", {
-  //     id: id.value,
-  //     password: password.value,
-  //   })
-  //   .then((response) => {
-  //     console.log(response.data);
-  //     store.dispatch("login", response.data);
-  //     console.log(response.data.user);
-  //     console.log(response.data.role);
-  //     if (response.data.role == "student") {
-  //       router.push("/students");
-  //     } else if (response.data.role == "lecturer") {
-  //       router.push("/lecturers");
-  //     } else if (response.data.role == "admin") {
-  //       router.push("/admin");
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //     return;
-  //   });
+  loading.value = true;
   try {
     const response = await axiosInstance.post("/login", {
       id: id.value,
@@ -184,6 +176,7 @@ async function login() {
     store.dispatch("login", response.data);
     console.log(response.data.user);
     console.log(response.data.role);
+    loading.value = false;
     if (response.data.role == "student") {
       router.push("/dashboard");
     } else if (response.data.role == "lecturer") {
@@ -195,6 +188,7 @@ async function login() {
     console.log(error.response.data);
     errors.value = error.response.data;
     console.log("Error message: ", errors.value.message);
+    loading.value = false;
     return;
   }
 }

@@ -73,6 +73,20 @@
   animation-timing-function: linear
 }
 
+.loader2 {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 4px solid;
+  border-color: #ffffff #ffffff00;
+  animation: l2 1s infinite;
+}
+@keyframes l2 {
+  to {
+    transform: rotate(0.5turn);
+  }
+}
+
 @keyframes l12 { 
   100%{transform: rotate(.5turn)}
 }

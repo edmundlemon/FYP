@@ -87,6 +87,7 @@
             class="mt-1 p-2 w-full border border-gray-300 rounded-md"
             required
           />
+          <label v-if="errors.email" class="text-red-500 text-xs mt-1">{{ errors.email[0] }}</label>
         </div>
         <div class="mb-4" v-if="store.state.role === 'lecturer'">
           <label for="office" class="block text-sm font-bold text-white"
@@ -124,6 +125,7 @@ const form = ref({});
 const namelink = ref("");
 const profilepic = ref(null);
 const photo = store.state.user.data.photo;
+const errors = ref(null);
 onMounted(() => {
   form.value = store.state.user.data;
   namelink.value =
@@ -161,6 +163,7 @@ const submitForm = () =>{
       })
       .catch((error) => {
         console.log(error);
+        errors.value = error.response.data.errors;
       });
   }
   if (store.state.role === 'lecturer') {
@@ -177,6 +180,7 @@ const submitForm = () =>{
       })
       .catch((error) => {
         console.log(error);
+        errors.value = error.response.data.errors;
       });
   }
  
