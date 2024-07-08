@@ -59,7 +59,7 @@
             class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           />
-          <div v-if="errors.email" class="text-red-500 text-xs mt-1">{{ errors.email[0] }}</div>
+          <div v-if="errors.password" class="text-red-500 text-xs mt-1">{{ errors.password[0] }}</div>
         </div>
 
         <div class="mb-4">
