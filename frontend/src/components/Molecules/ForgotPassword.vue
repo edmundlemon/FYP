@@ -193,19 +193,4 @@ const validateOTP = () => {
 .buttonstyle:hover {
   filter: drop-shadow(5px 5px 4px black);
 }
-
-/* HTML: <div class="loader"></div> */
-.loader2 {
-  width: 20px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 4px solid;
-  border-color: #ffffff #ffffff00;
-  animation: l1 1s infinite;
-}
-@keyframes l1 {
-  to {
-    transform: rotate(0.5turn);
-  }
-}
 </style>
