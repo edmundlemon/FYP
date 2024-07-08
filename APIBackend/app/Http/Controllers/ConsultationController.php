@@ -211,8 +211,8 @@ class ConsultationController extends Controller
             );
         }
         $formFields['status'] = 'Lecturer Rescheduled';
-        $formFields['lecturer_read'] = false;
-        $formFields['student_read'] = true;
+        $formFields['lecturer_read'] = true;
+        $formFields['student_read'] = false;
         AutomatedReschedule::dispatch($consultation_slot->lecturer->name, $consultation_slot, $formFields, $consultation_slot->student->email)->onConnection('sync');
         $consultation_slot->update($formFields);
         return response()->json(
