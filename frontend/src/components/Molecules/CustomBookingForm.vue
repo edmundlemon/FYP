@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-col items-center bg-gray-900" style="width: 30vw">
+    <p class="text-white">{{ errors }}</p>
     <form
       @submit.prevent="CustomBooking"
       class="p-6 w-full load-in-animation"
@@ -131,17 +132,19 @@ function CustomBooking() {
     })
     .catch((error) => {
       console.log(error.response.data);
-      if (error.response.data.errors) {
-        errors.value = error.response.data.errors;
-        return;
-      }
-      else{
-        let startIndex = error.response.data.indexOf('"errors":');
-        let slicedError = error.response.data.slice(startIndex+9, -1);
-        let replacedStr = slicedError.replace(/\[/g, '').replace(/\]/g, '');
-        errors.value = JSON.parse(replacedStr);
-        console.log(errors.value);
-      }
+      errors.value = error.response.data.errors;
+      console.log(errors.value);
+      //if (error.response.data.errors) {
+      //  errors.value = error.response.data.errors;
+      //  return;
+      //}
+      //else{
+      // let startIndex = error.response.data.indexOf('"errors":');
+      //  let slicedError = error.response.data.slice(startIndex+9, -1);
+      //  let replacedStr = slicedError.replace(/\[/g, '').replace(/\]/g, '');
+      //  errors.value = JSON.parse(replacedStr);
+      //  console.log(errors.value);
+      //}
     });
 }
 </script>
